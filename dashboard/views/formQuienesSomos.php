@@ -32,7 +32,6 @@ if(isset($_GET['id'])){
 
 ?>
 
-
 <div class="container">
     <div class="col-sm-12 pt-3">
         <h1>Modificar seccion ¿Quienes Somos?</h1>
@@ -62,8 +61,6 @@ if(isset($_GET['id'])){
             <a href="tabla_quienes_somos.php" class="btn btn-success mb-5">Cancelar</a>
         </form>
     </div>
-
-</div>
 </div>
 
 <?php include('../fijos/footer.php');?>

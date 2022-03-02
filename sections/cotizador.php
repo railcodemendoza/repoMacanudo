@@ -194,9 +194,9 @@
                     <label style="font-size: smaller; font-weight: 600;" class="control-label">¿Cuántos comen?</label>
                     <select class="form-control" aria-label="Default select example" id="personas" onchange="controlador(id);">
                         <option selected id="0">Comensales:</option>
-                        <option id="4">Pican 4/ Comen 2</option>
-                        <option id="5">Pican 5</option>
-                        <option id="6">Pican 6/ Comen 3</option>
+                        <option id="0">Pican 4/ Comen 2</option>
+                        <option id="1">Pican 5</option>
+                        <option id="2">Pican 6/ Comen 3</option>
                     </select>
                     <p id='comensales' style='opacity:0; margin-bottom: 0 !important;'><small>Costo total de comensales: $<label id="lbpersona"></label>.00</small></p>
                 </div>

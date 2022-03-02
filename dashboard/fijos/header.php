@@ -40,3 +40,4 @@
     
 </head>
 <body class="bg-dark">
+    <?php $a = 0 ?>

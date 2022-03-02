@@ -9,18 +9,16 @@ include('../fijos_user/pannel_left_super_user.php');
 include('../fijos/pannel_right.php'); 
 
 
-$query = "SELECT * FROM quienes_somos";
-$result = mysqli_query($conn, $query);
+
 
 ?>
-<iframe src="http://laboratoriolanding.picadasmacanudas.com/iframe/about.php"
-    style="width: -webkit-fill-available; height: 39rem; border: none;"></iframe>
+<?php include('../../sections/quienesSomos.php');  ?>
 <div class="container mb-5">
     <div class="d-flex text-center">
         <div class="col-sm-8 mx-auto">
-        <?php while($row = mysqli_fetch_assoc($result)){ ?>
-        <a href="formQuienesSomos.php?id=<?php echo $row['id']; ?>" class="a btn btn-outline-primary mr-5">Editar
-            <?php echo $row['titulo']; ?> </a>
+        <?php while($rows = mysqli_fetch_assoc($result1)){ ?>
+        <a href="formQuienesSomos.php?id=<?php echo $rows['id']; ?>" class="a btn btn-outline-primary mr-5">Editar
+            <?php echo $rows['titulo']; ?> </a>
         <?php } ?>
         </div>
     </div>

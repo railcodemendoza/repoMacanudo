@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-180172331-1"></script>
@@ -15,7 +14,6 @@
     </script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>Picadas Macanudas :: sabores que compartimos</title>
@@ -40,7 +38,6 @@
         src: url("assets/font/Nickainley-Normal.otf");
     }
     </style>
-
     <!-- Vendor CSS Files -->
     <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet">
@@ -91,6 +88,7 @@
             'Rail2021', //Pachiman9102
             'u101685278_labmac' //u101685278_macanudas
         );
+        $a = 1;
     ?>
     <?php include('sections/headSection.php'); ?>
     <main id="main">
