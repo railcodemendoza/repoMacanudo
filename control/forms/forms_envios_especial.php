@@ -132,58 +132,6 @@ $paddinginner = 'mt-2';
                             </div>
                             <br>
                         </header>
-                        <!--PHP y JAVA SCRIPT de cupones de promociones-->
-                        <?php
-                        $query = "SELECT * FROM promociones";
-                        $result = mysqli_query($conn, $query);
-                        while($row = $result->fetch_array()) { 
-
-                            $id = $row['id'];
-                            $promocion[$id] = $row['promocion'];
-                            $descuento[$id] = $row['descuento'];
-                            $activo[$id] = $row['activo'];
-
-                        }
-                        ?>
-                        <script type="text/javascript">
-                        var promocion = [];
-                        var descuento = [];
-                        var activo = [];
-                        var maxcupones = <?php echo $id; ?> + 1;
-                        <?php while($id>0) {
-                            if(isset($promocion[$id])) {
-                        ?>
-                        promocion[<?php echo $id; ?>] = "<?php echo $promocion[$id];?>";
-                        descuento[<?php echo $id; ?>] = <?php echo $descuento[$id];?>;
-                        activo[<?php echo $id; ?>] = <?php echo $activo[$id]; ?>;
-                        <?php }
-                        $id--;
-                        } 
-                            ?>
-                        </script>
-                        <!--JAVA SCRIPT funcion para controlar que sea correcto el cupon ingresado-->
-                        <script type="text/javascript">
-                        function compararCupon() {
-                            var cup = document.getElementById('cupon').value;
-                            var resultado = 0;
-                            for (i = 1; i < maxcupones; i++) {
-                                if (cup == promocion[i]) {
-                                    if (activo[i] == 1) {
-                                        document.getElementById("prueba").innerHTML = "Tu cupon " + promocion[i] +
-                                            " es correcto y vale por un " + descuento[i] + "% de descuento";
-                                        document.getElementById("prueba1").innerHTML = resultado;
-                                        i = maxcupones + 1;
-                                        break;
-                                    } else {
-                                        document.getElementById("prueba").innerHTML = "Tu cupon " + promocion[i] +
-                                            " es correcto pero ya no esta activo";
-                                    }
-                                } else {
-                                    document.getElementById("prueba").innerHTML = "No se ha encontrado el cupon " + cup;
-                                }
-                            }
-                        }
-                        </script>
                         <!--Busca en la base de datos la picada especial-->
                         <?php 
                         $id_modal = $_GET['id_modal'];
@@ -201,23 +149,8 @@ $paddinginner = 'mt-2';
                         <div style="text-align:center;" class="panel-body">
                             <form action="../forms/enviar_formulario_envios_especial.php?id_modal=<?php echo $id_modal;?>" class="form-horizontal " method="POST">
                                 <div class="row">
-                                    <!--boton y input de cupon-->
                                     <div class="col-sm-10  mx-auto">
-                                            <img style="width: 30%;" src="https://picadasmacanudas.com/images/picadas_especiales/<?php echo $imagen;?>" alt="">
-                                    </div>
-                                    <div class="col-sm-10  mx-auto">
-                                        <label style="color:white;" class="col-sm-5  control-label">Código de
-                                            promoción</label>
-                                        <div class="col-sm-5  mx-auto">
-                                            <input type="text" id="cupon" name="cupon" placeholder="Inserte"
-                                                class="form-control">
-                                        </div>
-                                        <p style="color:gray;" id="prueba"></p>
-                                        <div class="col-sm-4 mx-auto" style="text-align: center;">
-                                            <button type="submit" name="confirmar_codigo" id="confirmar"
-                                                style="padding-left: 20%;padding-right: 20%;" class="btn btn-warning"
-                                                onclick="compararCupon()">Confirmar Cupon</button>
-                                        </div>
+                                            <img style="width: 30%;" src="../../assets/img/picadas_especiales/<?php echo $imagen;?>" alt="">
                                     </div>
                                     <div class="col-sm-6">
                                         <div style="margin-top:2%;" class="form-group">
@@ -364,7 +297,7 @@ $paddinginner = 'mt-2';
                                 <div class="form-group">
                                     <label style="color:white;" class="col-sm-3 control-label">Producto</label>
                                     <div class="col-sm-5 mx-auto">
-                                      <input type="text" name="product" class="form-control" placeholder="<?php echo $titulo; ?>" readonly="readonly" >
+                                      <input style="text-align: center" type="text" name="product" class="form-control" value="<?php echo $titulo; ?>" readonly="readonly" >
                                     </div>
                                 </div>
                                 <br>

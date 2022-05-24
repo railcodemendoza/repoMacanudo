@@ -149,7 +149,7 @@ while($row = $result_esp->fetch_array()) {
 
 $pre_total = $precio;
 /* $costo = $costo_picada + $costoadd + $costo_duela + $total_delivery; */
-$confirmacion_cupon= $_POST['cupon'];
+
 //conexion  y busqueda de datos en la base de datos
 $query = "SELECT * FROM promociones";
 $result = mysqli_query($conn, $query);
@@ -253,12 +253,12 @@ $total= $pre_total* $descuento_total ?>
                             <!--Muestra el total y en total con descuento-->
                             <?php if($descuento_total!=1){?>
                             <h3 id="total" style="text-align:center; color:#ffb03b; font-size: 3rem;">
-                                <del><?php echo $pre_total; ?>$</del></h3>
+                                $ <del><?php echo $pre_total; ?></del></h3>
                             <h3 id="total" style="text-align:center; color:#ffb03b; font-size: 3rem;">
-                                <?php echo $total; ?>$</h3>
+                                $ <?php echo $total; ?></h3>
                             <?php }else{?>
                             <h3 id="total" style="text-align:center; color:#ffb03b; font-size: 3rem;">
-                                <?php echo $total; ?>$</h3>
+                                $ <?php echo $total; ?></h3>
                             <?php };?>
                             <!--Muestra el total y en total con descuento-->
                             <p style="text-align:center;color:gray; font-size:0.7rem;">a pagar por:

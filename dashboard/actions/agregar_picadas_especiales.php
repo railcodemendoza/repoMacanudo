@@ -19,7 +19,7 @@ if(isset($_POST['agregar'])) {
     $max_tamanyo = 1024 * 1024 * 8;
 
     $ruta_fichero_origen = $_FILES['imagen']['tmp_name'];
-    $ruta_nuevo_destino = '../../images/picadas_especiales/' . $_FILES['imagen']['name'];
+    $ruta_nuevo_destino = '../../assets/img/picadas_especiales/' . $_FILES['imagen']['name'];
     if ( in_array($_FILES['imagen']['type'], $extensiones) ) {
         if ( $_FILES['imagen']['size']< $max_tamanyo ) {
             if( move_uploaded_file ( $ruta_fichero_origen, $ruta_nuevo_destino ) ) {

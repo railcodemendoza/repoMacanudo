@@ -87,7 +87,7 @@
                                                             <div class="col-sm-2"></div>
                                                             <div class="col-sm-8">
                                                                 <h4 style="text-align:center;"> <strong> Imagen:
-                                                                    </strong> <br><img style="width: 25%;" src="https://picadasmacanudas.com/images/picadas_especiales/<?php echo $imagen;?>" alt="">
+                                                                    </strong> <br><img style="width: 25%;" src="../../assets/img/picadas_especiales/<?php echo $imagen;?>" alt="">
                                                                     </h4>
                                                             </div>
                                                         </div>
@@ -178,7 +178,6 @@
                                                                                 value="<?php echo $precio;?>">
                                                                         </div>
                                                                         <br>
-                                                                        <!--PONER BONITO-->
                                                                         <div class="input-group">
                                                                             <label class="form-check-label"
                                                                                 for="flexCheckDefault">
@@ -196,7 +195,6 @@
                                                                                 <?php } ?>
                                                                             </div>
                                                                         </div>
-                                                                        <!--PONER BONITO-->
                                                                         <br>
                                                                         <div class="input-group">
                                                                             <div class="input-group-addon">
@@ -210,7 +208,7 @@
                                                                                         name="imagen" multiple>
                                                                                         <?php
                                                                                             echo "Imagen Actual: $imagen ";
-                                                                                            echo "<img src='https://picadasmacanudas.com/images/picadas_especiales/$imagen' width='300' />";
+                                                                                            echo "<img src='../../assets/img/picadas_especiales/$imagen' width='40%' />";
                                                                                         ?>
                                                                                 </div>
                                                                             </div>
@@ -223,7 +221,7 @@
                                                                 <div class="col-sm-4"></div>
                                                                 <div class="col-sm-4" style="text-align: center;">
                                                                     <button type="submit" name="editar" id="editar"
-                                                                        class="btn btn-primary">Cambiar</button>
+                                                                        class="btn btn-success ">Modificar</button>
                                                                 </div>
                                                                 <div class="col-sm-4"></div>
                                                         </form>
@@ -245,9 +243,6 @@
             <div class="col-sm-4 mx-auto">
                 <a class="btn btn-primary" href="#" type="button" data-toggle="modal" data-target="#agregar"><i
                         class="fa fa-hand-o-right"></i> Agregar Picada</a>
-
-
-
                 <div class="modal fade" id="agregar" tabindex="-1" role="dialog" aria-labelledby="scrollmodalLabel"
                     aria-hidden="true">
                     <div class="modal-dialog modal-lg" role="document">

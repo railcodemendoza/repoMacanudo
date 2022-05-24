@@ -62,10 +62,8 @@
                             <li><i class="fa fa-bars"></i><a href="../webpage_control/picadas.php">Picadas</a></li>
                             <li><i class="fa fa-bars"></i><a href="../webpage_control/agregados.php">Agregados</a></li>
                             <li><i class="fa fa-bars"></i><a href="../webpage_control/comentarios.php">Comentarios</a></li>
-                            <li><i class="fa fa-bars"></i><a href="../webpage_control/tabla_promociones.php">PROMO</a></li>
                         </ul>
                     </li>
-                    
 
                     <li class="menu-title">Administracion</li><!-- /.menu-title -->
 
@@ -93,18 +91,15 @@
                             <li><i class="menu-icon fa fa-street-view"></i><a href="maps-vector.html">Acumulado</a></li>
                         </ul>
                     </li> 
-                    
-                    
+
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-pencil"></i>Editar pagina web</a>
                         <ul class="sub-menu children dropdown-menu">
                             <li><i class="menu-icon fa fa-users"></i><a href="../views/tabla_quienes_somos.php">Seccion ¿Quienes Somos?</a></li>
-                            <li><i class="menu-icon fa fa-users"></i><a href="../views/tabla_promociones.php">Promociones</a>
-                            <li><i class="menu-icon fa fa-users"></i><a href="../views/tabla_picadas_especiales.php">Picadas dias especiales</a>
+                            <li><i class="menu-icon fa fa-users"></i><a href="../views/tabla_promociones.php">Codigos de Descuento</a></li>
+                            <li><i class="menu-icon fa fa-users"></i><a href="../views/tabla_picadas_especiales.php">Picadas Especiales</a></li>
                         </ul>
                     </li>
-
-
 
                     <li class="menu-title">Soporte</li><!-- /.menu-title -->
                     <li>

@@ -459,11 +459,11 @@ $total= $pre_total* $descuento_total ?>
                             </div>
                             <!--Muestra el total y en total con descuento-->
                             <?php if($descuento_total!=1){?>
-                            <h5 id="total" style="text-align:center;  font-size: 2rem;"><del>$ <?php echo number_format($pre_total, 2, ',', ' ') ?></del></h5>
+                            <h5 id="total" style="text-align:center;  font-size: 2rem;">$ <del><?php echo number_format($pre_total, 2, ',', ' ') ?></del></h5>
                             <h3 id="total" style="text-align:center; color:#ffb03b; font-size: 3rem;">$ <?php echo number_format($total, 2, ',', ' ')  ?></h3>
                             <?php }else{?>
                             <h3 id="total" style="text-align:center; color:#ffb03b; font-size: 3rem;">
-                                <?php echo $total; ?></h3>
+                                $ <?php echo $total; ?></h3>
                             <?php };?>
                             <!--Muestra el total y en total con descuento-->
                             <p style="text-align:center;color:blue; font-size:0.7rem;"><?php echo $comentario; ?></p>

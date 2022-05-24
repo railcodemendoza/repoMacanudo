@@ -1,4 +1,4 @@
-<section id="gallery" class="gallery">
+<section id="gallery1" class="gallery">
     <div class="container-fluid">
         <div class="section-title">
             <h2>Algunas imágenes de nuestros <span>Productos</span></h2>

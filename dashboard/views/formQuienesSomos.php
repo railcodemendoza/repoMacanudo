@@ -35,7 +35,7 @@ if(isset($_GET['id'])){
 <div class="container">
     <div class="col-sm-12 pt-3">
         <h1>Modificar seccion ¿Quienes Somos?</h1>
-        <form method="POST" action="../actions/editar_quienes_somos.php?id=<?php echo $id; ?>" enctype="multipart/form-data">
+        <form method="POST" action="../actions/editar_quienes_somos.php?id=<?php echo $id; ?>&ruta=<?php echo $imgModal ?>" enctype="multipart/form-data">
             <!-- primer apartado -->
 
             <label class="pt-3 pb-2" for="desc"><b>Descripcion ¿Quienes Somos?: (limite de 250 caracteres)</b></label>
@@ -52,12 +52,18 @@ if(isset($_GET['id'])){
 
                 <label class="pt-3 pb-2" for="imgModal">Imagen del ver mas:</label>
                 <input type="file" name="imgModal" class="form-control" id="imgModal">
-
+                <?php
+                    echo "Imagen Actual: $imgModal ";?>
+                <br/>
+                <?php
+                    echo "<img src='../../assets/img/quienes_somos/$imgModal' width='20%' />";
+                ?>
+                <br/>
                 <label class="pt-3 pb-2" for="desc2Modal">Segunda descripcion ver mas:</label>
                 <textarea maxlength="195" class="form-control" cols="30" rows="5" name="desc2Modal" required
                     id="desc2Modal"><?php echo $desc2Modal ?></textarea>
 
-            <br><input class="btn btn-success mb-5" name="modificar" type="submit" value="modificar">
+            <br><input class="btn btn-success mb-5" name="modificar" type="submit" value="Modificar">
             <a href="tabla_quienes_somos.php" class="btn btn-success mb-5">Cancelar</a>
         </form>
     </div>

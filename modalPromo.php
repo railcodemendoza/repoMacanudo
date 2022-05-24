@@ -45,7 +45,7 @@ $(document).ready(function() {
     height: 430px;
     max-width: 350px;
     z-index: 7000;
-    background-image: url('https://picadasmacanudas.com/images/picadas_especiales/<?php echo $imagen[$id]; ?>');
+    background-image: url('assets/img/picadas_especiales/<?php echo $imagen[$id]; ?>');
 }
 </style>
 <div class="pop-up">

@@ -14,7 +14,7 @@ if(isset($_GET['id'])) {
     if($result) {  
       $_SESSION['message'] = 'Se eliminó correctamente la Promoción';
       $_SESSION['message_type'] = 'success';
-      unlink('../../images/picadas_especiales/'.$imagen);
+      unlink('../../assets/img/picadas_especiales/'.$imagen);
       header('location:../views/tabla_picadas_especiales.php');
     }else{
     

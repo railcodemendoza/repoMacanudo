@@ -62,10 +62,10 @@ if ($a == 0) {
             <div class="col-lg-5" style="padding: 0px;">
                 <img src="<?php
                                 if($a == 0){
-                                    echo '../../assets/img/' . $rowO['imagen'];
+                                    echo '../../assets/img/quienes_somos/' . $rowO['imagen'];
                                    
                                 }else{
-                                    echo 'assets/img/' . $rowO['imagen'];
+                                    echo 'assets/img/quienes_somos/' . $rowO['imagen'];
                                 }
                                 
                              ?>" class="img-fluid" alt="">
@@ -99,10 +99,10 @@ if ($a == 0) {
                                     <img style="max-width: -webkit-fill-available;" src="
                                     <?php
                                 if($a == 0){
-                                    echo '../../assets/img/' . $rowQS['imagen'];
+                                    echo '../../assets/img/quienes_somos/' . $rowQS['imagen'];
                                    
                                 }else{
-                                    echo 'assets/img/' . $rowQS['imagen'];
+                                    echo 'assets/img/quienes_somos/' . $rowQS['imagen'];
                                 }
                                 
                              ?>" alt="">
@@ -133,10 +133,10 @@ if ($a == 0) {
                                     <br>
                                     <img style="max-width: -webkit-fill-available;" src="<?php
                                 if($a == 0){
-                                    echo '../../assets/img/' . $rowM['imagen'];
+                                    echo '../../assets/img/quienes_somos/' . $rowM['imagen'];
                                    
                                 }else{
-                                    echo 'assets/img/' . $rowM['imagen'];
+                                    echo 'assets/img/quienes_somos/' . $rowM['imagen'];
                                 }
                                 
                              ?>" alt="mrecedes">
