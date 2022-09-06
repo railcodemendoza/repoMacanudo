@@ -98,6 +98,8 @@
                             <li><i class="menu-icon fa fa-users"></i><a href="../views/tabla_quienes_somos.php">Seccion ¿Quienes Somos?</a></li>
                             <li><i class="menu-icon fa fa-users"></i><a href="../views/tabla_promociones.php">Codigos de Descuento</a></li>
                             <li><i class="menu-icon fa fa-users"></i><a href="../views/tabla_picadas_especiales.php">Picadas Especiales</a></li>
+                            <li><i class="menu-icon fa fa-users"></i><a href="../views/cotizador_tabla_picada.php">Cotizador Tabla</a></li>
+                            <li><i class="menu-icon fa fa-users"></i><a href="../views/cotizador_tabla_tipo.php">Cotizador Tipo Picada</a></li>
                         </ul>
                     </li>
 
