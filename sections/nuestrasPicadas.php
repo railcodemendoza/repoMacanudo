@@ -32,8 +32,8 @@
                      <div class="gallery-item">
                          <p style="text-align: center;">Pino</p>
 
-                         <a href="assets/img/tipo/pino.png" class="venobox" data-gall="gallery-item">
-                             <img src="assets/img/tipo/pino.png" alt="" class="img-fluid">
+                         <a href="assets/img/tipo/pino.jpg" class="venobox" data-gall="gallery-item">
+                             <img src="assets/img/tipo/pino.jpg" alt="" class="img-fluid">
                          </a>
                      </div>
                  </div>
