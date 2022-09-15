@@ -84,8 +84,8 @@
     <?php
         $conn = mysqli_connect(
             '31.170.161.22', //31.170.161.22
-            'u101685278_pachimanok', // u101685278_labmac
-            'Pachiman9102', // Rail2021
+            'u101685278_pachimanok',//  u101685278_labmac  
+            'Pachiman9102',// Rail2021
             'u101685278_macanudas' // u101685278_labmac
         );
         $a = 1;
@@ -94,6 +94,7 @@
     <main id="main">
         <?php include('sections/quienesSomos.php'); ?>
         <?php include('sections/nuestrasPicadas.php'); ?>
+        <?php include('sections/nuestrosProductos.php'); ?>
         <?php include('sections/acompañamientos.php'); ?>
         <?php include('sections/cotizador.php'); ?>
         <?php include('sections/encuestas.php'); ?>

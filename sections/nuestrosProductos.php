@@ -2,7 +2,7 @@
 <section id="why-us" class="why-us">
             <div class="container">
                 <div class="section-title">
-                    <h2>Nuestros<span> Productos</span></h2>
+                    <h2>Nuestras<span>Picadas Macanudas</span></h2>
                     <p>Las mejores combinaciones para tus picadas. Acá te describimos cada una de ellas.</p>
                 </div>
                 <div class="row">

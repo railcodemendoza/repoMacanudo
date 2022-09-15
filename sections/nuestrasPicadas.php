@@ -2,7 +2,7 @@
  <section id="menu" class="menu">
      <div class="container">
          <div class="section-title">
-             <h2>Nuestras <span>Picadas Macanudas</span></h2>
+             <h2>Nuestras <span>Tablas Macanudas</span></h2>
              <p>Para picar se calcula <strong> 150gr</strong> por persona, para comer <strong>
                      300gr</strong>.
              </p>
@@ -30,10 +30,10 @@
                  </div>
                  <div class="col-lg-4 col-md-4">
                      <div class="gallery-item">
-                         <p style="text-align: center;">Duela Rectangular</p>
+                         <p style="text-align: center;">Pino</p>
 
-                         <a href="assets/img/tipo/duela unida.jpg" class="venobox" data-gall="gallery-item">
-                             <img src="assets/img/tipo/duela unida.jpg" alt="" class="img-fluid">
+                         <a href="assets/img/tipo/pino.png" class="venobox" data-gall="gallery-item">
+                             <img src="assets/img/tipo/pino.png" alt="" class="img-fluid">
                          </a>
                      </div>
                  </div>

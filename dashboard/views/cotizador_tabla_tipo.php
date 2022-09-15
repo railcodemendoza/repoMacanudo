@@ -11,7 +11,7 @@
 <div class="container-fluid">
     <div class="card">
         <div style="text-align:center;" class="card-header">
-            Detalles del tipo de ticada en el cotizador.
+            Detalles del tipo de Picada en el cotizador.
         </div>
         <div class="card-body card-block">
             <div class="responsive dataTables_info" id="bootstrap-data-table_info" role="status" aria-live="polite">
