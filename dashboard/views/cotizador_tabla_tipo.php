@@ -95,7 +95,7 @@
                                     </div>
                                 </div>
                                 <!--Final Modal View CNTR-->
-                                <a class="btn btn-primary" title="Editar" href="#" type="button" data-toggle="modal"
+                                <a class="btn btn-secondary" title="Editar" href="#" type="button" data-toggle="modal"
                                     data-target="#editarTipoPicada<?php echo $id;?>"><i class="fa fa-edit"></i></a>
                                 <a class="btn btn-danger" title="Eliminar"
                                     href="../actions/delete_cotizador_tabla_tipo.php?id=<?php echo $id;?>"
@@ -176,7 +176,7 @@
                     <?php };?>
             </table>
         </div>
-        <a class="btn btn-primary" href="#" type="button" data-toggle="modal" data-target="#agregarTipoPicada"><i
+        <a class="btn btn-success" href="#" type="button" data-toggle="modal" data-target="#agregarTipoPicada"><i
                 class="fa fa-hand-o-right"></i> Agregar Tipo de Picada</a>
         <div class="modal fade" id="agregarTipoPicada" tabindex="-1" role="dialog" aria-labelledby="scrollmodalLabel"
             aria-hidden="true">

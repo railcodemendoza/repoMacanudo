@@ -9,7 +9,7 @@
                     </div>
                 </div>
                 <div class="map">
-                    <iframe style="border:0; width: 100%; height: 350px;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13398.88694727627!2d-68.81595921488713!3d-32.905524643435726!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x967e095d1db5e213%3A0xbc752ee160420b8!2sAmado%20Nervo%2C%20Mendoza!5e0!3m2!1ses!2sar!4v1598278104723!5m2!1ses!2sar" frameborder="0" allowfullscreen></iframe>
+                    <iframe style="border:0; width: 100%; height: 350px;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d837.3788437949904!2d-68.82961854323203!3d-32.910979238029725!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x967e09434f1b8563%3A0x3db8dc54c050020f!2sDorrego%20%26%20Darwin%2C%20Mendoza!5e0!3m2!1ses!2sar!4v1663558261198!5m2!1ses!2sar"  frameborder="0" allowfullscreen></iframe>
                 </div>
                 <div class="container mt-5">
                     <div class="info-wrap">
@@ -17,7 +17,7 @@
                             <div class="col-lg-3 col-md-6 info">
                                 <i class="icofont-google-map"></i>
                                 <h4>Localización:</h4>
-                                <p>Amado Nervo y Dorrego <br>Mendoza, Argentina</p>
+                                <p>Darwin & Dorrego<br>Mendoza, Argentina</p>
                             </div>
                             <div class="col-lg-3 col-md-6 info mt-4 mt-lg-0">
                                 <i class="icofont-clock-time icofont-rotate-90"></i>

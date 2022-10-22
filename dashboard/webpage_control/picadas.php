@@ -95,7 +95,7 @@
                             </div>
                           </div>
                           <!--Final Modal View CNTR-->            
-                        <a class="btn btn-primary" title="Editar" href="#" type="button"  data-toggle="modal" data-target="#editar<?php echo $id;?>"><i class="fa fa-edit"></i></a>
+                        <a class="btn btn-secondary" title="Editar" href="#" type="button"  data-toggle="modal" data-target="#editar<?php echo $id;?>"><i class="fa fa-edit"></i></a>
                         <a class="btn btn-danger" title="Eliminar" href="../actions/delete_picadas.php?id=<?php echo $id;?>" type="button" ><i class="fa fa-trash"></i></a>
                         <!--Modal asigned CNTR-->
                         <div class="modal fade" id="editar<?php echo $id;?>" tabindex="-1" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">
@@ -175,7 +175,7 @@
             <div class="col-sm-4 mx-auto">
               <button type="submit" id="export_data" name="export_data" value="Export to excel" class="btn btn-primary"> <i class="fa fa-download"></i> Listado</button> 
               </form> 
-              <a class="btn btn-primary" href="#" type="button"  data-toggle="modal" data-target="#agregar"><i class="fa fa-hand-o-right"></i> Producto</a> 
+              <a class="btn btn-success" href="#" type="button"  data-toggle="modal" data-target="#agregar"><i class="fa fa-hand-o-right"></i> Producto</a> 
                     
                 <div class="modal fade" id="agregar" tabindex="-1" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">
                   <div class="modal-dialog modal-lg" role="document">

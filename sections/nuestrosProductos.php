@@ -8,7 +8,7 @@
                 <div class="row">
                     <div class="col-lg-4">
                         <div class="box" data-toggle="modal" data-target="#fellini">
-                            <h1>Picada Fellini</a></h1>
+                            <h1>Picada Fellini</h1>
                             <p> <strong>Clásica</strong></p>
                             <br>
                             <img src="assets/img/picadas/clasica.jpg" style="max-width: -webkit-fill-available;">

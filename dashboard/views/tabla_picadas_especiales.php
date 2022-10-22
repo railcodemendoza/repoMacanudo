@@ -127,10 +127,10 @@
                                     </div>
                                 </div>
                                 <!--Final Modal View CNTR-->
-                                <a class="btn btn-primary" title="Editar" href="#" type="button" data-toggle="modal"
+                                <a class="btn btn-secondary" title="Editar" href="#" type="button" data-toggle="modal"
                                     data-target="#editar<?php echo $id;?>"><i class="fa fa-edit"></i></a>
                                 <a class="btn btn-danger" title="Eliminar"
-                                    href="../actions/delete_picadas_especiales.php?id=<?php echo $id;?>&ruta=<?php echo $imagen ?>"type="button"><i class="fa fa-trash"></i></a>
+                                    href="../actions/delete_picadas_especiales.php?id=<?php echo $id;?>&ruta=<?php echo $imagen ?>" type="button"><i class="fa fa-trash"></i></a>
                                 <!--Modal asigned CNTR-->
                                 <div class="modal fade" id="editar<?php echo $id;?>" tabindex="-1" role="dialog"
                                     aria-labelledby="scrollmodalLabel" aria-hidden="true">
@@ -241,7 +241,7 @@
 
         <div class="row" style="text-align: center;">
             <div class="col-sm-4 mx-auto">
-                <a class="btn btn-primary" href="#" type="button" data-toggle="modal" data-target="#agregar"><i
+                <a class="btn btn-success" href="#" type="button" data-toggle="modal" data-target="#agregar"><i
                         class="fa fa-hand-o-right"></i> Agregar Picada</a>
                 <div class="modal fade" id="agregar" tabindex="-1" role="dialog" aria-labelledby="scrollmodalLabel"
                     aria-hidden="true">

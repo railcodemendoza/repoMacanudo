@@ -52,7 +52,7 @@
               <td style="text-align: center;">
                 <div class="btn-group">
                   <a class="btn btn-primary mr-2" title="Asignar a Pedido" href="../views/asignarAPedido.php?id=<?php echo $id;?>" type="button"><i class="fa fa-hand-o-up"></i></a>      
-                  <a class="btn btn-primary" title="Eliminar" href="../actions/DeletePicada.php?id=<?php echo $id;?>" type="button" ><i class="fa fa-trash"></i></a>
+                  <a class="btn btn-danger" title="Eliminar" href="../actions/DeletePicada.php?id=<?php echo $id;?>" type="button" ><i class="fa fa-trash"></i></a>
               </td>
             </tr>
         
@@ -69,7 +69,7 @@
           </form> 
         </div> 
         <div class="col-sm-2">
-          <a href="../views/agregar_picada.php"type="button" class="btn btn-primary">Agregar Picada</a> 
+          <a href="../views/agregar_picada.php"type="button" class="btn btn-success">Agregar Picada</a> 
         </div>
       </div>
       <br>

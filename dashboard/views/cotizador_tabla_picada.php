@@ -83,7 +83,7 @@
                                     </div>
                                 </div>
                                 <!--Final Modal View CNTR-->
-                                <a class="btn btn-primary" title="Editar" href="#" type="button" data-toggle="modal"
+                                <a class="btn btn-secondary" title="Editar" href="#" type="button" data-toggle="modal"
                                     data-target="#editarTablaPicada<?php echo $id;?>"><i class="fa fa-edit"></i></a>
                                 <a class="btn btn-danger" title="Eliminar"
                                     href="../actions/delete_cotizador_tabla_picada.php?id=<?php echo $id;?>"
@@ -152,7 +152,7 @@
                     <?php };?>
             </table>
         </div>
-        <a class="btn btn-primary" href="#" type="button" data-toggle="modal" data-target="#agregarTablaPicada"><i
+        <a class="btn btn-success" href="#" type="button" data-toggle="modal" data-target="#agregarTablaPicada"><i
                 class="fa fa-hand-o-right"></i> Agregar Tabla de Picada</a>
         <div class="modal fade" id="agregarTablaPicada" tabindex="-1" role="dialog" aria-labelledby="scrollmodalLabel"
             aria-hidden="true">

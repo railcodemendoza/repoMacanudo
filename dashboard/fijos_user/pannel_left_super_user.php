@@ -28,10 +28,10 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Stock</a>
                         <ul class="sub-menu children dropdown-menu">
                             <li><i class="fa fa-check-square-o"></i><a href="../views/stock_picadas.php">Preparadas</a></li>
-                            <li><i class="fa fa-beer"></i><a href="../views/proveedores_bebidas.php">Agregados Bebidas</a></li>
+                            <!--<li><i class="fa fa-beer"></i><a href="../views/proveedores_bebidas.php">Agregados Bebidas</a></li>
                             <li><i class="fa fa-coffee"></i><a href="../views/proveedores_dulce.php">Agregados Dulce</a></li>
                             <li><i class="fa fa-lemon-o"></i><a href="../views/proveedores_chipa.php">Agregados Chipá</a></li>
-                            <li><i class="fa fa-shopping-cart"></i><a href="../views/proveedores_insumos.php">Insumos</a></li>
+                            <li><i class="fa fa-shopping-cart"></i><a href="../views/proveedores_insumos.php">Insumos</a></li>-->
                         </ul>
                     </li>
                     <li class="menu-item-has-children dropdown">
@@ -46,13 +46,13 @@
                         <ul class="sub-menu children dropdown-menu">
                             <li><i class="fa fa-user"></i><a href="../views/tipos_picadas.php">Picadas</a></li>
                             <li><i class="fa fa-table"></i><a href="../views/tabla_picadas.php">Tablas</a></li>
-                            <li><i class="fa fa-beer"></i><a href="../views/tabla_localidades.php">Agregados</a></li>
+                            <!--<li><i class="fa fa-beer"></i><a href="../views/tabla_localidades.php">Agregados</a></li>-->
                         </ul>
                     </li>
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Estadisticas</a>
                         <ul class="sub-menu children dropdown-menu">
-                            <li><i class="fa fa-thumbs-up"></i><a href="tables-basic.html">Satisfaccin Cliente</a></li>
+                            <li><i class="fa fa-thumbs-up"></i><a href="tables-basic.html">Satisfacción Cliente</a></li>
                             <li><i class="fa fa-table"></i><a href="tables-data.html">General</a></li>
                         </ul>
                     </li>
@@ -60,8 +60,10 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="menu-icon fa fa-code"></i>Pagina Web</a>
                         <ul class="sub-menu children dropdown-menu">
                             <li><i class="fa fa-bars"></i><a href="../webpage_control/picadas.php">Picadas</a></li>
+                            <li><i class="fa fa-bars"></i><a href="../views/tabla_picadas_especiales.php">Picadas Especiales</a></li>
                             <li><i class="fa fa-bars"></i><a href="../webpage_control/agregados.php">Agregados</a></li>
                             <li><i class="fa fa-bars"></i><a href="../webpage_control/comentarios.php">Comentarios</a></li>
+                            <li><i class="fa fa-bars"></i><a href="../views/tabla_promociones.php">Codigos de Descuento</a></li>
                         </ul>
                     </li>
 
@@ -95,9 +97,10 @@
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-pencil"></i>Editar pagina web</a>
                         <ul class="sub-menu children dropdown-menu">
+                            <li><i class="menu-icon fa fa-users"></i><a href="../views/formHead.php">Seccion Inicio</a></li>
                             <li><i class="menu-icon fa fa-users"></i><a href="../views/tabla_quienes_somos.php">Seccion ¿Quienes Somos?</a></li>
-                            <li><i class="menu-icon fa fa-users"></i><a href="../views/tabla_promociones.php">Codigos de Descuento</a></li>
-                            <li><i class="menu-icon fa fa-users"></i><a href="../views/tabla_picadas_especiales.php">Picadas Especiales</a></li>
+                            <li><i class="menu-icon fa fa-users"></i><a href="../views/tabla_en_los_medio.php">Seccion Medios</a></li>
+                            <li><i class="menu-icon fa fa-users"></i><a href="../views/galeria.php">Seccion Galeria</a></li>
                             <li><i class="menu-icon fa fa-users"></i><a href="../views/cotizador_tabla_picada.php">Cotizador Tabla</a></li>
                             <li><i class="menu-icon fa fa-users"></i><a href="../views/cotizador_tabla_tipo.php">Cotizador Tipo Picada</a></li>
                         </ul>

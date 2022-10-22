@@ -9,13 +9,9 @@
             
             $query = "SELECT * FROM `galeria`";
             $result = mysqli_query($conn, $query);
-
             
             while ($row = mysqli_fetch_array($result)) { 
-                                                          
-               
-           
-            
+                                                                    
             ?>
             <div class="col-lg-3 col-md-4">
                 <div class="gallery-item">

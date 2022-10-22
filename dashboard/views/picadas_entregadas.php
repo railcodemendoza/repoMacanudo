@@ -9,7 +9,7 @@
  <div class="container-fluid">
      <div class="card">
          <div style="text-align:center;" class="card-header">
-             Pedidos engregados
+             Pedidos entregados
          </div>
          <div class="card-body card-block">
              <div class="dataTables_info" id="bootstrap-data-table_info" role="status" aria-live="polite"></div>
@@ -63,12 +63,14 @@
                          <td>
                              <div class="btn-group">
                                  <a class="btn btn-primary" href="#"><i class="fa fa-eye"></i></a>
-                                 <a class="btn btn-primary" title="Reclamar Pago" target="_blank"
+                                 <a class="btn btn-secondary" title="Reclamar Pago" target="_blank"
                                      href="https://api.whatsapp.com/send?phone=54<?php echo $cel_phone;?>&text=Hola,%20te%20escribo%20de%20Picadas%20Macanudas%20para%20consultarte%20por%20el%20pago%20de%20la%20picada%20<?php echo $product;?>"><i
                                          class="fa fa-dollar"></i></a>
-                                 <a class="btn btn-primary" title="Enviar Encuesta" target="_blank"
+                                <?php if ($status == "ENTREGADA") { ?>
+                                 <a class="btn btn-dark" title="Enviar Encuesta" target="_blank"
                                      href="https://api.whatsapp.com/send?phone=54<?php echo $cel_phone;?>&text=Hola,%20esperamos%20que%20hayas%20disfrutado%20la%20picada%20.%20Nos%20interesa%20tu%20opinion,%20podrás%20ingresar%20y%20dejarnos%20un%20comentario:http://picadasmacanudas.com/encuesta/encuesta.php?id=<?php echo $id;?>"><i
                                          class="fa fa-thumbs-o-up"></i></a>
+                                         <?php } ?>
                              </div>
                          </td>
                      </tr>

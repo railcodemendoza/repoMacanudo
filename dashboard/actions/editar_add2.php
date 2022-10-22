@@ -48,10 +48,29 @@ if(isset($_POST['editar_pagina'])) {
     $in_ars = $_POST['in_ars'];
     $description = $_POST['description'];
     $proveedor = $_POST['proveedor'];
+    $stock = $_POST['stock'];
+    $imagen = $_FILES['imagen']['name'];
 
-    $query = "UPDATE `add2` SET `title`= '$title',`in_ars`= '$in_ars',`description`= '$description',`proveedor`= '$proveedor' WHERE id = $id";
-    $result = mysqli_query($conn, $query);
 
+    if(empty($imagen)){ 
+        $query = "UPDATE `add2` SET `title`= '$title',`in_ars`= '$in_ars',`description`= '$description',`proveedor`= '$proveedor',`q`= '$stock'  WHERE id = $id";
+        $result = mysqli_query($conn, $query);
+    
+    }else{
+        $imagen_antigua = $_GET['ruta'];
+        $extensiones = array(0=>'image/jpg',1=>'image/jpeg',2=>'image/png');
+        $ruta_fichero_origen = $_FILES['imagen']['tmp_name'];
+        $ruta_nuevo_destino = '../../assets/img/add2/' . $_FILES['imagen']['name'];
+        unlink('../../assets/img/add2/'.$imagen_antigua);
+
+        if ( in_array($_FILES['imagen']['type'], $extensiones) ) {
+                 if( move_uploaded_file ( $ruta_fichero_origen, $ruta_nuevo_destino ) ) {
+
+                    $query = "UPDATE `add2` SET `img`='$imagen', `title`= '$title',`in_ars`= '$in_ars',`description`= '$description',`proveedor`= '$proveedor',`q`= '$stock'  WHERE id = $id";
+                    $result = mysqli_query($conn, $query);
+                 }
+        }
+    }
     
     if(!$result) {
 
@@ -63,13 +82,11 @@ if(isset($_POST['editar_pagina'])) {
 
     }else{
 
-       
         echo "<script>
                 alert('Status cambiado correctamente');
                 location.href='../webpage_control/agregados.php'; 
                 
                 </script>"; 
-
         
     }
 }

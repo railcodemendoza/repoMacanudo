@@ -344,9 +344,7 @@ $id--;
 }
 $total= $pre_total* $descuento_total ?>
 
-   
-?>
-     </div>
+
      <div class="row">
 
          <div class="col-sm-6 mx-auto">
@@ -391,7 +389,7 @@ $total= $pre_total* $descuento_total ?>
                                      <div class="col-sm-3"></div>
 
                                      <div class="col-sm-2">
-                                         <h4 style="text-align: right;">Dedicaria:</h4>
+                                         <h4 style="text-align: right;">Dedicatoria:</h4>
                                      </div>
                                      <div class="col-sm-4">
                                          <p><?php echo $inscription; ?></p>
