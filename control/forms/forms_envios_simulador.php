@@ -190,12 +190,56 @@ $paddinginner = 'mt-2';
                                 foreach ($_POST['sim_tipo_tabla'] as $sim_tipo_tabla);
                                 foreach ($_POST['sim_tipo_picada'] as $sim_tipo_picada);
                                 foreach ($_POST['sim_comensales'] as $sim_comensales);
-                                foreach ($_POST['add1'] as $add1);
-                                foreach ($_POST['add2'] as $add2);
-                                foreach ($_POST['add3'] as $add3);
+                                foreach ($_POST['add1'] as $sim_add1);
+                                foreach ($_POST['add2'] as $sim_add2);
+                                foreach ($_POST['add3'] as $sim_add3);
                                 foreach ($_POST['sim_envio'] as $sim_envio);
-                                
                             
+                                // Obtengo el tipo de tabla.
+                                $query_tp_picada = "SELECT * FROM `rango_picada` WHERE `id` = '$sim_tipo_picada'";
+                                $result_tp_picada = mysqli_query($conn, $query_tp_picada);
+                                $row = mysqli_fetch_array($result_tp_picada);
+                                $tipo_picada_sim = $row['title'];
+                                
+                                // Obtengo el tipo de tabla.
+                                $query_tp_tabla = "SELECT * FROM `type_picadas` WHERE `id` = '$sim_tipo_tabla'";
+                                $result_tp_tabla = mysqli_query($conn, $query_tp_tabla);
+                                $row = mysqli_fetch_array($result_tp_tabla);
+                                $tipo_tabla_sim = $row['title'];
+                                
+                                // Obtengo la direccion ingresada anteriormente.
+                                $query_del = "SELECT * FROM `delivery` WHERE `id` = '$sim_envio'";
+                                $result_del = mysqli_query($conn, $query_del);
+                                $row = mysqli_fetch_array($result_del);
+                                $direccion_sim = $row['location'];
+
+                                if(!empty($sim_comensales)){ 
+
+                                }
+                                
+
+                                if(!empty($sim_add1)){ 
+                                // Obtengo el agregado 1 ingresado anteriormente.
+                                $query_agr = "SELECT * FROM `add2` WHERE `id` = '$sim_add1'";
+                                $result_agr = mysqli_query($conn, $query_agr);
+                                $row = mysqli_fetch_array($result_agr);
+                                $agregado_sim = $row['title'];
+                                }
+                                if(!empty($sim_add2)){ 
+                                // Obtengo el agregado 2 ingresado anteriormente.
+                                $query_agr2 = "SELECT * FROM `add2` WHERE `id` = '$sim_add2'";
+                                $result_agr2 = mysqli_query($conn, $query_agr2);
+                                $row = mysqli_fetch_array($result_agr2);
+                                $agregado2_sim = $row['title'];
+                                }
+
+                                if(!empty($sim_add3)){ 
+                                // Obtengo el agregado 3 ingresado anteriormente.
+                                $query_agr3 = "SELECT * FROM `add2` WHERE `id` = '$sim_add3'";
+                                $result_agr3 = mysqli_query($conn, $query_agr3);
+                                $row = mysqli_fetch_array($result_agr3);
+                                $agregado3_sim = $row['title'];
+                                }
 
                         ?>
 
@@ -256,7 +300,6 @@ $paddinginner = 'mt-2';
                                         </div>
                                     </div>
                                 </div>
-
                                 <div class="form-group">
                                     <label style="color:white;" class="col-sm-3 control-label">Dedicatoria</label>
                                     <div class="col-sm-5 mx-auto">
@@ -265,7 +308,6 @@ $paddinginner = 'mt-2';
                                     </div>
                                 </div>
                                 <br>
-
                                 <div class="row">
                                     <div class="col-sm-4"></div>
                                     <div class="col-sm-4">
@@ -325,7 +367,7 @@ $paddinginner = 'mt-2';
                                             <div class="col-sm-10 mx-auto">
                                                 <select name="location[]" id="selectSm"
                                                     class="form-control form-control" required>
-                                                    <option value="">-. Elegir localidad.-</option>
+                                                    <option value="<?php echo $direccion_sim; ?>"><?php echo $direccion_sim; ?></option>
                                                     <?php
                                         $query_location = $conn -> query ("SELECT * FROM `delivery`");
                                                 while ($location = mysqli_fetch_array($query_location)) {                                           
@@ -365,7 +407,7 @@ $paddinginner = 'mt-2';
                                     <label style="color:white" class="col-sm-5 control-label">Tabla:</label>
                                     <div class="col-sm-5 mx-auto">
                                         <select name="product[]" class="form-control form-control" required>
-                                            <option value=""><?php echo $sim_tipo_tabla ?></option>
+                                            <option value="<?php echo $tipo_picada_sim ?>"><?php echo $tipo_picada_sim ?></option>
                                             <?php
                                 $query_product = $conn -> query ("SELECT * FROM `rango_picada`");
                                         while ($product= mysqli_fetch_array($query_product)) {                                           
@@ -379,7 +421,7 @@ $paddinginner = 'mt-2';
                                         <label style="color:white" class="col-sm-5 control-label" required>Tipo:</label>
                                         <div class="col-sm-5 mx-auto">
                                             <select name="type[]" required class="form-control form-control">
-                                                <option value="">-.Elegir Tipo.-</option>
+                                                <option value="<?php echo $tipo_tabla_sim ?>"><?php echo $tipo_tabla_sim ?></option>
                                                 <?php
                                         $query_tipo = $conn -> query ("SELECT * FROM `type_picadas`");
                                                 while ($tipo= mysqli_fetch_array($query_tipo)) {                                           
@@ -395,15 +437,34 @@ $paddinginner = 'mt-2';
                                             <div class="col-sm-5 mx-auto">
                                                 <select name="comensales[]" id="selectSm" required
                                                     class="form-control form-control">
-                                                    <option value="">-.¿Cuántos pican?.-</option>
+                                                    <?php  if($sim_comensales == 0){?>
+                                                    <option value="">-.¿Cuántos pican?.- </option>
+                                                    <?php }
+                                                    if($sim_comensales == 1){?>
                                                     <option value="4">Pican 4 - Comen 2</option>
-                                                    <option value="5">Pican 5 (Solo MDF)</option>
-                                                    <option value="6">Pican 6 (Solo MDF)</option>
-                                                    <option value="7">Pican 7 (Solo MDF)</option>
-                                                    <option value="8">Pican 8 (Solo MDF)</option>
-                                                    <option value="9">Pican 9 (Solo MDF)</option>
-                                                    <option value="10">Pican 10 (Solo MDF)</option>
-                                                    <option value="12">Pican 11 (Solo MDF)</option>
+                                                    <?php }
+                                                    if($sim_comensales == 2){?>
+                                                    <option value="5">Pican 5</option>
+                                                    <?php }
+                                                    if($sim_comensales == 3){?>
+                                                    <option value="6">Pican 6/ Comen 3</option>
+                                                    <?php }
+                                                    if($sim_comensales == 4){?>
+                                                    <option value="7">Pican 7</option>
+                                                    <?php }
+                                                    if($sim_comensales == 5){?>
+                                                    <option value="8">Pican 8/ Comen 4</option>
+                                                    <?php }
+                                                    if($sim_comensales == 6){?>
+                                                    <option value="9">Pican 9</option>
+                                                    <?php }
+                                                    if($sim_comensales == 7){?>
+                                                    <option value="10">Pican 10/ Comen 5</option>
+                                                    <?php }
+                                                    if($sim_comensales == 8){?>
+                                                    <option value="12">Pican mas de 10</option>
+                                                    <?php
+                                                    }?>
                                                 </select>
                                             </div>
                                             <br>
@@ -413,13 +474,17 @@ $paddinginner = 'mt-2';
                                                 <div class="col-sm-5 mx-auto">
                                                     <select name="add2[]" id="selectSm"
                                                         class="form-control form-control">
-                                                        <option value=""><?php echo $add1 ?></option>
+                                                        <?php  if(!empty($sim_add1)){?>
+                                                        <option value="<?php echo $agregado_sim ?>"><?php echo $agregado_sim ?></option>
+                                                        <?php }else{?>
+                                                            <option value="">-.Elegir Agregado.-</option>
+                                                        <?php }?>
                                                         <?php
                                         $query_add2 = $conn -> query ("SELECT * FROM `add2` WHERE q !='0'");
                                                 while ($add2= mysqli_fetch_array($query_add2)) {                                           
                                                     echo '<option value="'.$add2['title'].'">'.$add2['title'].'</option>';
                                                 }  
-                                    ?>
+                                        ?>
                                                     </select>
                                                 </div>
                                                 <br>
@@ -429,7 +494,11 @@ $paddinginner = 'mt-2';
                                                     <div class="col-sm-5 mx-auto">
                                                         <select name="add4[]" id="selectSm"
                                                             class="form-control form-control">
-                                                            <option value="">-.Elegir Agregado.-</option>
+                                                            <?php  if(!empty($sim_add2)){?>
+                                                                <option value="<?php echo $agregado2_sim ?>"><?php echo $agregado2_sim ?></option>
+                                                            <?php }else{?>
+                                                                <option value="">-.Elegir Agregado.-</option>
+                                                            <?php }?>
                                                             <?php
                                         $query_add2 = $conn -> query ("SELECT * FROM `add2` WHERE q !='0'");
                                                 while ($add2= mysqli_fetch_array($query_add2)) {                                           
@@ -445,8 +514,11 @@ $paddinginner = 'mt-2';
                                                         <div class="col-sm-5 mx-auto">
                                                             <select name="add5[]" id="selectSm"
                                                                 class="form-control form-control">
-                                                                <option value="">-.Elegir Agregado.-
-                                                                </option>
+                                                                <?php  if(!empty($sim_add3)){?>
+                                                                    <option value="<?php echo $agregado3_sim ?>"><?php echo $agregado3_sim ?></option>
+                                                                <?php }else{?>
+                                                                    <option value="">-.Elegir Agregado.-</option>
+                                                                <?php }?>
                                                                 <?php
                                         $query_add2 = $conn -> query ("SELECT * FROM `add2` WHERE q !='0'");
                                                 while ($add2= mysqli_fetch_array($query_add2)) {                                           
@@ -456,7 +528,6 @@ $paddinginner = 'mt-2';
                                                             </select>
                                                         </div>
                                                         <br>
-
                                                         <div class="form-group">
                                                             <label style="color:white;"
                                                                 class="col-sm-3 control-label">Forma de
@@ -489,12 +560,9 @@ $paddinginner = 'mt-2';
                                                                 class="btn btn-warning">Pedir</button>
                                                         </div>
                             </form>
-
                     </section>
                 </div>
             </div>
-
-
         </div>
     </section>
 

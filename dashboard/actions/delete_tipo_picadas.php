@@ -6,7 +6,7 @@ if(isset($_GET['id'])) {
 
   $id = $_GET['id'];
        
-  $query = "DELETE FROM `rango_picadas` WHERE id = $id";
+  $query = "DELETE FROM `rango_picada` WHERE id = $id";
   $result = mysqli_query($conn, $query);
   
   if($result) {

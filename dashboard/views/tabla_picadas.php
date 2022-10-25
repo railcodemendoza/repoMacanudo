@@ -192,6 +192,7 @@
                                     <input type="text" name="title" class="form-control" placeholder="Nombre del Producto">
                                   </div>
                                   <br>
+                                  <label for="" class="form-control-label">Descripción:</label>
                                   <div class="input-group">
                                     <div class="input-group-addon">
                                       <i class="fa  fa-comment-o"></i>
@@ -199,6 +200,7 @@
                                     <input type="text" name="comentario" class="form-control" placeholder="Comentario para web">
                                   </div>
                                   <br>
+                                  <label for="" class="form-control-label">Precio:</label>
                                   <div class="input-group">
                                     <div class="input-group-addon">
                                       <i class="fa fa-dollar"></i>
@@ -206,6 +208,7 @@
                                     <input type="number" name="in_ars" class="form-control" placeholder="230.00">
                                   </div>
                                   <br>
+                                  <label for="" class="form-control-label">Costo:</label>
                                   <div class="input-group">
                                     <div class="input-group-addon">
                                       <i class="fa fa-dollar"></i>

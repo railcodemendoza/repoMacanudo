@@ -20,6 +20,7 @@
                          <th>Id</th>
                          <th>Título</th>
                          <th>Precio</th>
+                         <th>Costo por persona extra</th>
                          <th>Costo</th>
                          <th>Opciones</th>
                      </tr>
@@ -32,6 +33,7 @@
                       $id = $row['id'];
                       $title = $row['title'];
                       $in_ars = $row['in_ars'];
+                      $valor_por_persona = $row['valor_por_persona'];
                       $out_ars = $row['out_ars'];
 
                       ?>
@@ -40,6 +42,7 @@
                          <td><?php echo $id;?></td>
                          <td><?php echo $title;?></td>
                          <td><?php echo $in_ars;?></td>
+                         <td><?php echo $valor_por_persona;?></td>
                          <td><?php echo $out_ars;?></td>
 
                          <td>
@@ -68,7 +71,6 @@
                                                              </div>
                                                          </div>
                                                          <br>
-                                                         <br>
                                                          <div class="row">
                                                              <div class="col-sm-2"></div>
                                                              <div class="col-sm-8">
@@ -78,6 +80,15 @@
                                                          </div>
                                                          <br>
                                                          <div class="row">
+                                                            <div class="col-sm-2"></div>
+                                                            <div class="col-sm-8">
+                                                                <h4 style="text-align: center;"> <strong> Costo por
+                                                                        persona: </strong><br>
+                                                                    <?php echo '$'. $valor_por_persona;?> </h4>
+                                                            </div>
+                                                        </div>
+                                                        <br>
+                                                         <div class="row">
                                                              <div class="col-sm-2"></div>
                                                              <div class="col-sm-8">
                                                                  <h4 style="text-align: center;"> <strong> Costo:
@@ -85,7 +96,6 @@
                                                              </div>
                                                          </div>
                                                          <br>
-
                                                      </div>
                                                  </div>
                                              </div>
@@ -127,7 +137,8 @@
                                                                                  value="<?php echo $title;?>">
                                                                          </div>
                                                                          <br>
-
+                                                                         <label for="" class="form-control-label">Precio
+                                                                            del Tipo Picada:</label>
                                                                          <div class="input-group">
                                                                              <div class="input-group-addon">
                                                                                  <i class="fa fa-dollar"></i>
@@ -137,6 +148,19 @@
                                                                                  value="<?php echo $in_ars;?>">
                                                                          </div>
                                                                          <br>
+                                                                         <label for="" class="form-control-label">Costo
+                                                                            por Persona:</label>
+                                                                        <div class="input-group">
+                                                                            <div class="input-group-addon">
+                                                                                <i class="fa fa-dollar"></i>
+                                                                            </div>
+                                                                            <input type="number"
+                                                                                name="valor_por_persona"
+                                                                                class="form-control"
+                                                                                value="<?php echo $valor_por_persona;?>">
+                                                                        </div>
+                                                                        <br>
+                                                                        <label for="" class="form-control-label">Costo:</label>
                                                                          <div class="input-group">
                                                                              <div class="input-group-addon">
                                                                                  <i class="fa fa-dollar"></i>
@@ -146,7 +170,6 @@
                                                                                  value="<?php echo $out_ars;?>">
                                                                          </div>
                                                                          <br>
-
                                                                      </div>
                                                                  </div>
                                                              </div>
@@ -203,6 +226,7 @@
                                                          placeholder="Nombre del Producto">
                                                  </div>
                                                  <br>
+                                                 <label for="" class="form-control-label">Descripción:</label>
                                                  <div class="input-group">
                                                      <div class="input-group-addon">
                                                          <i class="fa  fa-comment-o"></i>
@@ -211,6 +235,7 @@
                                                          placeholder="Contenido del Producto">
                                                  </div>
                                                  <br>
+                                                 <label for="" class="form-control-label">Precio:</label>
                                                  <div class="input-group">
                                                      <div class="input-group-addon">
                                                          <i class="fa fa-dollar"></i>
@@ -219,6 +244,16 @@
                                                          placeholder="230.00">
                                                  </div>
                                                  <br>
+                                                 <label for="" class="form-control-label">Costo por Persona:</label>
+                                                <div class="input-group">
+                                                    <div class="input-group-addon">
+                                                        <i class="fa fa-dollar"></i>
+                                                    </div>
+                                                    <input type="number" name="valor_por_persona" class="form-control"
+                                                        placeholder="184.00">
+                                                </div>
+                                                <br>
+                                                <label for="" class="form-control-label">Costo:</label>
                                                  <div class="input-group">
                                                      <div class="input-group-addon">
                                                          <i class="fa fa-dollar"></i>

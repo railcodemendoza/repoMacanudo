@@ -101,8 +101,6 @@
                             <li><i class="menu-icon fa fa-users"></i><a href="../views/tabla_quienes_somos.php">Seccion ¿Quienes Somos?</a></li>
                             <li><i class="menu-icon fa fa-users"></i><a href="../views/tabla_en_los_medio.php">Seccion Medios</a></li>
                             <li><i class="menu-icon fa fa-users"></i><a href="../views/galeria.php">Seccion Galeria</a></li>
-                            <li><i class="menu-icon fa fa-users"></i><a href="../views/cotizador_tabla_picada.php">Cotizador Tabla</a></li>
-                            <li><i class="menu-icon fa fa-users"></i><a href="../views/cotizador_tabla_tipo.php">Cotizador Tipo Picada</a></li>
                         </ul>
                     </li>
 

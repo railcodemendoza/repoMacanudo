@@ -33,6 +33,7 @@
                 break;
             case 'tipos':
                 document.getElementById("tipoPicada").style.opacity = "1";
+                document.getElementById("total").style.opacity = "1";
                 if (sumtipo != 0) {
                     total = total - sumtipo;
                     if (sumpersona != 0) {
@@ -61,6 +62,7 @@
                 break;
             case 'personas':
                 document.getElementById("comensales").style.opacity = "1";
+                document.getElementById("total").style.opacity = "1";
                 if (sumpersona != 0) {
                     if (valorxpersona != 0) {
                         total = total - (sumpersona * valorxpersona);
@@ -74,7 +76,7 @@
                 break;
             case 'delivery':
                 document.getElementById("costoDelivery").style.opacity = "1";
-
+                document.getElementById("total").style.opacity = "1";
                 if (sumdelivery != 0) {
                     total = total - sumdelivery;
                     sumdelivery = verificarDelivery();
@@ -86,7 +88,7 @@
                 break;
             case 'agregado':
                 document.getElementById("costoAgregado").style.opacity = "1";
-
+                document.getElementById("total").style.opacity = "1";
                 if (sumagregado != 0) {
                     total = total - sumagregado;
                     sumagregado = verificarAgregado();
@@ -98,7 +100,7 @@
                 break;
             case 'agregado2':
                 document.getElementById("costoAgregado2").style.opacity = "1";
-
+                document.getElementById("total").style.opacity = "1";
                 if (sumagregado2 != 0) {
                     total = total - sumagregado2;
                     sumagregado2 = verificarAgregado2();
@@ -110,7 +112,7 @@
                 break;
             case 'agregado3':
                 document.getElementById("costoAgregado3").style.opacity = "1";
-
+                document.getElementById("total").style.opacity = "1";
                 if (sumagregado3 != 0) {
                     total = total - sumagregado3;
                     sumagregado3 = verificarAgregado3();
@@ -134,46 +136,138 @@
 
     function verificarTabla() {
         let tablas = document.getElementById('tablas');
+
         let tabla = tablas.options[tablas.selectedIndex].text;
+        let tablaPrecio = tablas.options[tablas.selectedIndex].id;
         const $select = document.querySelector("#personas");
 
-        if (tabla == "MDF" || tabla == "Pino") {
-            document.getElementById('personas').disabled = false;
-            document.getElementById('personas').selectedIndex = "0";
-            document.getElementById('personas').style.display = "block";
-            for (let i = $select.options.length; i >= 6; i--) {
+        document.getElementById('personas').disabled = false;
+        document.getElementById('personas').selectedIndex = "0";
+        document.getElementById('personas').style.display = "block";
+        
+        for (let i = $select.options.length; i >= 1; i--) {
                 $select.remove(i);
-            }
-            if (tabla == "MDF") {
-
-
-                const option = document.createElement('option');
-                const valor = "Pican 9";
-                const num = 5
-                option.id = num;
-                option.text = valor;
-                $select.appendChild(option);
-
-                const option1 = document.createElement('option');
-                const valor1 = "Pican 10/ Comen 5";
-                const num1 = 6
-                option1.id = num1;
-                option1.text = valor1;
-                $select.appendChild(option1);
-
-                const option2 = document.createElement('option');
-                const valor2 = "Pican mas de 10";
-                const num2 = 7
-                option2.id = num2;
-                option2.text = valor2;
-                $select.appendChild(option2);
-
-            }
-        } else {
-            document.getElementById('personas').selectedIndex = "1";
-            document.getElementById('personas').disabled = true;
         }
-        return parseFloat(tablas.value)
+        if (tabla == "MDF") {
+            const option = document.createElement('option');
+            const valor = "Pican 4/ Comen 2";
+            const num = 1;
+            option.id = num;
+            option.value = num;
+            option.text = valor;
+            $select.appendChild(option);
+
+            const option1 = document.createElement('option');
+            const valor1 = "Pican 5";
+            const num1 = 2;
+            option1.id = num1;
+            option1.value = num1;
+            option1.text = valor1;
+            $select.appendChild(option1);
+
+            const option2 = document.createElement('option');
+            const valor2 = "Pican 6/ Comen 3";
+            const num2 = 3;
+            option2.id = num2;
+            option2.value = num2;
+            option2.text = valor2;
+            $select.appendChild(option2);
+
+            const option3 = document.createElement('option');
+            const valor3 = "Pican 7";
+            const num3 = 4;
+            option3.id = num3;
+            option3.value = num3;
+            option3.text = valor3;
+            $select.appendChild(option3);
+
+            const option4 = document.createElement('option');
+            const valor4 = "Pican 8/ Comen 4";
+            const num4 = 5;
+            option4.id = num4;
+            option4.value = num4;
+            option4.text = valor4;
+            $select.appendChild(option4);
+
+            const option5 = document.createElement('option');
+            const valor5 = "Pican 9";
+            const num5 = 6;
+            option5.id = num5;
+            option5.value = num5;
+            option5.text = valor5;
+            $select.appendChild(option5);
+
+            const option6 = document.createElement('option');
+            const valor6 = "Pican 10/ Comen 5";
+            const num6 = 7;
+            option6.id = num6;
+            option6.value = num6;
+            option6.text = valor6;
+            $select.appendChild(option6);
+
+            const option7 = document.createElement('option');
+            const valor7 = "Pican mas de 10";
+            const num7 = 8;
+            option7.id = num7;
+            option7.value = num7;
+            option7.text = valor7;
+            $select.appendChild(option7);
+        }
+        if (tabla == "Pino"){
+
+            const option = document.createElement('option');
+            const valor = "Pican 4/ Comen 2";
+            const num = 1;
+            option.id = num;
+            option.value = num;
+            option.text = valor;
+            $select.appendChild(option);
+
+            const option1 = document.createElement('option');
+            const valor1 = "Pican 5";
+            const num1 = 2;
+            option1.id = num1;
+            option1.value = num1;
+            option1.text = valor1;
+            $select.appendChild(option1);
+
+            const option2 = document.createElement('option');
+            const valor2 = "Pican 6/ Comen 3";
+            const num2 = 3;
+            option2.id = num2;
+            option2.value = num2;
+            option2.text = valor2;
+            $select.appendChild(option2);
+
+            const option3 = document.createElement('option');
+            const valor3 = "Pican 7";
+            const num3 = 4;
+            option3.id = num3;
+            option3.value = num3;
+            option3.text = valor3;
+            $select.appendChild(option3);
+
+            const option4 = document.createElement('option');
+            const valor4 = "Pican 8/ Comen 4";
+            const num4 = 5;
+            option4.id = num4;
+            option4.value = num4;
+            option4.text = valor4;
+            $select.appendChild(option4); 
+        } 
+        if(tabla == "Duela"){
+            const option = document.createElement('option');
+            const valor = "Pican 4/ Comen 2";
+            const num = 1;
+            option.id = num;
+            option.value = num;
+            option.text = valor;
+            $select.appendChild(option);
+
+            //document.getElementById('personas').selectedIndex = "1";
+            //document.getElementById('personas').disabled = true;
+        }
+        return parseFloat(tablaPrecio)
     }
 
     function Tabla() {
@@ -186,12 +280,13 @@
 
     function verificarTipos() {
         let tipos = document.getElementById('tipos');
-        return parseFloat(tipos.value)
+        let tiposPrecio = tipos.options[tipos.selectedIndex].id;
+        return parseFloat(tiposPrecio)
     }
 
     function idTipos() {
         let tipos = document.getElementById('tipos');
-        let tipo = tipos.options[tipos.selectedIndex].id;
+        let tipo = tipos.options[tipos.selectedIndex].value;
         parseFloat(tipo)
         return parseFloat(valorxper[tipo])
     }
@@ -204,26 +299,27 @@
 
     function verificarDelivery() {
         let delivery = document.getElementById('delivery');
-        return parseFloat(delivery.value);
+        let deliveryPrecio = delivery.options[delivery.selectedIndex].id;
+        return parseFloat(deliveryPrecio);
     }
 
     function verificarAgregado() {
         let agregado = document.getElementById('agregado');
-        return parseFloat(agregado.value);
+        let agregadoPrecio = agregado.options[agregado.selectedIndex].id;
+        return parseFloat(agregadoPrecio);
     }
 
     function verificarAgregado2() {
         let agregado2 = document.getElementById('agregado2');
-        var selected = agregado2.options[agregado2.selectedIndex].text;
-        alert(selected);
-        return parseFloat(agregado2.value);
+        let agregado2Precio = agregado2.options[agregado2.selectedIndex].id;
+        return parseFloat(agregado2Precio);
     }
 
     function verificarAgregado3() {
         let agregado3 = document.getElementById('agregado3');
-        return parseFloat(agregado3.value);
+        let agregado3Precio = agregado3.options[agregado3.selectedIndex].id;
+        return parseFloat(agregado3Precio);
     }
-
     </script>
     <div class="container">
         <div class="section-title">
@@ -237,19 +333,19 @@
                     <div class="form-group mb-0">
                         <label style="font-size: smaller; font-weight: 600;" class="control-label">Elegí el tipo de
                             tabla:</label>
-                        <select class="form-control form-control" aria-label="Default select example" name="sim_tipo_tabla[]" id="tablas"
-                            onchange="controlador(id);">
+                        <select class="form-control form-control" aria-label="Default select example"
+                            name="sim_tipo_tabla[]" id="tablas" onchange="controlador(id);">
                             <option value="">-.Elegir.-</option>
                             <?php
-                        $query = "SELECT * FROM `tablas`";
+                        $query = "SELECT * FROM `type_picadas`";
                         $result = mysqli_query($conn, $query);
 
                         while ($row = mysqli_fetch_assoc($result)) {
                             $id = $row['id'];
-                            $titulo = $row['titulo'];
-                            $precio = $row['precio'];
+                            $titulo = $row['title'];
+                            $precio = $row['in_ars'];
                         ?>
-                            <option value='<?php echo $precio; ?>' id="<?php echo $id; ?>"><?php echo $titulo ?>
+                            <option value='<?php echo $id; ?>' id="<?php echo $precio; ?>"><?php echo $titulo ?>
                             </option>
                             <?php } ?>
                         </select>
@@ -260,23 +356,23 @@
                     <div class="form-group mb-0">
                         <label style="font-size: smaller; font-weight: 600;" class="control-label">¿Qué tipo de Picada
                             querés?</label>
-                        <select class="form-control form-control" aria-label="Default select example"name="sim_tipo_picada[]" id="tipos"
-                            onchange="controlador(id);">
+                        <select class="form-control form-control" aria-label="Default select example"
+                            name="sim_tipo_picada[]" id="tipos" onchange="controlador(id);">
                             <option selected id='1' value='0'>Selecciona tipo de picada:</option>
                             <?php
-                        $query = "SELECT * FROM `tipo_picada`";
+                        $query = "SELECT * FROM `rango_picada`";
                         $result = mysqli_query($conn, $query);
 
                         while ($row = mysqli_fetch_assoc($result)) {
                             $id = $row['id'];
-                            $titulo = $row['titulo'];
-                            $precio = $row['precio'];
+                            $titulo = $row['title'];
+                            $precio = $row['in_ars'];
                             $valor_por_persona = $row['valor_por_persona'];
                         ?>
                             <script>
                             valorxper[<?php echo $id; ?>] = <?php echo $valor_por_persona; ?>;
                             </script>
-                            <option value='<?php echo $precio; ?>' id="<?php echo $id; ?>"><?php echo $titulo ?>
+                            <option value='<?php echo $id; ?>' id="<?php echo $precio; ?>"><?php echo $titulo ?>
                             </option>
 
                             <?php } ?>
@@ -289,14 +385,9 @@
                     <div class="form-group mb-0">
                         <label style="font-size: smaller; font-weight: 600;" class="control-label">¿Cuántos
                             comen?</label>
-                        <select class="form-control" aria-label="Default select example" name="sim_comensales[]" id="personas"
-                            onchange="controlador(id);">
-                            <option selected id="0">Comensales:</option>
-                            <option id="0">Pican 4/ Comen 2</option>
-                            <option id="1">Pican 5</option>
-                            <option id="2">Pican 6/ Comen 3</option>
-                            <option id="3">Pican 7</option>
-                            <option id="4">Pican 8/ Comen 4</option>
+                        <select class="form-control" aria-label="Default select example" name="sim_comensales[]"
+                            id="personas" onchange="controlador(id);">
+                            <option selected value="0" id="0">Comensales:</option>
                         </select>
                         <p id='comensales' style='opacity:0; margin-bottom: 0 !important;'><small>Costo total de
                                 comensales: $<label id="lbpersona"></label>.00</small></p>
@@ -308,7 +399,7 @@
                             Agregado:</label>
                         <select name="add1[]" id="agregado" aria-label="Default select example"
                             class="form-control form-control" onchange="controlador(id);">
-                            <option value="0">-.Elegir Agregado.-</option>
+                            <option id="0" value="0">-.Elegir Agregado.-</option>
                             <?php 
                                 $query_add2 = $conn -> query ("SELECT * FROM `add2` WHERE q !='0'");
                                 while ($add2= mysqli_fetch_array($query_add2)) {  
@@ -316,7 +407,7 @@
                                     $titulo = $add2['title'];
                                     $precio = $add2['in_ars'];                                   
                                     ?>
-                            <option value='<?php echo $precio; ?>' id="<?php echo $id; ?>"> <?php echo $titulo ?>
+                            <option value='<?php echo $id; ?>' id="<?php echo $precio; ?>"> <?php echo $titulo ?>
                             </option>
                             <?php } ?>
                         </select>
@@ -329,7 +420,7 @@
                             Agregado:</label>
                         <select name="add2[]" id="agregado2" aria-label="Default select example"
                             class="form-control form-control" onchange="controlador(id);">
-                            <option value="0">-.Elegir Agregado.-</option>
+                            <option id="0" value="0">-.Elegir Agregado.-</option>
                             <?php 
                                 $query_add2 = $conn -> query ("SELECT * FROM `add2` WHERE q !='0'");
                                 while ($add2= mysqli_fetch_array($query_add2)) {  
@@ -337,7 +428,7 @@
                                     $titulo = $add2['title'];
                                     $precio = $add2['in_ars'];                                   
                                     ?>
-                            <option value='<?php echo $precio; ?>' id="<?php echo $id; ?>"> <?php echo $titulo ?>
+                            <option value='<?php echo $id; ?>' id="<?php echo $precio; ?>"> <?php echo $titulo ?>
                             </option>
                             <?php } ?>
                         </select>
@@ -350,7 +441,7 @@
                             Agregado:</label>
                         <select name="add3[]" id="agregado3" aria-label="Default select example"
                             class="form-control form-control" onchange="controlador(id);">
-                            <option value="0">-.Elegir Agregado.-</option>
+                            <option id="0" value="0">-.Elegir Agregado.-</option>
                             <?php 
                                 $query_add2 = $conn -> query ("SELECT * FROM `add2` WHERE q !='0'");
                                 while ($add2= mysqli_fetch_array($query_add2)) {  
@@ -358,7 +449,7 @@
                                     $titulo = $add2['title'];
                                     $precio = $add2['in_ars'];                                   
                                     ?>
-                            <option value='<?php echo $precio; ?>' id="<?php echo $id; ?>"> <?php echo $titulo ?>
+                            <option value='<?php echo $id; ?>' id="<?php echo $precio; ?>"> <?php echo $titulo ?>
                             </option>
                             <?php } ?>
                         </select>
@@ -369,8 +460,8 @@
                     <div class="form-group mb-0">
                         <label style="font-size: smaller; font-weight: 600;" class="control-label">¿Buscas o te la
                             llevamos?</label>
-                        <select class="form-control form-control" aria-label="Default select example" name="sim_envio[]" id="delivery"
-                            onchange="controlador(id);">
+                        <select class="form-control form-control" aria-label="Default select example" name="sim_envio[]"
+                            id="delivery" onchange="controlador(id);">
                             <option selected value='0'>Retirar</option>
                             <?php
                         $query = "SELECT * FROM `delivery`";
@@ -380,16 +471,17 @@
                             $titulo = $row['location'];
                             $precio = $row['px_km'];
                         ?>
-                            <option value='<?php echo $precio; ?>' id="<?php echo $id; ?>">Envio a <?php echo $titulo ?>
+                            <option value='<?php echo $id; ?>' id="<?php echo $precio; ?>">Envio a <?php echo $titulo ?>
                             </option>
                             <?php } ?>
                         </select>
                         <p id='costoDelivery' style='opacity:0; margin-bottom: 0 !important;'><small>Costo por el envio:
                                 $<label id="lbdelivery"></label>.00</small></p>
                     </div>
-                    <!--<div  style="text-align: center;">
-                    <button type="submit" id="send"  name="enviar_simulador" style="padding-left: 20%;padding-right: 20%;" class="btn btn-warning">Pedir</button>                       
-                    </div> -->
+                    <div style="text-align: center;">
+                        <button type="submit" id="send" name="enviar_simulador"
+                            style="padding-left: 20%;padding-right: 20%;" class="btn btn-warning">Pedir</button>
+                    </div>
                 </form>
             </div>
             <div class="row">
@@ -422,14 +514,14 @@
         document.getElementById('send').addEventListener('click', (e) => {
             e.preventDefault()
 
-            if(document.getElementById('delivery').value == '0')
-            form_simulador.setAttribute('action', 'control/forms/forms_retiros_simulador.php')
+            if (document.getElementById('delivery').value == '0')
+                form_simulador.setAttribute('action', 'control/forms/forms_retiros_simulador.php')
 
-            if(document.getElementById('delivery').value != '0')
-            form_simulador.setAttribute('action', 'control/forms/forms_envios_simulador.php')
+            if (document.getElementById('delivery').value != '0')
+                form_simulador.setAttribute('action', 'control/forms/forms_envios_simulador.php')
 
             document.getElementById('form_simulador').submit()
         })
-    </script>
+        </script>
 
 </section>

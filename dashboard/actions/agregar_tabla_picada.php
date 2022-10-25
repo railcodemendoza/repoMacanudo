@@ -3,7 +3,6 @@
 
 <?php 
 
-$id = $_GET['id'];
 
 if(isset($_POST['agregar'])) {
 
@@ -16,21 +15,20 @@ if(isset($_POST['agregar'])) {
 
 
 
-    $query = "INSERT INTO `type_picada`(`title`,`in_ars`,`out_ars`,`comentario`) VALUES ('$title','$in_ars','$out_ars','$comentario')";
+    $query = "INSERT INTO `type_picadas`(`title`,`in_ars`,`out_ars`,`comentario`) VALUES ('$title','$in_ars','$out_ars','$comentario')";
     $result = mysqli_query($conn, $query);
     
     if(!$result) {
         echo "<script>
-                alert('Ups, no se agregó Tipo de Tabla!!');
-                location.href='../views/tipos_picadas.php';
+                alert('Ups, no se agregó la Tabla de Picada!!');
+                location.href='../views/tabla_picadas.php';
                 </script>"; 
 
 
     }else{
-       
         echo "<script>
-                alert('Se agegó tipo de tabla correctamente');
-                location.href='../views/tipos_picadas.php';
+                alert('Se agregó tipo de Tabla correctamente');
+                location.href='../views/tabla_picadas.php';
                 </script>"; 
 
         
