@@ -295,7 +295,7 @@ if (isset($_POST['confirmar_retiro'])) {
 
         if ($payment_mode == 'TRANSFERENCIA') {
 
-            $_SESSION['message'] = 'Genial! Retirar por Darwin 880 (domicilio particular) <br>
+            $_SESSION['message'] = 'Genial! Retirar por Darwin 880-Dorrego (domicilio particular) <br>
                 Para hacer la Transferencia:<br>
                 Banco Galicia<br>
                 MARIA FLORENCIA<br>
@@ -311,7 +311,7 @@ if (isset($_POST['confirmar_retiro'])) {
             // payment mode = efectivo
         } else {
 
-            $_SESSION['message'] = 'Genial! Retirar por Darwin 880 (domicilio particular)';
+            $_SESSION['message'] = 'Genial! Retirar por Darwin 880-Dorrego  (domicilio particular)';
             $_SESSION['message_type'] = 'warning';
             header('location:../forms/forms_retiros.php');
         }

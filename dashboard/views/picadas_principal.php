@@ -104,6 +104,11 @@
                             href="../actions/delete_pedidos.php?id=<?php echo $id;?>&dia=principal" type="button">
                             <i class="fa fa-trash"></i>
                         </a>
+                        <?php if($status == 'ENTREGADA'){ ?>
+                        <a class="btn btn-dark" title="Enviar Encuesta" target="_blank"
+                            href="https://api.whatsapp.com/send?phone=54<?php echo $cel_phone;?>&text=Hola,%20esperamos%20que%20hayas%20disfrutado%20la%20picada%20.%20Nos%20interesa%20tu%20opinion,%20podrás%20ingresar%20y%20dejarnos%20un%20comentario:http://picadasmacanudas.com/encuesta/encuesta.php?id=<?php echo $id;?>"><i
+                            class="fa fa-thumbs-o-up"></i></a>
+                        <?php } ?>
                     </div>
                     <!--======================|MODAL VER|======================-->
                     <div class="modal fade" id="ver<?php echo $id;?>" tabindex="-1" role="dialog"
