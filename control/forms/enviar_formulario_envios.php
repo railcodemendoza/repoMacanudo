@@ -267,14 +267,14 @@ if($add1 == '4'){
     $costo_picada = $out_bas;
   }
 }else{
-    $query_pic = "SELECT in_ars, out_ars FROM `rango_picada` WHERE title = '$product'";
+    $query_pic = "SELECT valor_por_persona, out_ars FROM `rango_picada` WHERE title = '$product'";
     $result_pic = mysqli_query($conn, $query_pic);
   
     if (mysqli_num_rows($result_pic) == 1) {
       
       $row = mysqli_fetch_array($result_pic);
       
-      $in_uni = $row['in_ars'];
+      $in_uni = $row['valor_por_persona'];
       $out_uni = $row['out_ars'];
 
     }

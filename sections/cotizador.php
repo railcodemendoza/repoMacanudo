@@ -462,7 +462,7 @@
                             llevamos?</label>
                         <select class="form-control form-control" aria-label="Default select example" name="sim_envio[]"
                             id="delivery" onchange="controlador(id);">
-                            <option selected value='0'>Retirar</option>
+                            <option selected value='0' id="0">Retirar</option>
                             <?php
                         $query = "SELECT * FROM `delivery`";
                         $result = mysqli_query($conn, $query);
