@@ -27,7 +27,7 @@
                             <div class="col-lg-3 col-md-6 info mt-4 mt-lg-0">
                                 <i class="icofont-phone"></i>
                                 <h4>Whats App:</h4>
-                                <p>+54 9 2613 40-5502<br></p>
+                                <p>+54 9 2614 71-4206<br></p>
                             </div>
                         </div>
                     </div>
@@ -38,7 +38,7 @@
         <div class="container">
             <a href="index.php"><img style="width: 25%;" src="assets/img/MCND_Logo_1080_WHITE.png" alt=""></a>
             <div class="social-links">
-                <a href="https://api.whatsapp.com/send?phone=542613405502&text=Hola,%20te%20contacto%20desde%20la%20Página" class="twitter"><i class="bx bxl-whatsapp"></i></a>
+                <a href="https://api.whatsapp.com/send?phone=542614714206&text=Hola,%20te%20contacto%20desde%20la%20Página" class="twitter"><i class="bx bxl-whatsapp"></i></a>
                 <a href="https://www.facebook.com/picadasmacanudas" class="facebook"><i class="bx bxl-facebook"></i></a>
                 <a href="https://www.instagram.com/picadasmacanudas" class="instagram"><i class="bx bxl-instagram"></i></a>
 

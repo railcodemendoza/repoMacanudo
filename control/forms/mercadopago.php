@@ -162,7 +162,7 @@ $preference->save();
         <div class="container">
             <a href="index.php"><img style="width: 25%;" src="../../assets/img/MCND_Logo_1080_WHITE.png" alt=""></a>
             <div class="social-links">
-                <a href="https://api.whatsapp.com/send?phone=542613405502&text=Hola,%20te%20contacto%20desde%20la%20Página"
+                <a href="https://api.whatsapp.com/send?phone=542614714206&text=Hola,%20te%20contacto%20desde%20la%20Página"
                     class="twitter"><i class="bx bxl-whatsapp"></i></a>
                 <a href="https://www.facebook.com/picadasmacanudas" class="facebook"><i class="bx bxl-facebook"></i></a>
                 <a href="https://www.instagram.com/picadasmacanudas" class="instagram"><i

@@ -56,7 +56,7 @@
     <!-- ======= Top Bar ======= -->
     <section id="topbar" class="d-none d-lg-flex align-items-center fixed-top topbar-transparent">
         <div class="container text-right">
-            <i class="icofont-phone"></i> +54 9 2613 40-5502
+            <i class="icofont-phone"></i> +54 9 2614 71-4206
             <i class="icofont-clock-time icofont-rotate-180"></i> Lun-Sáb: 10:00 AM - 20:00 PM
         </div>
     </section>
@@ -120,7 +120,7 @@ $alert_date ='';
 
 
 if($delivery_date == $date){
-  $alert_date = '<p style="text-align:center;">Recordá que hacemos pedidos con 24hs de anticipación.<br>No te preocupes, consultá disponibilidad <a target="_blank" href="https://api.whatsapp.com/send?phone=5492613405502&text=Tendrán%20disponibilidad%20para%20pedir%20una%20'.$product.'%20para%20'.$add1.'%20personas">acá!</a></p>';
+  $alert_date = '<p style="text-align:center;">Recordá que hacemos pedidos con 24hs de anticipación.<br>No te preocupes, consultá disponibilidad <a target="_blank" href="https://api.whatsapp.com/send?phone=5492614714206&text=Tendrán%20disponibilidad%20para%20pedir%20una%20'.$product.'%20para%20'.$add1.'%20personas">acá!</a></p>';
 }  
 
 // Corroboramos que la duela no sea de mas de 4. 
@@ -131,7 +131,7 @@ $alert_duela = '';
 if($add3 == 'Duela'){
   if($ok_duela != 'Duela-4'){
 
-    $alert_duela = '<p style="text-align:center;"> Atención: La duela no se puede aumentar la cantidad de Personas.<br>Debe hacerlo en pedidos diferentes<p/><p style="text-align:center;"><a target="_blank" href="https://api.whatsapp.com/send?phone=5492613405502&text=Necesito%20ayuda%20con%20mi%20pedido%20'.$product.'('.$add3.')'.'%20para%20'.$add1.'%20personas">Necesito ayuda</a></p>';
+    $alert_duela = '<p style="text-align:center;"> Atención: La duela no se puede aumentar la cantidad de Personas.<br>Debe hacerlo en pedidos diferentes<p/><p style="text-align:center;"><a target="_blank" href="https://api.whatsapp.com/send?phone=5492614714206&text=Necesito%20ayuda%20con%20mi%20pedido%20'.$product.'('.$add3.')'.'%20para%20'.$add1.'%20personas">Necesito ayuda</a></p>';
     $summdf = '';
 
     }else{
@@ -142,7 +142,7 @@ if($add3 == 'Duela Unida'){
 
   if($ok_duela != 'Duela Unida-4'){
 
-  $alert_duela = '<p style="text-align:center;"> Atención: La duela no se puede aumentar la cantidad de Personas.<br>Debe hacerlo en pedidos diferentes<p/><p style="text-align:center;"><a target="_blank" href="https://api.whatsapp.com/send?phone=5492613405502&text=Necesito%20ayuda%20con%20mi%20pedido%20'.$product.'('.$add3.')'.'%20para%20'.$add1.'%20personas">Necesito ayuda</a></p>';
+  $alert_duela = '<p style="text-align:center;"> Atención: La duela no se puede aumentar la cantidad de Personas.<br>Debe hacerlo en pedidos diferentes<p/><p style="text-align:center;"><a target="_blank" href="https://api.whatsapp.com/send?phone=5492614714206&text=Necesito%20ayuda%20con%20mi%20pedido%20'.$product.'('.$add3.')'.'%20para%20'.$add1.'%20personas">Necesito ayuda</a></p>';
   
   }else{
     $alert_duela = '';

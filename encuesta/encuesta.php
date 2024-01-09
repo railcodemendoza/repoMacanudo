@@ -266,7 +266,7 @@
         <div class="container">
             <a href="index.php"><img style="width: 25%;" src="assets/img/MCND_Logo_1080_WHITE.png" alt=""></a>
             <div class="social-links">
-                <a href="https://api.whatsapp.com/send?phone=542613405502&text=Hola,%20te%20contacto%20desde%20la%20Página"
+                <a href="https://api.whatsapp.com/send?phone=542614714206&text=Hola,%20te%20contacto%20desde%20la%20Página"
                     class="twitter"><i class="bx bxl-whatsapp"></i></a>
                 <a href="https://www.facebook.com/picadasmacanudas" class="facebook"><i class="bx bxl-facebook"></i></a>
                 <a href="https://www.instagram.com/picadasmacanudas" class="instagram"><i
@@ -285,7 +285,7 @@
             </div>
         </div>
     </footer><!-- End Footer -->
-    <a href="https://api.whatsapp.com/send?phone=542613405502" target="_blank" style="color:#433f39; text-align:center;"
+    <a href="https://api.whatsapp.com/send?phone=542614714206" target="_blank" style="color:#433f39; text-align:center;"
         class="whatsapp"><i class="bx bxl-whatsapp"></i>Contactanos!</a>
     <!--a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a-->
 

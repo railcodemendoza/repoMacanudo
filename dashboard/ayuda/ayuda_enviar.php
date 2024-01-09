@@ -62,7 +62,7 @@ if(isset($_POST['enviar'])) {   // me traigo la informacion segun ID seleccionad
             <br>
             <p>  Hay un nuevo ticket para resolver:</p>
             <p><strong>User: <strong>' . $user . '</p>
-            <p><strong>Celular: <strong> 2613405502</p>
+            <p><strong>Celular: <strong> 2614714206</p>
             <p><strong>Permiso: <strong>all</p>
             <br>
             <br>
@@ -163,7 +163,7 @@ if(isset($_POST['enviar_respuesta'])) {   // me traigo la informacion segun ID s
             <br>
             <p>  Hay un nuevo ticket para resolver:</p>
             <p><strong>User: <strong>' . $user . '</p>
-            <p><strong>Celular: <strong> 2613405502</p>
+            <p><strong>Celular: <strong> 2614714206</p>
             <p><strong>Permiso: <strong>all</p>
             <br>
             <br>

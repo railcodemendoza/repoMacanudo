@@ -53,7 +53,7 @@
     <!-- ======= Top Bar ======= -->
     <section id="topbar" class="d-none d-lg-flex align-items-center fixed-top topbar-transparent">
         <div class="container text-right">
-            <i class="icofont-phone"></i> +54 9 2613 40-5502
+            <i class="icofont-phone"></i> +54 9 2614 71-4206
             <i class="icofont-clock-time icofont-rotate-180"></i> Lun-Sáb: 10:00 AM - 20:00 PM
         </div>
     </section>
