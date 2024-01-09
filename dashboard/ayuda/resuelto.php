@@ -2,7 +2,7 @@
 
 $id = $_GET['id'];
 $conn_builit = mysqli_connect(
-    '31.170.161.22',
+    '195.179.239.0',
     'u101685278_buildit',
     'Pachiman2020',
     'u101685278_buildit'

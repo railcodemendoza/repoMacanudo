@@ -27,7 +27,7 @@ if(isset($_POST['enviar'])) {   // me traigo la informacion segun ID seleccionad
     $description = $_POST['description']; 
     
     $conn_builit = mysqli_connect(
-        '31.170.161.22',
+        '195.179.239.0',
         'u101685278_buildit',
         'Pachiman2020',
         'u101685278_buildit'
@@ -128,7 +128,7 @@ if(isset($_POST['enviar_respuesta'])) {   // me traigo la informacion segun ID s
     $description = $_POST['description']; 
     
     $conn_builit = mysqli_connect(
-        '31.170.161.22',
+        '195.179.239.0',
         'u101685278_buildit',
         'Pachiman2020',
         'u101685278_buildit'

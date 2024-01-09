@@ -2,7 +2,7 @@
 session_start();
 
 $conn = mysqli_connect(
-  '31.170.161.22',//31.170.161.22
+  '195.179.239.0',//195.179.239.0
   'u101685278_pachimanok',//        u101685278_labmac
   'Pachiman9102',//     Rail2021
   'u101685278_macanudas' //      u101685278_labmac
