@@ -13,7 +13,7 @@
     $usuario = 'Tincho'; 
 
     $conn_builit = mysqli_connect(
-        '195.179.239.0',
+        '193.203.175.53',
         'u101685278_buildit',
         'Pachiman2020',
         'u101685278_buildit'
