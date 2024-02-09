@@ -14,6 +14,7 @@
                         $id = $row['id'];
                         $img = $row['img'];
                         $descrip = $row['descripcion'];
+                    
                         if ($id == "1") {
                         ?>
                     <div class="carousel-item active" style="background: url(assets/img/slide/<?php echo $img; ?>);">
@@ -37,7 +38,6 @@
                                 <p class="animate__animated animate__fadeInUp"><?php echo $descrip; ?></p>
                                 <div>
                                     <a href="control/forms/forms_envios.php" class="btn-menu animate__animated animate__fadeInUp scrollto">Arma tu Pedido</a>
-                                    
                                 </div>
                             </div>
                         </div>

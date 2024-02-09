@@ -59,17 +59,17 @@
     </section>
     <!-- ======= Header ======= -->
     <header id="header" class="fixed-top d-flex align-items-center header-transparent">
-        <a href="index.php"><img style="width: 25%; margin-left:25%;" src="assets/img/MCND_Logo_1080_WHITE.png"
+        <a href="index.php"><img style="width: 25%; margin-left: 5%;" src="assets/img/MCND_Logo_1080_WHITE.png"
                 alt="picadas mendoza"></a>
-        <div class="container d-flex align-items-center">
+        <div class="container d-flex align-items-center" >
 
             <div class="logo mr-auto">
                 <h1 class="text-light"><a href="index.php"></a></h1>
                 <!-- Uncomment below if you prefer to use an image logo -->
                 <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
             </div>
-            <nav class="nav-menu d-none d-lg-block">
-                <ul>
+            <nav class="navbar navbar-expand-lg nav-menu d-none" >
+                <ul style="max-width: 90rem">
                     <li class="active"><a href="index.php">Inicio</a></li>
                     <li><a href="#about">Nosotros</a></li>
                     <li><a href="#menu">Picadas</a></li>
@@ -77,7 +77,8 @@
                     <li><a href="#gallery1">Galeria</a></li>
                     <li><a href="#contact">Contacto</a></li>
                 </ul>
-            </nav><!-- .nav-menu -->
+            </nav>
+            <!-- .nav-menu -->
         </div>
     </header><!-- End Header -->
 
@@ -87,21 +88,27 @@
             'u101685278_pachimanok',//   u101685278_labmac
             'Pachiman9102',//  Rail2021
             'u101685278_macanudas' //  u101685278_labmac
+             //pregunto al pachi pero me pinta q voy a tener q hacer 2 secciones para la version mobile.
         );
         $a = 1;
     ?>
-    <?php include('sections/headSection.php'); ?>
+    <?php include('sections/sectionsmobile/headSectionMobile.php'); ?>
     <main id="main">
-    <?php include('sections/cotizador.php'); ?>
-        <?php include('sections/quienesSomos.php'); ?>
-        <?php include('sections/nuestrasPicadas.php'); ?>
-        <?php include('sections/nuestrosProductos.php'); ?>
-        <?php include('sections/acompañamientos.php'); ?>
-        <?php include('sections/encuestas.php'); ?>
-        <?php include('sections/medios.php'); ?>
-        <?php include('sections/galeria.php'); ?>
+    <?php include('sections/sectionsmobile/cotizadorMobile.php'); ?>
+        <?php include('sections/sectionsmobile/quienesSomosMobile.php'); ?>
+        <?php include('sections/sectionsmobile/nuestrasPicadasMobile.php'); ?>
+        <?php include('sections/sectionsmobile/nuestrosProductosMobile.php'); ?>
+        <?php include('sections/sectionsmobile/acompañamientosMobile.php'); ?>
+        <?php include('sections/sectionsmobile/encuestasMobile.php'); ?>
+        <?php include('sections/sectionsmobile/mediosMobile.php'); ?>
+        <?php include('sections/sectionsmobile/galeriaMobile.php'); ?>
         <?php include('modalPromo.php'); ?>
     </main><!-- End #main -->
     <?php include('sections/footer.php'); ?>
     <?php include('sections/whatsAppFloat.php'); ?>
     <?php include('sections/script.php'); ?>
+
+
+
+
+
