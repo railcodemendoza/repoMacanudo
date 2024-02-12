@@ -17,7 +17,7 @@
                     
                         if ($id == "1") {
                         ?>
-                    <div class="carousel-item active" style="background: url(assets/img/slide/<?php echo $img; ?>);">
+                    <div class="carousel-item active" style="background: url(assets/img/slide/<?php echo $img; ?>); background-size: 100% 100%;">
                         <div class="carousel-container">
                             <div class="carousel-content">
                                 <img style="width: 60%;" src="assets/img/MCND_Logo_2160_WHITE.png" alt="">
@@ -31,7 +31,7 @@
                     </div>
                     <?php }else{ ?>
                     <!-- Slide 2 -->
-                    <div class="carousel-item" style="background: url(assets/img/slide/<?php echo $img; ?>);">
+                    <div class="carousel-item" style="background: url(assets/img/slide/<?php echo $img; ?>); background-size: 100% 100%;">
                         <div class="carousel-container">
                             <div class="carousel-content">
                                 <img style="width: 60%;" src="assets/img/MCND_Logo_2160_WHITE.png" alt="">
