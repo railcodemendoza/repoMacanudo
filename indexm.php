@@ -102,7 +102,7 @@
         <?php include('sections/sectionsmobile/encuestasMobile.php'); ?>
         <?php include('sections/sectionsmobile/mediosMobile.php'); ?>
         <?php include('sections/sectionsmobile/galeriaMobile.php'); ?>
-        <?php include('modalPromo.php'); ?>
+        <?php include('modalPromomobile.php'); ?>
     </main><!-- End #main -->
     <?php include('sections/footer.php'); ?>
     <?php include('sections/whatsAppFloat.php'); ?>
