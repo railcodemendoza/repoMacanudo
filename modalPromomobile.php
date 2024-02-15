@@ -49,16 +49,16 @@ $(document).ready(function() {
 }
 </style>
 <div class="pop-up">
-    <div class="pop-up-wrap">
+    <div class="pop-up-wrap"  style="max-width: 50rem">
         <div class="pop-up-title">
         </div>
         <div class="subcription">
             <div class="line"></div>
             <i class="bi bi-x-circle" id="close"></i>
             <div class="sub-content">
-                <h2><?php echo $titulomodal[$id] ?></h2>
-                <p><?php echo $descripcion[$id] ?></p>
-                <a href="control/forms/forms_retiros_especial.php?id_modal=<?php echo $id; ?>" class="subs-send">Arma tu Pedido</a>
+                <h2 style="font-size: 30px;"><?php echo $titulomodal[$id] ?></h2>
+                <p style="font-size: 12px; text-align: justify;" ><?php echo $descripcion[$id] ?></p>
+                <a href="control/forms/forms_retiros_especial.php?id_modal=<?php echo $id; ?>" class="subs-send" style="font-size: 12px;">Arma tu Pedido</a>
             </div>
             <div class="line"></div>
         </div>

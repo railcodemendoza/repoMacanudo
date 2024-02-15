@@ -11,7 +11,7 @@
                             <h1>Picada Fellini</h1>
                             <p> <strong>Clásica</strong></p>
                             <br>
-                            <img src="assets/img/picadas/clasica.jpg" style="max-width: 100%; height: auto; display: block;">
+                            <img src="assets/img/picadas/clasica.jpg" class="mt-1" style="max-width: 100%; height: auto; display: block; margin-bottom: 2.2rem">
                         </div>
                     </div>
 
