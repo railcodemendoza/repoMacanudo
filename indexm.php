@@ -85,9 +85,9 @@
     <?php
         $conn = mysqli_connect(
             '193.203.175.53', //193.203.175.53
-            'u101685278_pachimanok',//   u101685278_labmac
-            'Pachiman9102',//  Rail2021
-            'u101685278_macanudas' //  u101685278_labmac
+            'u101685278_labmac',//   u101685278_pachimanok 
+            'Rail2021',//  Pachiman9102
+            'u101685278_labmac' //   u101685278_macanudas
              //pregunto al pachi pero me pinta q voy a tener q hacer 2 secciones para la version mobile.
         );
         $a = 1;
