@@ -191,28 +191,17 @@
                                     document.addEventListener("DOMContentLoaded", function() {
                                         const tipoPicadaSelect = document.getElementById('tipoPicadaSelect');
                                         const tipoTablaSelect = document.getElementById('tipoTablaSelect');
-                                        const cantidadComensalesSelect = document.getElementById(
-                                            'cantidadComensalesSelect');
-                                        const precioTipoPicadaElement = document.getElementById(
-                                            'precioTipoPicada');
-                                        const precioTipoTablaElement = document.getElementById(
-                                            'precioTipoTabla');
-                                        const precioComensalesElement = document.getElementById(
-                                            'precioComensales');
+                                        const cantidadComensalesSelect = document.getElementById('cantidadComensalesSelect');
+                                        const primerAgregadoSelect = document.getElementById('primerAgregadoSelect');
+                                        const segundoAgregadoSelect = document.getElementById('segundoAgregadoSelect');
+                                        const tercerAgregadoSelect = document.getElementById('tercerAgregadoSelect');
+                                        const precioPrimerAgregadoElement = document.getElementById('precioPrimerAgregado');
+                                        const precioSegundoAgregadoElement = document.getElementById('precioSegundoAgregado');
+                                        const precioTercerAgregadoElement = document.getElementById('precioTercerAgregado');
+                                        const precioTipoPicadaElement = document.getElementById('precioTipoPicada');
+                                        const precioTipoTablaElement = document.getElementById('precioTipoTabla');
+                                        const precioComensalesElement = document.getElementById('precioComensales');
                                         const precioTotalElement = document.getElementById('precioTotal');
-
-                                        const primerAgregadoSelect = document.getElementById(
-                                            'primerAgregadoSelect');
-                                        const segundoAgregadoSelect = document.getElementById(
-                                            'segundoAgregadoSelect');
-                                        const tercerAgregadoSelect = document.getElementById(
-                                            'tercerAgregadoSelect');
-                                        const precioPrimerAgregadoElement = document.getElementById(
-                                            'precioPrimerAgregado');
-                                        const precioSegundoAgregadoElement = document.getElementById(
-                                            'precioSegundoAgregado');
-                                        const precioTercerAgregadoElement = document.getElementById(
-                                            'precioTercerAgregado');
 
                                         // Manejar cambios en los select de agregados
                                         primerAgregadoSelect.addEventListener('change', actualizarPrecios);
@@ -234,30 +223,27 @@
                                                     option.value = tipoPicada.id;
                                                     option.textContent = tipoPicada.tipo;
                                                     option.dataset.precio = tipoPicada.in_ars;
+                                                    option.dataset.valorPorPersona = tipoPicada.valor_por_persona; 
                                                     tipoPicadaSelect.appendChild(option);
                                                 });
 
                                                 // Manejar cambios en el select de tipo de picada
                                                 tipoPicadaSelect.addEventListener('change', function() {
                                                     const tipoPicadaId = this.value;
-                                                    const tipoPicada = result.find(tp => tp.id ==
-                                                        tipoPicadaId);
+                                                    const tipoPicada = result.find(tp => tp.id ==tipoPicadaId);
                                                     cargarTipoTablaYComensales(tipoPicada);
                                                 });
 
                                                 // Manejar cambios en el select de tipo de tabla
-                                                tipoTablaSelect.addEventListener('change',
-                                                    actualizarPrecios);
+                                                tipoTablaSelect.addEventListener('change', actualizarPrecios);
 
                                                 // Manejar cambios en el select de cantidad de comensales
-                                                cantidadComensalesSelect.addEventListener('change',
-                                                    actualizarPrecios);
+                                                cantidadComensalesSelect.addEventListener('change', actualizarPrecios);
 
                                                 function cargarTipoTablaYComensales(tipoPicada) {
                                                     tipoTablaSelect.innerHTML = "";
                                                     tipoPicada.tipo_tablas.forEach(tipoTabla => {
-                                                        const option = document.createElement(
-                                                            'option');
+                                                        const option = document.createElement('option');
                                                         option.value = tipoTabla.id;
                                                         option.textContent = tipoTabla.tipo;
                                                         option.dataset.precio = tipoTabla.in_ars;
@@ -312,18 +298,18 @@
 
                                         function actualizarPrecios() {
                                                     const precioTipoPicada = parseFloat(tipoPicadaSelect
-                                                        .options[tipoPicadaSelect.selectedIndex].dataset
-                                                        .precio) || 0;
+                                                        .options[tipoPicadaSelect.selectedIndex].dataset.precio) || 0;
                                                     const precioTipoTabla = parseFloat(tipoTablaSelect
-                                                        .options[tipoTablaSelect.selectedIndex].dataset
-                                                        .precio) || 0;
+                                                        .options[tipoTablaSelect.selectedIndex].dataset.precio) || 0;
                                                     const cantidadComensales = parseInt(
                                                         cantidadComensalesSelect.value) || 0;
-
+                                                    const valorPorPersona = parseFloat(tipoPicadaSelect
+                                                    .options[tipoPicadaSelect.selectedIndex].dataset.valorPorPersona);
+                                                    
                                                     const precioTotalTipoPicada = precioTipoPicada;
                                                     const precioTotalTipoTabla = precioTipoTabla;
                                                     const precioTotalComensales = (cantidadComensales - 4) *
-                                                        10;
+                                                    valorPorPersona;
 
                                                     precioTipoPicadaElement.textContent =
                                                         `Precio Tipo Picada: $${precioTotalTipoPicada.toFixed(2)}`;
