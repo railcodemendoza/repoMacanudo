@@ -133,25 +133,59 @@
                             <br>
                         </header>
 
-                        <div style="text-align:center;" class="panel-body">
-                            <form action="" id="form_simulador" class="form-horizontal " method="POST">
-                                <!-- select tablas -->
-                                <div class="form-group mb-0">
+                        <div class="row">
+                            <div class="col-sm-8 mx-auto">
+                                <form action="" id="form_simulador" class="form-horizontal " method="POST">
+                                    <!-- select tablas -->
+                                    <p id="precioTotal">Precio Total: $0.00</p>
+
                                     <label style="font-size: smaller; font-weight: 600;"
                                         class="control-label">Selecciona el tipo de picada:</label>
                                     <select class="form-control form-control" aria-label="Default select example"
-                                        id="tipoPicadaSelect"></select>
+                                        id="tipoPicadaSelect">
+                                        <option value="">-.Elegir.-</option>
+                                    </select>
+                                    <p id="precioTipoPicada"></p>
 
                                     <label style="font-size: smaller; font-weight: 600;"
                                         class="control-label">Selecciona el tipo de tabla:</label>
                                     <select class="form-control form-control" aria-label="Default select example"
-                                        id="tipoTablaSelect"></select>
+                                        id="tipoTablaSelect">
+                                        <option value="">-.Elegir.-</option>
+                                    </select>
+                                    <p id="precioTipoTabla"></p>
 
                                     <label style="font-size: smaller; font-weight: 600;"
                                         class="control-label">Selecciona Cantidad de Comensales:</label>
-
                                     <select class="form-control form-control" aria-label="Default select example"
-                                        id="cantidadComensalesSelect"></select>
+                                        id="cantidadComensalesSelect">
+                                        <option value="">-.Elegir.-</option>
+                                    </select>
+                                    <p id="precioComensales"></p>
+
+                                    <label style="font-size: smaller; font-weight: 600;"
+                                        class="control-label">Selecciona Primer Agregado:</label>
+                                    <select class="form-control form-control" aria-label="Default select example"
+                                        id="primerAgregadoSelect">
+                                        <option value="">-.Elegir Agregado.-</option>
+                                    </select>
+                                    <p id="precioPrimerAgregado"></p>
+
+                                    <label style="font-size: smaller; font-weight: 600;"
+                                        class="control-label">Selecciona Segundo Agregado:</label>
+                                    <select class="form-control form-control" aria-label="Default select example"
+                                        id="segundoAgregadoSelect">
+                                        <option value="">-.Elegir Agregado.-</option>
+                                    </select>
+                                    <p id="precioSegundoAgregado"></p>
+
+                                    <label style="font-size: smaller; font-weight: 600;"
+                                        class="control-label">Selecciona Tercer Agregado:</label>
+                                    <select class="form-control form-control" aria-label="Default select example"
+                                        id="tercerAgregadoSelect">
+                                        <option value="">-.Elegir Agregado.-</option>
+                                    </select>
+                                    <p id="precioTercerAgregado"></p>
 
                                     <script>
                                     document.addEventListener("DOMContentLoaded", function() {
@@ -159,6 +193,31 @@
                                         const tipoTablaSelect = document.getElementById('tipoTablaSelect');
                                         const cantidadComensalesSelect = document.getElementById(
                                             'cantidadComensalesSelect');
+                                        const precioTipoPicadaElement = document.getElementById(
+                                            'precioTipoPicada');
+                                        const precioTipoTablaElement = document.getElementById(
+                                            'precioTipoTabla');
+                                        const precioComensalesElement = document.getElementById(
+                                            'precioComensales');
+                                        const precioTotalElement = document.getElementById('precioTotal');
+
+                                        const primerAgregadoSelect = document.getElementById(
+                                            'primerAgregadoSelect');
+                                        const segundoAgregadoSelect = document.getElementById(
+                                            'segundoAgregadoSelect');
+                                        const tercerAgregadoSelect = document.getElementById(
+                                            'tercerAgregadoSelect');
+                                        const precioPrimerAgregadoElement = document.getElementById(
+                                            'precioPrimerAgregado');
+                                        const precioSegundoAgregadoElement = document.getElementById(
+                                            'precioSegundoAgregado');
+                                        const precioTercerAgregadoElement = document.getElementById(
+                                            'precioTercerAgregado');
+
+                                        // Manejar cambios en los select de agregados
+                                        primerAgregadoSelect.addEventListener('change', actualizarPrecios);
+                                        segundoAgregadoSelect.addEventListener('change', actualizarPrecios);
+                                        tercerAgregadoSelect.addEventListener('change', actualizarPrecios);
 
                                         // Realizar la solicitud HTTP a la API
                                         const requestOptions = {
@@ -174,37 +233,37 @@
                                                     const option = document.createElement('option');
                                                     option.value = tipoPicada.id;
                                                     option.textContent = tipoPicada.tipo;
+                                                    option.dataset.precio = tipoPicada.in_ars;
                                                     tipoPicadaSelect.appendChild(option);
                                                 });
-
-                                                // Llenar el select de tipo de tabla y cantidad de comensales al cargar la página
-                                                cargarTipoTablaYComensales(result[
-                                                0]); // Seleccionar el primer tipo de picada por defecto
 
                                                 // Manejar cambios en el select de tipo de picada
                                                 tipoPicadaSelect.addEventListener('change', function() {
                                                     const tipoPicadaId = this.value;
-
-                                                    // Filtrar el resultado para obtener el tipo de picada específico
                                                     const tipoPicada = result.find(tp => tp.id ==
                                                         tipoPicadaId);
-
-                                                    // Llenar el select de tipo de tabla y cantidad de comensales
                                                     cargarTipoTablaYComensales(tipoPicada);
                                                 });
 
+                                                // Manejar cambios en el select de tipo de tabla
+                                                tipoTablaSelect.addEventListener('change',
+                                                    actualizarPrecios);
+
+                                                // Manejar cambios en el select de cantidad de comensales
+                                                cantidadComensalesSelect.addEventListener('change',
+                                                    actualizarPrecios);
+
                                                 function cargarTipoTablaYComensales(tipoPicada) {
-                                                    // Limpiar y llenar el select de tipo de tabla
                                                     tipoTablaSelect.innerHTML = "";
                                                     tipoPicada.tipo_tablas.forEach(tipoTabla => {
                                                         const option = document.createElement(
                                                             'option');
                                                         option.value = tipoTabla.id;
                                                         option.textContent = tipoTabla.tipo;
+                                                        option.dataset.precio = tipoTabla.in_ars;
                                                         tipoTablaSelect.appendChild(option);
                                                     });
 
-                                                    // Limpiar y llenar el select de cantidad de comensales
                                                     cantidadComensalesSelect.innerHTML = "";
                                                     for (let i = 4; i <= tipoPicada.maximo_personas; i++) {
                                                         const option = document.createElement('option');
@@ -212,14 +271,109 @@
                                                         option.textContent = i + ' personas';
                                                         cantidadComensalesSelect.appendChild(option);
                                                     }
+
+                                                    actualizarPrecios();
                                                 }
-                                            })
-                                            .catch(error => console.error(error));
+
+                                                
+                                            }).catch(error => console.error(error));
+
+                                        // Función para cargar los datos de los agregados y actualizar precios
+                                        function cargarAgregadosYActualizarPrecios() {
+                                            fetch("http://127.0.0.1:8000/api/agregado", requestOptions)
+                                                .then(response => response.json())
+                                                .then(result => {
+                                                    result.forEach(agregado => {
+                                                        const option1 = document.createElement(
+                                                            'option');
+                                                        option1.value = agregado.id;
+                                                        option1.textContent = agregado.title;
+                                                        option1.dataset.precio = agregado.in_ars;
+                                                        primerAgregadoSelect.appendChild(option1);
+
+                                                        const option2 = document.createElement(
+                                                            'option');
+                                                        option2.value = agregado.id;
+                                                        option2.textContent = agregado.title;
+                                                        option2.dataset.precio = agregado.in_ars;
+                                                        segundoAgregadoSelect.appendChild(option2);
+
+                                                        const option3 = document.createElement(
+                                                            'option');
+                                                        option3.value = agregado.id;
+                                                        option3.textContent = agregado.title;
+                                                        option3.dataset.precio = agregado.in_ars;
+                                                        tercerAgregadoSelect.appendChild(option3);
+                                                    });
+
+                                                    actualizarPrecios();
+                                                }).catch(error => console.error(error));
+                                        }
+
+                                        function actualizarPrecios() {
+                                                    const precioTipoPicada = parseFloat(tipoPicadaSelect
+                                                        .options[tipoPicadaSelect.selectedIndex].dataset
+                                                        .precio) || 0;
+                                                    const precioTipoTabla = parseFloat(tipoTablaSelect
+                                                        .options[tipoTablaSelect.selectedIndex].dataset
+                                                        .precio) || 0;
+                                                    const cantidadComensales = parseInt(
+                                                        cantidadComensalesSelect.value) || 0;
+
+                                                    const precioTotalTipoPicada = precioTipoPicada;
+                                                    const precioTotalTipoTabla = precioTipoTabla;
+                                                    const precioTotalComensales = (cantidadComensales - 4) *
+                                                        10;
+
+                                                    precioTipoPicadaElement.textContent =
+                                                        `Precio Tipo Picada: $${precioTotalTipoPicada.toFixed(2)}`;
+                                                    precioTipoTablaElement.textContent =
+                                                        `Precio Tipo Tabla: $${precioTotalTipoTabla.toFixed(2)}`;
+                                                    precioComensalesElement.textContent =
+                                                        `Precio por Comensales: $${precioTotalComensales.toFixed(2)}`;
+
+                                                    // Calcular y mostrar el precio total sin los agregados
+                                                    const precioTotalSinAgregados = precioTotalTipoPicada +
+                                                        precioTotalTipoTabla + precioTotalComensales;
+                                                    precioTotalElement.textContent =
+                                                        `Precio Total sin Agregados: $${precioTotalSinAgregados.toFixed(2)}`;
+
+                                                    // Obtener los precios de los agregados seleccionados
+                                                    const precioPrimerAgregado = parseFloat(
+                                                        primerAgregadoSelect.options[
+                                                            primerAgregadoSelect.selectedIndex].dataset
+                                                        .precio) || 0;
+                                                    const precioSegundoAgregado = parseFloat(
+                                                        segundoAgregadoSelect.options[
+                                                            segundoAgregadoSelect.selectedIndex].dataset
+                                                        .precio) || 0;
+                                                    const precioTercerAgregado = parseFloat(
+                                                        tercerAgregadoSelect.options[
+                                                            tercerAgregadoSelect.selectedIndex].dataset
+                                                        .precio) || 0;
+
+                                                    // Mostrar los precios individuales de los agregados
+                                                    precioPrimerAgregadoElement.textContent =
+                                                        `Precio Primer Agregado: $${precioPrimerAgregado.toFixed(2)}`;
+                                                    precioSegundoAgregadoElement.textContent =
+                                                        `Precio Segundo Agregado: $${precioSegundoAgregado.toFixed(2)}`;
+                                                    precioTercerAgregadoElement.textContent =
+                                                        `Precio Tercer Agregado: $${precioTercerAgregado.toFixed(2)}`;
+
+                                                    // Calcular y mostrar el precio total con los agregados
+                                                    const precioTotalConAgregados =
+                                                        precioTotalSinAgregados + precioPrimerAgregado +
+                                                        precioSegundoAgregado + precioTercerAgregado;
+                                                    precioTotalElement.textContent =
+                                                        `Precio Total con Agregados: $${precioTotalConAgregados.toFixed(2)}`;
+                                                }
+
+                                        cargarAgregadosYActualizarPrecios();
                                     });
                                     </script>
-                                </div>
 
-                            </form>
+                                </form>
+                            </div>
                         </div>
                     </section>
                 </div>
