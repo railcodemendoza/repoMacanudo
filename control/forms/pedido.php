@@ -143,7 +143,7 @@
                                         class="control-label">Selecciona el tipo de picada:</label>
                                     <select class="form-control form-control" aria-label="Default select example"
                                         id="tipoPicadaSelect">
-                                        <option value="">-.Elegir.-</option>
+                                        <option value=""> -.Elegir tipo de picada.- </option>
                                     </select>
                                     <p id="precioTipoPicada"></p>
 
@@ -151,7 +151,7 @@
                                         class="control-label">Selecciona el tipo de tabla:</label>
                                     <select class="form-control form-control" aria-label="Default select example"
                                         id="tipoTablaSelect">
-                                        <option value="">-.Elegir.-</option>
+                                        <option value="">-.Elegir tipo de tabla.-</option>
                                     </select>
                                     <p id="precioTipoTabla"></p>
 
@@ -159,7 +159,7 @@
                                         class="control-label">Selecciona Cantidad de Comensales:</label>
                                     <select class="form-control form-control" aria-label="Default select example"
                                         id="cantidadComensalesSelect">
-                                        <option value="">-.Elegir.-</option>
+                                        <option value="">-.Elegir cantidad de Comensales.-</option>
                                     </select>
                                     <p id="precioComensales"></p>
 
@@ -187,6 +187,15 @@
                                     </select>
                                     <p id="precioTercerAgregado"></p>
 
+                                    <label style="font-size: smaller; font-weight: 600;"
+                                        class="control-label">¿Buscas o te la llevamos?</label>
+                                    <select class="form-control form-control" aria-label="Default select example"
+                                        id="deliverySelect">
+                                        <option value="">-.Elegir.-</option>
+                                        <option value="">Retirar por local</option>
+                                    </select>
+                                    <p id="precioDelivery"></p>
+
                                     <script>
                                     document.addEventListener("DOMContentLoaded", function() {
                                         const tipoPicadaSelect = document.getElementById('tipoPicadaSelect');
@@ -195,12 +204,14 @@
                                         const primerAgregadoSelect = document.getElementById('primerAgregadoSelect');
                                         const segundoAgregadoSelect = document.getElementById('segundoAgregadoSelect');
                                         const tercerAgregadoSelect = document.getElementById('tercerAgregadoSelect');
+                                        const deliverySelect = document.getElementById('deliverySelect');
                                         const precioPrimerAgregadoElement = document.getElementById('precioPrimerAgregado');
                                         const precioSegundoAgregadoElement = document.getElementById('precioSegundoAgregado');
                                         const precioTercerAgregadoElement = document.getElementById('precioTercerAgregado');
                                         const precioTipoPicadaElement = document.getElementById('precioTipoPicada');
                                         const precioTipoTablaElement = document.getElementById('precioTipoTabla');
                                         const precioComensalesElement = document.getElementById('precioComensales');
+                                        const precioDeliveryElement = document.getElementById('precioDelivery');
                                         const precioTotalElement = document.getElementById('precioTotal');
 
                                         // Manejar cambios en los select de agregados
@@ -239,6 +250,9 @@
 
                                                 // Manejar cambios en el select de cantidad de comensales
                                                 cantidadComensalesSelect.addEventListener('change', actualizarPrecios);
+
+                                                // Manejar cambios en el select de tipo de tabla
+                                                deliverySelect.addEventListener('change', actualizarPrecios)
 
                                                 function cargarTipoTablaYComensales(tipoPicada) {
                                                     tipoTablaSelect.innerHTML = "";
@@ -295,6 +309,23 @@
                                                     actualizarPrecios();
                                                 }).catch(error => console.error(error));
                                         }
+                                        // Función para cargar los datos de los agregados y actualizar precios
+                                        function cargardeliveryYActualizarPrecios() {
+                                            fetch("http://127.0.0.1:8000/api/delivery", requestOptions)
+                                                .then(response => response.json())
+                                                .then(result => {
+                                                    result.forEach(delivery => {
+                                                        const option1 = document.createElement(
+                                                            'option');
+                                                        option1.value = delivery.id;
+                                                        option1.textContent = delivery.location;
+                                                        option1.dataset.precio = delivery.km_to_zero;
+                                                        deliverySelect.appendChild(option1);
+                                                    });
+
+                                                    actualizarPrecios();
+                                                }).catch(error => console.error(error));
+                                        }
 
                                         function actualizarPrecios() {
                                                     const precioTipoPicada = parseFloat(tipoPicadaSelect
@@ -304,8 +335,10 @@
                                                     const cantidadComensales = parseInt(
                                                         cantidadComensalesSelect.value) || 0;
                                                     const valorPorPersona = parseFloat(tipoPicadaSelect
-                                                    .options[tipoPicadaSelect.selectedIndex].dataset.valorPorPersona);
-                                                    
+                                                    .options[tipoPicadaSelect.selectedIndex].dataset.valorPorPersona)|| 0;
+                                                    const delivery = parseFloat(deliverySelect
+                                                    .options[deliverySelect.selectedIndex].dataset.precio)|| 0;
+
                                                     const precioTotalTipoPicada = precioTipoPicada;
                                                     const precioTotalTipoTabla = precioTipoTabla;
                                                     const precioTotalComensales = (cantidadComensales - 4) *
@@ -317,12 +350,6 @@
                                                         `Precio Tipo Tabla: $${precioTotalTipoTabla.toFixed(2)}`;
                                                     precioComensalesElement.textContent =
                                                         `Precio por Comensales: $${precioTotalComensales.toFixed(2)}`;
-
-                                                    // Calcular y mostrar el precio total sin los agregados
-                                                    const precioTotalSinAgregados = precioTotalTipoPicada +
-                                                        precioTotalTipoTabla + precioTotalComensales;
-                                                    precioTotalElement.textContent =
-                                                        `Precio Total sin Agregados: $${precioTotalSinAgregados.toFixed(2)}`;
 
                                                     // Obtener los precios de los agregados seleccionados
                                                     const precioPrimerAgregado = parseFloat(
@@ -345,16 +372,20 @@
                                                         `Precio Segundo Agregado: $${precioSegundoAgregado.toFixed(2)}`;
                                                     precioTercerAgregadoElement.textContent =
                                                         `Precio Tercer Agregado: $${precioTercerAgregado.toFixed(2)}`;
+                                                    
+                                                    precioDeliveryElement.textContent =
+                                                        `Precio Delivery: $${delivery.toFixed(2)}`;
 
                                                     // Calcular y mostrar el precio total con los agregados
                                                     const precioTotalConAgregados =
-                                                        precioTotalSinAgregados + precioPrimerAgregado +
-                                                        precioSegundoAgregado + precioTercerAgregado;
+                                                    precioTotalTipoPicada + precioTotalTipoTabla + precioTotalComensales + 
+                                                    precioPrimerAgregado + precioSegundoAgregado + precioTercerAgregado+ delivery;
                                                     precioTotalElement.textContent =
-                                                        `Precio Total con Agregados: $${precioTotalConAgregados.toFixed(2)}`;
+                                                        `Precio Total: $${precioTotalConAgregados.toFixed(2)}`;
                                                 }
 
                                         cargarAgregadosYActualizarPrecios();
+                                        cargardeliveryYActualizarPrecios();
                                     });
                                     </script>
 
