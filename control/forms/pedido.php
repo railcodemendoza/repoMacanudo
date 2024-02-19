@@ -135,14 +135,15 @@
 
                         <div class="row">
                             <div class="col-sm-8 mx-auto">
-                                <form action="" id="form_simulador" class="form-horizontal " method="POST">
+                                <form action="../forms/pedido_datos_personales.php" id="form_simulador" class="form-horizontal " method="POST">
                                     <!-- select tablas -->
                                     <p id="precioTotal">Precio Total: $0.00</p>
+                                    <input type="hidden" id="preciofinal" name="preciofinal" value="">
 
                                     <label style="font-size: smaller; font-weight: 600;"
                                         class="control-label">Selecciona el tipo de picada:</label>
                                     <select class="form-control form-control" aria-label="Default select example"
-                                        id="tipoPicadaSelect">
+                                        id="tipoPicadaSelect" name="tipoPicada">
                                         <option value=""> -.Elegir tipo de picada.- </option>
                                     </select>
                                     <p id="precioTipoPicada"></p>
@@ -150,7 +151,7 @@
                                     <label style="font-size: smaller; font-weight: 600;"
                                         class="control-label">Selecciona el tipo de tabla:</label>
                                     <select class="form-control form-control" aria-label="Default select example"
-                                        id="tipoTablaSelect">
+                                        id="tipoTablaSelect"  name="tipoTabla">
                                         <option value="">-.Elegir tipo de tabla.-</option>
                                     </select>
                                     <p id="precioTipoTabla"></p>
@@ -158,7 +159,7 @@
                                     <label style="font-size: smaller; font-weight: 600;"
                                         class="control-label">Selecciona Cantidad de Comensales:</label>
                                     <select class="form-control form-control" aria-label="Default select example"
-                                        id="cantidadComensalesSelect">
+                                        id="cantidadComensalesSelect" name="cantidadComensales">
                                         <option value="">-.Elegir cantidad de Comensales.-</option>
                                     </select>
                                     <p id="precioComensales"></p>
@@ -166,7 +167,7 @@
                                     <label style="font-size: smaller; font-weight: 600;"
                                         class="control-label">Selecciona Primer Agregado:</label>
                                     <select class="form-control form-control" aria-label="Default select example"
-                                        id="primerAgregadoSelect">
+                                        id="primerAgregadoSelect" name="agregado1">
                                         <option value="">-.Elegir Agregado.-</option>
                                     </select>
                                     <p id="precioPrimerAgregado"></p>
@@ -174,7 +175,7 @@
                                     <label style="font-size: smaller; font-weight: 600;"
                                         class="control-label">Selecciona Segundo Agregado:</label>
                                     <select class="form-control form-control" aria-label="Default select example"
-                                        id="segundoAgregadoSelect">
+                                        id="segundoAgregadoSelect" name="agregado2">
                                         <option value="">-.Elegir Agregado.-</option>
                                     </select>
                                     <p id="precioSegundoAgregado"></p>
@@ -182,7 +183,7 @@
                                     <label style="font-size: smaller; font-weight: 600;"
                                         class="control-label">Selecciona Tercer Agregado:</label>
                                     <select class="form-control form-control" aria-label="Default select example"
-                                        id="tercerAgregadoSelect">
+                                        id="tercerAgregadoSelect" name="agregado3">
                                         <option value="">-.Elegir Agregado.-</option>
                                     </select>
                                     <p id="precioTercerAgregado"></p>
@@ -190,12 +191,12 @@
                                     <label style="font-size: smaller; font-weight: 600;"
                                         class="control-label">¿Buscas o te la llevamos?</label>
                                     <select class="form-control form-control" aria-label="Default select example"
-                                        id="deliverySelect">
+                                        id="deliverySelect" name="delivery">
                                         <option value="">-.Elegir.-</option>
-                                        <option value="">Retirar por local</option>
+                                        <option value="0">Retirar por local</option>
                                     </select>
                                     <p id="precioDelivery"></p>
-
+                                    
                                     <script>
                                     document.addEventListener("DOMContentLoaded", function() {
                                         const tipoPicadaSelect = document.getElementById('tipoPicadaSelect');
@@ -213,6 +214,7 @@
                                         const precioComensalesElement = document.getElementById('precioComensales');
                                         const precioDeliveryElement = document.getElementById('precioDelivery');
                                         const precioTotalElement = document.getElementById('precioTotal');
+                                        const precioFinalElement = document.getElementById('preciofinal');
 
                                         // Manejar cambios en los select de agregados
                                         primerAgregadoSelect.addEventListener('change', actualizarPrecios);
@@ -372,7 +374,6 @@
                                                         `Precio Segundo Agregado: $${precioSegundoAgregado.toFixed(2)}`;
                                                     precioTercerAgregadoElement.textContent =
                                                         `Precio Tercer Agregado: $${precioTercerAgregado.toFixed(2)}`;
-                                                    
                                                     precioDeliveryElement.textContent =
                                                         `Precio Delivery: $${delivery.toFixed(2)}`;
 
@@ -382,6 +383,7 @@
                                                     precioPrimerAgregado + precioSegundoAgregado + precioTercerAgregado+ delivery;
                                                     precioTotalElement.textContent =
                                                         `Precio Total: $${precioTotalConAgregados.toFixed(2)}`;
+                                                        precioFinalElement.value = precioTotalConAgregados;
                                                 }
 
                                         cargarAgregadosYActualizarPrecios();
@@ -389,6 +391,11 @@
                                     });
                                     </script>
 
+                                    <br>
+                                    <div class="col-sm-4 mx-auto" style="text-align: center;">
+                                        <button type="submit" name="enviar_pedido" id="enviar_pedido"style="padding-left: 20%;padding-right: 20%;"
+                                        class="btn btn-warning">Pedir</button>
+                                    </div>
                                 </form>
                             </div>
                         </div>
