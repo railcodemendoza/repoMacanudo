@@ -170,7 +170,7 @@
 
 @media only screen and (max-width: 980px){
     .pop-up-title{
-        display: none;
+        display: block;
     }
 
 }
