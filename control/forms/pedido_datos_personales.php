@@ -127,11 +127,12 @@
                                 $agregado3 = $_POST['agregado3'];
                                 $delivery = $_POST['delivery'];
                                 $precioTotal = $_POST['preciofinal'];
+                                
                                 $curl = curl_init();
                         
                                 // Configurar la solicitud cURL
                                 curl_setopt_array($curl, array(
-                                    CURLOPT_URL => 'http://127.0.0.1:8000/api/general',
+                                    CURLOPT_URL => 'https://apisandbox.picadasmacanudas.com/api/general',
                                     CURLOPT_RETURNTRANSFER => true,
                                     CURLOPT_ENCODING => '',
                                     CURLOPT_MAXREDIRS => 10,
@@ -159,6 +160,7 @@
                                 if (isset($responseArray['pedido'])) {
                                     $pedidoData = $responseArray['pedido'];
                                     $tipoPicada = $pedidoData['product'];
+                                    $pedidoId = $pedidoData['id'];
                                     $tipoTabla = $pedidoData['add3'];
                                     $comensales = $pedidoData['add1'];
                                     $agregado1 = isset($pedidoData['add2']) ? $pedidoData['add2'] : "Sin Agregado";
@@ -180,7 +182,7 @@
                                 method: "GET",
                                 redirect: "follow"
                             };
-                            fetch("http://127.0.0.1:8000/api/codigoPromocion", requestOptions)
+                            fetch("https://apisandbox.picadasmacanudas.com/api/codigoPromocion", requestOptions)
                                 .then(response => response.json())
                                 .then(codigosPromocion => {
                                     // Aquí tienes la lista de códigos de la API
@@ -288,7 +290,8 @@
                                 </div>
                                 <br>
                             </header>
-                            <form action="../forms/enviar_formulario_envios.php" class="form-horizontal " method="POST">
+                            <form action="../forms/pedido_enviar.php" class="form-horizontal " method="POST">
+                                <input type="hidden" id="pedido_id" name="pedido_id" value=" <?php echo $pedidoId; ?>">
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <div style="margin-top:2%;" class="form-group">
@@ -423,7 +426,10 @@
                                             costo extra de 6% + IVA</small>
                                     </div>
                                 </div>
-
+                                <div class="col-sm-4 mx-auto" style="text-align: center;">
+                                        <button type="submit" name="testear_pedido" id="testear_pedido" style="padding-left: 20%;padding-right: 20%;"
+                                        class="btn btn-warning">Pedir</button>
+                                </div>
                             </form>
                     </section>
                 </div>

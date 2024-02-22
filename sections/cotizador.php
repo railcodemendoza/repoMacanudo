@@ -100,7 +100,7 @@
                             redirect: "follow"
                         };
 
-                        fetch("http://127.0.0.1:8000/api/tipoPicadaActivas", requestOptions)
+                        fetch("https://apisandbox.picadasmacanudas.com/api/tipoPicadaActivas", requestOptions)
                             .then(response => response.json())
                             .then(result => {
                                 // Llenar el select de tipo de picada
@@ -155,7 +155,7 @@
 
                         // Función para cargar los datos de los agregados y actualizar precios
                         function cargarAgregadosYActualizarPrecios() {
-                            fetch("http://127.0.0.1:8000/api/agregado", requestOptions)
+                            fetch("https://apisandbox.picadasmacanudas.com/api/agregado", requestOptions)
                                 .then(response => response.json())
                                 .then(result => {
                                     result.forEach(agregado => {
@@ -186,7 +186,7 @@
                         }
                         // Función para cargar los datos de los agregados y actualizar precios
                         function cargardeliveryYActualizarPrecios() {
-                            fetch("http://127.0.0.1:8000/api/delivery", requestOptions)
+                            fetch("https://apisandbox.picadasmacanudas.com/api/delivery", requestOptions)
                                 .then(response => response.json())
                                 .then(result => {
                                     result.forEach(delivery => {

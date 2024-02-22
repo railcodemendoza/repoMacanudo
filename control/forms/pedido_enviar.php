@@ -91,312 +91,80 @@
     <br>
 
     <?php 
-if  (isset($_POST['enviar_envios'])) { // me traigo la informacion segun ID seleccionada.
+if  (isset($_POST['testear_pedido'])) { // me traigo la informacion segun ID seleccionada.
 
-foreach ($_POST['schedule_available'] as $schedule_available);
-foreach ($_POST['location'] as $location);
-foreach ($_POST['product'] as $product);
-foreach ($_POST['comensales'] as $add1);
-foreach ($_POST['type'] as $add3);
-foreach ($_POST['payment_mode'] as $payment_mode);
-$customer = $_POST['customer'];
-$cel_phone = $_POST['cel_phone'];
-$nro = $_POST['nro'];
-$cnee = $_POST['cnee'];
-$cnee_cel_phone = $_POST['cnee_cel_phone'];
-$inscription = $_POST['inscription'];
-$delivery_date = $_POST['delivery_date'];
-$address = $_POST['address'];
-$referencia = $_POST['referencia'];
-foreach ($_POST['add2'] as $add2);
-foreach ($_POST['add4'] as $add4);
-foreach ($_POST['add5'] as $add5);
+  foreach ($_POST['payment_mode'] as $payment_mode);
+  foreach ($_POST['schedule_available'] as $schedule_available);
+  $customer = $_POST['customer'];
+  $cel_phone = $_POST['cel_phone'];
+  $cnee = $_POST['cnee'];
+  $cnee_cel_phone = $_POST['cnee_cel_phone'];
+  $inscription = $_POST['inscription'];
+  $delivery_date = $_POST['delivery_date'];
+  $address =  isset($_POST['address']) ? $_POST['address'] : null;
+  $nro =  isset($_POST['nro']) ? $_POST['nro'] : null;
+  $referencia =  isset($_POST['referencia']) ? $_POST['referencia'] : null;
 
-// Corroboramos que no sea el mismo dia. 
+  // Corroboramos que no sea el mismo dia. 
 
-$date = date('Y-m-d');
-$alert_date ='';
+  $date = date('Y-m-d');
+  $alert_date ='';
 
 
-
-if($delivery_date == $date){
-  $alert_date = '<p style="text-align:center;">Recordá que hacemos pedidos con 24hs de anticipación.<br>No te preocupes, consultá disponibilidad <a target="_blank" href="https://api.whatsapp.com/send?phone=5492614714206&text=Tendrán%20disponibilidad%20para%20pedir%20una%20'.$product.'%20para%20'.$add1.'%20personas">acá!</a></p>';
-}  
-
-// Corroboramos que la duela no sea de mas de 4. 
-
-$ok_duela = $add3.'-'.$add1;
-$alert_duela = '';
-
-if($add3 == 'Duela'){
-  if($ok_duela != 'Duela-4'){
-
-    $alert_duela = '<p style="text-align:center;"> Atención: La duela no se puede aumentar la cantidad de Personas.<br>Debe hacerlo en pedidos diferentes<p/><p style="text-align:center;"><a target="_blank" href="https://api.whatsapp.com/send?phone=5492614714206&text=Necesito%20ayuda%20con%20mi%20pedido%20'.$product.'('.$add3.')'.'%20para%20'.$add1.'%20personas">Necesito ayuda</a></p>';
-    $summdf = '';
-
-    }else{
-      $alert_duela = '';
-    }
-}
-if($add3 == 'Duela Unida'){
-
-  if($ok_duela != 'Duela Unida-4'){
-
-  $alert_duela = '<p style="text-align:center;"> Atención: La duela no se puede aumentar la cantidad de Personas.<br>Debe hacerlo en pedidos diferentes<p/><p style="text-align:center;"><a target="_blank" href="https://api.whatsapp.com/send?phone=5492614714206&text=Necesito%20ayuda%20con%20mi%20pedido%20'.$product.'('.$add3.')'.'%20para%20'.$add1.'%20personas">Necesito ayuda</a></p>';
+  if($delivery_date == $date){
+    $alert_date = '<p style="text-align:center;">Recordá que hacemos pedidos con 24hs de anticipación.<br>No te preocupes, consultá disponibilidad <a target="_blank" href="https://api.whatsapp.com/send?phone=5492614714206&text=Tendrán%20disponibilidad%20para%20pedir%20una%20'.$product.'%20para%20'.$add1.'%20personas">acá!</a></p>';
+  }  
   
-  }else{
-    $alert_duela = '';
+  $pedId = $_POST['pedido_id'];
+  $trimmedPedId = trim($pedId);
+  $url = 'https://apisandbox.picadasmacanudas.com/api/general/' . $trimmedPedId;
+
+  $curl = curl_init();
+  curl_setopt_array($curl, array(
+      CURLOPT_URL => $url,
+      CURLOPT_RETURNTRANSFER => true,
+      CURLOPT_ENCODING => '',
+      CURLOPT_MAXREDIRS => 10,
+      CURLOPT_TIMEOUT => 0,
+      CURLOPT_FOLLOWLOCATION => true,
+      CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+      CURLOPT_CUSTOMREQUEST => 'GET',
+  ));
+
+  $response = curl_exec($curl);
+  curl_close($curl);
+
+  $responseArray = json_decode($response, true);
+
+  if (is_array($responseArray) && isset($responseArray[0]['product'])) {
+      $pedidoData = $responseArray[0];
+      $tipoPicada = $pedidoData['product'];
+      $tipoTabla = $pedidoData['add3'];
+      $comensales = $pedidoData['add1'];
+      $agregado1 = isset($pedidoData['add2']) ? $pedidoData['add2'] : "Sin Agregado";
+      $agregado2 = isset($pedidoData['add4']) ? $pedidoData['add4'] : "Sin Agregado";
+      $agregado3 = isset($pedidoData['add5']) ? $pedidoData['add5'] : "Sin Agregado";
+      $location = isset($pedidoData['location']) ? $pedidoData['location'] : "Retiro en local";
+      $precioFin = $pedidoData['in_ars'];
+      $modoEnvio = $pedidoData['type'];
+  } else {
+      echo "Error al procesar la respuesta de la APIqweqweqweqw.";
   }
 }
-// ==/ Armamos Precio final. 
-// ============== Agregados: 
-
-  $agregados = "'".$add2."','".$add4."','".$add5."'";
-  $agregadospagina = $add2.", ".$add4.",".$add5;
-
-  $precioadd2 = "";
-  $precioadd4 = "";
-  $precioadd5 = "";
-      
-  $query_precioadd2 = "SELECT SUM(in_ars) FROM `add2` WHERE `title` = '$add2'";
-  $result_precioadd2 = mysqli_query($conn, $query_precioadd2);
-
-
-  if (mysqli_num_rows($result_precioadd2) == 1) {
-    $row = mysqli_fetch_array($result_precioadd2);
-
-    $precioadd2 = $row['SUM(in_ars)'];
-  }
-
-  $query_precioadd4 = "SELECT SUM(in_ars) FROM `add2` WHERE `title` = '$add4'";
-  $result_precioadd4 = mysqli_query($conn, $query_precioadd4);
-
-  if (mysqli_num_rows($result_precioadd4) == 1) {
-    $row = mysqli_fetch_array($result_precioadd4);
-
-    $precioadd4 = $row['SUM(in_ars)'];
-  }
-
-  $query_precioadd5 = "SELECT SUM(in_ars) FROM `add2` WHERE `title` = '$add5'";
-  $result_precioadd5 = mysqli_query($conn, $query_precioadd5);
-
-  if (mysqli_num_rows($result_precioadd5) == 1) {
-    $row = mysqli_fetch_array($result_precioadd5);
-
-    $precioadd5 = $row['SUM(in_ars)'];
-  }
-
-  $precioadd = $precioadd2 + $precioadd4 + $precioadd5;
-
-
-  // Costo de los ADD.
-
-  $query_costoadd = "SELECT SUM(out_ars) FROM `add2` WHERE `title` IN ($agregados)";
-  $result_costoadd  = mysqli_query($conn, $query_costoadd);
-  
-  if (mysqli_num_rows($result_costoadd) == 1) {
-    $row = mysqli_fetch_array($result_costoadd);
-    $costoadd = $row['SUM(out_ars)'];
-  }
-}
-
-// ============= Calculamos el precio del tipo de PICADA === 
-$query_duela = "SELECT in_ars, out_ars, comentario FROM `type_picadas` WHERE title = '$add3'";
-$result_duela = mysqli_query($conn, $query_duela);
-
-if (mysqli_num_rows($result_duela) == 1) {
-  
-  $row = mysqli_fetch_array($result_duela);
-  
-  $total_duela = $row['in_ars'];
-  $costo_duela = $row['out_ars']; 
-  $comentario = $row['comentario']; 
-
-
-}
-
-// ================ Caluculo de Picada: 
-
-if($add1 == '4'){
-
-  if($product == 'Picada Fellini (Clásica)'){
-
-    $query_bas = "SELECT in_ars, out_ars FROM `picadas` WHERE `title` = 'MDF Pican 4/ Comen 2' AND `description` = 'Picada Fellini'";
-    $result_bas = mysqli_query($conn, $query_bas);
-  
-    if (mysqli_num_rows($result_bas) == 1) {
-      
-      $row = mysqli_fetch_array($result_bas);
-      
-      $in_bas = $row['in_ars'];
-      $out_bas = $row['out_ars'];
-    }
-
-    $total_picada = $in_bas;
-    $costo_picada =  $out_bas;
-
-  }elseif($product == 'Picada Picasso (Premium)'){
-
-    $query_bas = "SELECT in_ars, out_ars FROM `picadas` WHERE `title` = 'MDF Pican 4/ Comen 2' AND `description` = 'Picada Picasso'";
-    $result_bas = mysqli_query($conn, $query_bas);
-  
-    if (mysqli_num_rows($result_bas) == 1) {
-      
-      $row = mysqli_fetch_array($result_bas);
-      
-      $in_bas = $row['in_ars'];
-      $out_bas = $row['out_ars'];
-    }
-
-    $total_picada =  $in_bas;
-    $costo_picada = $out_bas;
-
-  }else{
-
-    $query_bas = "SELECT in_ars, out_ars FROM `picadas` WHERE `title` = 'MDF Pican 4/ Comen 2' AND `description` = 'Picada Oliverio'";
-    $result_bas = mysqli_query($conn, $query_bas);
-  
-    if (mysqli_num_rows($result_bas) == 1) {
-      
-      $row = mysqli_fetch_array($result_bas);
-      
-      $in_bas = $row['in_ars'];
-      $out_bas = $row['out_ars'];
-    }
-    $total_picada = $in_bas;
-    $costo_picada = $out_bas;
-  }
-}else{
-    $query_pic = "SELECT valor_por_persona, out_ars FROM `rango_picada` WHERE title = '$product'";
-    $result_pic = mysqli_query($conn, $query_pic);
-  
-    if (mysqli_num_rows($result_pic) == 1) {
-      
-      $row = mysqli_fetch_array($result_pic);
-      
-      $in_uni = $row['valor_por_persona'];
-      $out_uni = $row['out_ars'];
-
-    }
-
-  if($product == 'Picada Fellini (Clásica)'){
-
-    $query_bas = "SELECT in_ars, out_ars FROM `picadas` WHERE `title` = 'MDF Pican 4/ Comen 2' AND `description` = 'Picada Fellini'";
-    $result_bas = mysqli_query($conn, $query_bas);
-  
-    if (mysqli_num_rows($result_bas) == 1) {
-      
-      $row = mysqli_fetch_array($result_bas);
-      
-      $in_bas = $row['in_ars'];
-      $out_bas = $row['out_ars'];
-    }
-    
-    $total_picada = $in_bas + ($in_uni * ($add1-4)); 
-    $costo_picada = $out_bas + ($out_uni * ($add1-4));
-
-  }elseif($product == 'Picada Picasso (Premium)'){
-
-    $query_bas = "SELECT in_ars, out_ars FROM `picadas` WHERE `title` = 'MDF Pican 4/ Comen 2' AND `description` = 'Picada Picasso'";
-    $result_bas = mysqli_query($conn, $query_bas);
-  
-    if (mysqli_num_rows($result_bas) == 1) {
-      
-      $row = mysqli_fetch_array($result_bas);
-      
-      $in_bas = $row['in_ars'];
-      $out_bas = $row['out_ars'];
-    }
-    $total_picada = $in_bas + ($in_uni * ($add1-4)); 
-    $costo_picada = $out_bas + ($out_uni * ($add1-4));
-  }else{
-
-    $query_bas = "SELECT in_ars, out_ars FROM `picadas` WHERE `title` = 'MDF Pican 4/ Comen 2' AND `description` = 'Picada Oliverio'";
-    $result_bas = mysqli_query($conn, $query_bas);
-  
-    if (mysqli_num_rows($result_bas) == 1) {
-      
-      $row = mysqli_fetch_array($result_bas);
-      
-      $in_bas = $row['in_ars'];
-      $out_bas = $row['out_ars'];
-    }
-    $total_picada = $in_bas + ($in_uni * ($add1-4)); 
-    $costo_picada = $out_bas + ($out_uni * ($add1-4));
-  }
-}
-
-// ============= Calculamos el precio del tipo de PICADA === 
-
-$query_duela = "SELECT in_ars, out_ars, comentario FROM `type_picadas` WHERE title = '$add3'";
-$result_duela = mysqli_query($conn, $query_duela);
-
-if (mysqli_num_rows($result_duela) == 1) {
-  
-  $row = mysqli_fetch_array($result_duela);
-
-  $total_duela = $row['in_ars'];
-  $costo_duela = $row['out_ars']; 
-  $comentario = $row['comentario']; 
-}
-
-$result_km ="";
-$query_km = "SELECT px_km FROM `delivery` WHERE location = '$location'";
-$result_km = mysqli_query($conn, $query_km);
-
-if (mysqli_num_rows($result_km) == 1) {
-$row = mysqli_fetch_array($result_km);
-$total_delivery = $row['px_km'];
-}
-
-
-$pre_total = $total_picada + $precioadd + $total_duela + $total_delivery;
-$costo = $costo_picada + $costoadd + $costo_duela + $total_delivery;
-$confirmacion_cupon= $_POST['cupon'];
-//conexion  y busqueda de datos en la base de datos
-$query = "SELECT * FROM promociones";
-$result = mysqli_query($conn, $query);
-
-while($row = $result->fetch_array()) { 
-  $id = $row['id'];
-  $promocion[$id] = $row['promocion'];
-  $descuento[$id] = $row['descuento'];
-  $activo[$id] = $row['activo'];
-}
-//control del cupon ingresado y aplica el descuento
-$descuento_total=1;
-while($id>0) {
-if(isset($confirmacion_cupon)) {
-  if(isset($activo[$id])){
-  if($activo[$id]==1){
-    if(isset($promocion[$id])) {
-      if ($confirmacion_cupon == $promocion[$id]){
-          $descuento_total = (100 - $descuento[$id])/100;
-      }
-  }
-}
-}
-}
-$id--;
-}
-$total= $pre_total* $descuento_total ?>
-
+ ?>
     <div class="row">
-
         <div class="col-sm-6 mx-auto">
             <div class="alert alert-danger alert-dismissible col-sm-12 fade show"
                 style="z-index: 1031; margin-top: 35%; position:absolute;" role="alert">
                 <p style="text-align:center;"> <strong> Por favor revisá que esté correctamente el Pedido! </strong>
                 </p>
                 <?php echo $alert_date;?>
-                <?php echo $alert_duela;?>
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
         </div>
     </div>
-
     <section class="inner-page">
         <div class="container-fluid pt-5 mt-5">
             <div class="row">
@@ -404,7 +172,6 @@ $total= $pre_total* $descuento_total ?>
                 <div class="col-lg-8">
                     <section class="panel" style="padding-top: 0;">
                         <div class="card">
-
                             <div class="card-body">
                                 <br>
                                 <h3 style="color:#ffb03b; text-align:center; font-size: xx-large;">Resumen del Pedido
@@ -451,26 +218,33 @@ $total= $pre_total* $descuento_total ?>
                                 <br>
                                 <div class="col-sm-5 mx-auto" style="text-align: center;">
                                     <p><strong>Picada: </strong>
-                                        <?php echo $product . ' - '.$add3 .' para '. $add1 . ' personas';?> </p>
+                                        <?php echo $tipoPicada . ' - '.$tipoTabla .' para '. $comensales . ' personas';?>
+                                    </p>
                                 </div>
                                 <div class="col-sm-8 mx-auto" style="text-align: center;">
-                                    <p><strong>Agregados:</strong> <?php echo "(".$agregadospagina.")";?> </p>
+                                    <?php if ($agregado1 !== null): ?>
+                                    <p><strong>Agregado:</strong> <?php echo $agregado1; ?> </p>
+                                    <?php endif; ?>
+
+                                    <?php if ($agregado2 !== null): ?>
+                                    <p><strong>Agregado:</strong> <?php echo $agregado2; ?> </p>
+                                    <?php endif; ?>
+
+                                    <?php if ($agregado3 !== null): ?>
+                                    <p><strong>Agregado:</strong> <?php echo $agregado3; ?> </p>
+                                    <?php endif; ?>
                                 </div>
                             </div>
-                            <!--Muestra el total y en total con descuento-->
-                            <?php if($descuento_total!=1){?>
-                            <h5 id="total" style="text-align:center;  font-size: 2rem;">$ <del><?php echo number_format($pre_total, 2, ',', ' ') ?></del></h5>
-                            <h3 id="total" style="text-align:center; color:#ffb03b; font-size: 3rem;">$ <?php echo number_format($total, 2, ',', ' ')  ?></h3>
-                            <?php }else{?>
+
                             <h3 id="total" style="text-align:center; color:#ffb03b; font-size: 3rem;">
-                                $ <?php echo $total; ?></h3>
-                            <?php };?>
+                                $ <?php echo $precioFin; ?></h3>
+
                             <!--Muestra el total y en total con descuento-->
-                            <p style="text-align:center;color:blue; font-size:0.7rem;"><?php echo $comentario; ?></p>
+                            
                             <p style="text-align:center;color:gray; font-size:0.7rem;">a pagar por:
                                 <?php echo $payment_mode; ?></p>
-                            <form action="../forms/confirmacion.php" method="POST">
-
+                            <form action="../forms/pedido_confirmacion.php" method="POST">
+                                <input type="hidden" name="pedido_id" value="<?php echo $pedId;?>">
                                 <input type="hidden" name="customer" value="<?php echo $customer;?>">
                                 <input type="hidden" name="cel_phone" value="<?php echo $cel_phone;?>">
                                 <input type="hidden" name="cnee" value="<?php echo $cnee;?>">
@@ -479,19 +253,10 @@ $total= $pre_total* $descuento_total ?>
                                 <input type="hidden" name="delivery_date" value="<?php echo $delivery_date;?>">
                                 <input type="hidden" name="address" value="<?php echo $address;?>">
                                 <input type="hidden" name="nro" value="<?php echo $nro;?>">
-                                <input type="hidden" name="location" value="<?php echo $location;?>">
                                 <input type="hidden" name="referencia" value="<?php echo $referencia;?>">
-                                <input type="hidden" name="product" value="<?php echo $product;?>">
-                                <input type="hidden" name="add1" value="<?php echo $add1;?>">
-                                <input type="hidden" name="add2" value="<?php echo $add2 ;?>">
-                                <input type="hidden" name="add3" value="<?php echo $add3 ;?>">
-                                <input type="hidden" name="add4" value="<?php echo $add4 ;?>">
-                                <input type="hidden" name="add5" value="<?php echo $add5 ;?>">
                                 <input type="hidden" name="schedule_available"
                                     value="<?php echo $schedule_available;?>">
                                 <input type="hidden" name="payment_mode" value="<?php echo $payment_mode;?>">
-                                <input type="hidden" name="total" value="<?php echo $total;?>">
-                                <input type="hidden" name="costo" value="<?php echo $costo;?>">
                                 <div class="col-sm-4 mx-auto" style="text-align: center;"><button type="submit"
                                         name="confirmar" id="confirmar" style="padding-left: 20%;padding-right: 20%;"
                                         class="btn btn-warning">Confirmar</button></div>
