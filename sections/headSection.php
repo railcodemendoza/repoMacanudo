@@ -22,7 +22,7 @@
                                 <img style="width: 60%;" src="assets/img/MCND_Logo_2160_WHITE.png" alt="">
                                 <p class="animate__animated animate__fadeInUp"><?php echo $descrip; ?></p>
                                 <div>
-                                    <a href="control/forms/forms_envios.php" class="btn-menu animate__animated animate__fadeInUp scrollto">Arma tu Pedido</a>
+                                    <a href="control/forms/pedido.php" class="btn-menu animate__animated animate__fadeInUp scrollto">Arma tu Pedido</a>
                                     
                                 </div>
                             </div>
@@ -36,7 +36,7 @@
                                 <img style="width: 60%;" src="assets/img/MCND_Logo_2160_WHITE.png" alt="">
                                 <p class="animate__animated animate__fadeInUp"><?php echo $descrip; ?></p>
                                 <div>
-                                    <a href="control/forms/forms_envios.php" class="btn-menu animate__animated animate__fadeInUp scrollto">Arma tu Pedido</a>
+                                    <a href="control/forms/pedido.php" class="btn-menu animate__animated animate__fadeInUp scrollto">Arma tu Pedido</a>
                                     
                                 </div>
                             </div>
