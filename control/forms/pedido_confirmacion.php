@@ -19,7 +19,7 @@ if (isset($_POST['confirmar'])) {
     
     $pedId = $_POST['pedido_id'];
     $trimmedPedId = trim($pedId);
-    $url = 'http://127.0.0.1:8000/api/general/' . $trimmedPedId;
+    $url = 'https://apisandbox.picadasmacanudas.com/api/general/' . $trimmedPedId;
 
     $customer = $_POST['customer'];
     $cel_phone = $_POST['cel_phone'];
