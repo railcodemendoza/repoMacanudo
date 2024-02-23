@@ -58,7 +58,7 @@ $(document).ready(function() {
             <div class="sub-content">
                 <h2 style="font-size: 30px;"><?php echo $titulomodal[$id] ?></h2>
                 <p style="font-size: 12px; text-align: justify;" ><?php echo $descripcion[$id] ?></p>
-                <a href="control/forms/forms_retiros_especial.php?id_modal=<?php echo $id; ?>" class="subs-send" style="font-size: 12px;">Arma tu Pedido</a>
+                <a href="control/forms/pedido.php?id_modal=<?php echo $id; ?>" class="subs-send" style="font-size: 12px;">Arma tu Pedido</a>
             </div>
             <div class="line"></div>
         </div>
