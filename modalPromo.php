@@ -1,5 +1,5 @@
 <?php
-$url = 'http://127.0.0.1:8000/api/tipoPicadaEspecial';
+$url = 'https://apisandbox.picadasmacanudas.com/api/tipoPicadaEspecial';
 $curl = curl_init();
 curl_setopt_array($curl, array(
     CURLOPT_URL => $url,
