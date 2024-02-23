@@ -1,72 +1,146 @@
 <?php
-$query = "SELECT * FROM picadas_especiales";
-$result = mysqli_query($conn, $query);
+$url = 'http://127.0.0.1:8000/api/tipoPicadaEspecial';
+$curl = curl_init();
+curl_setopt_array($curl, array(
+    CURLOPT_URL => $url,
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_ENCODING => '',
+    CURLOPT_MAXREDIRS => 10,
+    CURLOPT_TIMEOUT => 0,
+    CURLOPT_FOLLOWLOCATION => true,
+    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+    CURLOPT_CUSTOMREQUEST => 'GET',
+));
 
-while ($row = $result->fetch_array()) {
-    $id = $row['id'];
-    $titulomodal[$id] = $row['titulo'];
-    $descripcion[$id] = $row['descripcion'];
-    $activo[$id] = $row['activo'];
-    $preciomodal[$id] = $row['precio'];
-    $imagen[$id] = $row['imagen'];
+$response = curl_exec($curl);
+curl_close($curl);
+
+
+$picadas = json_decode($response, true);
+
+foreach ($picadas as $picada) {
+    $id = $picada['id'];
+    $titulo = $picada['tipo'];
+    $descripcion = $picada['description'];
+    $activo = $picada['activo'];
+    $imagen = $picada['imagen'];
 }
-while ($id > 0) {
-    if (isset($activo[$id])) {
-        if ($activo[$id] == 1) {
+// Verificar si hay picadas disponibles
+$hayPicadas = !empty($picadas);
 ?>
-<script src="assets/vendor/jquery/jquery.min.js "></script>
-<script>
-$(document).ready(function() {
-
-    function showPopup() {
-        $('.pop-up').addClass('show');
-        $('.pop-up-wrap').addClass('show');
-    }
-
-    $("#close").click(function() {
-        $('.pop-up').removeClass('show');
-        $('.pop-up-wrap').removeClass('show');
-    });
-
-    $(".btn-abrir").click(showPopup);
-
-    setTimeout(showPopup, 1000);
-
-});
-</script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-<link href="assets/css/style_modal.css" rel="stylesheet">
 <style>
-.pop-up {
+.popup {
     z-index: 4500;
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
 }
 
-.pop-up-title {
-    height: 430px;
-    max-width: 350px;
-    z-index: 7000;
-    background-image: url('assets/img/picadas_especiales/<?php echo $imagen[$id]; ?>');
+.popup-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.text-background {
+
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 100%);
+    padding: 10px;
+    /* Ajusta el espaciado según tu preferencia */
+    border-radius: 10px;
+    /* Agrega bordes redondeados si lo deseas */
+    margin-bottom: 5px;
+    color: white;
+    /* Cambia el color del texto según tu preferencia */
 }
 </style>
-<div class="pop-up">
-    <div class="pop-up-wrap">
-        <div class="pop-up-title">
-        </div>
-        <div class="subcription">
-            <div class="line"></div>
-            <i class="bi bi-x-circle" id="close"></i>
-            <div class="sub-content">
-                <h2><?php echo $titulomodal[$id] ?></h2>
-                <p><?php echo $descripcion[$id] ?></p>
-                <a href="control/forms/pedido.php?id_modal=<?php echo $id; ?>" class="subs-send">Arma tu Pedido</a>
+
+<div id="popup" class="popup">
+    <div class="popup-content">
+        <span class="close" id="closePopup">&times;</span>
+        <div id="carouselExampleFade" class="carousel slide carousel-fade">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="assets/img/picadas_especiales/box-macanuda.jpeg" class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        <div class="text-background">
+                            <h1>Dia del padre</h1>
+                            <p>Some representative placeholder content for the first slide.</p>
+                        </div>
+                        <a href="control/forms/pedido.php?id_modal=<?php echo $id; ?>" class="btn btn-warning">Arma tu
+                            Pedido</a>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="assets/img/tipo/duela.jpg" class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        <div class="text-background">
+                            <h1>Dia de la madre</h1>
+                            <p>Some representative placeholder content for the second slide.</p>
+                        </div>
+                        <a href="control/forms/pedido.php?id_modal=<?php echo $id; ?>" class="btn btn-warning">Arma tu
+                            Pedido</a>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="assets/img/picadas_especiales/box-macanuda.jpeg" class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        <div class="text-background">
+                            <h1>Dia de los enamorados</h1>
+                            <p>Some representative placeholder content for the third slide.</p>
+                        </div>
+                        <a href="control/forms/pedido.php?id_modal=<?php echo $id; ?>" class="btn btn-warning">Arma tu
+                            Pedido</a>
+                    </div>
+                </div>
             </div>
-            <div class="line"></div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
         </div>
     </div>
 </div>
-<?php
-        }
-    }
-    $id--;
-}
-?>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Obtener el botón y el modal
+    
+    var popup = document.getElementById('popup');
+    var closeButton = document.getElementById('closePopup');
+
+    <?php if ($hayPicadas): ?>
+        popup.style.display = 'block';
+    <?php endif; ?>
+
+
+    
+
+    closeButton.addEventListener('click', function() {
+        popup.style.display = 'none';
+    });
+});
+</script>

@@ -16,7 +16,7 @@
                         $descrip = $row['descripcion'];
                         if ($id == "1") {
                         ?>
-                    <div class="carousel-item active" style="background: url(assets/img/slide/<?php echo $img; ?>);">
+                    <div class="carousel-item active" style="background: url(assets/img/slide/<?php echo $img; ?>); background-size: 100% 100%;">
                         <div class="carousel-container">
                             <div class="carousel-content">
                                 <img style="width: 60%;" src="assets/img/MCND_Logo_2160_WHITE.png" alt="">
@@ -30,14 +30,13 @@
                     </div>
                     <?php }else{ ?>
                     <!-- Slide 2 -->
-                    <div class="carousel-item" style="background: url(assets/img/slide/<?php echo $img; ?>);">
+                    <div class="carousel-item" style="background: url(assets/img/slide/<?php echo $img; ?>); background-size: 100% 100%;">
                         <div class="carousel-container">
                             <div class="carousel-content">
                                 <img style="width: 60%;" src="assets/img/MCND_Logo_2160_WHITE.png" alt="">
                                 <p class="animate__animated animate__fadeInUp"><?php echo $descrip; ?></p>
                                 <div>
                                     <a href="control/forms/pedido.php" class="btn-menu animate__animated animate__fadeInUp scrollto">Arma tu Pedido</a>
-                                    
                                 </div>
                             </div>
                         </div>
