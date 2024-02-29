@@ -1,4 +1,5 @@
 <?php include('../db.php'); ?>
+<?php include '../../variables.php';?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -132,7 +133,7 @@
                         
                                 // Configurar la solicitud cURL
                                 curl_setopt_array($curl, array(
-                                    CURLOPT_URL => 'https://apisandbox.picadasmacanudas.com/api/general',
+                                    CURLOPT_URL => $urlApi.'api/general',
                                     CURLOPT_RETURNTRANSFER => true,
                                     CURLOPT_ENCODING => '',
                                     CURLOPT_MAXREDIRS => 10,
@@ -182,7 +183,7 @@
                                 method: "GET",
                                 redirect: "follow"
                             };
-                            fetch("https://apisandbox.picadasmacanudas.com/api/codigoPromocion", requestOptions)
+                            fetch("<?php echo $urlApi;?>api/codigoPromocion", requestOptions)
                                 .then(response => response.json())
                                 .then(codigosPromocion => {
                                     // Aquí tienes la lista de códigos de la API
