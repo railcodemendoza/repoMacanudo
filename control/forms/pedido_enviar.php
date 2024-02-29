@@ -1,5 +1,5 @@
 <?php include('../db.php'); ?>
-
+<?php include '../../variables.php';?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -117,7 +117,7 @@ if  (isset($_POST['testear_pedido'])) { // me traigo la informacion segun ID sel
   
   $pedId = $_POST['pedido_id'];
   $trimmedPedId = trim($pedId);
-  $url = 'https://apisandbox.picadasmacanudas.com/api/general/' . $trimmedPedId;
+  $url = $urlApi.'api/general/' . $trimmedPedId;
 
   $curl = curl_init();
   curl_setopt_array($curl, array(

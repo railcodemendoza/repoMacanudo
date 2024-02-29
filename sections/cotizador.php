@@ -1,3 +1,4 @@
+<?php include("variables.php"); ?>
 <section id="simulador" class="specials">
 
     <div class="container">
@@ -100,7 +101,7 @@
                             redirect: "follow"
                         };
 
-                        fetch("https://apisandbox.picadasmacanudas.com/api/tipoPicadaActivas", requestOptions)
+                        fetch("<?php echo $urlApi;?>api/tipoPicadaActivas", requestOptions)
                             .then(response => response.json())
                             .then(result => {
                                 // Llenar el select de tipo de picada
@@ -155,7 +156,7 @@
 
                         // Función para cargar los datos de los agregados y actualizar precios
                         function cargarAgregadosYActualizarPrecios() {
-                            fetch("https://apisandbox.picadasmacanudas.com/api/agregado", requestOptions)
+                            fetch("<?php echo $urlApi;?>api/agregado", requestOptions)
                                 .then(response => response.json())
                                 .then(result => {
                                     result.forEach(agregado => {
@@ -186,7 +187,7 @@
                         }
                         // Función para cargar los datos de los agregados y actualizar precios
                         function cargardeliveryYActualizarPrecios() {
-                            fetch("https://apisandbox.picadasmacanudas.com/api/delivery", requestOptions)
+                            fetch("<?php echo $urlApi;?>api/delivery", requestOptions)
                                 .then(response => response.json())
                                 .then(result => {
                                     result.forEach(delivery => {
