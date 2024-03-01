@@ -256,6 +256,16 @@
 
                                                 // Manejar cambios en el select de tipo de tabla
                                                 deliverySelect.addEventListener('change', actualizarPrecios)
+                                                // Obtener el ID de tipopicada de la URL
+                                                const urlParams = new URLSearchParams(window.location.search);
+                                                const tipopicadaIdFromURL = urlParams.get('id_modal');
+
+                                                // Seleccionar automáticamente la opción en el campo select
+                                                if (tipopicadaIdFromURL) {
+                                                    tipoPicadaSelect.value = tipopicadaIdFromURL;
+                                                    // Disparar el evento 'change' para activar la lógica asociada
+                                                    tipoPicadaSelect.dispatchEvent(new Event('change'));
+                                                }
 
                                                 function cargarTipoTablaYComensales(tipoPicada) {
                                                     tipoTablaSelect.innerHTML = "";
@@ -331,62 +341,61 @@
                                         }
 
                                         function actualizarPrecios() {
-                                                    const precioTipoPicada = parseFloat(tipoPicadaSelect
-                                                        .options[tipoPicadaSelect.selectedIndex].dataset.precio) || 0;
-                                                    const precioTipoTabla = parseFloat(tipoTablaSelect
-                                                        .options[tipoTablaSelect.selectedIndex].dataset.precio) || 0;
-                                                    const cantidadComensales = parseInt(
-                                                        cantidadComensalesSelect.value) || 0;
-                                                    const valorPorPersona = parseFloat(tipoPicadaSelect
-                                                    .options[tipoPicadaSelect.selectedIndex].dataset.valorPorPersona)|| 0;
-                                                    const delivery = parseFloat(deliverySelect
-                                                    .options[deliverySelect.selectedIndex].dataset.precio)|| 0;
+                                            const precioTipoPicada = parseFloat(tipoPicadaSelect
+                                                .options[tipoPicadaSelect.selectedIndex].dataset.precio) || 0;
+                                            const precioTipoTabla = parseFloat(tipoTablaSelect
+                                                .options[tipoTablaSelect.selectedIndex].dataset.precio) || 0;
+                                            const cantidadComensales = parseInt(
+                                                cantidadComensalesSelect.value) || 0;
+                                            const valorPorPersona = parseFloat(tipoPicadaSelect
+                                            .options[tipoPicadaSelect.selectedIndex].dataset.valorPorPersona)|| 0;
+                                            const delivery = parseFloat(deliverySelect
+                                            .options[deliverySelect.selectedIndex].dataset.precio)|| 0;
 
-                                                    const precioTotalTipoPicada = precioTipoPicada;
-                                                    const precioTotalTipoTabla = precioTipoTabla;
-                                                    const precioTotalComensales = (cantidadComensales - 4) *
-                                                    valorPorPersona;
+                                            const precioTotalTipoPicada = precioTipoPicada;
+                                            const precioTotalTipoTabla = precioTipoTabla;
+                                            const precioTotalComensales = (cantidadComensales - 4) *
+                                            valorPorPersona;
 
-                                                    precioTipoPicadaElement.textContent =
-                                                        `Precio Tipo Picada: $${precioTotalTipoPicada.toFixed(2)}`;
-                                                    precioTipoTablaElement.textContent =
-                                                        `Precio Tipo Tabla: $${precioTotalTipoTabla.toFixed(2)}`;
-                                                    precioComensalesElement.textContent =
-                                                        `Precio por Comensales: $${precioTotalComensales.toFixed(2)}`;
+                                            precioTipoPicadaElement.textContent =
+                                                `Precio Tipo Picada: $${precioTotalTipoPicada.toFixed(2)}`;
+                                            precioTipoTablaElement.textContent =
+                                                `Precio Tipo Tabla: $${precioTotalTipoTabla.toFixed(2)}`;
+                                            precioComensalesElement.textContent =
+                                                `Precio por Comensales: $${precioTotalComensales.toFixed(2)}`;
 
-                                                    // Obtener los precios de los agregados seleccionados
-                                                    const precioPrimerAgregado = parseFloat(
-                                                        primerAgregadoSelect.options[
-                                                            primerAgregadoSelect.selectedIndex].dataset
-                                                        .precio) || 0;
-                                                    const precioSegundoAgregado = parseFloat(
-                                                        segundoAgregadoSelect.options[
-                                                            segundoAgregadoSelect.selectedIndex].dataset
-                                                        .precio) || 0;
-                                                    const precioTercerAgregado = parseFloat(
-                                                        tercerAgregadoSelect.options[
-                                                            tercerAgregadoSelect.selectedIndex].dataset
-                                                        .precio) || 0;
+                                            // Obtener los precios de los agregados seleccionados
+                                            const precioPrimerAgregado = parseFloat(
+                                                primerAgregadoSelect.options[
+                                                    primerAgregadoSelect.selectedIndex].dataset
+                                                .precio) || 0;
+                                            const precioSegundoAgregado = parseFloat(
+                                                segundoAgregadoSelect.options[
+                                                    segundoAgregadoSelect.selectedIndex].dataset
+                                                .precio) || 0;
+                                            const precioTercerAgregado = parseFloat(
+                                                tercerAgregadoSelect.options[
+                                                    tercerAgregadoSelect.selectedIndex].dataset
+                                                .precio) || 0;
 
-                                                    // Mostrar los precios individuales de los agregados
-                                                    precioPrimerAgregadoElement.textContent =
-                                                        `Precio Primer Agregado: $${precioPrimerAgregado.toFixed(2)}`;
-                                                    precioSegundoAgregadoElement.textContent =
-                                                        `Precio Segundo Agregado: $${precioSegundoAgregado.toFixed(2)}`;
-                                                    precioTercerAgregadoElement.textContent =
-                                                        `Precio Tercer Agregado: $${precioTercerAgregado.toFixed(2)}`;
-                                                    precioDeliveryElement.textContent =
-                                                        `Precio Delivery: $${delivery.toFixed(2)}`;
+                                            // Mostrar los precios individuales de los agregados
+                                            precioPrimerAgregadoElement.textContent =
+                                                `Precio Primer Agregado: $${precioPrimerAgregado.toFixed(2)}`;
+                                            precioSegundoAgregadoElement.textContent =
+                                                `Precio Segundo Agregado: $${precioSegundoAgregado.toFixed(2)}`;
+                                            precioTercerAgregadoElement.textContent =
+                                                `Precio Tercer Agregado: $${precioTercerAgregado.toFixed(2)}`;
+                                            precioDeliveryElement.textContent =
+                                                `Precio Delivery: $${delivery.toFixed(2)}`;
 
-                                                    // Calcular y mostrar el precio total con los agregados
-                                                    const precioTotalConAgregados =
-                                                    precioTotalTipoPicada + precioTotalTipoTabla + precioTotalComensales + 
-                                                    precioPrimerAgregado + precioSegundoAgregado + precioTercerAgregado+ delivery;
-                                                    precioTotalElement.textContent =
-                                                        `Precio Total: $${precioTotalConAgregados.toFixed(2)}`;
-                                                        precioFinalElement.value = precioTotalConAgregados;
-                                                }
-
+                                            // Calcular y mostrar el precio total con los agregados
+                                            const precioTotalConAgregados =
+                                            precioTotalTipoPicada + precioTotalTipoTabla + precioTotalComensales + 
+                                            precioPrimerAgregado + precioSegundoAgregado + precioTercerAgregado+ delivery;
+                                            precioTotalElement.textContent =
+                                                `Precio Total: $${precioTotalConAgregados.toFixed(2)}`;
+                                                precioFinalElement.value = precioTotalConAgregados;
+                                        }
                                         cargarAgregadosYActualizarPrecios();
                                         cargardeliveryYActualizarPrecios();
                                     });
@@ -403,8 +412,6 @@
                     </section>
                 </div>
             </div>
-
-
         </div>
     </section>
 
