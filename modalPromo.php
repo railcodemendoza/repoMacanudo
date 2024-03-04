@@ -23,6 +23,7 @@ $picadas = json_decode($response, true);
 $hayPicadas = !empty($picadas);
 ?>
 
+
 <style>
     .popup {
         z-index: 4500;
@@ -40,10 +41,10 @@ $hayPicadas = !empty($picadas);
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        background: white;
         padding: 20px;
         border-radius: 5px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        max-width: 100%;
     }
 
     .close {
@@ -61,11 +62,25 @@ $hayPicadas = !empty($picadas);
         margin-bottom: 5px;
         color: white;
     }
+
+    /* Estilos para hacer la imagen responsive */
+    .carousel-item img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    @media (max-width: 768px) {
+        .popup-content {
+            height: 10rem;
+            width: 90%;
+        }
+    }
 </style>
 
-<div id="popup" class="popup">
+
+<div id="popup" class="popup" style="display: none;">
     <div class="popup-content">
-        <span class="close" id="closePopup">&times;</span>
+        <span class="close" id="closePopup" style="color: red;"><strong>X</strong></span>
         <div id="carouselExampleFade" class="carousel slide carousel-fade">
             <div class="carousel-inner">
                 <?php foreach ($picadas as $index => $picada): ?>
