@@ -5,7 +5,6 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-180172331-1"></script>
     <script>
     window.dataLayer = window.dataLayer || [];
-
     function gtag() {
         dataLayer.push(arguments);
     }
@@ -29,7 +28,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Piazzolla:ital,wght@0,300;0,800;0,900;1,500&display=swap"
+        <link href="https://fonts.googleapis.com/css2?family=Piazzolla:ital,wght@0,300;0,800;0,900;1,500&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
     <style>
@@ -49,8 +48,7 @@
     <link href="assets/css/style.css" rel="stylesheet">
     
 </head>
-
-<body>
+<body >
     <!-- ======= Top Bar ======= -->
     <section id="topbar" class="d-none d-lg-flex align-items-center fixed-top topbar-transparent">
         <div class="container text-right">
@@ -63,7 +61,6 @@
         <a href="index.php"><img style="width: 25%; margin-left:25%;" src="assets/img/MCND_Logo_1080_WHITE.png"
                 alt="picadas mendoza"></a>
         <div class="container d-flex align-items-center">
-
             <div class="logo mr-auto">
                 <h1 class="text-light"><a href="index.php"></a></h1>
                 <!-- Uncomment below if you prefer to use an image logo -->
@@ -81,7 +78,6 @@
             </nav><!-- .nav-menu -->
         </div>
     </header><!-- End Header -->
-
     <?php
         $conn = mysqli_connect(
             '193.203.175.53', //193.203.175.53
