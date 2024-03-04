@@ -20,5 +20,6 @@ if (!$conn2) {
   while ($rowv = mysqli_fetch_assoc($rv)) {
   
   $urlApi = $rowv['url_api'];
+  //$urlApi = 'http://127.0.0.1:8000';
 
 }

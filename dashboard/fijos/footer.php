@@ -30,14 +30,6 @@
     <script src="../assets/js/init/datatables-init.js"></script>
     <script src="../assets/js/main.js"></script>
 
-    <script type="text/javascript">
-        $(document).ready(function() {
-          $('#bootstrap-data-table').DataTable();
-          
-        
-        }); 
-      
-    </script>
     
 </body>
 </html>
