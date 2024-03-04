@@ -19,7 +19,7 @@ if (isset($_POST['confirmar'])) {
     
     $pedId = $_POST['pedido_id'];
     $trimmedPedId = trim($pedId);
-    $url = $urlApi.'api/general/' . $trimmedPedId;
+    $url = $urlApi.'/api/general/' . $trimmedPedId;
 
     $customer = $_POST['customer'];
     $cel_phone = $_POST['cel_phone'];

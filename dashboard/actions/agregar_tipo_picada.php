@@ -1,37 +1,69 @@
 <?php include('../db.php'); ?>
-
+<?php include ("../../variables.php");?>
 
 <?php 
 
-
-
 if(isset($_POST['agregar'])) {
 
-    // traemos todos los datos. 
     
-    $title = $_POST['title'];
+    $tipo = $_POST['tipo'];
+    $description = $_POST['description'];
+    $activo = $_POST['activo']?? null;
+    $maximo_personas = $_POST['maximo_personas'];
     $in_ars = $_POST['in_ars'];
     $out_ars = $_POST['out_ars'];
     $valor_por_persona = $_POST['valor_por_persona'];
-
-
-    $query = "INSERT INTO `rango_picada`(`title`,`in_ars`,`out_ars`,`valor_por_persona`) VALUES ('$title','$in_ars','$out_ars','$valor_por_persona')";
-    $result = mysqli_query($conn, $query);
+    $costo_por_persona = $_POST['costo_por_persona'];
+    $picada_especial = $_POST['picada_especial'] ?? null;
+    $title_especial = $_POST['title_especial'] ?? null;
+    $comentario_especial = $_POST['comentario_especial'] ?? null;
+    $tipo_tabla_ids = json_encode(array_map('intval', $_POST['tipo_tabla_ids']));
+    $imagen = $_FILES['imagen']['tmp_name'];
     
-    if(!$result) {
-        echo "<script>
-                alert('Ups, no se agregó Tipo de Picada!!');
-                location.href='../views/tipos_picadas.php';
-                </script>"; 
+    $curl = curl_init();
 
+    // Configurar la solicitud cURL
+    curl_setopt_array($curl, array(
+        CURLOPT_URL => $urlApi.'/api/tipoPicada',
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => '',
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 0,
+        CURLOPT_FOLLOWLOCATION => true,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => 'POST',
+        CURLOPT_POSTFIELDS => array(
+            'tipo' => $tipo,
+            'description' => $description,
+            'activo' => $activo,
+            'maximo_personas' => $maximo_personas,
+            'in_ars' => $in_ars,
+            'out_ars' => $out_ars,
+            'valor_por_persona' => $valor_por_persona,
+            'costo_por_persona' => $costo_por_persona,
+            'picada_especial' => $picada_especial,
+            'title_especial' => $title_especial,
+            'comentario_especial' => $comentario_especial,
+            'tipo_tabla_ids' => $tipo_tabla_ids,
+            'imagen' => $imagen ? new CURLFile($imagen) : null,
+        ),
+    ));
+    $response = curl_exec($curl);
+    //$responseArray = json_decode($response, true);
+    //echo $responseArray['message'];
+    if (curl_errno($curl)) {
+        echo 'Error cURL: ' . curl_error($curl);
+    } else {
+        // No hubo errores en la solicitud cURL
+        $responseArray = json_decode($response, true);
 
-    }else{
-       
-        echo "<script>
-                alert('Se agregó tipo de picada correctamente');
-                location.href='../views/tipos_picadas.php';
-                </script>"; 
-
-        
+        if (isset($responseArray['message'])) {
+            echo "<script>
+            alert('{$responseArray['message']}');
+            location.href='../views/tipos_picadas.php';
+            </script>";
+        } 
     }
+
+    curl_close($curl);
 }
