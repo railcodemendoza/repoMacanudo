@@ -1,4 +1,4 @@
-
+1000px
 <?php include ("variables.php");?>
 <?php
 $url = $urlApi.'/api/tipoPicadaEspecial';
@@ -68,10 +68,14 @@ $hayPicadas = !empty($picadas);
         height: auto;
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 1000px) {
         .popup-content {
-            height: 10rem;
-            width: 90%;
+            max-height: 500px;
+            width: 500px;
+        }
+        #descripcionmodal {
+            max-height: 500px;
+            width: 500px;
         }
     }
 </style>
@@ -85,7 +89,7 @@ $hayPicadas = !empty($picadas);
                 <?php foreach ($picadas as $index => $picada): ?>
                     <div class="carousel-item <?php echo ($index == 0) ? 'active' : ''; ?>">
                         <img src="<?php echo $urlApi;?>/storage/picadas/<?php echo $picada['imagen']; ?>" class="d-block w-100" alt="...">
-                        <div class="carousel-caption d-none d-md-block">
+                        <div class="carousel-caption d-none d-md-block" id="descripcionmodal">
                             <div class="text-background">
                                 <h1><?php echo $picada['tipo']; ?></h1>
                                 <p><?php echo $picada['description']; ?></p>
