@@ -100,6 +100,7 @@
                                                                         </ul>
                                                                     </div>
                                                                 </div>
+                                                                <br>
                                                                 <div class="row">
                                                                     <div class="col-sm-2"></div>
                                                                     <div class="col-sm-8">
@@ -176,7 +177,6 @@
                                                                     <div class="col-sm-8">
                                                                         <h4 style="text-align:center;"> <strong> Imagen:
                                                                             </strong></h4>
-                                                                        <!-- Aquí puedes agregar el código para mostrar la imagen -->
                                                                         <img src="<?php echo $urlApi;?>/storage/picadas/${row.imagen}" alt="Imagen de la picada" style="max-width: 100%;">
                                                                     </div>
                                                                 </div>

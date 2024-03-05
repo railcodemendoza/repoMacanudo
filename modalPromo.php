@@ -91,8 +91,8 @@ $hayPicadas = !empty($picadas);
                         <img src="<?php echo $urlApi;?>/storage/picadas/<?php echo $picada['imagen']; ?>" class="d-block w-100" alt="...">
                         <div class="carousel-caption d-none d-md-block" id="descripcionmodal">
                             <div class="text-background">
-                                <h1><?php echo $picada['tipo']; ?></h1>
-                                <p><?php echo $picada['description']; ?></p>
+                                <h1><?php echo $picada['title_especial']; ?></h1>
+                                <p><?php echo $picada['comentario_especial']; ?></p>
                             </div>
                             <a href="control/forms/pedido.php?id_modal=<?php echo $picada['id']; ?>" class="btn btn-warning">Arma tu Pedido</a>
                         </div>
