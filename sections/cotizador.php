@@ -11,8 +11,7 @@
                 <form action="control/forms/pedido_datos_personales.php" id="form_simulador" class="form-horizontal "
                     method="POST">
                     <!-- select tablas -->
-                    <p id="precioTotal">Precio Total: $0.00</p>
-                    <input type="hidden" id="preciofinal" name="preciofinal" value="">
+                    
 
                     <label style="font-size: smaller; font-weight: 600;" class="control-label">Selecciona el tipo de
                         picada:</label>
@@ -70,6 +69,9 @@
                         <option value="0">Retirar por local</option>
                     </select>
                     <p id="precioDelivery"></p>
+
+                    <p id="precioTotal" >Precio Total: $0.00</p>
+                    <input type="hidden" id="preciofinal" name="preciofinal" value="">
 
                     <script>
                     document.addEventListener("DOMContentLoaded", function() {
@@ -266,9 +268,9 @@
                     </script>
 
                     <br>
-                    <div class="col-sm-4 mx-auto" style="text-align: center;">
+                    <div class="col-sm-4 mx-auto" style="text-align: center;"><span></span>
                         <button type="submit" name="enviar_pedido" id="enviar_pedido"
-                            style="padding-left: 20%;padding-right: 20%;" class="btn btn-warning">Pedir</button>
+                        style="padding-left: 20%;padding-right: 20%; color:black; font-weight: 500;" class="btn btn-outline-warning">Pedir</button>
                     </div>
                 </form>
             </div>

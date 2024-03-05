@@ -1,4 +1,4 @@
-
+1000px
 <?php include ("variables.php");?>
 <?php
 $url = $urlApi.'/api/tipoPicadaEspecial';
@@ -22,6 +22,7 @@ $picadas = json_decode($response, true);
 $hayPicadas = !empty($picadas);
 ?>
 
+
 <style>
     .popup {
         z-index: 4500;
@@ -39,10 +40,10 @@ $hayPicadas = !empty($picadas);
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        background: white;
         padding: 20px;
         border-radius: 5px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        max-width: 100%;
     }
 
     .close {
@@ -60,17 +61,35 @@ $hayPicadas = !empty($picadas);
         margin-bottom: 5px;
         color: white;
     }
+
+    /* Estilos para hacer la imagen responsive */
+    .carousel-item img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    @media (max-width: 1000px) {
+        .popup-content {
+            max-height: 500px;
+            width: 500px;
+        }
+        #descripcionmodal {
+            max-height: 500px;
+            width: 500px;
+        }
+    }
 </style>
 
-<div id="popup" class="popup">
+
+<div id="popup" class="popup" style="display: none;">
     <div class="popup-content">
-        <span class="close" id="closePopup">&times;</span>
+        <span class="close" id="closePopup" style="color: red;"><strong>X</strong></span>
         <div id="carouselExampleFade" class="carousel slide carousel-fade">
             <div class="carousel-inner">
                 <?php foreach ($picadas as $index => $picada): ?>
                     <div class="carousel-item <?php echo ($index == 0) ? 'active' : ''; ?>">
                         <img src="<?php echo $urlApi;?>/storage/picadas/<?php echo $picada['imagen']; ?>" class="d-block w-100" alt="...">
-                        <div class="carousel-caption d-none d-md-block">
+                        <div class="carousel-caption d-none d-md-block" id="descripcionmodal">
                             <div class="text-background">
                                 <h1><?php echo $picada['tipo']; ?></h1>
                                 <p><?php echo $picada['description']; ?></p>
