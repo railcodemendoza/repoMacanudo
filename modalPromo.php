@@ -1,4 +1,3 @@
-1000px
 <?php include ("variables.php");?>
 <?php
 $url = $urlApi.'/api/tipoPicadaEspecial';
@@ -37,14 +36,26 @@ $hayPicadas = !empty($picadas);
 
     .popup-content {
         position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        padding: 20px;
-        border-radius: 5px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-        max-width: 100%;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
+
+    .popup-text {
+    position: absolute;
+    top: 50%;
+    text-align: center;
+    color: white;
+    z-index: 2; 
+    width: 100%; 
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+
 
     .close {
         position: absolute;
@@ -52,44 +63,31 @@ $hayPicadas = !empty($picadas);
         right: 10px;
         font-size: 20px;
         cursor: pointer;
-    }
-
-    .text-background {
-        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 100%);
-        padding: 10px;
-        border-radius: 10px;
-        margin-bottom: 5px;
         color: white;
     }
 
-    /* Estilos para hacer la imagen responsive */
     .carousel-item img {
         max-width: 100%;
         height: auto;
     }
 
-    @media (max-width: 1000px) {
-        .popup-content {
-            max-height: 500px;
-            width: 500px;
-        }
-        #descripcionmodal {
-            max-height: 500px;
-            width: 500px;
+    @media (max-width: 768px) {
+        .popup-text {
+            position: static;
+            margin-top: 20px;
         }
     }
 </style>
 
-
 <div id="popup" class="popup" style="display: none;">
     <div class="popup-content">
-        <span class="close" id="closePopup" style="color: red;"><strong>X</strong></span>
+        <span class="close" id="closePopup"><strong>X</strong></span>
         <div id="carouselExampleFade" class="carousel slide carousel-fade">
             <div class="carousel-inner">
                 <?php foreach ($picadas as $index => $picada): ?>
                     <div class="carousel-item <?php echo ($index == 0) ? 'active' : ''; ?>">
                         <img src="<?php echo $urlApi;?>/storage/picadas/<?php echo $picada['imagen']; ?>" class="d-block w-100" alt="...">
-                        <div class="carousel-caption d-none d-md-block" id="descripcionmodal">
+                        <div class="popup-text">
                             <div class="text-background">
                                 <h1><?php echo $picada['title_especial']; ?></h1>
                                 <p><?php echo $picada['comentario_especial']; ?></p>
@@ -110,6 +108,7 @@ $hayPicadas = !empty($picadas);
         </div>
     </div>
 </div>
+
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
