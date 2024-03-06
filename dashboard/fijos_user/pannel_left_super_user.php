@@ -46,7 +46,7 @@
                         <ul class="sub-menu children dropdown-menu">
                             <li><i class="fa fa-user"></i><a href="../views/tipos_picadas.php">Picadas</a></li>
                             <li><i class="fa fa-table"></i><a href="../views/tabla_picadas.php">Tablas</a></li>
-                            <li><i class="fa fa-bars"></i><a href="../webpage_control/agregados.php">Agregados</a></li>
+                            <li><i class="fa fa-bars"></i><a href="../views/agregados.php">Agregados</a></li>
                             <!--<li><i class="fa fa-beer"></i><a href="../views/tabla_localidades.php">Agregados</a></li>-->
                         </ul>
                     </li>
