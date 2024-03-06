@@ -11,7 +11,7 @@ if(isset($_GET['id'])) {
 
   // Configurar la solicitud cURL
   curl_setopt_array($curl, array(
-      CURLOPT_URL => $urlApi.'/api/delivery/'.$id,
+      CURLOPT_URL => $urlApi.'/api/deliveryHora/'.$id,
       CURLOPT_RETURNTRANSFER => true,
       CURLOPT_ENCODING => '',
       CURLOPT_MAXREDIRS => 10,
@@ -33,7 +33,7 @@ if(isset($_GET['id'])) {
       if (isset($responseArray['message'])) {
           echo "<script>
           alert('{$responseArray['message']}');
-          location.href='../views/tabla_localidades.php';
+          location.href='../views/tabla_horarios.php';
           </script>";
       } 
   }
