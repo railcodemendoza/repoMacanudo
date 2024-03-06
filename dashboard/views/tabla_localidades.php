@@ -24,7 +24,6 @@
                 <thead style="text-align: center;">
                     <tr>
                         <th>Localización</th>
-                        <th>km</th>
                         <th>Precio Km</th>
                         <th>Opciones</th>
                     </tr>
@@ -55,7 +54,6 @@
                         const newRow = `
                                 <tr>
                                     <td>${row.location}</td>
-                                    <td>${row.km_to_zero}</td>
                                     <td>${row.px_km}</td>
                                     <td>
                                         <div class="btn-group">
@@ -85,7 +83,7 @@
                                                                     <div class="col-sm-2"></div>
                                                                     <div class="col-sm-8">
                                                                         <h4 style="text-align:center;"> <strong> Precio:
-                                                                            </strong> <br>${row.px_km}</h4>
+                                                                            </strong> <br>$${row.px_km}</h4>
                                                                     </div>
                                                                 </div>
                                                                 <br>
@@ -176,16 +174,25 @@
                 .catch(error => console.error(error));
             </script>
         </div>
-        <form action="../report/report_localidades.php" method="POST">
-            <div class="row" style="text-align: center;">
-                <div class="col-sm-4 mx-auto">
-                    <button type="submit" id="export_data" name="export_data" value="Export to excel"
-                        class="btn btn-primary">
-                        <i class="fa fa-download"></i> Listado</button>
-        </form>
-        <a class="btn btn-success" href="#" type="button" data-toggle="modal" data-target="#agregar_localidad"><i
-                class="fa fa-hand-o-right"></i> Localidad</a>
-
+        <div class="row" style="text-align: center;">
+            <div class="col-sm-1 mx-auto"></div>
+            <div class="col-sm-3 mx-auto">
+                <form action="../report/report_localidades.php" method="POST">
+                    <button type="submit" id="export_data" name="export_data" value="Export to excel" class="btn btn-primary">
+                            <i class="fa fa-download"></i> Listado</button>
+                </form>
+            </div>
+            <div class="col-sm-4 mx-auto">
+                <a class="btn btn-success" href="#" type="button" data-toggle="modal" data-target="#agregar_localidad"><i
+                    class="fa fa-hand-o-right"></i> Localidad</a>
+            </div>
+            <div class="col-sm-3 mx-auto">
+                <a class="btn btn-warning" href="#" type="button" data-toggle="modal" data-target="#aumentar_precio_km"><i
+                class="fa fa-hand-o-right"></i> %Precio Km</a>
+            </div>
+            <div class="col-sm-1 mx-auto"></div>
+        </div>
+        
 
         <div class="modal fade" id="agregar_localidad" tabindex="-1" role="dialog" aria-labelledby="scrollmodalLabel"
             aria-hidden="true">
@@ -246,6 +253,52 @@
         </div>
     </div>
     <!--Final Modal View CNTR-->
+
+    <!--Modal %preciokm-->
+    <div class="modal fade" id="aumentar_precio_km" tabindex="-1" role="dialog" aria-labelledby="scrollmodalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 style="text-align:center;" class="modal-title" id="scrollmodalLabel">Aumento porcentual del precio Km</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="card">
+                            <div class="card-body">
+                                <form action="../actions/porcentaje_km.php" method="POST">
+                                    <div class="row">
+                                        <div class="col-sm-5 mx-auto">
+                                            <div class="form-group">
+                                                <label for="" class="form-control-label">Porcentaje:</label>
+                                                <div class="input-group">
+                                                    <div class="input-group-addon">
+                                                        <i class="fa fa-bars"></i>
+                                                    </div>
+                                                    <input type="number" name="porcentaje" class="form-control"
+                                                        placeholder="10" required>
+                                                </div>
+                                                <br>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-4 mx-auto" style="text-align: center;">
+                                            <button type="submit" name="ajustar" id="ajustar"
+                                                class="btn btn-primary">Ajustar</button>
+                                        </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Final Modal %preciokm-->
+
+
+
+
 </div>
 </div>
 <br>
