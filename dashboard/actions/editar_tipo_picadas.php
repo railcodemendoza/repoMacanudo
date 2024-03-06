@@ -8,7 +8,7 @@ if(isset($_POST['editar'])) {
 
     $tipo = $_POST['tipo'];
     $description = $_POST['description'];
-    $activo = $_POST['activo']?? null;
+    $activo = $_POST['activo']?? 0;
     $maximo_personas = $_POST['maximo_personas'];
     $in_ars = $_POST['in_ars'];
     $out_ars = $_POST['out_ars'];

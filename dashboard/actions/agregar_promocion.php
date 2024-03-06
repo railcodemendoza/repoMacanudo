@@ -1,36 +1,53 @@
 <?php include('../db.php'); ?>
-
+<?php include ("../../variables.php");?>
 
 <?php 
 
-$id = $_GET['id'];
 
 if(isset($_POST['agregar'])) {
 
     // traemos todos los datos. 
     
-    $promocion = $_POST['promocion'];
+    $codigo = $_POST['codigo'];
     $descuento = $_POST['descuento']; 
-    $activo = $_POST['activo'];
+    $activo = $_POST['activo']?? 0;
 
 
-    $query = "INSERT INTO `promociones`(`promocion`,`descuento`,`activo`) VALUES ('$promocion','$descuento','$activo')";
-    $result = mysqli_query($conn, $query);
-    
-    if(!$result) {
-        echo "<script>
-                alert('Ups, no se agregó la Promoción!!');
-                location.href='../views/tabla_promociones.php';
-                </script>"; 
+    $curl = curl_init();
 
+    // Configurar la solicitud cURL
+    curl_setopt_array($curl, array(
+        CURLOPT_URL => $urlApi.'/api/codigoPromocion',
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => '',
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 0,
+        CURLOPT_FOLLOWLOCATION => true,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => 'POST',
+        CURLOPT_POSTFIELDS => array(
+            'codigo' => $codigo,
+            'descuento' => $descuento,
+            'activo' => $activo,
+        ),
+    ));
+    $response = curl_exec($curl);
+    //echo $response;
+    //$responseArray = json_decode($response, true);
+    //echo $responseArray['message'];
+    if (curl_errno($curl)) {
+        echo 'Error cURL: ' . curl_error($curl);
+    } else {
+        // No hubo errores en la solicitud cURL
+        $responseArray = json_decode($response, true);
 
-    }else{
-       
-        echo "<script>
-                alert('Se agegó la Promoción correctamente');
-                location.href='../views/tabla_promociones.php';
-                </script>"; 
-
-        
+        if (isset($responseArray['message'])) {
+            echo "<script>
+            alert('{$responseArray['message']}');
+            location.href='../views/tabla_promociones.php';
+            </script>";
+        } 
     }
+    curl_close($curl);
+
 }
