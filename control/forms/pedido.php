@@ -274,20 +274,29 @@
                                                         option.value = tipoTabla.id;
                                                         option.textContent = tipoTabla.tipo;
                                                         option.dataset.precio = tipoTabla.in_ars;
+                                                        option.dataset.maxComensales = tipoTabla.maximo_personas; // Nueva línea
                                                         tipoTablaSelect.appendChild(option);
                                                     });
-
+                                                    // Llamar a actualizarCantidadComensales después de cargar las tablas
+                                                    actualizarCantidadComensales(tipoPicada.tipo_tablas[0].maximo_personas);
+                                                    actualizarPrecios();
+                                                }
+                                                // Manejar cambios en el select de tipo de tabla
+                                                tipoTablaSelect.addEventListener('change', function () {
+                                                        const maxComensales = parseInt(this.options[this.selectedIndex].dataset.maxComensales) || 0;
+                                                        actualizarCantidadComensales(maxComensales);
+                                                        actualizarPrecios();
+                                                });
+                                                // Función para actualizar la cantidad de comensales
+                                                function actualizarCantidadComensales(maxComensales) {
                                                     cantidadComensalesSelect.innerHTML = "";
-                                                    for (let i = 4; i <= tipoPicada.maximo_personas; i++) {
+                                                    for (let i = 4; i <= maxComensales; i++) {
                                                         const option = document.createElement('option');
                                                         option.value = i;
                                                         option.textContent = i + ' personas';
                                                         cantidadComensalesSelect.appendChild(option);
                                                     }
-
-                                                    actualizarPrecios();
                                                 }
-
                                                 
                                             }).catch(error => console.error(error));
                                         // Función para cargar los datos de los agregados y actualizar precios
