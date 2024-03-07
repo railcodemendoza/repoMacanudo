@@ -290,7 +290,6 @@
 
                                                 
                                             }).catch(error => console.error(error));
-
                                         // Función para cargar los datos de los agregados y actualizar precios
                                         function cargarAgregadosYActualizarPrecios() {
                                             fetch("<?php echo $urlApi;?>/api/agregado", requestOptions)

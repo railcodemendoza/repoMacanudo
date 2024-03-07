@@ -1,5 +1,5 @@
 <?php include('../db.php'); ?>
-
+<?php include ("../../variables.php");?>
 
 <?php 
 
@@ -8,29 +8,49 @@ if(isset($_POST['agregar'])) {
 
     // traemos todos los datos. 
     
-    $title = $_POST['title'];
+    $tipo = $_POST['tipo'];
+    $description = $_POST['description'];
     $in_ars = $_POST['in_ars'];
     $out_ars = $_POST['out_ars'];
-    $comentario = $_POST['comentario'];
-
-
-
-    $query = "INSERT INTO `type_picadas`(`title`,`in_ars`,`out_ars`,`comentario`) VALUES ('$title','$in_ars','$out_ars','$comentario')";
-    $result = mysqli_query($conn, $query);
+    $imagen = $_FILES['imagen']['tmp_name'];
     
-    if(!$result) {
-        echo "<script>
-                alert('Ups, no se agregó la Tabla de Picada!!');
-                location.href='../views/tabla_picadas.php';
-                </script>"; 
+    $curl = curl_init();
 
+    // Configurar la solicitud cURL
+    curl_setopt_array($curl, array(
+        CURLOPT_URL => $urlApi.'/api/tipoTabla',
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => '',
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 0,
+        CURLOPT_FOLLOWLOCATION => true,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => 'POST',
+        CURLOPT_POSTFIELDS => array(
+            'tipo' => $tipo,
+            'description' => $description,
+            'in_ars' => $in_ars,
+            'out_ars' => $out_ars,
+            'imagen' => $imagen ? new CURLFile($imagen) : null,
+        ),
+    ));
+    $response = curl_exec($curl);
+    //echo $response;
+    //$responseArray = json_decode($response, true);
+    //echo $responseArray['message'];
+    if (curl_errno($curl)) {
+        echo 'Error cURL: ' . curl_error($curl);
+    } else {
+        // No hubo errores en la solicitud cURL
+        $responseArray = json_decode($response, true);
 
-    }else{
-        echo "<script>
-                alert('Se agregó tipo de Tabla correctamente');
-                location.href='../views/tabla_picadas.php';
-                </script>"; 
-
-        
+        if (isset($responseArray['message'])) {
+            echo "<script>
+            alert('{$responseArray['message']}');
+            location.href='../views/tabla_picadas.php';
+            </script>";
+        } 
     }
+
+    curl_close($curl);
 }

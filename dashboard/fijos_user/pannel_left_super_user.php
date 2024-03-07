@@ -7,7 +7,29 @@
                     <li>
                         <a href="../views/picadas_principal.php"><i class="menu-icon fa fa-laptop"></i>Inicio</a>
                     </li>
-                    
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-dollar"></i>Productos</a>
+                        <ul class="sub-menu children dropdown-menu" style="background:Orange;">
+                            <li><i class="fa fa-user"></i><a href="../views/tipos_picadas.php">Picadas</a></li>
+                            <li><i class="fa fa-table"></i><a href="../views/tabla_picadas.php">Tablas</a></li>
+                            <li><i class="fa fa-bars"></i><a href="../views/agregados.php">Agregados</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="menu-icon fa fa-code"></i>Pagina Web</a>
+                        <ul class="sub-menu children dropdown-menu" style="background:Orange;">
+                            <li><i class="fa fa-bars"></i><a href="../webpage_control/comentarios.php">Comentarios</a></li>
+                            <li><i class="fa fa-bars"></i><a href="../views/tabla_promociones.php">Codigos de Descuento</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-truck"></i>Logística</a>
+                        <ul class="sub-menu children dropdown-menu"  style="background:Orange;">
+                            <li><i class="fa fa-edit"></i><a href="../views/tabla_fletes.php">Planilla Fletes</a></li>
+                            <li><i class="fa fa-map-marker"></i><a href="../views/tabla_localidades.php">Localidades</a></li>
+                            <li><i class="fa fa-map-marker"></i><a href="../views/tabla_horarios.php">Horarios</a></li>
+                        </ul>
+                    </li>
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-bars"></i>Picadas por día</a>
                         <ul class="sub-menu children dropdown-menu">                            
@@ -34,22 +56,8 @@
                             <li><i class="fa fa-shopping-cart"></i><a href="../views/proveedores_insumos.php">Insumos</a></li>-->
                         </ul>
                     </li>
-                    <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-truck"></i>Logística</a>
-                        <ul class="sub-menu children dropdown-menu">
-                            <li><i class="fa fa-edit"></i><a href="../views/tabla_fletes.php">Planilla Fletes</a></li>
-                            <li><i class="fa fa-map-marker"></i><a href="../views/tabla_localidades.php">Localidades</a></li>
-                        </ul>
-                    </li>
-                    <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-dollar"></i>Productos</a>
-                        <ul class="sub-menu children dropdown-menu">
-                            <li><i class="fa fa-user"></i><a href="../views/tipos_picadas.php">Picadas</a></li>
-                            <li><i class="fa fa-table"></i><a href="../views/tabla_picadas.php">Tablas</a></li>
-                            <li><i class="fa fa-bars"></i><a href="../webpage_control/agregados.php">Agregados</a></li>
-                            <!--<li><i class="fa fa-beer"></i><a href="../views/tabla_localidades.php">Agregados</a></li>-->
-                        </ul>
-                    </li>
+                    
+                    
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Estadisticas</a>
                         <ul class="sub-menu children dropdown-menu">
@@ -57,15 +65,7 @@
                             <li><i class="fa fa-table"></i><a href="tables-data.html">General</a></li>
                         </ul>
                     </li>
-                    <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="menu-icon fa fa-code"></i>Pagina Web</a>
-                        <ul class="sub-menu children dropdown-menu">
-                           <li><i class="fa fa-bars"></i><a href="../webpage_control/picadas.php">Picadas</a></li>
-                            <li><i class="fa fa-bars"></i><a href="../views/tabla_picadas_especiales.php">Picadas Especiales</a></li>
-                            <li><i class="fa fa-bars"></i><a href="../webpage_control/comentarios.php">Comentarios</a></li>
-                            <li><i class="fa fa-bars"></i><a href="../views/tabla_promociones.php">Codigos de Descuento</a></li>
-                        </ul>
-                    </li>
+                    
 
                     <li class="menu-title">Administracion</li><!-- /.menu-title -->
 

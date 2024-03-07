@@ -1,29 +1,50 @@
-<?php include('../db.php'); ?>
-<?php 
+<?php include('../db.php');
+include ("../../variables.php");
+
 
 $id = $_GET['id'];
 if(isset($_POST['editar'])) {
 
     // traemos todos los datos. 
-    $promocion = $_POST['promocion'];
+    $codigo = $_POST['codigo'];
     $descuento = $_POST['descuento']; 
-    $activo = $_POST['activo'];
+    $activo = $_POST['activo']?? 0;
 
-    $query = "UPDATE `promociones` SET `promocion`= '$promocion', `descuento`='$descuento',`activo`='$activo' WHERE id = $id";
-    $result = mysqli_query($conn, $query);
+    $curl = curl_init();
 
-    if(!$result) {
-        
+    // Configurar la solicitud cURL
+    curl_setopt_array($curl, array(
+        CURLOPT_URL => $urlApi.'/api/updateCodigo/'.$id,
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => '',
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 0,
+        CURLOPT_FOLLOWLOCATION => true,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => 'POST',
+        CURLOPT_POSTFIELDS => array(
+            'codigo' => $codigo,
+            'descuento' => $descuento,
+            'activo' => $activo,
+        ),
+    ));
+    $response = curl_exec($curl);
+    //echo $response;
+    //$responseArray = json_decode($response, true);
+    //echo $responseArray['message'];
+    if (curl_errno($curl)) {
+        echo 'Error cURL: ' . curl_error($curl);
+    } else {
+        // No hubo errores en la solicitud cURL
+        $responseArray = json_decode($response, true);
 
-        echo "<script>
-                alert('Ups, Promoción no Editada!!');
-                location.href='../views/tabla_promociones.php'; 
-                </script>"; 
-    }else{
-       
-        echo "<script>
-                alert('Promoción cambiada correctamente');
-                location.href='../views/tabla_promociones.php'; 
-                </script>";   
+        if (isset($responseArray['message'])) {
+            echo "<script>
+            alert('{$responseArray['message']}');
+            location.href='../views/tabla_promociones.php';
+            </script>";
+        } 
     }
+    curl_close($curl);
+
 }

@@ -239,6 +239,26 @@
                                         compararCupon);
                                 })
                                 .catch(error => console.error(error));
+
+                                // Realizar una llamada a la API para obtener los horarios de entrega
+                                fetch("<?php echo $urlApi;?>/api/showDelivery/<?php echo $modoEnvio;?>", requestOptions)
+                                    .then(response => response.json())
+                                    .then(data => {
+                                        // Obtener el elemento select
+                                        const selectElement = document.getElementById('horariosEntrega');
+
+                                        // Limpiar cualquier opción existente en el select
+                                        selectElement.innerHTML = '<option value="">-.elegir horario.-</option>';
+
+                                        // Agregar las nuevas opciones al select basadas en los datos obtenidos de la API
+                                        data.forEach(schedule => {
+                                            const option = document.createElement('option');
+                                            option.value = schedule.horario; // Asigna el valor adecuado según la respuesta de la API
+                                            option.text = schedule.horario; // Asigna el texto adecuado según la respuesta de la API
+                                            selectElement.add(option);
+                                        });
+                                    })
+                                    .catch(error => console.error('Error al obtener los horarios:', error));
                         });
                         </script>
                         <br>
@@ -386,23 +406,16 @@
                                         </div>
                                     </div>
                                     <div class="col-sm-5">
-                                        <div class="form-group">
-                                            <label style="color:white;" class="col-sm-5 control-label"><h3 style="color:white;">Horario de
-                                                Entrega:</h3></label>
-                                            <div class="col-sm-10 mx-auto">
-                                                <select name="schedule_available[]" id="selectSm"
-                                                    class="form-control form-control" required>
-                                                    <option value="">-.elegir horaio.-</option>
-                                                    <?php
-                                                        $query_schedule_available = $conn -> query ("SELECT * FROM `delivery_hour` WHERE delivery = 'con_envio'");
-                                                        while ($schedule_available= mysqli_fetch_array($query_schedule_available)) {                                           
-                                                            echo '<option value="'.$schedule_available['hour_delivery'].'">'.$schedule_available['hour_delivery'].'</option>';
-                                                        }  
-                                                    ?>
-                                                </select>
-                                            </div>
+                                    <div class="form-group">
+                                        <label style="color:white;" class="col-sm-5 control-label">Horario de Entrega:</label>
+                                        <div class="col-sm-10 mx-auto">
+                                            <select name="schedule_available[]" id="horariosEntrega" class="form-control" required>
+                                                <option value="">-.elegir horario.-</option>
+                                            </select>
+
                                         </div>
                                     </div>
+                                </div>
                                 </div>
                                 <div class="row">
                                     <?php if ($modoEnvio !== 'con_retiro') : ?>
