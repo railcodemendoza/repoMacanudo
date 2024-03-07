@@ -9,7 +9,6 @@ if(isset($_POST['editar'])) {
     $tipo = $_POST['tipo'];
     $description = $_POST['description'];
     $activo = $_POST['activo']?? 0;
-    $maximo_personas = $_POST['maximo_personas'];
     $in_ars = $_POST['in_ars'];
     $out_ars = $_POST['out_ars'];
     $valor_por_persona = $_POST['valor_por_persona'];
@@ -36,7 +35,6 @@ if(isset($_POST['editar'])) {
             'tipo' => $tipo,
             'description' => $description,
             'activo' => $activo,
-            'maximo_personas' => $maximo_personas,
             'in_ars' => $in_ars,
             'out_ars' => $out_ars,
             'valor_por_persona' => $valor_por_persona,

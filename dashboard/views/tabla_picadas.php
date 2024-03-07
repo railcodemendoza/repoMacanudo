@@ -104,6 +104,14 @@
                                                                 <div class="row">
                                                                     <div class="col-sm-2"></div>
                                                                     <div class="col-sm-8">
+                                                                        <h4 style="text-align:center;"> <strong> Máximo de personas:
+                                                                            </strong> <br>${row.maximo_personas}</h4>
+                                                                    </div>
+                                                                </div>
+                                                                <br>
+                                                                <div class="row">
+                                                                    <div class="col-sm-2"></div>
+                                                                    <div class="col-sm-8">
                                                                         <h4 style="text-align:center;"> <strong> Imagen:
                                                                             </strong></h4>
                                                                         <img src="<?php echo $urlApi;?>/storage/tablas/${row.imagen}" alt="Imagen de la tabla" style="max-width: 100%;">
@@ -161,7 +169,6 @@
                                                                                                 <i class="fa fa-image"></i>
                                                                                             </div>
                                                                                             <input type="file" name="imagen" class="form-control" >
-                                                                                            
                                                                                         </div>
                                                                                         <br>
                                                                                         <img src="<?php echo $urlApi;?>/storage/tablas/${row.imagen}" class="d-block w-100" alt="...">
@@ -180,6 +187,14 @@
                                                                                                 <i class="fa fa-dollar"></i>
                                                                                             </div>
                                                                                             <input type="number" name="out_ars" class="form-control" value="${row.out_ars}" required>
+                                                                                        </div>
+                                                                                        <br>
+                                                                                        <label for="" class="form-control-label">Máximo de Personas:</label>
+                                                                                        <div class="input-group">
+                                                                                            <div class="input-group-addon">
+                                                                                                <i class="fa fa-users"></i>
+                                                                                            </div>
+                                                                                            <input type="number" name="maximo_personas" class="form-control" value="${row.maximo_personas}" required>
                                                                                         </div>
                                                                                         <br>
                                                                                     </div>
@@ -267,6 +282,15 @@
                                                          placeholder="184.00" required>
                                                  </div>
                                                  <br>
+                                                 <label for="" class="form-control-label">Máximo de Personas:</label>
+                                                <div class="input-group">
+                                                    <div class="input-group-addon">
+                                                        <i class="fa fa-users"></i>
+                                                    </div>
+                                                    <input type="number" name="maximo_personas" class="form-control"
+                                                        placeholder="Número máximo de personas" required>
+                                                </div>
+                                                <br>
                                                  <label for="" class="form-control-label">Imagen:</label>
                                                 <div class="input-group">
                                                     <div class="input-group-addon">

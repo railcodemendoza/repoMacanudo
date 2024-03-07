@@ -12,6 +12,7 @@ if(isset($_POST['agregar'])) {
     $description = $_POST['description'];
     $in_ars = $_POST['in_ars'];
     $out_ars = $_POST['out_ars'];
+    $maximo_personas = $_POST['maximo_personas'];
     $imagen = $_FILES['imagen']['tmp_name'];
     
     $curl = curl_init();
@@ -31,6 +32,7 @@ if(isset($_POST['agregar'])) {
             'description' => $description,
             'in_ars' => $in_ars,
             'out_ars' => $out_ars,
+            'maximo_personas' => $maximo_personas,
             'imagen' => $imagen ? new CURLFile($imagen) : null,
         ),
     ));

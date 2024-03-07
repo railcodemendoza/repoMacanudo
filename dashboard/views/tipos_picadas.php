@@ -19,7 +19,6 @@
                     <tr>
                         <th>Tipo</th>
                         <th>Precio</th>
-                        <th>Costo</th>
                         <th>Activo</th>
                         <th>Picada Especial</th>
                         <th>Opciones</th>
@@ -53,7 +52,6 @@
                                 <tr>
                                     <td>${row.tipo}</td>
                                     <td>${row.in_ars}</td>
-                                    <td>${row.out_ars}</td>
                                     <td>${row.activo ? 'Sí' : 'No'}</td>
                                     <td>${row.picada_especial ? 'Sí' : 'No'}</td>
                                     <td>
@@ -129,14 +127,6 @@
                                                                     <div class="col-sm-8">
                                                                         <h4 style="text-align:center;"> <strong> Costo por persona:
                                                                             </strong> <br>$${row.costo_por_persona}</h4>
-                                                                    </div>
-                                                                </div>
-                                                                <br>
-                                                                <div class="row">
-                                                                    <div class="col-sm-2"></div>
-                                                                    <div class="col-sm-8">
-                                                                        <h4 style="text-align:center;"> <strong> Máximo de personas:
-                                                                            </strong> <br>${row.maximo_personas}</h4>
                                                                     </div>
                                                                 </div>
                                                                 <br>
@@ -247,14 +237,6 @@
                                                                                         <br>
                                                                                         <label for="" class="form-control-label">Tipos de Tabla:</label>
                                                                                         <div id="tipoTablaContainer${row.id}" class="checkbox-group"></div>
-                                                                                        <br>
-                                                                                        <label for="" class="form-control-label">Máximo de Personas:</label>
-                                                                                        <div class="input-group">
-                                                                                            <div class="input-group-addon">
-                                                                                                <i class="fa fa-users"></i>
-                                                                                            </div>
-                                                                                            <input type="number" name="maximo_personas" class="form-control" value="${row.maximo_personas}" required>
-                                                                                        </div>
                                                                                         <br>
                                                                                         <label for="" class="form-control-label">Precio en ARS:</label>
                                                                                         <div class="input-group">
@@ -468,15 +450,6 @@
                                                             });
                                                     });
                                                     </script>
-                                                </div>
-                                                <br>
-                                                <label for="" class="form-control-label">Máximo de Personas:</label>
-                                                <div class="input-group">
-                                                    <div class="input-group-addon">
-                                                        <i class="fa fa-users"></i>
-                                                    </div>
-                                                    <input type="number" name="maximo_personas" class="form-control"
-                                                        placeholder="Número máximo de personas" required>
                                                 </div>
                                                 <br>
                                                 <label for="" class="form-control-label">Precio en ARS:</label>
