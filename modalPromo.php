@@ -38,7 +38,7 @@ $hayPicadas = !empty($picadas);
         position: absolute;
         top: 50%;
         left: 50%;
-        width: 80%;
+        width: 100%;
         max-width: 800px; /* Máximo ancho del modal */
         transform: translate(-50%, -50%);
         background: #fff; /* Fondo del modal */
@@ -54,7 +54,7 @@ $hayPicadas = !empty($picadas);
         z-index: 2; 
         width: 100%; 
         background-color: rgba(0, 0, 0, 0.5);
-        }
+    }
 
     #imagen{
         max-width: 50rem;
@@ -76,10 +76,9 @@ $hayPicadas = !empty($picadas);
         max-width: 100%;
         height: auto;
     }
-
     @media (max-width: 768px) {
         .popup-content {
-            width: 80%; /* Ancho del modal al 80% en pantallas más pequeñas */
+            width: 95%; /* Ancho del modal al 95% en pantallas más pequeñas */
         }
         .popup-text {
             position: static;
