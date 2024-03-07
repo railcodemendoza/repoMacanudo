@@ -69,10 +69,12 @@
                         <option value="0">Retirar por local</option>
                     </select>
                     <p id="precioDelivery"></p>
-
-                    <p id="precioTotal" >Precio Total: $0.00</p>
+                    <div>
+                    <h2 id="precioTotal" style="color: orange; ">Precio Total: $0.00</h2>
                     <input type="hidden" id="preciofinal" name="preciofinal" value="">
+                    </div>
 
+                    
                     <script>
                     document.addEventListener("DOMContentLoaded", function() {
                         const tipoPicadaSelect = document.getElementById('tipoPicadaSelect');

@@ -1,4 +1,5 @@
 <?php include('../db.php'); ?>
+<?php include ("../../variables.php");?>
 
 
 <?php 
@@ -27,23 +28,6 @@ if(isset($_POST['agregar'])) {
     
     }
     
-    // sumamos los tatos para actualizar el stock. 
-
-    $q_total = $cantidad + $q;
-    $total_invoice = $out * $q;
-    
-
-    // actualizamos los datos en las tablas.
-
-    // --- Tabla Stock ----
-    $query = "UPDATE `add2` SET `q`= $q_total,`out_ars`='$out' WHERE id = $id";
-    $result = mysqli_query($conn, $query);
-
-    // --- Tabla Administracion ----
-
-    $query_out_list = "INSERT INTO `out_list`(`invoice`, `proveedor`, `out_ars`) VALUES ('$invoice','$proveedor','$total_invoice')";
-    $result_out_list = mysqli_query($conn, $query_out_list);
-    
     if(!$result_out_list) {
         echo "<script>
                 alert('Ups, Status no Editado!!');
@@ -65,41 +49,51 @@ if(isset($_POST['agregar_producto'])){
     $title = $_POST['title'];
     $description = $_POST['description'];
     $in_ars = $_POST['in_ars'];
-    foreach ($_POST['proveedor'] as $proveedor);
-    $imagen = $_FILES['imagen']['name'];
+    $out_ars = $_POST['out_ars'];
+    $proveedor = $_POST['proveedor'];
+    $img = $_FILES['img']['tmp_name'];
     $stock = $_POST['stock'];
     
-    $extensiones = array(0=>'image/jpg',1=>'image/jpeg',2=>'image/png');
-    $max_tamanyo = 1024 * 1024 * 8;
+    $curl = curl_init();
 
-    $ruta_fichero_origen = $_FILES['imagen']['tmp_name'];
-    $ruta_nuevo_destino = '../../assets/img/add2/' . $_FILES['imagen']['name'];
-    if ( in_array($_FILES['imagen']['type'], $extensiones) ) {
-        if ( $_FILES['imagen']['size']< $max_tamanyo ) {
-            if( move_uploaded_file ( $ruta_fichero_origen, $ruta_nuevo_destino ) ) {
+    // Configurar la solicitud cURL
+    curl_setopt_array($curl, array(
+        CURLOPT_URL => $urlApi.'/api/agregado',
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => '',
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 0,
+        CURLOPT_FOLLOWLOCATION => true,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => 'POST',
+        CURLOPT_POSTFIELDS => array(
+            'title' => $title,
+            'description' => $description,
+            'in_ars' => $in_ars,
+            'out_ars' => $out_ars,
+            'proveedor' => $proveedor,
+            'stock' => $stock,
+            'img' => $img ? new CURLFile($img) : null,
+        ),
+    ));
+    $response = curl_exec($curl);
+    //echo $response;
+    //$responseArray = json_decode($response, true);
+    //echo $responseArray['message'];
+    if (curl_errno($curl)) {
+        echo 'Error cURL: ' . curl_error($curl);
+    } else {
+        // No hubo errores en la solicitud cURL
+        $responseArray = json_decode($response, true);
 
-                $query = "INSERT INTO `add2`(`title`, `description`, `in_ars`,`proveedor`,`q`,`img`) VALUES ('$title','$description','$in_ars','$proveedor','$stock','$imagen')";
-                $result = mysqli_query($conn, $query);
-            }
-        }
-
+        if (isset($responseArray['message'])) {
+            echo "<script>
+            alert('{$responseArray['message']}');
+            location.href='../views/agregados.php';
+            </script>";
+        } 
     }
 
-    if(!$result) {
-        
-
-        echo "<script>
-                alert('Ups, Status no Editado!!');
-                location.href='../webpage_control/agregados.php'; 
-                </script>"; 
-    }else{
-       
-        echo "<script>
-                alert('Status cambiado correctamente');
-                location.href='../webpage_control/agregados.php'; 
-                </script>"; 
-
-        
-    }
+    curl_close($curl);
 }
 

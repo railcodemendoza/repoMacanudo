@@ -51,6 +51,7 @@
 ======================================================== -->
 </head>
 
+
 <body style="background: url(../../assets/img/slide/Macanudas-115.jpg);">
     <div class="row">
         <div class="col-sm-4"></div>
@@ -238,6 +239,26 @@
                                         compararCupon);
                                 })
                                 .catch(error => console.error(error));
+
+                                // Realizar una llamada a la API para obtener los horarios de entrega
+                                fetch("<?php echo $urlApi;?>/api/showDelivery/<?php echo $modoEnvio;?>", requestOptions)
+                                    .then(response => response.json())
+                                    .then(data => {
+                                        // Obtener el elemento select
+                                        const selectElement = document.getElementById('horariosEntrega');
+
+                                        // Limpiar cualquier opción existente en el select
+                                        selectElement.innerHTML = '<option value="">-.elegir horario.-</option>';
+
+                                        // Agregar las nuevas opciones al select basadas en los datos obtenidos de la API
+                                        data.forEach(schedule => {
+                                            const option = document.createElement('option');
+                                            option.value = schedule.horario; // Asigna el valor adecuado según la respuesta de la API
+                                            option.text = schedule.horario; // Asigna el texto adecuado según la respuesta de la API
+                                            selectElement.add(option);
+                                        });
+                                    })
+                                    .catch(error => console.error('Error al obtener los horarios:', error));
                         });
                         </script>
                         <br>
@@ -245,18 +266,42 @@
                         <div style="text-align:center;" class="panel-body">
                             <div class="row">
                                 <div class="col-sm-2"></div>
-                                <div class="col-sm-7" style="background-color: white; border-radius:10px">
-                                    <h3 style="text-align: center; color:#ffb03b;">Resumen del pedido:</h3>
-                                    <p><strong>Tipo de Picada:</strong> <?php echo $tipoPicada ; ?></p>
-                                    <p><strong>Tipo de Tabla:</strong> <?php echo $tipoTabla; ?></p>
-                                    <p><strong>Cantidad de Comensales:</strong> <?php echo $comensales ; ?></p>
-                                    <p><strong>Agregado 1:</strong> <?php echo $agregado1; ?></p>
-                                    <p><strong>Agregado 2:</strong> <?php echo $agregado2; ?></p>
-                                    <p><strong>Agregado 3:</strong> <?php echo $agregado3; ?></p>
-                                    <p><strong>Delivery:</strong> <?php echo $location; ?></p>
-                                    <p id="precioTotalDisplay"><strong>Precio Total: $</strong>
-                                        <?php echo $precioTotal; ?></p>
-                                </div>
+                                <div class="col-sm-7 pato" style="background-color: rgba(0, 0, 0, 0.5); color: orange; border-radius:10px">
+    <h3 style="text-align: center; color:#ffb03b; margin-top:2rem;">Resumen del pedido: </h3>
+    <div class="row">
+    <div class="col-sm-4">
+    <p><strong>Tipo de Picada: </strong> <h4><span style="color: white;"><?php echo $tipoPicada ; ?></span></h4></p>
+</div>
+        <div class="col-sm-4">
+            <p><strong>Tipo de Tabla: </strong><h4><span style="color: white;"> <?php echo $tipoTabla; ?></span></h4></p>
+        </div>
+        <div class="col-sm-4">
+            <p><strong>Cantidad de Comensales: </strong><h4><span style="color: white;"> <?php echo $comensales ; ?></span></h4></p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-4">
+            <p><strong>Agregado 1: </strong><h4><span style="color: white;"> <?php echo $agregado1; ?></span></h4></p>
+        </div>
+        <div class="col-sm-4">
+            <p><strong>Agregado 2: </strong><h4><span style="color: white;"> <?php echo $agregado2; ?></span></h4></p>
+        </div>
+        <div class="col-sm-4">
+            <p><strong>Agregado 3: </strong><h4><span style="color: white;"> <?php echo $agregado3; ?></span></h4></p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <p><strong>Delivery: </strong><h4><span style="color: white;"> <?php echo $location; ?></span></h4></p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <p id="precioTotalDisplay" style="margin-bottom:1rem;"><strong>Precio Total: </strong><h4><span style="color: white;"> $<?php echo $precioTotal; ?></span></h4></p>
+        </div>
+    </div>
+</div>
+
                                 <div class="col-sm-3">
                                     <label style="color:white;" class="col-sm-10 control-label">Código de
                                         promoción</label>
@@ -274,7 +319,7 @@
                             </div>
                             <br>
                             <header class="panel-heading">
-                                <h2 style="color:white; text-align:center;">Formulario de Datos Personales.</h2>
+                                <h2 style="color:white; text-align:center; color: orange;">Formulario de Datos Personales.</h2>
                                 <div class="row">
                                     <div class="alert alert-warning alert-dismissible col-sm-5 mx-auto fade show"
                                         style="z-index: 1031;" role="alert">
@@ -296,17 +341,17 @@
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <div style="margin-top:2%;" class="form-group">
-                                            <label style="color:white;" class="col-sm-7 control-label">Nombre y
-                                                Apellido que encarga</label>
+                                            <label style="color:white;" class="col-sm-7 control-label"><h3 style="color:white;">Nombre y
+                                                Apellido que encarga</h3></label>
                                             <div class="col-sm-10 mx-auto">
                                                 <input type="text" name="customer" placeholder="Alberto Acosta"
                                                     class="form-control" required>
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label style="color:white;" class="col-sm-6 control-label">Celular de
+                                            <label style="color:white;" class="col-sm-6 control-label"> <h3 style="color:white;">Celular de
                                                 quién
-                                                encarga</label>
+                                                encarga</h3></label>
                                             <div class="col-sm-10 mx-auto">
                                                 <input type="phone" name="cel_phone" placeholder="2612128195"
                                                     minlength="10" maxlength="15" class="form-control" required>
@@ -315,17 +360,17 @@
                                     </div>
                                     <div class="col-sm-6">
                                         <div style="margin-top:2%;" class="form-group">
-                                            <label style="color:white;" class="col-sm-6 control-label">Nombre y
-                                                Apellido Recibe</label>
+                                            <label style="color:white;" class="col-sm-6 control-label"> <h3 style="color:white;">Nombre y
+                                                Apellido Recibe</h3></label>
                                             <div class="col-sm-10 mx-auto">
                                                 <input type="text" name="cnee" placeholder="Bernardo Romeo"
                                                     class="form-control" required>
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label style="color:white;" class="col-sm-6 control-label">Celular de
+                                            <label style="color:white;" class="col-sm-6 control-label"> <h3 style="color:white;">Celular de
                                                 quién
-                                                recibe</label>
+                                                recibe</h3></label>
                                             <div class="col-sm-10 mx-auto">
                                                 <input type="phone" name="cnee_cel_phone" placeholder="2613569823"
                                                     minlength="10" maxlength="15" class="form-control" required>
@@ -334,9 +379,9 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label style="color:white;" class="col-sm-3 control-label">Dedicatoria</label>
+                                    <label style="color:white;" class="col-sm-3 control-label"> <h3 style="color:white;">Dedicatoria</h3></label>
                                     <div class="col-sm-5 mx-auto">
-                                        <textarea name="inscription" placeholder="con cariño Cacho.."
+                                        <textarea name="inscription" placeholder="con cariño Cacho..."
                                             class="form-control"></textarea>
                                     </div>
                                 </div>
@@ -353,38 +398,31 @@
                                     <div class="col-sm-1"></div>
                                     <div class="col-sm-5">
                                         <div class="form-group">
-                                            <label style="color:white;" class="col-sm-4 control-label">Fecha de
-                                                Entrega:</label>
+                                            <label style="color:white;" class="col-sm-4 control-label"> <h3 style="color:white;">Fecha de
+                                                Entrega:</h3></label>
                                             <div class="col-sm-10 mx-auto">
                                                 <input name="delivery_date" type="date" class="form-control" required>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-sm-5">
-                                        <div class="form-group">
-                                            <label style="color:white;" class="col-sm-5 control-label">Horario de
-                                                Entrega:</label>
-                                            <div class="col-sm-10 mx-auto">
-                                                <select name="schedule_available[]" id="selectSm"
-                                                    class="form-control form-control" required>
-                                                    <option value="">-.elegir horaio.-</option>
-                                                    <?php
-                                                        $query_schedule_available = $conn -> query ("SELECT * FROM `delivery_hour` WHERE delivery = 'con_envio'");
-                                                        while ($schedule_available= mysqli_fetch_array($query_schedule_available)) {                                           
-                                                            echo '<option value="'.$schedule_available['hour_delivery'].'">'.$schedule_available['hour_delivery'].'</option>';
-                                                        }  
-                                                    ?>
-                                                </select>
-                                            </div>
+                                    <div class="form-group">
+                                        <label style="color:white;" class="col-sm-5 control-label">Horario de Entrega:</label>
+                                        <div class="col-sm-10 mx-auto">
+                                            <select name="schedule_available[]" id="horariosEntrega" class="form-control" required>
+                                                <option value="">-.elegir horario.-</option>
+                                            </select>
+
                                         </div>
                                     </div>
+                                </div>
                                 </div>
                                 <div class="row">
                                     <?php if ($modoEnvio !== 'con_retiro') : ?>
                                     <div class="col-sm-1"></div>
                                     <div class="col-sm-5">
                                         <div class="form-group">
-                                            <label style="color:white;" class="col-sm-3 control-label">Dirección</label>
+                                            <label style="color:white;" class="col-sm-3 control-label"><h3 style="color:white;">Dirección</h3></label>
                                             <div class="row d-flex justify-content-center">
                                                 <input type="text" name="address" placeholder="Cañadita Alegre, 554"
                                                     class="form-control col-sm-6 mb-3 ml-4 mr-4" required>
@@ -398,10 +436,10 @@
                                 </div>
                                 <?php if ($modoEnvio !== 'con_retiro') : ?>
                                 <div class="form-group">
-                                    <label style="color:white;" class="col-sm-4 control-label">Aclaración respecto al
-                                        Domicilio:</label>
+                                    <label style="color:white;" class="col-sm-4 control-label"><h3 style="color:white;">Aclaración respecto al
+                                        Domicilio:</h3></label>
                                     <div class="col-sm-5 mx-auto">
-                                        <input type="text" name="referencia" class="form-control">
+                                        <input type="text" name="referencia" class="form-control" placeholder="Porton negro con rejas...">
                                         <small style="color:white; text-shadow: black 0.1em 0.1em 0.2em;"
                                             class="help-block">Ej: Porton Negro al lado de la verduleria.</small>
                                     </div>
@@ -409,8 +447,8 @@
                                 <?php endif; ?>
                                 <br>
                                 <div class="form-group">
-                                    <label style="color:white;" class="col-sm-3 control-label">Forma de
-                                        Pago</label>
+                                    <label style="color:white;" class="col-sm-3 control-label"><h3 style="color:white;">Forma de
+                                        Pago</h3></label>
                                     <div class="col-sm-5 mx-auto">
                                         <select name="payment_mode[]" id="selectSm" class="form-control form-control"
                                             required>

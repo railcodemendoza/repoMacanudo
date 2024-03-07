@@ -1,24 +1,17 @@
-<?php include('../db.php'); ?>
-<?php include ("../../variables.php");?>
+<?php include('../db.php');
+include ("../../variables.php");
 
-<?php 
+$id = $_GET['id'];
 
+if(isset($_POST['editar'])) {
 
-if(isset($_POST['agregar'])) {
-
-
-    // traemos todos los datos. 
-
-    $location = $_POST['location'];
-    $km_to_zero = $_POST['km_to_zero'];
-    $px_km = $_POST['px_km'];
-
+    $horario = $_POST['horario'];
+    $delivery = $_POST['delivery'];
 
     $curl = curl_init();
-
     // Configurar la solicitud cURL
     curl_setopt_array($curl, array(
-        CURLOPT_URL => $urlApi.'/api/delivery',
+        CURLOPT_URL => $urlApi.'/api/updateDeliveryHora/'.$id,
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_ENCODING => '',
         CURLOPT_MAXREDIRS => 10,
@@ -27,9 +20,8 @@ if(isset($_POST['agregar'])) {
         CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
         CURLOPT_CUSTOMREQUEST => 'POST',
         CURLOPT_POSTFIELDS => array(
-            'location' => $location,
-            'km_to_zero' => $km_to_zero,
-            'px_km' => $px_km,
+            'horario' => $horario,
+            'delivery' => $delivery,
         ),
     ));
     $response = curl_exec($curl);
@@ -45,11 +37,12 @@ if(isset($_POST['agregar'])) {
         if (isset($responseArray['message'])) {
             echo "<script>
             alert('{$responseArray['message']}');
-            location.href='../views/tabla_localidades.php';
+            location.href='../views/tabla_horarios.php';
             </script>";
         } 
     }
 
     curl_close($curl);
-}
 
+
+}
