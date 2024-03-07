@@ -60,7 +60,6 @@
    $paddinginner = 'mt-2';
               if(isset($_SESSION['message'])){
                 if($_SESSION['message'] != false) {
-                  
                   $padding= 'pt-0';
                   $paddinginner= 'pt-0';?>
 
@@ -138,66 +137,67 @@
                             <div class="col-sm-8 mx-auto">
                                 <form action="../forms/pedido_datos_personales.php" id="form_simulador" class="form-horizontal " method="POST">
                                     <!-- select tablas -->
-                                    <p id="precioTotal">Precio Total: $0.00</p>
-                                    <input type="hidden" id="preciofinal" name="preciofinal" value="">
 
                                     <label style="font-size: smaller; font-weight: 600;"
-                                        class="control-label">Selecciona el tipo de picada:</label>
+                                        class="control-label"> <h4 style="color:white;">Selecciona el tipo de picada:</h4></label>
                                     <select class="form-control form-control" aria-label="Default select example"
                                         id="tipoPicadaSelect" name="tipoPicada">
                                         <option value=""> -.Elegir tipo de picada.- </option>
                                     </select>
-                                    <p id="precioTipoPicada"></p>
+                                    <p id="precioTipoPicada" class="mt-1" style="color:white;"></p>
 
                                     <label style="font-size: smaller; font-weight: 600;"
-                                        class="control-label">Selecciona el tipo de tabla:</label>
+                                        class="control-label"><h4 style="color:white;">Selecciona el tipo de tabla:</h4></label>
                                     <select class="form-control form-control" aria-label="Default select example"
                                         id="tipoTablaSelect"  name="tipoTabla">
                                         <option value="">-.Elegir tipo de tabla.-</option>
                                     </select>
-                                    <p id="precioTipoTabla"></p>
+                                    <p id="precioTipoTabla" class="mt-1" style="color:white;"></p>
 
                                     <label style="font-size: smaller; font-weight: 600;"
-                                        class="control-label">Selecciona Cantidad de Comensales:</label>
+                                        class="control-label"><h4 style="color:white;">Selecciona Cantidad de Comensales:</h4></label>
                                     <select class="form-control form-control" aria-label="Default select example"
                                         id="cantidadComensalesSelect" name="cantidadComensales">
                                         <option value="">-.Elegir cantidad de Comensales.-</option>
                                     </select>
-                                    <p id="precioComensales"></p>
+                                    <p id="precioComensales" class="mt-1" style="color:white;"></p>
 
                                     <label style="font-size: smaller; font-weight: 600;"
-                                        class="control-label">Selecciona Primer Agregado:</label>
+                                        class="control-label"><h4 style="color:white;">Selecciona Primer Agregado:</h4></label>
                                     <select class="form-control form-control" aria-label="Default select example"
                                         id="primerAgregadoSelect" name="agregado1">
                                         <option value="">-.Elegir Agregado.-</option>
                                     </select>
-                                    <p id="precioPrimerAgregado"></p>
+                                    <p id="precioPrimerAgregado" class="mt-1" style="color:white;"></p>
 
                                     <label style="font-size: smaller; font-weight: 600;"
-                                        class="control-label">Selecciona Segundo Agregado:</label>
+                                        class="control-label"><h4 style="color:white;">Selecciona Segundo Agregado:</h4></label>
                                     <select class="form-control form-control" aria-label="Default select example"
                                         id="segundoAgregadoSelect" name="agregado2">
                                         <option value="">-.Elegir Agregado.-</option>
                                     </select>
-                                    <p id="precioSegundoAgregado"></p>
+                                    <p id="precioSegundoAgregado" class="mt-1" style="color:white;"></p>
 
                                     <label style="font-size: smaller; font-weight: 600;"
-                                        class="control-label">Selecciona Tercer Agregado:</label>
+                                        class="control-label"><h4 style="color:white;">Selecciona Tercer Agregado:</h4></label>
                                     <select class="form-control form-control" aria-label="Default select example"
                                         id="tercerAgregadoSelect" name="agregado3">
                                         <option value="">-.Elegir Agregado.-</option>
                                     </select>
-                                    <p id="precioTercerAgregado"></p>
+                                    <p id="precioTercerAgregado" class="mt-1" style="color:white;"></p>
 
                                     <label style="font-size: smaller; font-weight: 600;"
-                                        class="control-label">¿Buscas o te la llevamos?</label>
+                                        class="control-label"><h4 style="color:white;">¿Buscas o te la llevamos?</h4></label>
                                     <select class="form-control form-control" aria-label="Default select example"
                                         id="deliverySelect" name="delivery">
                                         <option value="">-.Elegir.-</option>
                                         <option value="0">Retirar por local</option>
                                     </select>
-                                    <p id="precioDelivery"></p>
+                                    <p id="precioDelivery" class="mt-1" style="color:white;"></p>
                                     
+                                    <h3 style="color:white;" id="precioTotal">Precio Total: $0.00</h3>
+                                    <input type="hidden" id="preciofinal" name="preciofinal" value="">
+
                                     <script>
                                     document.addEventListener("DOMContentLoaded", function() {
                                         const tipoPicadaSelect = document.getElementById('tipoPicadaSelect');
