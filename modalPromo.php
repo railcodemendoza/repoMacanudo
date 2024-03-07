@@ -36,28 +36,30 @@ $hayPicadas = !empty($picadas);
 
     .popup-content {
         position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        top: 50%;
+        left: 50%;
+        width: 80%;
+        max-width: 800px; /* Máximo ancho del modal */
+        transform: translate(-50%, -50%);
+        background: #fff; /* Fondo del modal */
+        border-radius: 10px; /* Bordes redondeados */
+        overflow: hidden;
     }
 
     .popup-text {
-    position: absolute;
-    top: 50%;
-    text-align: center;
-    color: white;
-    z-index: 2; 
-    width: 100%; 
-    background-color: rgba(0, 0, 0, 0.5);
-}
+        position: absolute;
+        top: 50%;
+        text-align: center;
+        color: white;
+        z-index: 2; 
+        width: 100%; 
+        background-color: rgba(0, 0, 0, 0.5);
+        }
 
-#imagen{
-    max-width: 40rem;
-}
+    #imagen{
+        max-width: 50rem;
+        height: auto;
+    }
 
 
     .close {
@@ -66,7 +68,8 @@ $hayPicadas = !empty($picadas);
         right: 10px;
         font-size: 20px;
         cursor: pointer;
-        color: white;
+        color: black;
+        z-index: 3;
     }
 
     .carousel-item img {
@@ -75,6 +78,9 @@ $hayPicadas = !empty($picadas);
     }
 
     @media (max-width: 768px) {
+        .popup-content {
+            width: 80%; /* Ancho del modal al 80% en pantallas más pequeñas */
+        }
         .popup-text {
             position: static;
             margin-top: 20px;
