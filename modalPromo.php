@@ -83,7 +83,6 @@ $hayPicadas = !empty($picadas);
         }
         .popup-text {
             position: static;
-            margin-top: 20px;
         }
     }
 </style>
