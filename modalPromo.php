@@ -55,6 +55,9 @@ $hayPicadas = !empty($picadas);
     background-color: rgba(0, 0, 0, 0.5);
 }
 
+#imagen{
+    max-width: 40rem;
+}
 
 
     .close {
@@ -86,7 +89,7 @@ $hayPicadas = !empty($picadas);
             <div class="carousel-inner">
                 <?php foreach ($picadas as $index => $picada): ?>
                     <div class="carousel-item <?php echo ($index == 0) ? 'active' : ''; ?>">
-                        <img src="<?php echo $urlApi;?>/storage/picadas/<?php echo $picada['imagen']; ?>" class="d-block w-100" alt="...">
+                        <img src="<?php echo $urlApi;?>/storage/picadas/<?php echo $picada['imagen']; ?>" class="d-block w-100" alt="..." id="imagen">
                         <div class="popup-text">
                             <h1><?php echo $picada['tipo']; ?></h1>
                             <p><?php echo $picada['description']; ?></p>
