@@ -138,7 +138,7 @@
                                 <form action="../forms/pedido_datos_personales.php" id="form_simulador" class="form-horizontal " method="POST">
                                     <!-- select tablas -->
 
-                                    <label style="font-size: smaller; font-weight: 600;"
+                                    <label style=" font-weight: 600;"
                                         class="control-label"> <h4 style="color:white;">Selecciona el tipo de picada:</h4></label>
                                     <select class="form-control form-control" aria-label="Default select example"
                                         id="tipoPicadaSelect" name="tipoPicada">
@@ -366,11 +366,11 @@
                                             valorPorPersona;
 
                                             precioTipoPicadaElement.textContent =
-                                                `Precio Tipo Picada: $${precioTotalTipoPicada.toFixed(2)}`;
+                                                `Tipo Picada: $${precioTotalTipoPicada.toFixed(2)}`;
                                             precioTipoTablaElement.textContent =
-                                                `Precio Tipo Tabla: $${precioTotalTipoTabla.toFixed(2)}`;
+                                                `Tipo Tabla: $${precioTotalTipoTabla.toFixed(2)}`;
                                             precioComensalesElement.textContent =
-                                                `Precio por Comensales: $${precioTotalComensales.toFixed(2)}`;
+                                                `por Comensales: $${precioTotalComensales.toFixed(2)}`;
 
                                             // Obtener los precios de los agregados seleccionados
                                             const precioPrimerAgregado = parseFloat(
@@ -388,20 +388,20 @@
 
                                             // Mostrar los precios individuales de los agregados
                                             precioPrimerAgregadoElement.textContent =
-                                                `Precio Primer Agregado: $${precioPrimerAgregado.toFixed(2)}`;
+                                                `Primer Agregado: $${precioPrimerAgregado.toFixed(2)}`;
                                             precioSegundoAgregadoElement.textContent =
-                                                `Precio Segundo Agregado: $${precioSegundoAgregado.toFixed(2)}`;
+                                                `Segundo Agregado: $${precioSegundoAgregado.toFixed(2)}`;
                                             precioTercerAgregadoElement.textContent =
-                                                `Precio Tercer Agregado: $${precioTercerAgregado.toFixed(2)}`;
+                                                `Tercer Agregado: $${precioTercerAgregado.toFixed(2)}`;
                                             precioDeliveryElement.textContent =
-                                                `Precio Delivery: $${delivery.toFixed(2)}`;
+                                                `Delivery: $${delivery.toFixed(2)}`;
 
                                             // Calcular y mostrar el precio total con los agregados
                                             const precioTotalConAgregados =
                                             precioTotalTipoPicada + precioTotalTipoTabla + precioTotalComensales + 
                                             precioPrimerAgregado + precioSegundoAgregado + precioTercerAgregado+ delivery;
                                             precioTotalElement.textContent =
-                                                `Precio Total: $${precioTotalConAgregados.toFixed(2)}`;
+                                                `Total: $${precioTotalConAgregados.toFixed(2)}`;
                                                 precioFinalElement.value = precioTotalConAgregados;
                                         }
                                         cargarAgregadosYActualizarPrecios();

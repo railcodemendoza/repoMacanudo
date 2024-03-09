@@ -11,9 +11,9 @@
                 <form action="control/forms/pedido_datos_personales.php" id="form_simulador" class="form-horizontal "
                     method="POST">
                     <!-- select tablas -->
-                    
 
-                    <label style="font-size: smaller; font-weight: 600;" class="control-label">Selecciona el tipo de
+
+                    <label style="font-weight: 600;" class="control-label">Selecciona el tipo de
                         picada:</label>
                     <select class="form-control form-control" aria-label="Default select example" id="tipoPicadaSelect"
                         name="tipoPicada">
@@ -21,7 +21,7 @@
                     </select>
                     <p id="precioTipoPicada"></p>
 
-                    <label style="font-size: smaller; font-weight: 600;" class="control-label">Selecciona el tipo de
+                    <label style="font-weight: 600;" class="control-label">Selecciona el tipo de
                         tabla:</label>
                     <select class="form-control form-control" aria-label="Default select example" id="tipoTablaSelect"
                         name="tipoTabla">
@@ -29,7 +29,7 @@
                     </select>
                     <p id="precioTipoTabla"></p>
 
-                    <label style="font-size: smaller; font-weight: 600;" class="control-label">Selecciona Cantidad de
+                    <label style="font-weight: 600;" class="control-label">Selecciona Cantidad de
                         Comensales:</label>
                     <select class="form-control form-control" aria-label="Default select example"
                         id="cantidadComensalesSelect" name="cantidadComensales">
@@ -37,7 +37,7 @@
                     </select>
                     <p id="precioComensales"></p>
 
-                    <label style="font-size: smaller; font-weight: 600;" class="control-label">Selecciona Primer
+                    <label style="font-weight: 600;" class="control-label">Selecciona Primer
                         Agregado:</label>
                     <select class="form-control form-control" aria-label="Default select example"
                         id="primerAgregadoSelect" name="agregado1">
@@ -45,7 +45,7 @@
                     </select>
                     <p id="precioPrimerAgregado"></p>
 
-                    <label style="font-size: smaller; font-weight: 600;" class="control-label">Selecciona Segundo
+                    <label style="font-weight: 600;" class="control-label">Selecciona Segundo
                         Agregado:</label>
                     <select class="form-control form-control" aria-label="Default select example"
                         id="segundoAgregadoSelect" name="agregado2">
@@ -53,7 +53,7 @@
                     </select>
                     <p id="precioSegundoAgregado"></p>
 
-                    <label style="font-size: smaller; font-weight: 600;" class="control-label">Selecciona Tercer
+                    <label style="font-weight: 600;" class="control-label">Selecciona Tercer
                         Agregado:</label>
                     <select class="form-control form-control" aria-label="Default select example"
                         id="tercerAgregadoSelect" name="agregado3">
@@ -61,7 +61,7 @@
                     </select>
                     <p id="precioTercerAgregado"></p>
 
-                    <label style="font-size: smaller; font-weight: 600;" class="control-label">¿Buscas o te la
+                    <label style="font-weight: 600;" class="control-label">¿Buscas o te la
                         llevamos?</label>
                     <select class="form-control form-control" aria-label="Default select example" id="deliverySelect"
                         name="delivery">
@@ -70,11 +70,11 @@
                     </select>
                     <p id="precioDelivery"></p>
                     <div>
-                    <h2 id="precioTotal" style="color: orange; ">Precio Total: $0.00</h2>
-                    <input type="hidden" id="preciofinal" name="preciofinal" value="">
+                        <h2 id="precioTotal" style="color: orange; ">Precio Total: $0.00</h2>
+                        <input type="hidden" id="preciofinal" name="preciofinal" value="">
                     </div>
 
-                    
+
                     <script>
                     document.addEventListener("DOMContentLoaded", function() {
                         const tipoPicadaSelect = document.getElementById('tipoPicadaSelect');
@@ -133,6 +133,16 @@
 
                                 // Manejar cambios en el select de tipo de tabla
                                 deliverySelect.addEventListener('change', actualizarPrecios)
+                                // Obtener el ID de tipopicada de la URL
+                                const urlParams = new URLSearchParams(window.location.search);
+                                const tipopicadaIdFromURL = urlParams.get('id_modal');
+
+                                // Seleccionar automáticamente la opción en el campo select
+                                if (tipopicadaIdFromURL) {
+                                    tipoPicadaSelect.value = tipopicadaIdFromURL;
+                                    // Disparar el evento 'change' para activar la lógica asociada
+                                    tipoPicadaSelect.dispatchEvent(new Event('change'));
+                                }
 
                                 function cargarTipoTablaYComensales(tipoPicada) {
                                     tipoTablaSelect.innerHTML = "";
@@ -141,23 +151,33 @@
                                         option.value = tipoTabla.id;
                                         option.textContent = tipoTabla.tipo;
                                         option.dataset.precio = tipoTabla.in_ars;
+                                        option.dataset.maxComensales = tipoTabla
+                                        .maximo_personas; // Nueva línea
                                         tipoTablaSelect.appendChild(option);
                                     });
-
+                                    // Llamar a actualizarCantidadComensales después de cargar las tablas
+                                    actualizarCantidadComensales(tipoPicada.tipo_tablas[0].maximo_personas);
+                                    actualizarPrecios();
+                                }
+                                // Manejar cambios en el select de tipo de tabla
+                                tipoTablaSelect.addEventListener('change', function() {
+                                    const maxComensales = parseInt(this.options[this.selectedIndex]
+                                        .dataset.maxComensales) || 0;
+                                    actualizarCantidadComensales(maxComensales);
+                                    actualizarPrecios();
+                                });
+                                // Función para actualizar la cantidad de comensales
+                                function actualizarCantidadComensales(maxComensales) {
                                     cantidadComensalesSelect.innerHTML = "";
-                                    for (let i = 4; i <= tipoPicada.maximo_personas; i++) {
+                                    for (let i = 4; i <= maxComensales; i++) {
                                         const option = document.createElement('option');
                                         option.value = i;
                                         option.textContent = i + ' personas';
                                         cantidadComensalesSelect.appendChild(option);
                                     }
-
-                                    actualizarPrecios();
                                 }
 
-
                             }).catch(error => console.error(error));
-
                         // Función para cargar los datos de los agregados y actualizar precios
                         function cargarAgregadosYActualizarPrecios() {
                             fetch("<?php echo $urlApi;?>/api/agregado", requestOptions)
@@ -225,11 +245,11 @@
                                 valorPorPersona;
 
                             precioTipoPicadaElement.textContent =
-                                `Precio Tipo Picada: $${precioTotalTipoPicada.toFixed(2)}`;
+                                `Tipo Picada: $${precioTotalTipoPicada.toFixed(2)}`;
                             precioTipoTablaElement.textContent =
-                                `Precio Tipo Tabla: $${precioTotalTipoTabla.toFixed(2)}`;
+                                `Tipo Tabla: $${precioTotalTipoTabla.toFixed(2)}`;
                             precioComensalesElement.textContent =
-                                `Precio por Comensales: $${precioTotalComensales.toFixed(2)}`;
+                                `Comensales: $${precioTotalComensales.toFixed(2)}`;
 
                             // Obtener los precios de los agregados seleccionados
                             const precioPrimerAgregado = parseFloat(
@@ -247,23 +267,22 @@
 
                             // Mostrar los precios individuales de los agregados
                             precioPrimerAgregadoElement.textContent =
-                                `Precio Primer Agregado: $${precioPrimerAgregado.toFixed(2)}`;
+                                `Primer Agregado: $${precioPrimerAgregado.toFixed(2)}`;
                             precioSegundoAgregadoElement.textContent =
-                                `Precio Segundo Agregado: $${precioSegundoAgregado.toFixed(2)}`;
+                                `Segundo Agregado: $${precioSegundoAgregado.toFixed(2)}`;
                             precioTercerAgregadoElement.textContent =
-                                `Precio Tercer Agregado: $${precioTercerAgregado.toFixed(2)}`;
+                                `Tercer Agregado: $${precioTercerAgregado.toFixed(2)}`;
                             precioDeliveryElement.textContent =
-                                `Precio Delivery: $${delivery.toFixed(2)}`;
+                                `Delivery: $${delivery.toFixed(2)}`;
 
                             // Calcular y mostrar el precio total con los agregados
                             const precioTotalConAgregados =
                                 precioTotalTipoPicada + precioTotalTipoTabla + precioTotalComensales +
                                 precioPrimerAgregado + precioSegundoAgregado + precioTercerAgregado + delivery;
                             precioTotalElement.textContent =
-                                `Precio Total: $${precioTotalConAgregados.toFixed(2)}`;
+                                `Total: $${precioTotalConAgregados.toFixed(2)}`;
                             precioFinalElement.value = precioTotalConAgregados;
                         }
-
                         cargarAgregadosYActualizarPrecios();
                         cargardeliveryYActualizarPrecios();
                     });
@@ -272,7 +291,8 @@
                     <br>
                     <div class="col-sm-4 mx-auto" style="text-align: center;"><span></span>
                         <button type="submit" name="enviar_pedido" id="enviar_pedido"
-                        style="padding-left: 20%;padding-right: 20%; color:black; font-weight: 500;" class="btn btn-outline-warning">Pedir</button>
+                            style="padding-left: 20%;padding-right: 20%; color:black; font-weight: 500;"
+                            class="btn btn-outline-warning">Pedir</button>
                     </div>
                 </form>
             </div>

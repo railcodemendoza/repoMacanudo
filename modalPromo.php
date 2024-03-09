@@ -24,67 +24,79 @@ $hayPicadas = !empty($picadas);
 
 <style>
     .popup {
-        z-index: 4500;
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.5);
-    }
+  z-index: 4500;
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+}
 
-    .popup-content {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 100%;
-        max-width: 800px; /* Máximo ancho del modal */
-        transform: translate(-50%, -50%);
-        background: #fff; /* Fondo del modal */
-        border-radius: 10px; /* Bordes redondeados */
-        overflow: hidden;
-    }
+.popup-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  max-width: 800px; /* Ancho máximo del modal */
+  transform: translate(-50%, -50%);
+  background: #fff; /* Fondo del modal */
+  border-radius: 10px; /* Bordes redondeados */
+  overflow: hidden;
+  height: 80%; /* Ajusta el valor según tus necesidades */
+}
 
-    .popup-text {
-        position: absolute;
-        top: 50%;
-        text-align: center;
-        color: white;
-        z-index: 2; 
-        width: 100%; 
-        background-color: rgba(0, 0, 0, 0.5);
-    }
+.popup-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+  z-index: 2; 
+  width: 90%; /* Ajusta el ancho del texto según tus necesidades */
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 20px; /* Añade un relleno para mejorar la apariencia */
+  border-radius: 10px; /* Bordes redondeados */
+}
 
-    #imagen{
-        max-width: 50rem;
-        height: auto;
-    }
+#imagen {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px 10px 0 0; /* Bordes redondeados solo en la parte superior */
+}
 
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  color: black;
+  z-index: 3;
+}
 
-    .close {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        font-size: 20px;
-        cursor: pointer;
-        color: black;
-        z-index: 3;
-    }
+.carousel-item img {
+  max-width: 80%;
+  height: auto;
+}
 
-    .carousel-item img {
-        max-width: 100%;
-        height: auto;
-    }
-    @media (max-width: 768px) {
-        .popup-content {
-            width: 95%; /* Ancho del modal al 95% en pantallas más pequeñas */
-        }
-        .popup-text {
-            position: static;
-        }
-    }
+/* Media queries para ajustar la visualización en pantallas pequeñas */
+
+@media (max-width: 768px) {
+  .popup-content {
+    width: 95%;
+    height: 70%; /* Ajusta la altura en pantallas más pequeñas */
+  }
+  .popup-text {
+    position: static;
+    transform: none;
+  }
+}
 </style>
+
+
 
 <div id="popup" class="popup" style="display: none;">
     <div class="popup-content">

@@ -163,7 +163,7 @@
         </div>
 
         <a class="btn btn-success" href="#" type="button" data-toggle="modal" data-target="#agregar_horario"><i
-                class="fa fa-hand-o-right"></i> Localidad</a>
+                class="fa fa-hand-o-right"></i> Horario</a>
 
 
         <div class="modal fade" id="agregar_horario" tabindex="-1" role="dialog" aria-labelledby="scrollmodalLabel"
