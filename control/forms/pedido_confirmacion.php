@@ -88,7 +88,7 @@ if (isset($_POST['confirmar'])) {
             CBU: 00702470-30004032793102<br>
             CUIL: 27-32975147-9';
             $_SESSION['message_type'] = 'warning';
-            header('location:../forms/forms_envios.php');
+            header('location:../forms/pedido.php');
 
         } elseif ($payment_mode == 'Mercado Pago') {
 
