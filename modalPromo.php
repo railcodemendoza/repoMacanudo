@@ -29,10 +29,6 @@ $hayPicadas = !empty($picadas);
         height: 100%;
         background: rgba(0, 0, 0, 0.5);
     }
-<<<<<<< HEAD
-
-=======
->>>>>>> e5d2679b550ee17a0b66ad01d4f6f82f8c1e9c6b
     .popup-content {
         position: absolute;
         top: 0;
@@ -43,7 +39,6 @@ $hayPicadas = !empty($picadas);
         justify-content: center;
         align-items: center;
     }
-<<<<<<< HEAD
 
     .small-image {
     width: 50%;
@@ -66,23 +61,6 @@ $hayPicadas = !empty($picadas);
 }
 
 
-=======
-    .popup-text {
-    position: absolute;
-    top: 50%;
-    text-align: center;
-    color: white;
-    z-index: 2; 
-    width: 100%; 
-    background-color: rgba(0, 0, 0, 0.5);
-}
-
-#imagen{
-    max-width: 40rem;
-}
-
-
->>>>>>> e5d2679b550ee17a0b66ad01d4f6f82f8c1e9c6b
     .close {
         position: absolute;
         top: 10px;
@@ -91,19 +69,12 @@ $hayPicadas = !empty($picadas);
         cursor: pointer;
         color: white;
     }
-<<<<<<< HEAD
-
-=======
->>>>>>> e5d2679b550ee17a0b66ad01d4f6f82f8c1e9c6b
     .carousel-item img {
         max-width: 100%;
         height: auto;
     }
-<<<<<<< HEAD
     .
 
-=======
->>>>>>> e5d2679b550ee17a0b66ad01d4f6f82f8c1e9c6b
     @media (max-width: 768px) {
         .popup-text {
             position: static;
@@ -111,10 +82,6 @@ $hayPicadas = !empty($picadas);
         }
     }
 </style>
-<<<<<<< HEAD
-
-=======
->>>>>>> e5d2679b550ee17a0b66ad01d4f6f82f8c1e9c6b
 <div id="popup" class="popup" style="display: none;">
     <div class="popup-content">
         <span class="close" id="closePopup"><strong>X</strong></span>
