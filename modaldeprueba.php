@@ -45,12 +45,6 @@ $hayPicadas = !empty($picadas);
         align-items: center;
     }
 
-    .small-image {
-    width: 50%;
-    height: 50%;
-}
-
-
     .popup-text {
     position: absolute;
     top: 50%;
@@ -79,7 +73,6 @@ $hayPicadas = !empty($picadas);
         max-width: 100%;
         height: auto;
     }
-    .
 
     @media (max-width: 768px) {
         .popup-text {
@@ -96,7 +89,7 @@ $hayPicadas = !empty($picadas);
             <div class="carousel-inner">
                 <?php foreach ($picadas as $index => $picada): ?>
                     <div class="carousel-item <?php echo ($index == 0) ? 'active' : ''; ?>">
-                        <img src="<?php echo $urlApi;?>/storage/picadas/<?php echo $picada['imagen']; ?>" class="small-image" alt="..." id="imagen">
+                        <img src="<?php echo $urlApi;?>/storage/picadas/<?php echo $picada['imagen']; ?>" class="d-block w-100" alt="..." id="imagen">
                         <div class="popup-text">
                             <div class="text-background">
                                 <h1><?php echo $picada['title_especial']; ?></h1>

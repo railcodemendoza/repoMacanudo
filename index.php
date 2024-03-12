@@ -48,7 +48,7 @@
     <link href="assets/css/style.css" rel="stylesheet">
     
 </head>
-<body >
+<body>
     <!-- ======= Top Bar ======= -->
     <section id="topbar" class="d-none d-lg-flex align-items-center fixed-top topbar-transparent">
         <div class="container text-right">
@@ -102,3 +102,5 @@
     <?php include('sections/footer.php'); ?>
     <?php include('sections/whatsAppFloat.php'); ?>
     <?php include('sections/script.php'); ?>
+        
+    </body>
