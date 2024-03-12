@@ -12,16 +12,12 @@ curl_setopt_array($curl, array(
     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
     CURLOPT_CUSTOMREQUEST => 'GET',
 ));
-
 $response = curl_exec($curl);
 curl_close($curl);
 $picadas = json_decode($response, true);
-
 // Verificar si hay picadas disponibles
 $hayPicadas = !empty($picadas);
 ?>
-
-
 <style>
     .popup {
         z-index: 4500;
@@ -33,7 +29,10 @@ $hayPicadas = !empty($picadas);
         height: 100%;
         background: rgba(0, 0, 0, 0.5);
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> e5d2679b550ee17a0b66ad01d4f6f82f8c1e9c6b
     .popup-content {
         position: absolute;
         top: 0;
@@ -44,6 +43,7 @@ $hayPicadas = !empty($picadas);
         justify-content: center;
         align-items: center;
     }
+<<<<<<< HEAD
 
     .small-image {
     width: 50%;
@@ -66,6 +66,23 @@ $hayPicadas = !empty($picadas);
 }
 
 
+=======
+    .popup-text {
+    position: absolute;
+    top: 50%;
+    text-align: center;
+    color: white;
+    z-index: 2; 
+    width: 100%; 
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+#imagen{
+    max-width: 40rem;
+}
+
+
+>>>>>>> e5d2679b550ee17a0b66ad01d4f6f82f8c1e9c6b
     .close {
         position: absolute;
         top: 10px;
@@ -74,13 +91,19 @@ $hayPicadas = !empty($picadas);
         cursor: pointer;
         color: white;
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> e5d2679b550ee17a0b66ad01d4f6f82f8c1e9c6b
     .carousel-item img {
         max-width: 100%;
         height: auto;
     }
+<<<<<<< HEAD
     .
 
+=======
+>>>>>>> e5d2679b550ee17a0b66ad01d4f6f82f8c1e9c6b
     @media (max-width: 768px) {
         .popup-text {
             position: static;
@@ -88,7 +111,10 @@ $hayPicadas = !empty($picadas);
         }
     }
 </style>
+<<<<<<< HEAD
 
+=======
+>>>>>>> e5d2679b550ee17a0b66ad01d4f6f82f8c1e9c6b
 <div id="popup" class="popup" style="display: none;">
     <div class="popup-content">
         <span class="close" id="closePopup"><strong>X</strong></span>
@@ -98,10 +124,8 @@ $hayPicadas = !empty($picadas);
                     <div class="carousel-item <?php echo ($index == 0) ? 'active' : ''; ?>">
                         <img src="<?php echo $urlApi;?>/storage/picadas/<?php echo $picada['imagen']; ?>" class="small-image" alt="..." id="imagen">
                         <div class="popup-text">
-                            <div class="text-background">
-                                <h1><?php echo $picada['title_especial']; ?></h1>
-                                <p><?php echo $picada['comentario_especial']; ?></p>
-                            </div>
+                            <h1><?php echo $picada['title_especial']; ?></h1>
+                            <p><?php echo $picada['comentario_especial']; ?></p>
                             <a href="control/forms/pedido.php?id_modal=<?php echo $picada['id']; ?>" class="btn btn-warning">Arma tu Pedido</a>
                         </div>
                     </div>
@@ -118,18 +142,14 @@ $hayPicadas = !empty($picadas);
         </div>
     </div>
 </div>
-
-
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         // Obtener el botón y el modal
         var popup = document.getElementById('popup');
         var closeButton = document.getElementById('closePopup');
-
         <?php if ($hayPicadas): ?>
             popup.style.display = 'block';
         <?php endif; ?>
-
         closeButton.addEventListener('click', function() {
             popup.style.display = 'none';
         });
