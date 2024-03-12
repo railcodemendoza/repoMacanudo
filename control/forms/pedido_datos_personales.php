@@ -259,6 +259,26 @@
                                         });
                                     })
                                     .catch(error => console.error('Error al obtener los horarios:', error));
+
+                                // Realizar una llamada a la API para obtener los horarios de entrega
+                                fetch("<?php echo $urlApi;?>/api/metodoPago", requestOptions)
+                                    .then(response => response.json())
+                                    .then(data => {
+                                        // Obtener el elemento select
+                                        const selectElement = document.getElementById('metodosPago');
+
+                                        // Limpiar cualquier opción existente en el select
+                                        selectElement.innerHTML = '<option value="">-.elegir horario.-</option>';
+
+                                        // Agregar las nuevas opciones al select basadas en los datos obtenidos de la API
+                                        data.forEach(schedule => {
+                                            const option = document.createElement('option');
+                                            option.value = schedule.modo_de_pago; // Asigna el valor adecuado según la respuesta de la API
+                                            option.text = schedule.modo_de_pago; // Asigna el texto adecuado según la respuesta de la API
+                                            selectElement.add(option);
+                                        });
+                                    })
+                                    .catch(error => console.error('Error al obtener los horarios:', error));
                         });
                         </script>
                         <br>
@@ -267,40 +287,40 @@
                             <div class="row">
                                 <div class="col-sm-2"></div>
                                 <div class="col-sm-7 pato" style="background-color: rgba(0, 0, 0, 0.5); color: orange; border-radius:10px">
-    <h3 style="text-align: center; color:#ffb03b; margin-top:2rem;">Resumen del pedido: </h3>
-    <div class="row">
-    <div class="col-sm-4">
-    <p><strong>Tipo de Picada: </strong> <h4><span style="color: white;"><?php echo $tipoPicada ; ?></span></h4></p>
-</div>
-        <div class="col-sm-4">
-            <p><strong>Tipo de Tabla: </strong><h4><span style="color: white;"> <?php echo $tipoTabla; ?></span></h4></p>
-        </div>
-        <div class="col-sm-4">
-            <p><strong>Cantidad de Comensales: </strong><h4><span style="color: white;"> <?php echo $comensales ; ?></span></h4></p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-4">
-            <p><strong>Agregado 1: </strong><h4><span style="color: white;"> <?php echo $agregado1; ?></span></h4></p>
-        </div>
-        <div class="col-sm-4">
-            <p><strong>Agregado 2: </strong><h4><span style="color: white;"> <?php echo $agregado2; ?></span></h4></p>
-        </div>
-        <div class="col-sm-4">
-            <p><strong>Agregado 3: </strong><h4><span style="color: white;"> <?php echo $agregado3; ?></span></h4></p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-12">
-            <p><strong>Delivery: </strong><h4><span style="color: white;"> <?php echo $location; ?></span></h4></p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-12">
-            <p id="precioTotalDisplay" style="margin-bottom:1rem;"><strong>Precio Total: </strong><h4><span style="color: white;"> $<?php echo $precioTotal; ?></span></h4></p>
-        </div>
-    </div>
-</div>
+                                    <h3 style="text-align: center; color:#ffb03b; margin-top:2rem;">Resumen del pedido: </h3>
+                                    <div class="row">
+                                    <div class="col-sm-4">
+                                    <p><strong>Tipo de Picada: </strong> <h4><span style="color: white;"><?php echo $tipoPicada ; ?></span></h4></p>
+                                </div>
+                                        <div class="col-sm-4">
+                                            <p><strong>Tipo de Tabla: </strong><h4><span style="color: white;"> <?php echo $tipoTabla; ?></span></h4></p>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <p><strong>Cantidad de Comensales: </strong><h4><span style="color: white;"> <?php echo $comensales ; ?></span></h4></p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <p><strong>Agregado 1: </strong><h4><span style="color: white;"> <?php echo $agregado1; ?></span></h4></p>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <p><strong>Agregado 2: </strong><h4><span style="color: white;"> <?php echo $agregado2; ?></span></h4></p>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <p><strong>Agregado 3: </strong><h4><span style="color: white;"> <?php echo $agregado3; ?></span></h4></p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <p><strong>Delivery: </strong><h4><span style="color: white;"> <?php echo $location; ?></span></h4></p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <p id="precioTotalDisplay" style="margin-bottom:1rem;"><strong>Precio Total: </strong><h4><span style="color: white;"> $<?php echo $precioTotal; ?></span></h4></p>
+                                        </div>
+                                    </div>
+                                </div>
 
                                 <div class="col-sm-3">
                                     <label style="color:white;" class="col-sm-10 control-label">Código de
@@ -450,15 +470,10 @@
                                     <label style="color:white;" class="col-sm-3 control-label"><h3 style="color:white;">Forma de
                                         Pago</h3></label>
                                     <div class="col-sm-5 mx-auto">
-                                        <select name="payment_mode[]" id="selectSm" class="form-control form-control"
+                                        <select name="payment_mode[]" id="metodosPago" class="form-control form-control"
                                             required>
                                             <option value="">-.Elige medio de Pago.-</option>
-                                            <?php
-                                            $query_payment = $conn -> query ("SELECT * FROM `payment_method`");
-                                            while ($payment= mysqli_fetch_array($query_payment)) {                                           
-                                                echo '<option value="'.$payment['modo_de_pago'].'">'.$payment['modo_de_pago'].'</option>';
-                                            }  
-                                            ?>
+                                            
                                         </select>
                                         <small style="color:white; text-shadow: black 0.1em 0.1em 0.2em;"
                                             class="help-block">Pagar con Mercado Pago tiene un
