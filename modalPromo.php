@@ -54,10 +54,10 @@ $hayPicadas = !empty($picadas);
         z-index: 4;
         position: absolute;
         top: 10px;
-        left: 10px; /* Ajusta la posición izquierda según tus necesidades */
+        right: 10px; /* Ajusta la posición izquierda según tus necesidades */
         font-size: 20px;
         cursor: pointer;
-        color: white;
+        color: yellow;
     }
 
     .carousel-item img {

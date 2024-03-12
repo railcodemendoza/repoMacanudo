@@ -69,6 +69,7 @@
             <nav class="nav-menu d-none d-lg-block">
                 <ul>
                     <li class="active"><a href="index.php">Inicio</a></li>
+                    <li><a href="#simulador">Simulador</a></li>
                     <li><a href="#about">Nosotros</a></li>
                     <li><a href="#menu">Picadas</a></li>
                     <li><a href="#events">Agregados</a></li>
