@@ -223,7 +223,7 @@
                                                                                                 <i class="fa fa-image"></i>
                                                                                             </div>
                                                                                             <input type="file" name="imagen" class="form-control" >
-                                                                                            
+                                                                                            <p>Dimension recomendada: 1024x628</p>
                                                                                         </div>
                                                                                         <br>
                                                                                         <img src="<?php echo $urlApi;?>/storage/picadas/${row.imagen}" class="d-block w-100" alt="...">
@@ -395,12 +395,14 @@
                                                 </div>
                                                 <br>
                                                 <label for="" class="form-control-label">Imagen:</label>
+                                                
                                                 <div class="input-group">
                                                     <div class="input-group-addon">
                                                         <i class="fa fa-image"></i>
                                                     </div>
                                                     <input type="file" name="imagen" class="form-control"
                                                         placeholder="Archivo de imagen" required>
+                                                        <p>Dimension recomendada: 1024x628</p>
                                                 </div>
                                                 <br>
                                                 <label for="" class="form-control-label">Activo:</label>

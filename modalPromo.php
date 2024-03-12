@@ -29,58 +29,61 @@ $hayPicadas = !empty($picadas);
         height: 100%;
         background: rgba(0, 0, 0, 0.5);
     }
+
     .popup-content {
         position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 90%;
+        max-width: 800px; /* Ajusta según tus necesidades */
+        background-color: rgba(0, 0, 0, 0.8);
+        text-align: center;
+        color: white;
+        padding: 20px;
+        box-sizing: border-box;
     }
+
     .popup-text {
-    position: absolute;
-    top: 50%;
-    text-align: center;
-    color: white;
-    z-index: 2; 
-    width: 100%; 
-    background-color: rgba(0, 0, 0, 0.5);
-}
-
-#imagen{
-    max-width: 40rem;
-}
-
+        position: relative; /* Cambia a relativo para que el texto no se salga del contenedor */
+        padding: 20px;
+        color: white;
+    }
 
     .close {
+        z-index: 4;
         position: absolute;
         top: 10px;
-        right: 10px;
+        left: 10px; /* Ajusta la posición izquierda según tus necesidades */
         font-size: 20px;
         cursor: pointer;
         color: white;
     }
+
     .carousel-item img {
         max-width: 100%;
-        height: auto;
+        max-height: 450px; /* Establece la altura máxima que desees */
+        object-fit: contain; /* Ajusta las imágenes del carrusel de la misma manera */
     }
+    
+
     @media (max-width: 768px) {
-        .popup-text {
-            position: static;
-            margin-top: 20px;
+        .popup-content {
+            width: 90%;
+            height: auto;
         }
+       
     }
 </style>
-<div id="popup" class="popup" style="display: none;">
+
+<div id="popup" class="popup" >
     <div class="popup-content">
         <span class="close" id="closePopup"><strong>X</strong></span>
         <div id="carouselExampleFade" class="carousel slide carousel-fade">
             <div class="carousel-inner">
                 <?php foreach ($picadas as $index => $picada): ?>
                     <div class="carousel-item <?php echo ($index == 0) ? 'active' : ''; ?>">
-                        <img src="<?php echo $urlApi;?>/storage/picadas/<?php echo $picada['imagen']; ?>" class="d-block w-100" alt="..." id="imagen">
+                        <img src="<?php echo $urlApi;?>/storage/picadas/<?php echo $picada['imagen']; ?>" alt="...">
                         <div class="popup-text">
                             <h1><?php echo $picada['title_especial']; ?></h1>
                             <p><?php echo $picada['comentario_especial']; ?></p>
@@ -100,6 +103,7 @@ $hayPicadas = !empty($picadas);
         </div>
     </div>
 </div>
+
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         // Obtener el botón y el modal
