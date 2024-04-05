@@ -36,6 +36,10 @@
         font-family: "Nickainley";
         src: url("assets/font/Nickainley-Normal.otf");
     }
+    body {
+    
+        margin: 0;
+    }
     </style>
     <!-- Vendor CSS Files -->
     <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -89,6 +93,7 @@
         $a = 1;
     ?>
     <?php include('sections/headSection.php'); ?>
+    <?php include('modalPromo.php'); ?>
     <main id="main">
     <?php include('sections/cotizador.php'); ?>
         <?php include('sections/quienesSomos.php'); ?>
@@ -98,7 +103,7 @@
         <?php include('sections/encuestas.php'); ?>
         <?php include('sections/medios.php'); ?>
         <?php include('sections/galeria.php'); ?>
-        <?php include('modalPromo.php'); ?>
+       
     </main><!-- End #main -->
     <?php include('sections/footer.php'); ?>
     <?php include('sections/whatsAppFloat.php'); ?>
