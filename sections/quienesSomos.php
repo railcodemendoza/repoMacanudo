@@ -96,7 +96,7 @@ if ($a == 0) {
                                         <?php echo $rowQS['descripcion_2']; ?></p>
 
                                     <br>
-                                    <img style="max-width: -webkit-fill-available;" src="
+                                    <img  class="img-fluid" alt="" style=" object-fit: cover;"  src="
                                     <?php
                                 if($a == 0){
                                     echo '../../assets/img/quienes_somos/' . $rowQS['imagen'];
