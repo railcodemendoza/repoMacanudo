@@ -268,7 +268,7 @@
                                         const selectElement = document.getElementById('metodosPago');
 
                                         // Limpiar cualquier opción existente en el select
-                                        selectElement.innerHTML = '<option value="">-.elegir horario.-</option>';
+                                        selectElement.innerHTML = '<option value="">-.Elige medio de Pago.-</option>';
 
                                         // Agregar las nuevas opciones al select basadas en los datos obtenidos de la API
                                         data.forEach(schedule => {

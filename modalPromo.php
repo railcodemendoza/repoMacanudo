@@ -35,31 +35,34 @@ $hayPicadas = !empty($picadas);
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        width: 90%;
-        max-width: 800px; /* Ajusta según tus necesidades */
-        background-color: rgba(0, 0, 0, 0.8);
+        width: 90%; 
+        max-width: 700px; /* Ajusta según tus necesidades */
+        background-color: rgb(176, 141, 87);
         text-align: center;
         color: white;
-        padding: 20px;
+        padding: 5px;
         box-sizing: border-box;
         overflow-y: auto; /* Añade desplazamiento vertical si el contenido es demasiado largo */
+        border-radius: 15px;
     }
    
     .carousel-item img {
         max-width: 100%;
         height: auto; /* Para mantener la relación de aspecto */
         object-fit: cover; /* Utiliza cover para llenar el espacio y mantener la relación de aspecto */
+        border-radius: 15px;
     }
 
     .carousel-caption {
         background-color: rgba(0, 0, 0, 0.8);
         padding: 20px;
         margin-top: 10px;
+        border-radius: 15px;
     }
 
     .btn-warning {
-        font-size: 24px;
-        padding: 15px 30px;
+        font-size: 30px;
+        background-color: rgb(176, 141, 87);
     }
 
     @media (max-width: 768px) {
@@ -71,7 +74,8 @@ $hayPicadas = !empty($picadas);
         
         .carousel-caption {
             position: sticky;
-            margin-top: 20px;
+            margin-top: 25px;
+            background-color: rgba(0, 0, 0, 0.9);
         }
     }
 </style>
@@ -86,9 +90,9 @@ $hayPicadas = !empty($picadas);
                         <div class="carousel-caption ">
                             <h1><?php echo $picada['title_especial']; ?></h1>
                             <p><?php echo $picada['comentario_especial']; ?></p>
-                            <a href="control/forms/pedido.php?id_modal=<?php echo $picada['id']; ?>" class="btn btn-warning btn-lg">Arma tu Pedido</a>
+                            <a href="control/forms/pedido.php?id_modal=<?php echo $picada['id']; ?>" class="btn btn-warning btn-lg">Realizar Pedido</a>
                             <div >
-                                <button style="margin-top: 10px;" class="btn btn-light" id="closePopup">Cerrar</button>
+                                <button style="margin-top: 10px;" class="btn btn-light btn-sm" id="closePopup">X</button>
                             </div>
                         </div> 
                     </div>
