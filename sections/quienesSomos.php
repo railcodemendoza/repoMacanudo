@@ -68,7 +68,7 @@ if ($a == 0) {
                                     echo 'assets/img/quienes_somos/' . $rowO['imagen'];
                                 }
                                 
-                            ?>" class="img-fluid" alt="">
+                            ?>" class="img-fluid" alt="" style=" object-fit: cover;">
             </div>
             <div class="col-lg-7 d-flex flex-column justify-content-center align-items-stretch">
                 <div class="content">
