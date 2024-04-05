@@ -261,7 +261,7 @@
                                     .catch(error => console.error('Error al obtener los horarios:', error));
 
                                 // Realizar una llamada a la API para obtener los horarios de entrega
-                                fetch("<?php echo $urlApi;?>/api/metodoPago", requestOptions)
+                                fetch("<?php echo $urlApi;?>/api/metodosPagoModo/<?php echo $modoEnvio;?>", requestOptions)
                                     .then(response => response.json())
                                     .then(data => {
                                         // Obtener el elemento select
