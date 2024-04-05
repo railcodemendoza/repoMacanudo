@@ -36,10 +36,7 @@
         font-family: "Nickainley";
         src: url("assets/font/Nickainley-Normal.otf");
     }
-    body {
-    
-        margin: 0;
-    }
+    body::-webkit-scrollbar { display: none; }
     </style>
     <!-- Vendor CSS Files -->
     <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
