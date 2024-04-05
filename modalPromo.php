@@ -19,7 +19,7 @@ $picadas = json_decode($response, true);
 $hayPicadas = !empty($picadas);
 ?>
 <style>
-    .popup {
+.popup {
         z-index: 4500;
         display: none;
         position: fixed;
@@ -42,53 +42,55 @@ $hayPicadas = !empty($picadas);
         color: white;
         padding: 20px;
         box-sizing: border-box;
+        overflow-y: auto; /* Añade desplazamiento vertical si el contenido es demasiado largo */
     }
-
-    .popup-text {
-        position: relative; /* Cambia a relativo para que el texto no se salga del contenedor */
-        padding: 20px;
-        color: white;
-    }
-
-    .close {
-        z-index: 4;
-        position: absolute;
-        top: 10px;
-        right: 10px; /* Ajusta la posición izquierda según tus necesidades */
-        font-size: 20px;
-        cursor: pointer;
-        color: yellow;
-    }
-
+   
     .carousel-item img {
         max-width: 100%;
-        max-height: 450px; /* Establece la altura máxima que desees */
-        object-fit: contain; /* Ajusta las imágenes del carrusel de la misma manera */
+        height: auto; /* Para mantener la relación de aspecto */
+        object-fit: cover; /* Utiliza cover para llenar el espacio y mantener la relación de aspecto */
     }
-    
+
+    .carousel-caption {
+        background-color: rgba(0, 0, 0, 0.8);
+        padding: 20px;
+        margin-top: 10px;
+    }
+
+    .btn-warning {
+        font-size: 24px;
+        padding: 15px 30px;
+    }
 
     @media (max-width: 768px) {
         .popup-content {
             width: 90%;
             height: auto;
+            max-height: 90vh;
         }
-       
+        
+        .carousel-caption {
+            position: sticky;
+            margin-top: 20px;
+        }
     }
 </style>
 
-<div id="popup" class="popup" >
+<div id="popup" class="popup">
     <div class="popup-content">
-        <span class="close" id="closePopup"><strong>X</strong></span>
         <div id="carouselExampleFade" class="carousel slide carousel-fade">
             <div class="carousel-inner">
                 <?php foreach ($picadas as $index => $picada): ?>
                     <div class="carousel-item <?php echo ($index == 0) ? 'active' : ''; ?>">
                         <img src="<?php echo $urlApi;?>/storage/picadas/<?php echo $picada['imagen']; ?>" alt="...">
-                        <div class="popup-text">
+                        <div class="carousel-caption ">
                             <h1><?php echo $picada['title_especial']; ?></h1>
                             <p><?php echo $picada['comentario_especial']; ?></p>
-                            <a href="control/forms/pedido.php?id_modal=<?php echo $picada['id']; ?>" class="btn btn-warning">Arma tu Pedido</a>
-                        </div>
+                            <a href="control/forms/pedido.php?id_modal=<?php echo $picada['id']; ?>" class="btn btn-warning btn-lg">Arma tu Pedido</a>
+                            <div >
+                                <button style="margin-top: 10px;" class="btn btn-light" id="closePopup">Cerrar</button>
+                            </div>
+                        </div> 
                     </div>
                 <?php endforeach; ?>
             </div>
