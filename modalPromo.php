@@ -92,7 +92,7 @@ $hayPicadas = !empty($picadas);
                             <p><?php echo $picada['comentario_especial']; ?></p>
                             <a href="control/forms/pedido.php?id_modal=<?php echo $picada['id']; ?>" class="btn btn-warning btn-lg">Realizar Pedido</a>
                             <div >
-                                <button style="margin-top: 10px;" class="btn btn-light btn-sm" id="closePopup">X</button>
+                                <button style="margin-top: 10px;" class="btn btn-light btn-sm closePopup">X</button>
                             </div>
                         </div> 
                     </div>
@@ -112,14 +112,19 @@ $hayPicadas = !empty($picadas);
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        // Obtener el botón y el modal
+        // Obtener todos los botones de cierre
+        var closeButtons = document.querySelectorAll('.closePopup');
         var popup = document.getElementById('popup');
-        var closeButton = document.getElementById('closePopup');
+        
         <?php if ($hayPicadas): ?>
             popup.style.display = 'block';
         <?php endif; ?>
-        closeButton.addEventListener('click', function() {
-            popup.style.display = 'none';
+        
+        // Agregar event listener a cada botón de cierre
+        closeButtons.forEach(function(button) {
+            button.addEventListener('click', function() {
+                popup.style.display = 'none';
+            });
         });
     });
 </script>
