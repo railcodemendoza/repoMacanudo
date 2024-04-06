@@ -178,7 +178,7 @@
                                                                     <div class="col-sm-2"></div>
                                                                     <div class="col-sm-8">
                                                                         <h4 style="text-align: center;"><strong>Agregados:</strong>
-                                                                        ${row.add2}</h4>
+                                                                        ${row.add2}/ ${row.add4} / ${row.add5}</h4>
                                                                     </div>
                                                                 </div>
                                                                 <div class="row">
