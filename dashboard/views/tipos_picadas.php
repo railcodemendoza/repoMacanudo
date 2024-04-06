@@ -98,7 +98,6 @@
                                                                         </ul>
                                                                     </div>
                                                                 </div>
-                                                                <br>
                                                                 <div class="row">
                                                                     <div class="col-sm-2"></div>
                                                                     <div class="col-sm-8">
@@ -159,6 +158,18 @@
                                                                     <div class="col-sm-8">
                                                                         <h4 style="text-align:center;"> <strong> Comentario especial:
                                                                             </strong> <br>${row.comentario_especial? row.comentario_especial : '-------'}</h4>
+                                                                    </div>
+                                                                </div>
+                                                                <br>
+                                                                <div class="row">
+                                                                    <div class="col-sm-2"></div>
+                                                                    <div class="col-sm-8">
+                                                                        <h4 style="text-align:center;"> <strong> Agregados:</strong></h4>
+                                                                        <ul class="no-bullets"  style="text-align:center;">
+                                                                            ${row.add2s.map(add2 => `
+                                                                                <li>${add2.title}</li>
+                                                                            `).join('')}
+                                                                        </ul>
                                                                     </div>
                                                                 </div>
                                                                 <br>
@@ -297,6 +308,10 @@
                                                                                                 placeholder="Comentario Especial">${row.comentario_especial}</textarea>
                                                                                         </div>
                                                                                         <br>
+                                                                                        <label for="" class="form-control-label">Agregados:</label>
+                                                                                            <p>Solo picadas especiales. Max 3 agregados</p>
+                                                                                            <div id="agregadoContainer${row.id}" class="checkbox-group"></div>
+                                                                                        <br>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
@@ -319,36 +334,63 @@
                         tbody.innerHTML += newRow;
                          // Ahora, ejecuta el script para generar checkboxes fuera del bucle
                     generateCheckboxesForRows(row);
+                    generateAddCheckboxesForRows(row);
                     });
                    
                 })
                 .catch(error => console.error(error));
-             // Función para generar checkboxes dentro del script
-    function generateCheckboxesForRows(row) {
-        fetch("<?php echo $urlApi;?>/api/tipoTabla") // Reemplaza con la URL correcta de tu API
-            .then(response => response.json())
-            .then(data => {
-                // Manipula los datos de la respuesta
-                if (Array.isArray(data)) {
-                    // Genera las opciones en el contenedor
-                    var tipoTablaContainer = document.getElementById('tipoTablaContainer' + row.id);
-                    data.forEach(tipoTabla => {
-                        var checkbox = document.createElement('div');
-                        checkbox.className = 'checkbox';
-                        checkbox.innerHTML = `
-                        <input type="checkbox" name="tipo_tabla_ids[]" value="${tipoTabla.id}" ${row.tipo_tablas && row.tipo_tablas.some(tipoTablaAssoc => tipoTablaAssoc.id === tipoTabla.id) ? 'checked' : ''}>
-                            <label for="tipoTabla${tipoTabla.id}">${tipoTabla.tipo}</label>
-                        `;
-                        tipoTablaContainer.appendChild(checkbox);
-                    });
-                } else {
-                    console.error('La respuesta de la API no es un array.');
+                // Función para generar checkboxes dentro del script
+                function generateCheckboxesForRows(row) {
+                    fetch("<?php echo $urlApi;?>/api/tipoTabla") // Reemplaza con la URL correcta de tu API
+                        .then(response => response.json())
+                        .then(data => {
+                            // Manipula los datos de la respuesta
+                            if (Array.isArray(data)) {
+                                // Genera las opciones en el contenedor
+                                var tipoTablaContainer = document.getElementById('tipoTablaContainer' + row.id);
+                                data.forEach(tipoTabla => {
+                                    var checkbox = document.createElement('div');
+                                    checkbox.className = 'checkbox';
+                                    checkbox.innerHTML = `
+                                    <input type="checkbox" name="tipo_tabla_ids[]" value="${tipoTabla.id}" ${row.tipo_tablas && row.tipo_tablas.some(tipoTablaAssoc => tipoTablaAssoc.id === tipoTabla.id) ? 'checked' : ''}>
+                                        <label for="tipoTabla${tipoTabla.id}">${tipoTabla.tipo}</label>
+                                    `;
+                                    tipoTablaContainer.appendChild(checkbox);
+                                });
+                            } else {
+                                console.error('La respuesta de la API no es un array.');
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error al obtener los tipos de tablas desde la API:', error);
+                        });
                 }
-            })
-            .catch(error => {
-                console.error('Error al obtener los tipos de tablas desde la API:', error);
-            });
-    }
+                // Función para generar checkboxes dentro del script
+                function generateAddCheckboxesForRows(row) {
+                    fetch("<?php echo $urlApi;?>/api/agregado") // Reemplaza con la URL correcta de tu API
+                        .then(response => response.json())
+                        .then(data => {
+                            // Manipula los datos de la respuesta
+                            if (Array.isArray(data)) {
+                                // Genera las opciones en el contenedor
+                                var agregadoContainer = document.getElementById('agregadoContainer' + row.id);
+                                data.forEach(agregado => {
+                                    var checkbox = document.createElement('div');
+                                    checkbox.className = 'checkbox';
+                                    checkbox.innerHTML = `
+                                    <input type="checkbox" name="agregado_ids[]" value="${agregado.id}" ${row.add2s && row.add2s.some(agregadoAssoc => agregadoAssoc.id === agregado.id) ? 'checked' : ''}>
+                                        <label for="tipoTabla${agregado.id}">${agregado.title}</label>
+                                    `;
+                                    agregadoContainer.appendChild(checkbox);
+                                });
+                            } else {
+                                console.error('La respuesta de la API no es un array.');
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error al obtener los agregados desde la API:', error);
+                        });
+                }
             </script>
         </div>
         <form action="../report/report_tipo_picadas.php" method="POST">
@@ -370,7 +412,7 @@
                     <div class="modal-body">
                         <div class="card">
                             <div class="card-body">
-                                <form action="../actions/agregar_tipo_picada.php" method="POST"
+                                <form action="../actions/agregar_tipo_picada.php" method="POST" id="agregarPicada"
                                     enctype="multipart/form-data">
                                     <div class="row">
                                         <div class="col-sm-5 mx-auto">
@@ -413,6 +455,7 @@
                                                 </div>
                                                 <br>
                                                 <label for="" class="form-control-label">Tipos de Tabla:</label>
+                                                <p>Seleccionar al menos un tipo tabla</p>
                                                 <div id="tipoTablaContainer" class="checkbox-group">
                                                     <script>
                                                     document.addEventListener("DOMContentLoaded", function() {
@@ -513,6 +556,49 @@
                                                     </div>
                                                     <textarea name="comentario_especial" class="form-control"
                                                         placeholder="Comentario Especial"></textarea>
+                                                </div>
+                                                <br>
+                                                <label for="" class="form-control-label">Agregados:</label>
+                                                <p>Solo picadas especiales. Max 3 agregados</p>
+                                                <div id="agregadoContainer" class="checkbox-group">
+                                                    <script>
+                                                    document.addEventListener("DOMContentLoaded", function() {
+                                                        // Realiza la solicitud a la API para obtener los tipos de tablas
+                                                        fetch(
+                                                            "<?php echo $urlApi;?>/api/agregado") // Reemplaza con la URL correcta de tu API
+                                                            .then(response => response.json())
+                                                            .then(data => {
+                                                                // Manipula los datos de la respuesta
+                                                                if (Array.isArray(data)) {
+                                                                    // Genera las opciones en el contenedor
+                                                                    var agregadoContainer = document
+                                                                        .getElementById(
+                                                                            'agregadoContainer');
+                                                                    data.forEach(agregado => {
+                                                                        var checkbox = document
+                                                                            .createElement('div');
+                                                                        checkbox.className =
+                                                                            'checkbox';
+                                                                        checkbox.innerHTML = `
+                                                                            <input type="checkbox" name="agregado_ids[]" value="${agregado.id}">
+                                                                            <label for="agregado${agregado.id}">${agregado.title}</label>
+                                                                        `;
+                                                                        agregadoContainer
+                                                                            .appendChild(checkbox);
+                                                                    });
+                                                                } else {
+                                                                    console.error(
+                                                                        'La respuesta de la API no es un array.'
+                                                                        );
+                                                                }
+                                                            })
+                                                            .catch(error => {
+                                                                console.error(
+                                                                    'Error al obtener los agregados desde la API:',
+                                                                    error);
+                                                            });
+                                                    });
+                                                    </script>
                                                 </div>
                                                 <br>
                                             </div>
