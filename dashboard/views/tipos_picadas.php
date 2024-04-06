@@ -309,7 +309,8 @@
                                                                                         </div>
                                                                                         <br>
                                                                                         <label for="" class="form-control-label">Agregados:</label>
-                                                                                        <div id="agregadoContainer${row.id}" class="checkbox-group"></div>
+                                                                                            <p>Solo picadas especiales. Max 3 agregados</p>
+                                                                                            <div id="agregadoContainer${row.id}" class="checkbox-group"></div>
                                                                                         <br>
                                                                                     </div>
                                                                                 </div>
@@ -558,7 +559,7 @@
                                                 </div>
                                                 <br>
                                                 <label for="" class="form-control-label">Agregados:</label>
-                                                <p>Solo picadas especiales(no es obligatorio)</p>
+                                                <p>Solo picadas especiales. Max 3 agregados</p>
                                                 <div id="agregadoContainer" class="checkbox-group">
                                                     <script>
                                                     document.addEventListener("DOMContentLoaded", function() {

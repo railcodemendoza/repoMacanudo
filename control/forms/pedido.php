@@ -111,7 +111,6 @@
         </div>
     </header><!-- End Header -->
 
-
     <section class="inner-page <?php echo $paddinginner;?>">
         <div class="container-fluid">
             <div class="row">
@@ -259,7 +258,7 @@
                                                 // Obtener el ID de tipopicada de la URL
                                                 const urlParams = new URLSearchParams(window.location.search);
                                                 const tipopicadaIdFromURL = urlParams.get('id_modal');
-
+                                                
                                                 // Seleccionar automáticamente la opción en el campo select
                                                 if (tipopicadaIdFromURL) {
                                                     tipoPicadaSelect.value = tipopicadaIdFromURL;
@@ -277,6 +276,8 @@
                                                         option.dataset.maxComensales = tipoTabla.maximo_personas; // Nueva línea
                                                         tipoTablaSelect.appendChild(option);
                                                     });
+                                                    
+    
                                                     // Llamar a actualizarCantidadComensales después de cargar las tablas
                                                     actualizarCantidadComensales(tipoPicada.tipo_tablas[0].maximo_personas);
                                                     actualizarPrecios();
@@ -326,6 +327,48 @@
                                                         option3.dataset.precio = agregado.in_ars;
                                                         tercerAgregadoSelect.appendChild(option3);
                                                     });
+                                                    // Una vez cargados todos los agregados, buscar si la picada tiene algún agregado asociado
+                                                    const urlParams = new URLSearchParams(window.location.search);
+                                                    const tipopicadaIdFromURL = urlParams.get('id_modal');
+                                                    if (tipopicadaIdFromURL) {
+
+                                                        // Realizar la solicitud HTTP GET a la API
+                                                        fetch("<?php echo $urlApi;?>/api/tipoPicada/"+tipopicadaIdFromURL, requestOptions)
+                                                            .then(response => response.json())
+                                                            .then(data => {
+                                                                const tipoPicada = data;
+                                                                if (tipoPicada && tipoPicada.add2s.length > 0) {
+                                                                    // Seleccionar automáticamente los agregados asociados a la picada
+                                                                    // Variables para llevar el conteo de los agregados seleccionados
+                                                                    let primerAgregadoSeleccionado = false;
+                                                                    let segundoAgregadoSeleccionado = false;
+                                                                    let tercerAgregadoSeleccionado = false;
+
+                                                                    // Recorrer la lista de agregados de la picada
+                                                                    tipoPicada.add2s.forEach(agregado => {
+                                                                        // Si todavía no se ha seleccionado el primer agregado, seleccionarlo en el primer select
+                                                                        if (!primerAgregadoSeleccionado) {
+                                                                            primerAgregadoSelect.value = agregado.id; // Establecer el agregado como seleccionado
+                                                                            primerAgregadoSelect.dispatchEvent(new Event('change')); // Disparar evento de cambio
+                                                                            primerAgregadoSeleccionado = true; // Actualizar el estado del primer agregado seleccionado
+                                                                        }
+                                                                        // Si todavía no se ha seleccionado el segundo agregado, seleccionarlo en el segundo select
+                                                                        else if (!segundoAgregadoSeleccionado) {
+                                                                            segundoAgregadoSelect.value = agregado.id; // Establecer el agregado como seleccionado
+                                                                            segundoAgregadoSelect.dispatchEvent(new Event('change')); // Disparar evento de cambio
+                                                                            segundoAgregadoSeleccionado = true; // Actualizar el estado del segundo agregado seleccionado
+                                                                        }
+                                                                        // Si todavía no se ha seleccionado el tercer agregado, seleccionarlo en el tercer select
+                                                                        else if (!tercerAgregadoSeleccionado) {
+                                                                            tercerAgregadoSelect.value = agregado.id; // Establecer el agregado como seleccionado
+                                                                            tercerAgregadoSelect.dispatchEvent(new Event('change')); // Disparar evento de cambio
+                                                                            tercerAgregadoSeleccionado = true; // Actualizar el estado del tercer agregado seleccionado
+                                                                        }
+                                                                    });
+                                                                }
+                                                            })
+                                                            .catch(error => console.error(error));     
+                                                    }
 
                                                     actualizarPrecios();
                                                 }).catch(error => console.error(error));
