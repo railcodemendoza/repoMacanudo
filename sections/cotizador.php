@@ -219,7 +219,7 @@
                                             'option');
                                         option1.value = delivery.id;
                                         option1.textContent = delivery.location;
-                                        option1.dataset.precio = delivery.km_to_zero;
+                                        option1.dataset.precio = delivery.px_km;
                                         deliverySelect.appendChild(option1);
                                     });
 
