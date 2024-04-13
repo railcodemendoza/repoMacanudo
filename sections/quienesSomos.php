@@ -63,12 +63,12 @@ if ($a == 0) {
                 <img src="<?php
                                 if($a == 0){
                                     echo '../../assets/img/quienes_somos/' . $rowO['imagen'];
-                                   
+                                
                                 }else{
                                     echo 'assets/img/quienes_somos/' . $rowO['imagen'];
                                 }
                                 
-                             ?>" class="img-fluid" alt="">
+                            ?>" class="img-fluid" alt="" style=" object-fit: cover;">
             </div>
             <div class="col-lg-7 d-flex flex-column justify-content-center align-items-stretch">
                 <div class="content">
@@ -81,7 +81,7 @@ if ($a == 0) {
                     <h3 style="color: #ffb03b;"><strong><?php echo $rowM['titulo']; ?></strong></h3>
                     <p class="font-italic"><?php echo $rowM['descripcion']; ?></p>
                     <div class="text-center">
-                        <button type="submit" class="btn btn-outline-secondary" data-toggle="modal" data-target="#historia"><?php echo $rowM['titulo_2']; ?></button>
+                        <button type="submit" class="btn btn-outline-secondary mb-4" data-toggle="modal" data-target="#historia"><?php echo $rowM['titulo_2']; ?></button>
                     </div>
                     <h3><strong><?php echo $rowO['titulo']; ?></strong></h3>
                     <p><?php echo $rowO['descripcion']; ?></p>
@@ -96,16 +96,16 @@ if ($a == 0) {
                                         <?php echo $rowQS['descripcion_2']; ?></p>
 
                                     <br>
-                                    <img style="max-width: -webkit-fill-available;" src="
+                                    <img class="img-fluid" style=" object-fit: cover;" src="
                                     <?php
                                 if($a == 0){
                                     echo '../../assets/img/quienes_somos/' . $rowQS['imagen'];
-                                   
+                                
                                 }else{
                                     echo 'assets/img/quienes_somos/' . $rowQS['imagen'];
                                 }
                                 
-                             ?>" alt="">
+                            ?>" alt="">
                                     <br>
                                     <br>
                                     <hr class="mx-auto"style="width:70%; ">
@@ -131,10 +131,9 @@ if ($a == 0) {
                                     <h3 style="text-align: center !important; color: #ffb03b;"><?php echo $rowM['titulo_2']; ?>
                                     </h3>
                                     <br>
-                                    <img style="max-width: -webkit-fill-available;" src="<?php
+                                    <img class="img-fluid" style=" object-fit: cover;" src="<?php
                                 if($a == 0){
                                     echo '../../assets/img/quienes_somos/' . $rowM['imagen'];
-                                   
                                 }else{
                                     echo 'assets/img/quienes_somos/' . $rowM['imagen'];
                                 }

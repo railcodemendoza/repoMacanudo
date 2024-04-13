@@ -5,7 +5,6 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-180172331-1"></script>
     <script>
     window.dataLayer = window.dataLayer || [];
-
     function gtag() {
         dataLayer.push(arguments);
     }
@@ -29,7 +28,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Piazzolla:ital,wght@0,300;0,800;0,900;1,500&display=swap"
+        <link href="https://fonts.googleapis.com/css2?family=Piazzolla:ital,wght@0,300;0,800;0,900;1,500&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
     <style>
@@ -37,6 +36,7 @@
         font-family: "Nickainley";
         src: url("assets/font/Nickainley-Normal.otf");
     }
+    body::-webkit-scrollbar { display: none; }
     </style>
     <!-- Vendor CSS Files -->
     <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -47,9 +47,9 @@
     <link href="assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
     <!-- Template Main CSS File -->
     <link href="assets/css/style.css" rel="stylesheet">
+    
 </head>
-
-<body>
+<body >
     <!-- ======= Top Bar ======= -->
     <section id="topbar" class="d-none d-lg-flex align-items-center fixed-top topbar-transparent">
         <div class="container text-right">
@@ -62,7 +62,6 @@
         <a href="index.php"><img style="width: 25%; margin-left:25%;" src="assets/img/MCND_Logo_1080_WHITE.png"
                 alt="picadas mendoza"></a>
         <div class="container d-flex align-items-center">
-
             <div class="logo mr-auto">
                 <h1 class="text-light"><a href="index.php"></a></h1>
                 <!-- Uncomment below if you prefer to use an image logo -->
@@ -71,6 +70,7 @@
             <nav class="nav-menu d-none d-lg-block">
                 <ul>
                     <li class="active"><a href="index.php">Inicio</a></li>
+                    <li><a href="#simulador">Simulador</a></li>
                     <li><a href="#about">Nosotros</a></li>
                     <li><a href="#menu">Picadas</a></li>
                     <li><a href="#events">Agregados</a></li>
@@ -80,27 +80,27 @@
             </nav><!-- .nav-menu -->
         </div>
     </header><!-- End Header -->
-
     <?php
         $conn = mysqli_connect(
             '193.203.175.53', //193.203.175.53
-            'u101685278_pachimanok',//   u101685278_labmac
-            'Pachiman9102',//  Rail2021
-            'u101685278_macanudas' //  u101685278_labmac
+            'u101685278_pachimanok',//    u101685278_labmac
+            'Pachiman9102',//   Rail2021
+            'u101685278_macanudas' //    u101685278_labmac
         );
         $a = 1;
     ?>
     <?php include('sections/headSection.php'); ?>
+    <?php include('modalPromo.php'); ?>
     <main id="main">
+    <?php include('sections/cotizador.php'); ?>
         <?php include('sections/quienesSomos.php'); ?>
         <?php include('sections/nuestrasPicadas.php'); ?>
         <?php include('sections/nuestrosProductos.php'); ?>
         <?php include('sections/acompañamientos.php'); ?>
-        <?php include('sections/cotizador.php'); ?>
         <?php include('sections/encuestas.php'); ?>
         <?php include('sections/medios.php'); ?>
         <?php include('sections/galeria.php'); ?>
-        <?php include('modalPromo.php'); ?>
+       
     </main><!-- End #main -->
     <?php include('sections/footer.php'); ?>
     <?php include('sections/whatsAppFloat.php'); ?>

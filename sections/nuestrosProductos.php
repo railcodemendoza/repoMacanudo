@@ -2,7 +2,7 @@
 <section id="why-us" class="why-us">
             <div class="container">
                 <div class="section-title">
-                    <h2>Nuestras<span>Picadas Macanudas</span></h2>
+                    <h2>Nuestras <span>Picadas Macanudas</span></h2>
                     <p>Las mejores combinaciones para tus picadas. Acá te describimos cada una de ellas.</p>
                 </div>
                 <div class="row">
@@ -11,7 +11,7 @@
                             <h1>Picada Fellini</h1>
                             <p> <strong>Clásica</strong></p>
                             <br>
-                            <img src="assets/img/picadas/clasica.jpg" style="max-width: -webkit-fill-available;">
+                            <img src="assets/img/picadas/clasica.jpg" class="mt-1" style="max-width: 100%; height: auto; display: block; margin-bottom: 2.2rem">
                         </div>
                     </div>
 
@@ -20,7 +20,7 @@
                             <h1>Picada Picasso</h1>
                             <p><strong> Premium</strong></p>
                             <br>
-                            <img src="assets/img/picadas/premium.jpg" style="max-width: -webkit-fill-available;">
+                            <img src="assets/img/picadas/premium.jpg" style="max-width: 100%; height: auto; display: block;">
                             <br>
                         </div>
                     </div>
@@ -30,7 +30,7 @@
                             <h1>Picada Oliverio</h1>
                             <p><strong>Vegetariana</strong></p>
                             <br>
-                            <img src="assets/img/picadas/vegetariana.jpg" style="max-width: -webkit-fill-available;">
+                            <img src="assets/img/picadas/vegetariana.jpg" style="max-width: 100%; height: auto; display: block;">
                             <br>
 
                         </div>
@@ -72,7 +72,7 @@
                             <br>
                             <h4>Pan Casero:</h4>
                         </div>
-                        <img style="max-width: -webkit-fill-available; margin: 0% 6% 2%;"
+                        <img style="max-width: 100%; height: auto; display: block;"
                             src="assets/img/picadas/clasica.jpg" alt="">
                         <br>
                         <br>
@@ -114,7 +114,7 @@
                             <br>
                             <h4>Pan Casero:</h4>
                         </div>
-                        <img style="max-width: -webkit-fill-available; margin: 0% 6% 2%;"
+                        <img style="max-width: 100%; height: auto; display: block;"
                             src="assets/img/picadas/premium.jpg" alt="">
                         <br>
                         <br>
@@ -152,7 +152,7 @@
                             <br>
                             <h4>Pan Casero:</h4>
                         </div>
-                        <img style="max-width: -webkit-fill-available; margin: 0% 6% 2%;"
+                        <img style="max-width: 100%; height: auto; display: block;"
                             src="assets/img/picadas/vegetariana.jpg" alt="">
                         <br>
                         <br>

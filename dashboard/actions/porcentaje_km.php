@@ -1,24 +1,19 @@
 <?php include('../db.php'); ?>
 <?php include ("../../variables.php");?>
 
+
 <?php 
 
-
-if(isset($_POST['agregar'])) {
-
-
-    // traemos todos los datos. 
-
-    $location = $_POST['location'];
-    $km_to_zero = $_POST['km_to_zero'];
-    $px_km = $_POST['px_km'];
-
-
+if(isset($_POST['ajustar'])){
+    
+    $porcentaje = $_POST['porcentaje'];
+  
+    
     $curl = curl_init();
 
     // Configurar la solicitud cURL
     curl_setopt_array($curl, array(
-        CURLOPT_URL => $urlApi.'/api/delivery',
+        CURLOPT_URL => $urlApi.'/api/deliveryPorcentaje',
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_ENCODING => '',
         CURLOPT_MAXREDIRS => 10,
@@ -27,9 +22,7 @@ if(isset($_POST['agregar'])) {
         CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
         CURLOPT_CUSTOMREQUEST => 'POST',
         CURLOPT_POSTFIELDS => array(
-            'location' => $location,
-            'km_to_zero' => $km_to_zero,
-            'px_km' => $px_km,
+            'porcentaje' => $porcentaje,
         ),
     ));
     $response = curl_exec($curl);
