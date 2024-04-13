@@ -29,6 +29,7 @@
                             <li><i class="fa fa-map-marker"></i><a href="../views/tabla_horarios.php">Horarios</a></li>
                         </ul>
                     </li>
+                    <!--
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-bars"></i>Picadas por día</a>
                         <ul class="sub-menu children dropdown-menu">                            
@@ -45,6 +46,7 @@
                             
                         </ul>
                     </li>
+                    -->
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Stock</a>
                         <ul class="sub-menu children dropdown-menu">
