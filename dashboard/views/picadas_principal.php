@@ -25,6 +25,7 @@
                         <th>Para</th>
                         <th>Tipo</th>
                         <th>Medio de Pago</th>
+                        <th>Estado</th>
                         <th style="min-width: 10%;">Opciones</th>
                     </tr>
                 </thead>
@@ -61,6 +62,7 @@
                                     <td>${row.payment_mode}<br>
                                         <p style="font-size: 5;">${row.status_pago}</p>
                                     </td>
+                                    <td>${row.status}</td>
                                     <td style="text-align:center; width:15%;">
                                         <div class="btn-group">
                                             <!--======================|   VER   |======================-->
@@ -382,7 +384,7 @@
                                                         <div class="card border border-secondary">
                                                             <div class="card-body">
                                                                 <h3 style="text-align: center;"> <strong> Status: </strong></h3>
-                                                                <form action="../actions/cambiar_status.php?id=${row.id}&dia=principal"
+                                                                <form action="../actions/cambiar_status.php?id=${row.id}"
                                                                     method="POST">
                                                                     <div class="row">
                                                                         <div class="col-sm-2"></div>
