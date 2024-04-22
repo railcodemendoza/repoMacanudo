@@ -22,9 +22,8 @@
                         <th>Fecha</th>
                         <th>Cliente</th>
                         <th>Picada</th>
-                        <th>para</th>
+                        <th>Para</th>
                         <th>Tipo</th>
-                        <th>Agregado Stock</th>
                         <th>Medio de Pago</th>
                         <th style="min-width: 10%;">Opciones</th>
                     </tr>
@@ -59,7 +58,6 @@
                                     <td>${row.product}</td>
                                     <td>${row.add1}</td>
                                     <td>${row.add3}</td>
-                                    <td>${row.add2}</td>
                                     <td>${row.payment_mode}<br>
                                         <p style="font-size: 5;">${row.status_pago}</p>
                                     </td>
@@ -123,13 +121,8 @@
                                                                     <div class="col-sm-2"></div>
                                                                     <div class="col-sm-8">
                                                                         <h4 style="text-align: center;"> <strong> Dedicatoria: </strong>
+                                                                        ${row.inscription ? row.inscription  : ''}
                                                                         </h4>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="row">
-                                                                    <div class="col-sm-2"></div>
-                                                                    <div class="col-sm-8">
-                                                                        <h4 style="text-align: center;">${row.inscription}</h4>
                                                                     </div>
                                                                 </div>
                                                                 <div class="row">
@@ -149,11 +142,20 @@
                                                                 <div class="row">
                                                                     <div class="col-sm-2"></div>
                                                                     <div class="col-sm-8">
-                                                                        <h4 style="text-align: center;"> <strong> Direccion: </strong>
-                                                                        ${row.address} (${row.referencia}) -${row.location}
-                                                                        </h4>
+                                                                        <h4 style="text-align: center;"><strong>Forma de Envio:</strong>
+                                                                        ${row.type == 'con_envio' ? 'Envio a Domicilio'  : 'Retiro en local'}</h4>
                                                                     </div>
                                                                 </div>
+                                                                ${row.type !== 'con_retiro' ? `
+                                                                    <div class="row">
+                                                                        <div class="col-sm-2"></div>
+                                                                        <div class="col-sm-8">
+                                                                            <h4 style="text-align: center;"><strong>Direccion:</strong>
+                                                                                ${row.address} (${row.referencia}) -${row.location}
+                                                                            </h4>
+                                                                        </div>
+                                                                    </div>
+                                                                ` : ''}
                                                                 <div class="row">
                                                                     <div class="col-sm-2"></div>
                                                                     <div class="col-sm-8">
@@ -166,14 +168,15 @@
                                                                     <div class="col-sm-2"></div>
                                                                     <div class="col-sm-8">
                                                                         <h4 style="text-align: center;"><strong>Agregados:</strong>
-                                                                        ${row.add2}/ ${row.add4} / ${row.add5}</h4>
+                                                                            ${row.add2 ? row.add2  : ''}  ${row.add4 ? '/' + row.add4  : ''} ${row.add5 ? '/' + row.add5 : ''}
+                                                                        </h4>
                                                                     </div>
                                                                 </div>
                                                                 <div class="row">
                                                                     <div class="col-sm-2"></div>
                                                                     <div class="col-sm-8">
                                                                         <h4 style="text-align: center;"><strong>Observaciones:</strong>
-                                                                        ${row.observacion_interna}</h4>
+                                                                        ${row.observacion_interna ? row.observacion_interna  : ''}</h4>
                                                                     </div>
                                                                 </div>
                                                                 <div class="row">
