@@ -81,7 +81,7 @@
                                                 <i class="fa fa-user"></i>
                                             </a>
                                             <a class="btn btn-danger" title="Eliminar"
-                                                href="../actions/delete_pedidos.php?id=${row.id}&dia=principal" type="button">
+                                                href="../actions/delete_pedidos.php?id=${row.id}" type="button">
                                                 <i class="fa fa-trash"></i>
                                             </a>
                                             ${status === 'ENTREGADA' ? `
@@ -136,7 +136,7 @@
                                                                     <div class="col-sm-2"></div>
                                                                     <div class="col-sm-8">
                                                                         <h4 style="text-align: center;"> <strong> Horario: </strong>
-                                                                        ${row.schedule_available}/h4>
+                                                                        ${row.schedule_available}</h4>
                                                                     </div>
                                                                 </div>
                                                                 <div class="row">
@@ -199,7 +199,7 @@
                                                                 <div class="col-sm-4"></div>
                                                                 <div class="col-sm-4" style="text-align: center;">
                                                                     <button type="button" class="btn btn-primary"
-                                                                        data-dismiss="modal">cerrar</button>
+                                                                        data-dismiss="modal">Cerrar</button>
                                                                 </div>
                                                                 <div class="col-sm-4"></div>
                                                             </div>
