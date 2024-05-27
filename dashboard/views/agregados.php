@@ -35,7 +35,7 @@
                  redirect: "follow"
              };
 
-             fetch("<?php echo $urlApi;?>/api/agregado", requestOptions)
+             fetch("<?php echo $urlApi;?>/api/indexAdmin", requestOptions)
                  .then(response => response.json())
                  .then(result => {
                      // Obtener la referencia de la tabla y su cuerpo
