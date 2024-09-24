@@ -156,7 +156,11 @@ if  (isset($_POST['testear_pedido'])) { // me traigo la informacion segun ID sel
         <div class="col-sm-6 mx-auto">
             <div class="alert alert-danger alert-dismissible col-sm-12 fade show"
                 style="z-index: 1031; margin-top: 35%; position:absolute;" role="alert">
-                <p style="text-align:center;"> <strong> Por favor revisá que esté correctamente el Pedido! </strong>
+                <p style="text-align:center;">
+                    <strong>El pedido aún no está completado.</strong>
+                </p>
+                <p style="text-align:center;">
+                    Por favor, revisá los detalles y confirmá para finalizarlo.
                 </p>
                 <?php echo $alert_date;?>
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">

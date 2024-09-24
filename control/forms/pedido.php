@@ -140,7 +140,7 @@
                                     <label style=" font-weight: 600;"
                                         class="control-label"> <h4 style="color:white;">Selecciona el tipo de picada:</h4></label>
                                     <select class="form-control form-control" aria-label="Default select example"
-                                        id="tipoPicadaSelect" name="tipoPicada">
+                                        id="tipoPicadaSelect" name="tipoPicada" required>
                                         <option value=""> -.Elegir tipo de picada.- </option>
                                     </select>
                                     <p id="precioTipoPicada" class="mt-1" style="color:white;"></p>
@@ -148,7 +148,7 @@
                                     <label style="font-size: smaller; font-weight: 600;"
                                         class="control-label"><h4 style="color:white;">Selecciona el tipo de tabla:</h4></label>
                                     <select class="form-control form-control" aria-label="Default select example"
-                                        id="tipoTablaSelect"  name="tipoTabla">
+                                        id="tipoTablaSelect"  name="tipoTabla" required>
                                         <option value="">-.Elegir tipo de tabla.-</option>
                                     </select>
                                     <p id="precioTipoTabla" class="mt-1" style="color:white;"></p>
@@ -156,7 +156,7 @@
                                     <label style="font-size: smaller; font-weight: 600;"
                                         class="control-label"><h4 style="color:white;">Selecciona Cantidad de Comensales:</h4></label>
                                     <select class="form-control form-control" aria-label="Default select example"
-                                        id="cantidadComensalesSelect" name="cantidadComensales">
+                                        id="cantidadComensalesSelect" name="cantidadComensales" required>
                                         <option value="">-.Elegir cantidad de Comensales.-</option>
                                     </select>
                                     <p id="precioComensales" class="mt-1" style="color:white;"></p>
@@ -188,7 +188,7 @@
                                     <label style="font-size: smaller; font-weight: 600;"
                                         class="control-label"><h4 style="color:white;">¿Buscas o te la llevamos?</h4></label>
                                     <select class="form-control form-control" aria-label="Default select example"
-                                        id="deliverySelect" name="delivery">
+                                        id="deliverySelect" name="delivery" required>
                                         <option value="">-.Elegir.-</option>
                                         <option value="0">Retirar por local</option>
                                     </select>
@@ -383,7 +383,7 @@
                                                             'option');
                                                         option1.value = delivery.id;
                                                         option1.textContent = delivery.location;
-                                                        option1.dataset.precio = delivery.km_to_zero;
+                                                        option1.dataset.precio = delivery.px_km;
                                                         deliverySelect.appendChild(option1);
                                                     });
 

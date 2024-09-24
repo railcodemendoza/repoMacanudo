@@ -16,7 +16,7 @@
                     <label style="font-weight: 600;" class="control-label">Selecciona el tipo de
                         picada:</label>
                     <select class="form-control form-control" aria-label="Default select example" id="tipoPicadaSelect"
-                        name="tipoPicada">
+                        name="tipoPicada" required>
                         <option value=""> -.Elegir tipo de picada.- </option>
                     </select>
                     <p id="precioTipoPicada"></p>
@@ -24,7 +24,7 @@
                     <label style="font-weight: 600;" class="control-label">Selecciona el tipo de
                         tabla:</label>
                     <select class="form-control form-control" aria-label="Default select example" id="tipoTablaSelect"
-                        name="tipoTabla">
+                        name="tipoTabla" required>
                         <option value="">-.Elegir tipo de tabla.-</option>
                     </select>
                     <p id="precioTipoTabla"></p>
@@ -32,7 +32,7 @@
                     <label style="font-weight: 600;" class="control-label">Selecciona Cantidad de
                         Comensales:</label>
                     <select class="form-control form-control" aria-label="Default select example"
-                        id="cantidadComensalesSelect" name="cantidadComensales">
+                        id="cantidadComensalesSelect" name="cantidadComensales" required>
                         <option value="">-.Elegir cantidad de Comensales.-</option>
                     </select>
                     <p id="precioComensales"></p>
@@ -64,7 +64,7 @@
                     <label style="font-weight: 600;" class="control-label">¿Buscas o te la
                         llevamos?</label>
                     <select class="form-control form-control" aria-label="Default select example" id="deliverySelect"
-                        name="delivery">
+                        name="delivery" required>
                         <option value="">-.Elegir.-</option>
                         <option value="0">Retirar por local</option>
                     </select>
@@ -219,7 +219,7 @@
                                             'option');
                                         option1.value = delivery.id;
                                         option1.textContent = delivery.location;
-                                        option1.dataset.precio = delivery.km_to_zero;
+                                        option1.dataset.precio = delivery.px_km;
                                         deliverySelect.appendChild(option1);
                                     });
 
