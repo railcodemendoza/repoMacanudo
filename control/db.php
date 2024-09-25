@@ -6,6 +6,6 @@ $conn = mysqli_connect(
   'u101685278_pachimanok',//     u101685278_labmac
   'Pachiman9102',//    Rail2021
   'u101685278_macanudas' //    u101685278_labmac
-) or die(mysqli_erro($mysqli));
+) or die(mysqli_error($mysqli));
 
 ?>
