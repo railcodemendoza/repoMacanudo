@@ -68,7 +68,7 @@ if ($a == 0) {
                                     echo 'assets/img/quienes_somos/' . $rowO['imagen'];
                                 }
                                 
-                            ?>" class="img-fluid" alt="">
+                            ?>" class="img-fluid" alt="" style=" object-fit: cover;">
             </div>
             <div class="col-lg-7 d-flex flex-column justify-content-center align-items-stretch">
                 <div class="content">
@@ -96,7 +96,7 @@ if ($a == 0) {
                                         <?php echo $rowQS['descripcion_2']; ?></p>
 
                                     <br>
-                                    <img style="max-width: -webkit-fill-available;" src="
+                                    <img class="img-fluid" style=" object-fit: cover;" src="
                                     <?php
                                 if($a == 0){
                                     echo '../../assets/img/quienes_somos/' . $rowQS['imagen'];
@@ -131,7 +131,7 @@ if ($a == 0) {
                                     <h3 style="text-align: center !important; color: #ffb03b;"><?php echo $rowM['titulo_2']; ?>
                                     </h3>
                                     <br>
-                                    <img style="max-width: -webkit-fill-available;" src="<?php
+                                    <img class="img-fluid" style=" object-fit: cover;" src="<?php
                                 if($a == 0){
                                     echo '../../assets/img/quienes_somos/' . $rowM['imagen'];
                                 }else{

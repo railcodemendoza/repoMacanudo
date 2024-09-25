@@ -111,7 +111,6 @@
         </div>
     </header><!-- End Header -->
 
-
     <section class="inner-page <?php echo $paddinginner;?>">
         <div class="container-fluid">
             <div class="row">
@@ -141,7 +140,7 @@
                                     <label style=" font-weight: 600;"
                                         class="control-label"> <h4 style="color:white;">Selecciona el tipo de picada:</h4></label>
                                     <select class="form-control form-control" aria-label="Default select example"
-                                        id="tipoPicadaSelect" name="tipoPicada">
+                                        id="tipoPicadaSelect" name="tipoPicada" required>
                                         <option value=""> -.Elegir tipo de picada.- </option>
                                     </select>
                                     <p id="precioTipoPicada" class="mt-1" style="color:white;"></p>
@@ -149,7 +148,7 @@
                                     <label style="font-size: smaller; font-weight: 600;"
                                         class="control-label"><h4 style="color:white;">Selecciona el tipo de tabla:</h4></label>
                                     <select class="form-control form-control" aria-label="Default select example"
-                                        id="tipoTablaSelect"  name="tipoTabla">
+                                        id="tipoTablaSelect"  name="tipoTabla" required>
                                         <option value="">-.Elegir tipo de tabla.-</option>
                                     </select>
                                     <p id="precioTipoTabla" class="mt-1" style="color:white;"></p>
@@ -157,7 +156,7 @@
                                     <label style="font-size: smaller; font-weight: 600;"
                                         class="control-label"><h4 style="color:white;">Selecciona Cantidad de Comensales:</h4></label>
                                     <select class="form-control form-control" aria-label="Default select example"
-                                        id="cantidadComensalesSelect" name="cantidadComensales">
+                                        id="cantidadComensalesSelect" name="cantidadComensales" required>
                                         <option value="">-.Elegir cantidad de Comensales.-</option>
                                     </select>
                                     <p id="precioComensales" class="mt-1" style="color:white;"></p>
@@ -189,7 +188,7 @@
                                     <label style="font-size: smaller; font-weight: 600;"
                                         class="control-label"><h4 style="color:white;">¿Buscas o te la llevamos?</h4></label>
                                     <select class="form-control form-control" aria-label="Default select example"
-                                        id="deliverySelect" name="delivery">
+                                        id="deliverySelect" name="delivery" required>
                                         <option value="">-.Elegir.-</option>
                                         <option value="0">Retirar por local</option>
                                     </select>
@@ -259,7 +258,7 @@
                                                 // Obtener el ID de tipopicada de la URL
                                                 const urlParams = new URLSearchParams(window.location.search);
                                                 const tipopicadaIdFromURL = urlParams.get('id_modal');
-
+                                                
                                                 // Seleccionar automáticamente la opción en el campo select
                                                 if (tipopicadaIdFromURL) {
                                                     tipoPicadaSelect.value = tipopicadaIdFromURL;
@@ -277,6 +276,8 @@
                                                         option.dataset.maxComensales = tipoTabla.maximo_personas; // Nueva línea
                                                         tipoTablaSelect.appendChild(option);
                                                     });
+                                                    
+    
                                                     // Llamar a actualizarCantidadComensales después de cargar las tablas
                                                     actualizarCantidadComensales(tipoPicada.tipo_tablas[0].maximo_personas);
                                                     actualizarPrecios();
@@ -326,6 +327,48 @@
                                                         option3.dataset.precio = agregado.in_ars;
                                                         tercerAgregadoSelect.appendChild(option3);
                                                     });
+                                                    // Una vez cargados todos los agregados, buscar si la picada tiene algún agregado asociado
+                                                    const urlParams = new URLSearchParams(window.location.search);
+                                                    const tipopicadaIdFromURL = urlParams.get('id_modal');
+                                                    if (tipopicadaIdFromURL) {
+
+                                                        // Realizar la solicitud HTTP GET a la API
+                                                        fetch("<?php echo $urlApi;?>/api/tipoPicada/"+tipopicadaIdFromURL, requestOptions)
+                                                            .then(response => response.json())
+                                                            .then(data => {
+                                                                const tipoPicada = data;
+                                                                if (tipoPicada && tipoPicada.add2s.length > 0) {
+                                                                    // Seleccionar automáticamente los agregados asociados a la picada
+                                                                    // Variables para llevar el conteo de los agregados seleccionados
+                                                                    let primerAgregadoSeleccionado = false;
+                                                                    let segundoAgregadoSeleccionado = false;
+                                                                    let tercerAgregadoSeleccionado = false;
+
+                                                                    // Recorrer la lista de agregados de la picada
+                                                                    tipoPicada.add2s.forEach(agregado => {
+                                                                        // Si todavía no se ha seleccionado el primer agregado, seleccionarlo en el primer select
+                                                                        if (!primerAgregadoSeleccionado) {
+                                                                            primerAgregadoSelect.value = agregado.id; // Establecer el agregado como seleccionado
+                                                                            primerAgregadoSelect.dispatchEvent(new Event('change')); // Disparar evento de cambio
+                                                                            primerAgregadoSeleccionado = true; // Actualizar el estado del primer agregado seleccionado
+                                                                        }
+                                                                        // Si todavía no se ha seleccionado el segundo agregado, seleccionarlo en el segundo select
+                                                                        else if (!segundoAgregadoSeleccionado) {
+                                                                            segundoAgregadoSelect.value = agregado.id; // Establecer el agregado como seleccionado
+                                                                            segundoAgregadoSelect.dispatchEvent(new Event('change')); // Disparar evento de cambio
+                                                                            segundoAgregadoSeleccionado = true; // Actualizar el estado del segundo agregado seleccionado
+                                                                        }
+                                                                        // Si todavía no se ha seleccionado el tercer agregado, seleccionarlo en el tercer select
+                                                                        else if (!tercerAgregadoSeleccionado) {
+                                                                            tercerAgregadoSelect.value = agregado.id; // Establecer el agregado como seleccionado
+                                                                            tercerAgregadoSelect.dispatchEvent(new Event('change')); // Disparar evento de cambio
+                                                                            tercerAgregadoSeleccionado = true; // Actualizar el estado del tercer agregado seleccionado
+                                                                        }
+                                                                    });
+                                                                }
+                                                            })
+                                                            .catch(error => console.error(error));     
+                                                    }
 
                                                     actualizarPrecios();
                                                 }).catch(error => console.error(error));
@@ -340,7 +383,7 @@
                                                             'option');
                                                         option1.value = delivery.id;
                                                         option1.textContent = delivery.location;
-                                                        option1.dataset.precio = delivery.km_to_zero;
+                                                        option1.dataset.precio = delivery.px_km;
                                                         deliverySelect.appendChild(option1);
                                                     });
 

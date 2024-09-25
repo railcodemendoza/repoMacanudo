@@ -17,6 +17,11 @@ if(isset($_POST['editar'])) {
     $title_especial = $_POST['title_especial'] ?? null;
     $comentario_especial = $_POST['comentario_especial'] ?? null;
     $tipo_tabla_ids = json_encode(array_map('intval', $_POST['tipo_tabla_ids']));
+    if(isset($_POST['agregado_ids']) && !empty($_POST['agregado_ids'])) {
+        $agregado_ids = json_encode(array_map('intval', $_POST['agregado_ids']));
+    } else {
+        $agregado_ids = null;
+    }
     $imagen = $_FILES['imagen']['tmp_name'];
     
     $curl = curl_init();
@@ -43,6 +48,7 @@ if(isset($_POST['editar'])) {
             'title_especial' => $title_especial,
             'comentario_especial' => $comentario_especial,
             'tipo_tabla_ids' => $tipo_tabla_ids,
+            'agregado_ids' => $agregado_ids,
             'imagen' => $imagen ? new CURLFile($imagen) : null,
         ),
     ));

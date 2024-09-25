@@ -36,6 +36,7 @@
         font-family: "Nickainley";
         src: url("assets/font/Nickainley-Normal.otf");
     }
+    body::-webkit-scrollbar { display: none; }
     </style>
     <!-- Vendor CSS Files -->
     <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -69,6 +70,7 @@
             <nav class="nav-menu d-none d-lg-block">
                 <ul>
                     <li class="active"><a href="index.php">Inicio</a></li>
+                    <li><a href="#simulador">Simulador</a></li>
                     <li><a href="#about">Nosotros</a></li>
                     <li><a href="#menu">Picadas</a></li>
                     <li><a href="#events">Agregados</a></li>
@@ -81,13 +83,14 @@
     <?php
         $conn = mysqli_connect(
             '193.203.175.53', //193.203.175.53
-            'u101685278_labmac',//   u101685278_pachimanok 
-            'Rail2021',//  Pachiman9102
-            'u101685278_labmac' //   u101685278_macanudas
+            'u101685278_pachimanok',//    u101685278_labmac
+            'Pachiman9102',//   Rail2021
+            'u101685278_macanudas' //    u101685278_labmac
         );
         $a = 1;
     ?>
     <?php include('sections/headSection.php'); ?>
+    <?php include('modalPromo.php'); ?>
     <main id="main">
     <?php include('sections/cotizador.php'); ?>
         <?php include('sections/quienesSomos.php'); ?>
@@ -97,7 +100,7 @@
         <?php include('sections/encuestas.php'); ?>
         <?php include('sections/medios.php'); ?>
         <?php include('sections/galeria.php'); ?>
-        <?php include('modalPromo.php'); ?>
+       
     </main><!-- End #main -->
     <?php include('sections/footer.php'); ?>
     <?php include('sections/whatsAppFloat.php'); ?>
