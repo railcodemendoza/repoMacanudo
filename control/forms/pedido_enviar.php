@@ -155,7 +155,7 @@ if  (isset($_POST['testear_pedido'])) { // me traigo la informacion segun ID sel
     <div class="row">
         <div class="col-sm-6 mx-auto">
             <div class="alert alert-danger alert-dismissible col-sm-12 fade show"
-                style="z-index: 1031; margin-top: 35%; position:absolute;" role="alert">
+                style="z-index: 1031; margin-top: 12%; position:absolute; width: 92%" role="alert">
                 <p style="text-align:center;">
                     <strong>El pedido aún no está completado.</strong>
                 </p>

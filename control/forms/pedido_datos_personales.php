@@ -427,7 +427,11 @@
                                     </div>
                                     <div class="col-sm-5">
                                     <div class="form-group">
-                                        <label style="color:white;" class="col-sm-5 control-label">Horario de Entrega:</label>
+                                        <label 
+                                        style="color:white; 
+                                        font-family: Satisfy, sans-serif;
+                                        font-size: 1.6rem"
+                                        class="col-sm-5 control-label">Horario de Entrega:</label>
                                         <div class="col-sm-10 mx-auto">
                                             <select name="schedule_available[]" id="horariosEntrega" class="form-control" required>
                                                 <option value="">-.elegir horario.-</option>

@@ -13,7 +13,7 @@
                 </div>
                 <div class="container mt-5">
                     <div class="info-wrap">
-                        <div class="row">
+                        <div class="row" style="justify-content: space-between;">
                             <div class="col-lg-3 col-md-6 info">
                                 <i class="icofont-google-map"></i>
                                 <h4>Localización:</h4>
@@ -51,7 +51,7 @@
                 <!-- You can delete the links only if you purchased the pro version. -->
                 <!-- Licensing information: https://bootstrapmade.com/license/ -->
                 <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/delicious-free-restaurant-bootstrap-theme/ -->
-                Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> & <a href="">BUILDIT</a>
+                Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>, <a href="">BUILDIT</a> & <a href="https://rail.ar/">&copy; 2024 Rail Code.</a>
             </div>
         </div>
     </footer>

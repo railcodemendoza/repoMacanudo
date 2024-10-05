@@ -15,9 +15,9 @@
             ?>
             <div class="col-lg-3 col-md-4">
                 <div class="gallery-item">
-                    <a href="http://localhost/laboratoriomacanudo/assets/img/gallery/<?php echo $row['img'];?>" class="venobox" data-gall="gallery-item">
+                    <div href="http://localhost/laboratoriomacanudo/assets/img/gallery/<?php echo $row['img'];?>" class="venobox" data-gall="gallery-item">
                         <img src="assets/img/slide/Galeria/<?php echo $row['img'];?>" alt="" class="img-fluid">
-                    </a>
+                    </div>
                 </div>
             </div>
             <?php } ?>
