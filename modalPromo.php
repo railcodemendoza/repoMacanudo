@@ -62,7 +62,9 @@ $hayPicadas = !empty($picadas);
 
     .btn-warning {
         font-size: 30px;
-        background-color: rgb(176, 141, 87);
+        background-color: rgb(236,190,29,1);
+        width: 42%; 
+        font-size: 17px;
     }
 
     @media (max-width: 768px) {
@@ -90,9 +92,9 @@ $hayPicadas = !empty($picadas);
                         <div class="carousel-caption ">
                             <h1><?php echo $picada['title_especial']; ?></h1>
                             <p><?php echo $picada['comentario_especial']; ?></p>
-                            <a href="control/forms/pedido.php?id_modal=<?php echo $picada['id']; ?>" class="btn btn-warning btn-lg">Realizar Pedido</a>
+                            <a href="control/forms/pedido.php?id_modal=<?php echo $picada['id']; ?>" class="btn btn-warning btn-lg"><strong>Realizar Pedido</strong></a>
                             <div >
-                                <button style="margin-top: 10px;" class="btn btn-light btn-sm closePopup">X</button>
+                                <button style="margin-top: 10px; border-radius: 30%; border: solid 1px red; background-color: red" class="btn btn-light btn-sm closePopup">X</button>
                             </div>
                         </div> 
                     </div>

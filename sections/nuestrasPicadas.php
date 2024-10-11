@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     <div class="modal-content">
                         <div class="modal-body">
                             <br>
-                            <h2 style="text-align: center !important; color: #ffb03b; margin-bottom: 0%;">
+                            <h2 style="text-align: center !important; color: #ffb03b; margin-bottom: 0%; ">
                                 <u>${tipoTabla.tipo}</u>
                             </h2>
                             <br>
