@@ -32,6 +32,7 @@
     <link
         href="https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,600,600i,700,700i|Satisfy|Comic+Neue:300,300i,400,400i,700,700i"
         rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
 
     <!-- Vendor CSS Files -->
     <link href="../assets/mcvendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -178,7 +179,8 @@
                         <div class="card">
                             <div class="card-body">
                                 <br>
-                                <h3 style=" text-align:center; font-size: xx-large;"><strong>Resumen del Pedido</strong>
+                                <h3 style="text-align: center; font-size: xx-large; font-family: 'Dancing Script', cursive;">
+                                    <strong>Resumen del Pedido</strong>
                                 </h3>
                                 <hr>
                                 <h3 id="total" style="text-align:center; color:#ffb03b; font-size: 3rem;">
@@ -208,61 +210,59 @@
                                 </form>
                                 <br>
                                 <hr>
-                                <div class="row">
-                                    <div class="col-sm-4 mx-auto">
-                                        <h4 style="text-align: center;">Nombre:</h4>
-                                        <p style="text-align: center;"><?php echo $customer . ' (' . $cel_phone . ') ' ?>
-                                        </p>
+                                <div class="row" style="background-color: #d3d3d3; padding: 20px;">
+                                    <div class="col-sm-4 mx-auto" style="display: flex; justify-content: center; align-items: center;">
+                                        <h4 style="font-family: 'Dancing Script', cursive; margin-right: 10px;"><strong>Nombre:</strong></h4>
+                                        <p><?php echo $customer . ' (' . $cel_phone . ') ' ?></p>
                                     </div>
-                                    <div class="col-sm-4 mx-auto">
-                                        <h4 style="text-align: center;">Receptor:</h4>
-                                        <p style="text-align: center;"><?php echo $cnee . ' (' . $cnee_cel_phone . ') ' ?>
-                                        </p>
+
+                                    <div class="col-sm-4 mx-auto" style="display: flex; justify-content: center; align-items: center;">
+                                        <h4 style="font-family: 'Dancing Script', cursive; margin-right: 10px;"><strong>Receptor:</strong></h4>
+                                        <p><?php echo $cnee . ' (' . $cnee_cel_phone . ') ' ?></p>
                                     </div>
-                                    <div class="col-sm-4 mx-auto">
-                                        <h4 style="text-align: center;">Dedicaria:</h4>
-                                        <p style="text-align: center;"><?php echo $inscription; ?></p>
+
+                                    <div class="col-sm-4 mx-auto" style="display: flex; justify-content: center; align-items: center;">
+                                        <h4 style="font-family: 'Dancing Script', cursive; margin-right: 10px;"><strong>Dedicatoria:</strong></h4>
+                                        <p><?php echo $inscription; ?></p>
                                     </div>
+
                                 </div>
                                 <hr>
-                                <h3 style="text-align:center;">Datos de entrega:</h3>
-                                <div class="row">
-                                    <div class="col-sm-6 mx-auto">
-                                        <h4 style="text-align: center;">Fecha:</h4>
-                                        <p style="text-align: center;"><?php echo $delivery_date; ?> - <strong>Hora:</strong>
-                                            <?php echo $schedule_available; ?>
-                                        </p>
+                                <div class="row" style="background-color: #d3d3d3; padding: 20px;">
+                                    <div class="col-sm-6 mx-auto" style="display: flex; justify-content: center; align-items: center;">
+                                        <h4 style="font-family: 'Dancing Script', cursive; margin-right: 10px;"><strong>Fecha:</strong></h4>
+                                        <p><?php echo $delivery_date; ?> -  <?php echo $schedule_available; ?></p>
                                     </div>
-                                    <div class="col-sm-6 mx-auto">
-                                        <h4 style="text-align: center;">Direccion:</h4>
-                                        <p style="text-align: center;"><?php echo $address . ' ' . $nro . ' ( ' . $referencia . ') - ' . $location; ?>
-                                        </p>
+
+                                    <div class="col-sm-6 mx-auto" style="display: flex; justify-content: center; align-items: center;">
+                                        <h4 style="font-family: 'Dancing Script', cursive; margin-right: 10px;"><strong>Direccion:</strong></h4>
+                                        <p><?php echo $address . ' ' . $nro . ' ( ' . $referencia . ') - ' . $location; ?></p>
                                     </div>
+
                                 </div>
                                 <hr>
-                                <h3 style="text-align:center;">Datos del Pedido:</h3>
-                                <div class="row">
-                                    <div class="col-sm-6 mx-auto">
-                                        <h4 style="text-align: center;">Picada:</h4>
-                                        <p style="text-align: center;"><?php echo $tipoPicada . ' - ' . $tipoTabla . ' para ' . $comensales . ' personas'; ?>
-                                        </p>
+                                <div class="row" style="background-color: #d3d3d3; padding: 20px;">
+                                    <div class="col-sm-6 mx-auto" style="display: flex; justify-content: center; align-items: center;">
+                                        <h4 style="font-family: 'Dancing Script', cursive; margin-right: 10px;"><strong>Picada:</strong></h4>
+                                        <p><?php echo $tipoPicada . ' - ' . $tipoTabla . ' para ' . $comensales . ' personas'; ?></p>
                                     </div>
-                                    <div class="col-sm-6 mx-auto">
-                                        <h4 style="text-align: center;">Agregados:</h4>
-                                        <?php if ($agregado1 !== "Sin Agregado"): ?>
-                                            <p style="text-align: center;">- <?php echo $agregado1; ?>
-                                            </p>
-                                        <?php endif; ?>
-                                        <?php if ($agregado2 !== "Sin Agregado"): ?>
-                                            <p style="text-align: center;">- <?php echo $agregado2; ?>
-                                            </p>
-                                        <?php endif; ?>
-                                        <?php if ($agregado3 !== "Sin Agregado"): ?>
-                                            <p style="text-align: center;">- <?php echo $agregado3; ?>
-                                            </p>
-                                        <?php endif; ?>
+
+                                    <div class="col-sm-6 mx-auto" style="display: flex; justify-content: center; align-items: center;">
+                                        <h4 style="font-family: 'Dancing Script', cursive; margin-right: 10px;"><strong>Agregados:</strong></h4>
+                                        <div>
+                                            <?php if ($agregado1 !== "Sin Agregado"): ?>
+                                                <p style="margin: 0;">- <?php echo $agregado1; ?></p>
+                                            <?php endif; ?>
+                                            <?php if ($agregado2 !== "Sin Agregado"): ?>
+                                                <p style="margin: 0;">- <?php echo $agregado2; ?></p>
+                                            <?php endif; ?>
+                                            <?php if ($agregado3 !== "Sin Agregado"): ?>
+                                                <p style="margin: 0;">- <?php echo $agregado3; ?></p>
+                                            <?php endif; ?>
+                                        </div>
                                     </div>
                                 </div>
+
                             </div>
                         </div>
                 </div>
