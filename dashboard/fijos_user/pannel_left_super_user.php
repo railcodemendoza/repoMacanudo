@@ -8,8 +8,15 @@
                         <a href="../views/picadas_principal.php"><i class="menu-icon fa fa-laptop"></i>Inicio</a>
                     </li>
                     <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-shopping-cart"></i>Pedidos</a>
+                        <ul class="sub-menu children dropdown-menu" style="background:#e0e0e0;">
+                            <li><i class="fa fa-table"></i><a href="../views/picadas_general.php">Pedidos General</a></li>
+                            <li><i class="fa fa-table"></i><a href="../views/picadas_incompletas.php">Pedidos Incompletos</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-dollar"></i>Productos</a>
-                        <ul class="sub-menu children dropdown-menu" style="background:Orange;">
+                        <ul class="sub-menu children dropdown-menu" style="background:#e0e0e0;">
                             <li><i class="fa fa-user"></i><a href="../views/tipos_picadas.php">Picadas</a></li>
                             <li><i class="fa fa-table"></i><a href="../views/tabla_picadas.php">Tablas</a></li>
                             <li><i class="fa fa-bars"></i><a href="../views/agregados.php">Agregados</a></li>
@@ -17,14 +24,14 @@
                     </li>
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="menu-icon fa fa-code"></i>Pagina Web</a>
-                        <ul class="sub-menu children dropdown-menu" style="background:Orange;">
+                        <ul class="sub-menu children dropdown-menu" style="background:#e0e0e0;">
                             <li><i class="fa fa-bars"></i><a href="../webpage_control/comentarios.php">Comentarios</a></li>
                             <li><i class="fa fa-bars"></i><a href="../views/tabla_promociones.php">Codigos de Descuento</a></li>
                         </ul>
                     </li>
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-truck"></i>Logística</a>
-                        <ul class="sub-menu children dropdown-menu"  style="background:Orange;">
+                        <ul class="sub-menu children dropdown-menu"  style="background:#e0e0e0;">
                             <li><i class="fa fa-map-marker"></i><a href="../views/tabla_localidades.php">Localidades</a></li>
                             <li><i class="fa fa-map-marker"></i><a href="../views/tabla_horarios.php">Horarios</a></li>
                         </ul>

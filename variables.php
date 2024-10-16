@@ -19,7 +19,7 @@ if (!$conn2) {
   $rv = mysqli_query($conn2, $query_variables);
   while ($rowv = mysqli_fetch_assoc($rv)) {
   
-  $urlApi = $rowv['url_api'];
-  //$urlApi = 'http://127.0.0.1:8000';
+  //$urlApi = $rowv['url_api'];
+  $urlApi = 'http://127.0.0.1:8000';
 
 }
