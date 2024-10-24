@@ -397,7 +397,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label style="color:white;" class="col-sm-6 control-label"> <h3 style="color:white; font-family: Poppins, sans-serif; font-size:larger">Celular de
+                                            <label class="col-sm-6 control-label"> <h3 style="color:white; font-family: Poppins, sans-serif; font-size:larger">Celular de
                                                 quién
                                                 recibe</h3></label>
                                             <div class="col-sm-10 mx-auto">
@@ -408,7 +408,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label style="color:white;" class="col-sm-3 control-label"> <h3 style="color:white; font-family: Poppins, sans-serif; font-size:larger">Dedicatoria</h3></label>
+                                    <label  class="col-sm-3 control-label"> <h3 style="color:white; font-family: Poppins, sans-serif; font-size:larger">Dedicatoria</h3></label>
                                     <div class="col-sm-5 mx-auto">
                                         <textarea name="inscription" placeholder="con cariño Cacho..."
                                             class="form-control"></textarea>
@@ -427,7 +427,7 @@
                                     <div class="col-sm-1"></div>
                                     <div class="col-sm-5">
                                         <div class="form-group">
-                                            <label style="color:white;" class="col-sm-4 control-label"> <h3 style="color:white; font-family: Poppins, sans-serif; font-size:larger">Fecha de
+                                            <label  class="col-sm-4 control-label"> <h3 style="color:white; font-family: Poppins, sans-serif; font-size:larger">Fecha de
                                                 Entrega:</h3></label>
                                             <div class="col-sm-10 mx-auto">
                                                 <input name="delivery_date" type="date" class="form-control" required>
@@ -449,34 +449,47 @@
                                     </div>
                                 </div>
                                 </div>
-                                <div class="row">
-                                    <?php if ($modoEnvio !== 'con_retiro') : ?>
-                                    <div class="col-sm-1"></div>
-                                    <div class="col-sm-5">
-                                        <div class="form-group">
-                                            <label style="color:white;" class="col-sm-3 control-label"><h3 style="color:white; font-family: Poppins, sans-serif; font-size:larger">Dirección</h3></label>
-                                            <div class="row d-flex justify-content-center">
-                                                <input type="text" name="address" placeholder="Cañadita Alegre, 554"
-                                                    class="form-control col-sm-6 mb-3 ml-4 mr-4" required>
-                                                <br>
-                                                <input type="text" name="nro" placeholder="Piso - Dpto"
-                                                    class="form-control col-sm-3 ml-4 mr-4">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <?php endif; ?>
-                                </div>
-                                <?php if ($modoEnvio !== 'con_retiro') : ?>
-                                <div class="form-group">
-                                    <label style="color:white;" class="col-sm-4 control-label"><h3 style="color:white; font-family: Poppins, sans-serif; font-size:larger">Aclaración respecto al
-                                        Domicilio:</h3></label>
-                                    <div class="col-sm-5 mx-auto">
-                                        <input type="text" name="referencia" class="form-control" placeholder="Porton negro con rejas...">
-                                        <small style="color:white; text-shadow: black 0.1em 0.1em 0.2em;"
-                                            class="help-block">Ej: Porton Negro al lado de la verduleria.</small>
-                                    </div>
-                                </div>
-                                <?php endif; ?>
+
+
+
+
+                                <div class="row justify-content-center">
+  <?php if ($modoEnvio !== 'con_retiro') : ?>
+  <!-- Dirección -->
+  <div class="col-sm-5">
+    <div class="form-group">
+      <label class="control-label">
+        <h3 style="color:white; font-family: Poppins, sans-serif; font-size:larger">Dirección</h3>
+      </label>
+      <div class="row d-flex justify-content-center">
+        <input type="text" name="address" placeholder="Cañadita Alegre, 554" class="form-control col-sm-6 mb-3 mr-3" required>
+        <input type="text" name="nro" placeholder="Piso - Dpto" class="form-control col-sm-3">
+      </div>
+    </div>
+  </div>
+
+  <!-- Aclaración respecto al Domicilio -->
+  <div class="col-sm-5">
+    <div class="form-group">
+      <label class="control-label">
+        <h3 style="color:white; font-family: Poppins, sans-serif; font-size:larger">Aclaración respecto al Domicilio:</h3>
+      </label>
+      <div class="col-sm-12">
+        <input type="text" name="referencia" class="form-control" placeholder="Porton negro con rejas...">
+        <small style="color:white; text-shadow: black 0.1em 0.1em 0.2em;" class="help-block">Ej: Porton Negro al lado de la verduleria.</small>
+      </div>
+    </div>
+  </div>
+  <?php endif; ?>
+</div>
+
+
+
+
+
+
+
+
                                 <br>
                                 <div class="form-group">
                                     <label style="color:white;" class="col-sm-3 control-label"><h3 style="color:white; font-family: Poppins, sans-serif; font-size:larger">Forma de
