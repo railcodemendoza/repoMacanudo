@@ -328,8 +328,9 @@
                                     </div>
                                 </div>
 
-                                <div class="col-sm-3">
-                                    <label style="color:white;" class="col-sm-10 control-label">Código de
+                                <div class="col-sm-2" style="border-radius: 5%; margin-left: 1rem; margin-top: 1rems; height: 15rem;
+                                background-color: rgba(255, 255, 255, 0.2); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);">
+                                    <label style="color:white; margin-top:2rem; margin-bottom: 1rem;" class="col-sm-10 control-label">Código de
                                         promoción</label>
                                     <div class="col-sm-10  mx-auto">
                                         <input type="text" id="cupon" name="cupon" placeholder="Inserte"
@@ -339,7 +340,7 @@
                                     <div class="col-sm-8 mx-auto" style="text-align: center;">
                                         <button type="submit" name="confirmar_codigo" id="confirmar"
                                             style="padding-left: 20%;padding-right: 20%;" class="btn btn-warning"
-                                            onclick="compararCupon()">Confirmar Cupon</button>
+                                            onclick="compararCupon()">Confirmar</button>
                                     </div>
                                 </div>
                             </div>
