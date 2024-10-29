@@ -52,7 +52,13 @@
 </head>
 
 
-<body style="background: url(../../assets/img/slide/Macanudas-115.jpg);">
+<body style="background: 
+            linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+            url(../../assets/img/picadas/tablafondodatospers5.jpg); 
+                background-size: cover; 
+                background-position: center; 
+                background-repeat: no-repeat; 
+                background-attachment: fixed; ">
     <div class="row">
         <div class="col-sm-4"></div>
         <div class="col-sm-4">
@@ -289,51 +295,43 @@
                                 <div class="col-sm-7 pato" style="background-color: rgba(0, 0, 0, 0.5); color: orange; border-radius:10px">
                                     <h3 style="text-align: center; color:#ffb03b; margin-top:2rem;">Resumen del pedido: </h3>
                                     <div class="row">
+
+                                    <div class="col-sm-4">
+                                    <p><strong>Tipo de Picada: </strong> <h4><span style="color: white; font-family: Poppins, sans-serif; font-size:large"><?php echo $tipoPicada ; ?></span></h4></p>
+                                </div>
                                         <div class="col-sm-4">
-                                            <p><strong>Tipo de Picada: </strong>
-                                            <h4><span style="color: white;"><?php echo $tipoPicada; ?></span></h4>
-                                            </p>
+                                            <p><strong>Tipo de Tabla: </strong><h4><span style="color: white; font-family: Poppins, sans-serif; font-size:large"> <?php echo $tipoTabla; ?></span></h4></p>
                                         </div>
                                         <div class="col-sm-4">
-                                            <p><strong>Tipo de Tabla: </strong>
-                                            <h4><span style="color: white;"> <?php echo $tipoTabla; ?></span></h4>
-                                            </p>
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <p><strong>Cantidad de Comensales: </strong>
-                                            <h4><span style="color: white;"> <?php echo $comensales; ?></span></h4>
-                                            </p>
+                                            <p><strong>Cantidad de Comensales: </strong><h4><span style="color: white; font-family: Poppins, sans-serif; font-size:large"> <?php echo $comensales ; ?></span></h4></p>
+
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-sm-4">
-                                            <p><strong>Agregado 1: </strong>
-                                            <h4><span style="color: white;"> <?php echo $agregado1; ?></span></h4>
-                                            </p>
+
+                                            <p><strong>Agregado 1: </strong><h4><span style="color: white; font-family: Poppins, sans-serif; font-size:large"> <?php echo $agregado1; ?></span></h4></p>
                                         </div>
                                         <div class="col-sm-4">
-                                            <p><strong>Agregado 2: </strong>
-                                            <h4><span style="color: white;"> <?php echo $agregado2; ?></span></h4>
-                                            </p>
+                                            <p><strong>Agregado 2: </strong><h4><span style="color: white; font-family: Poppins, sans-serif; font-size:large"> <?php echo $agregado2; ?></span></h4></p>
                                         </div>
                                         <div class="col-sm-4">
-                                            <p><strong>Agregado 3: </strong>
-                                            <h4><span style="color: white;"> <?php echo $agregado3; ?></span></h4>
-                                            </p>
+                                            <p><strong>Agregado 3: </strong><h4><span style="color: white; font-family: Poppins, sans-serif; font-size:large"> <?php echo $agregado3; ?></span></h4></p>
+
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-sm-12">
-                                            <p><strong>Delivery: </strong>
-                                            <h4><span style="color: white;"> <?php echo $location; ?></span></h4>
-                                            </p>
+
+                                            <p><strong>Delivery: </strong><h4><span style="color: white; font-family: Poppins, sans-serif; font-size:large"> <?php echo $location; ?></span></h4></p>
+
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-sm-12">
-                                            <p id="precioTotalDisplay" style="margin-bottom:1rem;"><strong>Precio Total: </strong>
-                                            <h4><span style="color: white;"> $<?php echo $precioTotal; ?></span></h4>
-                                            </p>
+
+                                            <p id="precioTotalDisplay" style="margin-bottom:1rem;"><strong>Precio Total: </strong><h4><span style="color: white; font-family: Poppins, sans-serif; font-size:large"> $<?php echo $precioTotal; ?></span></h4></p>
+
                                         </div>
                                     </div>
                                 </div>
@@ -377,21 +375,23 @@
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <div style="margin-top:2%;" class="form-group">
-                                            <label style="color:white;" class="col-sm-7 control-label">
-                                                <h3 style="color:white;">Nombre y
-                                                    Apellido que encarga</h3>
-                                            </label>
+
+                                            <label style="color:white; font-family: Poppins, sans-serif; font-size:large" class="col-sm-7 control-label">
+                                                <h3 style="color:white; font-family: Poppins, sans-serif; font-size:larger">Nombre y
+                                                Apellido que encarga</h3></label>
+
                                             <div class="col-sm-10 mx-auto">
                                                 <input type="text" name="customer" placeholder="Alberto Acosta"
                                                     class="form-control" required>
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label style="color:white;" class="col-sm-6 control-label">
-                                                <h3 style="color:white;">Celular de
-                                                    quién
-                                                    encarga</h3>
-                                            </label>
+
+                                            <label style="color:white; font-family: Poppins, sans-serif; font-size:large" class="col-sm-6 control-label">
+                                                <h3 style="color:white; font-family: Poppins, sans-serif; font-size:larger">Celular de
+                                                quién
+                                                encarga</h3></label>
+
                                             <div class="col-sm-10 mx-auto">
                                                 <input type="phone" name="cel_phone" placeholder="2612128195"
                                                     minlength="10" maxlength="15" class="form-control" required>
@@ -400,21 +400,22 @@
                                     </div>
                                     <div class="col-sm-6">
                                         <div style="margin-top:2%;" class="form-group">
-                                            <label style="color:white;" class="col-sm-6 control-label">
-                                                <h3 style="color:white;">Nombre y
-                                                    Apellido Recibe</h3>
-                                            </label>
+
+                                            <label style="color:white; font-family: Poppins, sans-serif; font-size:large" class="col-sm-6 control-label"> 
+                                                <h3 style="color:white; font-family: Poppins, sans-serif; font-size:larger">Nombre y
+                                                Apellido Recibe</h3></label>
+
                                             <div class="col-sm-10 mx-auto">
                                                 <input type="text" name="cnee" placeholder="Bernardo Romeo"
                                                     class="form-control" required>
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label style="color:white;" class="col-sm-6 control-label">
-                                                <h3 style="color:white;">Celular de
-                                                    quién
-                                                    recibe</h3>
-                                            </label>
+
+                                            <label class="col-sm-6 control-label"> <h3 style="color:white; font-family: Poppins, sans-serif; font-size:larger">Celular de
+                                                quién
+                                                recibe</h3></label>
+
                                             <div class="col-sm-10 mx-auto">
                                                 <input type="phone" name="cnee_cel_phone" placeholder="2613569823"
                                                     minlength="10" maxlength="15" class="form-control" required>
@@ -423,9 +424,9 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label style="color:white;" class="col-sm-3 control-label">
-                                        <h3 style="color:white;">Dedicatoria</h3>
-                                    </label>
+
+                                    <label  class="col-sm-3 control-label"> <h3 style="color:white; font-family: Poppins, sans-serif; font-size:larger">Dedicatoria</h3></label>
+
                                     <div class="col-sm-5 mx-auto">
                                         <textarea name="inscription" placeholder="con cariño Cacho..."
                                             class="form-control"></textarea>
@@ -444,69 +445,79 @@
                                     <div class="col-sm-1"></div>
                                     <div class="col-sm-5">
                                         <div class="form-group">
-                                            <label style="color:white;" class="col-sm-4 control-label">
-                                                <h3 style="color:white;">Fecha de
-                                                    Entrega:</h3>
-                                            </label>
+
+                                            <label  class="col-sm-4 control-label"> <h3 style="color:white; font-family: Poppins, sans-serif; font-size:larger">Fecha de
+                                                Entrega:</h3></label>
+
                                             <div class="col-sm-10 mx-auto">
                                                 <input name="delivery_date" type="date" class="form-control" required>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-sm-5">
-                                        <div class="form-group">
-                                            <label
-                                                style="color:white; 
-                                        font-family: Satisfy, sans-serif;
-                                        font-size: 1.6rem"
-                                                class="col-sm-5 control-label">Horario de Entrega:</label>
-                                            <div class="col-sm-10 mx-auto">
-                                                <select name="schedule_available[]" id="horariosEntrega" class="form-control" required>
-                                                    <option value="">-.elegir horario.-</option>
-                                                </select>
+
+                                    <div class="form-group">
+                                        <label 
+                                        style="color:white; 
+                                        font-family: Poppins, sans-serif; font-size:larger"
+                                        class="col-sm-5 control-label">Horario de Entrega:</label>
+                                        <div class="col-sm-10 mx-auto">
+                                            <select name="schedule_available[]" id="horariosEntrega" class="form-control" required>
+                                                <option value="">-.elegir horario.-</option>
+                                            </select>
+
 
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <?php if ($modoEnvio !== 'con_retiro') : ?>
-                                        <div class="col-sm-1"></div>
-                                        <div class="col-sm-5">
-                                            <div class="form-group">
-                                                <label style="color:white;" class="col-sm-3 control-label">
-                                                    <h3 style="color:white;">Dirección</h3>
-                                                </label>
-                                                <div class="row d-flex justify-content-center">
-                                                    <input type="text" name="address" placeholder="Cañadita Alegre, 554"
-                                                        class="form-control col-sm-6 mb-3 ml-4 mr-4" required>
-                                                    <br>
-                                                    <input type="text" name="nro" placeholder="Piso - Dpto"
-                                                        class="form-control col-sm-3 ml-4 mr-4">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    <?php endif; ?>
                                 </div>
-                                <?php if ($modoEnvio !== 'con_retiro') : ?>
-                                    <div class="form-group">
-                                        <label style="color:white;" class="col-sm-4 control-label">
-                                            <h3 style="color:white;">Aclaración respecto al
-                                                Domicilio:</h3>
-                                        </label>
-                                        <div class="col-sm-5 mx-auto">
-                                            <input type="text" name="referencia" class="form-control" placeholder="Porton negro con rejas...">
-                                            <small style="color:white; text-shadow: black 0.1em 0.1em 0.2em;"
-                                                class="help-block">Ej: Porton Negro al lado de la verduleria.</small>
-                                        </div>
-                                    </div>
-                                <?php endif; ?>
+
+
+
+
+                                <div class="row justify-content-center">
+  <?php if ($modoEnvio !== 'con_retiro') : ?>
+  <!-- Dirección -->
+  <div class="col-sm-5">
+    <div class="form-group">
+      <label class="control-label">
+        <h3 style="color:white; font-family: Poppins, sans-serif; font-size:larger">Dirección</h3>
+      </label>
+      <div class="row d-flex justify-content-center">
+        <input type="text" name="address" placeholder="Cañadita Alegre, 554" class="form-control col-sm-6 mb-3 mr-3" required>
+        <input type="text" name="nro" placeholder="Piso - Dpto" class="form-control col-sm-3">
+      </div>
+    </div>
+  </div>
+
+  <!-- Aclaración respecto al Domicilio -->
+  <div class="col-sm-5">
+    <div class="form-group">
+      <label class="control-label">
+        <h3 style="color:white; font-family: Poppins, sans-serif; font-size:larger">Aclaración respecto al Domicilio:</h3>
+      </label>
+      <div class="col-sm-12">
+        <input type="text" name="referencia" class="form-control" placeholder="Porton negro con rejas...">
+        <small style="color:white; text-shadow: black 0.1em 0.1em 0.2em;" class="help-block">Ej: Porton Negro al lado de la verduleria.</small>
+      </div>
+    </div>
+  </div>
+  <?php endif; ?>
+</div>
+
+
+
+
+
+
+
+
                                 <br>
                                 <div class="form-group">
-                                    <label style="color:white;" class="col-sm-3 control-label">
-                                        <h3 style="color:white;">Forma de
-                                            Pago</h3>
-                                    </label>
+                                    <label style="color:white;" class="col-sm-3 control-label"><h3 style="color:white; font-family: Poppins, sans-serif; font-size:larger">Forma de
+                                        Pago</h3></label>
+
                                     <div class="col-sm-5 mx-auto">
                                         <select name="payment_mode[]" id="metodosPago" class="form-control form-control"
                                             required>

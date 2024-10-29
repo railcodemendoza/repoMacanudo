@@ -70,7 +70,7 @@
                     </select>
                     <p id="precioDelivery"></p>
                     <div>
-                        <h2 id="precioTotal" style="color: orange; ">Precio Total: $0.00</h2>
+                        <h2 id="precioTotal" style="color: orange; font-family: Poppins, sans-serif; font-size:larger">Precio Total: $0.00</h2>
                         <input type="hidden" id="preciofinal" name="preciofinal" value="">
                     </div>
 

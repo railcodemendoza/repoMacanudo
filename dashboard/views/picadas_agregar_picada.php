@@ -255,7 +255,6 @@
                   <label  class="col-sm-4 control-label">Aclaración respecto al Domicilio:</label>
                   <div class="col-sm-5 mx-auto">
                     <input type="text" name="referencia" class="form-control">
-                   
                   </div>
                 </div>
                 <br>

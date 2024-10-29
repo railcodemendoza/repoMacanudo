@@ -15,13 +15,14 @@
             ?>
             <div class="col-lg-3 col-md-4">
                 <div class="gallery-item">
-                    <div href="http://localhost/laboratoriomacanudo/assets/img/gallery/<?php echo $row['img'];?>" class="venobox" data-gall="gallery-item">
+                    <!-- Comentamos el href y la clase venobox -->
+                    <!-- <div href="http://localhost/laboratoriomacanudo/assets/img/gallery/<?php echo $row['img'];?>" class="venobox" data-gall="gallery-item"> -->
                         <img src="assets/img/slide/Galeria/<?php echo $row['img'];?>" alt="" class="img-fluid">
-                    </div>
+                    <!-- </div> -->
                 </div>
             </div>
             <?php } ?>
-           
+        
         </div>
     </div>
 </section><!-- End Gallery Section -->
