@@ -1,5 +1,5 @@
 <?php include('../db.php'); ?>
-<?php include '../../variables.php';?>
+<?php include '../../variables.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,13 +7,13 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-180172331-1"></script>
     <script>
-    window.dataLayer = window.dataLayer || [];
+        window.dataLayer = window.dataLayer || [];
 
-    function gtag() {
-        dataLayer.push(arguments);
-    }
-    gtag('js', new Date());
-    gtag('config', 'UA-180172331-1');
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'UA-180172331-1');
     </script>
 
     <meta charset="utf-8">
@@ -62,26 +62,26 @@
     <div class="row">
         <div class="col-sm-4"></div>
         <div class="col-sm-4">
-            <?php 
-                $padding = '';
-                $paddinginner = 'mt-2';
-                if(isset($_SESSION['message'])){
-                    if($_SESSION['message'] != false) {
-                        
-                        $padding= 'pt-0';
-                        $paddinginner= 'pt-0';?>
+            <?php
+            $padding = '';
+            $paddinginner = 'mt-2';
+            if (isset($_SESSION['message'])) {
+                if ($_SESSION['message'] != false) {
 
-            <div class="alert alert-warning alert-dismissible fade show"
-                style="z-index: 1031; margin-top: 7rem; text-align:center;" role="alert">
-                <?php echo $_SESSION['message'] ;?>
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <?php  
-                    }
+                    $padding = 'pt-0';
+                    $paddinginner = 'pt-0'; ?>
+
+                    <div class="alert alert-warning alert-dismissible fade show"
+                        style="z-index: 1031; margin-top: 7rem; text-align:center;" role="alert">
+                        <?php echo $_SESSION['message']; ?>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+            <?php
                 }
-                $_SESSION['message'] = false;
+            }
+            $_SESSION['message'] = false;
             ?>
         </div>
     </div>
@@ -118,136 +118,136 @@
             </nav><!-- .nav-menu -->
         </div>
     </header><!-- End Header -->
-    <section class="inner-page <?php echo $paddinginner;?>">
+    <section class="inner-page <?php echo $paddinginner; ?>">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
-                    <section class="panel <?php echo $padding;?>">
-                        <?php 
-                            //Llamada a la Api para generar al pedido
-                            if (isset($_POST['enviar_pedido'])) {
-                                echo '<script>var precioFinal = ' . json_encode($_POST['preciofinal']) . ';</script>';
-                                $tipoPicada = $_POST['tipoPicada'];
-                                $tipoTabla = $_POST['tipoTabla'];
-                                $cantidadComensales = $_POST['cantidadComensales'];
-                                $agregado1 = $_POST['agregado1'];
-                                $agregado2 = $_POST['agregado2'];
-                                $agregado3 = $_POST['agregado3'];
-                                $delivery = $_POST['delivery'];
-                                $precioTotal = $_POST['preciofinal'];
-                                
-                                $curl = curl_init();
-                        
-                                // Configurar la solicitud cURL
-                                curl_setopt_array($curl, array(
-                                    CURLOPT_URL => $urlApi.'/api/general',
-                                    CURLOPT_RETURNTRANSFER => true,
-                                    CURLOPT_ENCODING => '',
-                                    CURLOPT_MAXREDIRS => 10,
-                                    CURLOPT_TIMEOUT => 0,
-                                    CURLOPT_FOLLOWLOCATION => true,
-                                    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-                                    CURLOPT_CUSTOMREQUEST => 'POST',
-                                    CURLOPT_POSTFIELDS => array(
-                                        'tipoPicada' => $tipoPicada,
-                                        'tipoTabla' => $tipoTabla,
-                                        'cantidadComensales' => $cantidadComensales,
-                                        'delivery' => $delivery,
-                                        'precioTotal' => $precioTotal,
-                                        'agregado1' => $agregado1,
-                                        'agregado2' => $agregado2,
-                                        'agregado3' => $agregado3,
-                                    ),
-                                ));
-                                $response = curl_exec($curl);
-                            
-                                curl_close($curl);
-                                //echo $response;
-                                $responseArray = json_decode($response, true);
+                    <section class="panel <?php echo $padding; ?>">
+                        <?php
+                        //Llamada a la Api para generar al pedido
+                        if (isset($_POST['enviar_pedido'])) {
+                            echo '<script>var precioFinal = ' . json_encode($_POST['preciofinal']) . ';</script>';
+                            $tipoPicada = $_POST['tipoPicada'];
+                            $tipoTabla = $_POST['tipoTabla'];
+                            $cantidadComensales = $_POST['cantidadComensales'];
+                            $agregado1 = $_POST['agregado1'];
+                            $agregado2 = $_POST['agregado2'];
+                            $agregado3 = $_POST['agregado3'];
+                            $delivery = $_POST['delivery'];
+                            $precioTotal = $_POST['preciofinal'];
 
-                                if (isset($responseArray['pedido'])) {
-                                    $pedidoData = $responseArray['pedido'];
-                                    $tipoPicada = $pedidoData['product'];
-                                    $pedidoId = $pedidoData['id'];
-                                    $tipoTabla = $pedidoData['add3'];
-                                    $comensales = $pedidoData['add1'];
-                                    $agregado1 = isset($pedidoData['add2']) ? $pedidoData['add2'] : "Sin Agregado";
-                                    $agregado2 = isset($pedidoData['add4']) ? $pedidoData['add4'] : "Sin Agregado";
-                                    $agregado3 = isset($pedidoData['add5']) ? $pedidoData['add5'] : "Sin Agregado";
-                                    $location = isset($pedidoData['location']) ? $pedidoData['location'] : "Retiro en local";
-                                    $precioFin = $pedidoData['in_ars'];
-                                    $modoEnvio = $pedidoData['type'];
-                                } else {
-                                    echo "Error al procesar la respuesta de la API.";
-                                }
+                            $curl = curl_init();
+
+                            // Configurar la solicitud cURL
+                            curl_setopt_array($curl, array(
+                                CURLOPT_URL => $urlApi . '/api/general',
+                                CURLOPT_RETURNTRANSFER => true,
+                                CURLOPT_ENCODING => '',
+                                CURLOPT_MAXREDIRS => 10,
+                                CURLOPT_TIMEOUT => 0,
+                                CURLOPT_FOLLOWLOCATION => true,
+                                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                                CURLOPT_CUSTOMREQUEST => 'POST',
+                                CURLOPT_POSTFIELDS => array(
+                                    'tipoPicada' => $tipoPicada,
+                                    'tipoTabla' => $tipoTabla,
+                                    'cantidadComensales' => $cantidadComensales,
+                                    'delivery' => $delivery,
+                                    'precioTotal' => $precioTotal,
+                                    'agregado1' => $agregado1,
+                                    'agregado2' => $agregado2,
+                                    'agregado3' => $agregado3,
+                                ),
+                            ));
+                            $response = curl_exec($curl);
+
+                            curl_close($curl);
+                            //echo $response;
+                            $responseArray = json_decode($response, true);
+
+                            if (isset($responseArray['pedido'])) {
+                                $pedidoData = $responseArray['pedido'];
+                                $tipoPicada = $pedidoData['product'];
+                                $pedidoId = $pedidoData['id'];
+                                $tipoTabla = $pedidoData['add3'];
+                                $comensales = $pedidoData['add1'];
+                                $agregado1 = isset($pedidoData['add2']) ? $pedidoData['add2'] : "Sin Agregado";
+                                $agregado2 = isset($pedidoData['add4']) ? $pedidoData['add4'] : "Sin Agregado";
+                                $agregado3 = isset($pedidoData['add5']) ? $pedidoData['add5'] : "Sin Agregado";
+                                $location = isset($pedidoData['location']) ? $pedidoData['location'] : "Retiro en local";
+                                $precioFin = $pedidoData['in_ars'];
+                                $modoEnvio = $pedidoData['type'];
+                            } else {
+                                echo "Error al procesar la respuesta de la API.";
                             }
+                        }
                         ?>
                         <script>
-                        const precioFinalElement = document.getElementById('preciofinal');
-                        document.addEventListener("DOMContentLoaded", function() {
-                            // Realizar la solicitud HTTP a la API
-                            const requestOptions = {
-                                method: "GET",
-                                redirect: "follow"
-                            };
-                            fetch("<?php echo $urlApi;?>/api/codigoPromocion", requestOptions)
-                                .then(response => response.json())
-                                .then(codigosPromocion => {
-                                    // Aquí tienes la lista de códigos de la API
-                                    //console.log("Códigos de promoción obtenidos:", codigosPromocion);
+                            const precioFinalElement = document.getElementById('preciofinal');
+                            document.addEventListener("DOMContentLoaded", function() {
+                                // Realizar la solicitud HTTP a la API
+                                const requestOptions = {
+                                    method: "GET",
+                                    redirect: "follow"
+                                };
+                                fetch("<?php echo $urlApi; ?>/api/codigoPromocion", requestOptions)
+                                    .then(response => response.json())
+                                    .then(codigosPromocion => {
+                                        // Aquí tienes la lista de códigos de la API
+                                        //console.log("Códigos de promoción obtenidos:", codigosPromocion);
 
-                                    function compararCupon() {
-                                        var cup = document.getElementById('cupon').value;
-                                        var cuponEncontrado = false;
-                                        for (var i = 0; i < codigosPromocion.length; i++) {
-                                            if (cup === codigosPromocion[i].codigo) {
-                                                cuponEncontrado = true;
-                                                if (codigosPromocion[i].activo === 1) {
-                                                    document.getElementById("prueba").innerHTML =
-                                                        "Tu cupon " + codigosPromocion[i].codigo +
-                                                        " es correcto y vale por un " + codigosPromocion[i]
-                                                        .descuento + "% de descuento";
+                                        function compararCupon() {
+                                            var cup = document.getElementById('cupon').value;
+                                            var cuponEncontrado = false;
+                                            for (var i = 0; i < codigosPromocion.length; i++) {
+                                                if (cup === codigosPromocion[i].codigo) {
+                                                    cuponEncontrado = true;
+                                                    if (codigosPromocion[i].activo === 1) {
+                                                        document.getElementById("prueba").innerHTML =
+                                                            "Tu cupon " + codigosPromocion[i].codigo +
+                                                            " es correcto y vale por un " + codigosPromocion[i]
+                                                            .descuento + "% de descuento";
 
-                                                    // Utiliza la variable JavaScript precioFinal en lugar de $_POST['preciofinal']
-                                                    var precioFinalConDescuento = precioFinal * (1 - (
-                                                        codigosPromocion[i].descuento / 100));
-                                                    //console.log(precioFinalConDescuento);
-                                                    // Actualiza el contenido del elemento que muestra el Precio Total
-                                                    document.getElementById("precioTotalDisplay")
-                                                        .innerHTML = "<strong>Precio Total:</strong> $" +
-                                                        precioFinalConDescuento;
+                                                        // Utiliza la variable JavaScript precioFinal en lugar de $_POST['preciofinal']
+                                                        var precioFinalConDescuento = precioFinal * (1 - (
+                                                            codigosPromocion[i].descuento / 100));
+                                                        //console.log(precioFinalConDescuento);
+                                                        // Actualiza el contenido del elemento que muestra el Precio Total
+                                                        document.getElementById("precioTotalDisplay")
+                                                            .innerHTML = "<strong>Precio Total:</strong> $" +
+                                                            precioFinalConDescuento;
+                                                    } else {
+
+                                                        document.getElementById("precioTotalDisplay")
+                                                            .innerHTML = "<strong>Precio Total:</strong> $" +
+                                                            precioFinal;
+                                                        document.getElementById("prueba").innerHTML =
+                                                            "Tu cupon " + codigosPromocion[i].codigo +
+                                                            " es correcto pero ya no está activo";
+                                                    }
+                                                    break;
                                                 } else {
-
                                                     document.getElementById("precioTotalDisplay")
                                                         .innerHTML = "<strong>Precio Total:</strong> $" +
                                                         precioFinal;
                                                     document.getElementById("prueba").innerHTML =
                                                         "Tu cupon " + codigosPromocion[i].codigo +
-                                                        " es correcto pero ya no está activo";
+                                                        " es incorrecto ";
                                                 }
-                                                break;
-                                            } else {
-                                                document.getElementById("precioTotalDisplay")
-                                                    .innerHTML = "<strong>Precio Total:</strong> $" +
-                                                    precioFinal;
+                                            }
+                                            if (!cuponEncontrado) {
                                                 document.getElementById("prueba").innerHTML =
-                                                    "Tu cupon " + codigosPromocion[i].codigo +
-                                                    " es incorrecto ";
+                                                    "No se ha encontrado el cupon " + cup;
                                             }
                                         }
-                                        if (!cuponEncontrado) {
-                                            document.getElementById("prueba").innerHTML =
-                                                "No se ha encontrado el cupon " + cup;
-                                        }
-                                    }
-                                    // Asigna la función al evento click del botón
-                                    document.getElementById("confirmar").addEventListener("click",
-                                        compararCupon);
-                                })
-                                .catch(error => console.error(error));
+                                        // Asigna la función al evento click del botón
+                                        document.getElementById("confirmar").addEventListener("click",
+                                            compararCupon);
+                                    })
+                                    .catch(error => console.error(error));
 
                                 // Realizar una llamada a la API para obtener los horarios de entrega
-                                fetch("<?php echo $urlApi;?>/api/showDelivery/<?php echo $modoEnvio;?>", requestOptions)
+                                fetch("<?php echo $urlApi; ?>/api/showDelivery/<?php echo $modoEnvio; ?>", requestOptions)
                                     .then(response => response.json())
                                     .then(data => {
                                         // Obtener el elemento select
@@ -267,7 +267,7 @@
                                     .catch(error => console.error('Error al obtener los horarios:', error));
 
                                 // Realizar una llamada a la API para obtener los horarios de entrega
-                                fetch("<?php echo $urlApi;?>/api/metodosPagoModo/<?php echo $modoEnvio;?>", requestOptions)
+                                fetch("<?php echo $urlApi; ?>/api/metodosPagoModo/<?php echo $modoEnvio; ?>", requestOptions)
                                     .then(response => response.json())
                                     .then(data => {
                                         // Obtener el elemento select
@@ -285,7 +285,7 @@
                                         });
                                     })
                                     .catch(error => console.error('Error al obtener los horarios:', error));
-                        });
+                            });
                         </script>
                         <br>
                         <br>
@@ -295,6 +295,7 @@
                                 <div class="col-sm-7 pato" style="background-color: rgba(0, 0, 0, 0.5); color: orange; border-radius:10px">
                                     <h3 style="text-align: center; color:#ffb03b; margin-top:2rem;">Resumen del pedido: </h3>
                                     <div class="row">
+
                                     <div class="col-sm-4">
                                     <p><strong>Tipo de Picada: </strong> <h4><span style="color: white; font-family: Poppins, sans-serif; font-size:large"><?php echo $tipoPicada ; ?></span></h4></p>
                                 </div>
@@ -303,10 +304,12 @@
                                         </div>
                                         <div class="col-sm-4">
                                             <p><strong>Cantidad de Comensales: </strong><h4><span style="color: white; font-family: Poppins, sans-serif; font-size:large"> <?php echo $comensales ; ?></span></h4></p>
+
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-sm-4">
+
                                             <p><strong>Agregado 1: </strong><h4><span style="color: white; font-family: Poppins, sans-serif; font-size:large"> <?php echo $agregado1; ?></span></h4></p>
                                         </div>
                                         <div class="col-sm-4">
@@ -314,16 +317,21 @@
                                         </div>
                                         <div class="col-sm-4">
                                             <p><strong>Agregado 3: </strong><h4><span style="color: white; font-family: Poppins, sans-serif; font-size:large"> <?php echo $agregado3; ?></span></h4></p>
+
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-sm-12">
+
                                             <p><strong>Delivery: </strong><h4><span style="color: white; font-family: Poppins, sans-serif; font-size:large"> <?php echo $location; ?></span></h4></p>
+
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-sm-12">
+
                                             <p id="precioTotalDisplay" style="margin-bottom:1rem;"><strong>Precio Total: </strong><h4><span style="color: white; font-family: Poppins, sans-serif; font-size:large"> $<?php echo $precioTotal; ?></span></h4></p>
+
                                         </div>
                                     </div>
                                 </div>
@@ -368,19 +376,23 @@
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <div style="margin-top:2%;" class="form-group">
+
                                             <label style="color:white; font-family: Poppins, sans-serif; font-size:large" class="col-sm-7 control-label">
                                                 <h3 style="color:white; font-family: Poppins, sans-serif; font-size:larger">Nombre y
                                                 Apellido que encarga</h3></label>
+
                                             <div class="col-sm-10 mx-auto">
                                                 <input type="text" name="customer" placeholder="Alberto Acosta"
                                                     class="form-control" required>
                                             </div>
                                         </div>
                                         <div class="form-group">
+
                                             <label style="color:white; font-family: Poppins, sans-serif; font-size:large" class="col-sm-6 control-label">
                                                 <h3 style="color:white; font-family: Poppins, sans-serif; font-size:larger">Celular de
                                                 quién
                                                 encarga</h3></label>
+
                                             <div class="col-sm-10 mx-auto">
                                                 <input type="phone" name="cel_phone" placeholder="2612128195"
                                                     minlength="10" maxlength="15" class="form-control" required>
@@ -389,18 +401,22 @@
                                     </div>
                                     <div class="col-sm-6">
                                         <div style="margin-top:2%;" class="form-group">
+
                                             <label style="color:white; font-family: Poppins, sans-serif; font-size:large" class="col-sm-6 control-label"> 
                                                 <h3 style="color:white; font-family: Poppins, sans-serif; font-size:larger">Nombre y
                                                 Apellido Recibe</h3></label>
+
                                             <div class="col-sm-10 mx-auto">
                                                 <input type="text" name="cnee" placeholder="Bernardo Romeo"
                                                     class="form-control" required>
                                             </div>
                                         </div>
                                         <div class="form-group">
+
                                             <label class="col-sm-6 control-label"> <h3 style="color:white; font-family: Poppins, sans-serif; font-size:larger">Celular de
                                                 quién
                                                 recibe</h3></label>
+
                                             <div class="col-sm-10 mx-auto">
                                                 <input type="phone" name="cnee_cel_phone" placeholder="2613569823"
                                                     minlength="10" maxlength="15" class="form-control" required>
@@ -409,7 +425,9 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
+
                                     <label  class="col-sm-3 control-label"> <h3 style="color:white; font-family: Poppins, sans-serif; font-size:larger">Dedicatoria</h3></label>
+
                                     <div class="col-sm-5 mx-auto">
                                         <textarea name="inscription" placeholder="con cariño Cacho..."
                                             class="form-control"></textarea>
@@ -428,14 +446,17 @@
                                     <div class="col-sm-1"></div>
                                     <div class="col-sm-5">
                                         <div class="form-group">
+
                                             <label  class="col-sm-4 control-label"> <h3 style="color:white; font-family: Poppins, sans-serif; font-size:larger">Fecha de
                                                 Entrega:</h3></label>
+
                                             <div class="col-sm-10 mx-auto">
                                                 <input name="delivery_date" type="date" class="form-control" required>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-sm-5">
+
                                     <div class="form-group">
                                         <label 
                                         style="color:white; 
@@ -446,6 +467,8 @@
                                                 <option value="">-.elegir horario.-</option>
                                             </select>
 
+
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -495,11 +518,12 @@
                                 <div class="form-group">
                                     <label style="color:white;" class="col-sm-3 control-label"><h3 style="color:white; font-family: Poppins, sans-serif; font-size:larger">Forma de
                                         Pago</h3></label>
+
                                     <div class="col-sm-5 mx-auto">
                                         <select name="payment_mode[]" id="metodosPago" class="form-control form-control"
                                             required>
                                             <option value="">-.Elige medio de Pago.-</option>
-                                            
+
                                         </select>
                                         <small style="color:white; text-shadow: black 0.1em 0.1em 0.2em;"
                                             class="help-block">Pagar con Mercado Pago tiene un
@@ -507,7 +531,7 @@
                                     </div>
                                 </div>
                                 <div class="col-sm-4 mx-auto" style="text-align: center;">
-                                        <button type="submit" name="testear_pedido" id="testear_pedido" style="padding-left: 20%;padding-right: 20%;"
+                                    <button type="submit" name="testear_pedido" id="testear_pedido" style="padding-left: 20%;padding-right: 20%;"
                                         class="btn btn-warning">Pedir</button>
                                 </div>
                             </form>
@@ -559,12 +583,12 @@
     <script src="../assets/mcvendor/venobox/venobox.min.js"></script>
     <script src="../assets/mcvendor/owl.carousel/owl.carousel.min.js"></script>
     <script>
-    $(function() {
-        $('[data-toggle="popover"]').popover()
-    })
-    $(function() {
-        $('[data-toggle="tooltip"]').tooltip()
-    });
+        $(function() {
+            $('[data-toggle="popover"]').popover()
+        })
+        $(function() {
+            $('[data-toggle="tooltip"]').tooltip()
+        });
     </script>
 
     <!-- Template Main JS File -->
