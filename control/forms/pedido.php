@@ -22,6 +22,9 @@
     <title>Picadas Macanudas :: sabores que compartimos</title>
     <meta content="" name="descriptison">
     <meta content="" name="keywords">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Rubik+Wet+Paint&family=Shadows+Into+Light&display=swap" rel="stylesheet">
 
     <!-- Favicons -->
     <link href="../../assets/img/favicon.png" rel="icon">
@@ -118,7 +121,7 @@
                     <section class="panel <?php echo $padding;?>">
                         <br>
                         <header class="panel-heading">
-                            <h2 style="color:white; text-align:center;">Formulario del pedido.</h2>
+                            <h2 style="color:white; text-align:center;">Formulario del pedido</h2>
                             <div class="row">
                                 <div class="alert alert-warning alert-dismissible col-sm-5 mx-auto fade show"
                                     style="z-index: 1031;" role="alert">
