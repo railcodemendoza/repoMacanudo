@@ -22,7 +22,6 @@
                         <th>Fecha</th>
                         <th>Cliente</th>
                         <th>Picada</th>
-                        <th>Para</th>
                         <th>Tipo</th>
                         <th>Medio de Pago</th>
                         <th>Estado</th>
@@ -56,8 +55,7 @@
                                 <tr>
                                     <td>${row.delivery_date}</td>
                                     <td>${row.customer}</td>
-                                    <td>${row.product}</td>
-                                    <td>${row.add1}</td>
+                                    <td>${row.product}<br>-${row.add1} personas</td>
                                     <td>${row.add3}</td>
                                     <td>${row.payment_mode}<br>
                                         <p style="font-size: 5;">${row.status_pago}</p>
