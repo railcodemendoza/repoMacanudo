@@ -24,6 +24,9 @@
     <meta content="" name="descriptison">
     <meta content="" name="keywords">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Rubik+Wet+Paint&family=Shadows+Into+Light&display=swap" rel="stylesheet">
     <!-- Favicons -->
     <link href="../../assets/mg/favicon.png" rel="icon">
     <link href="../../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
@@ -178,8 +181,7 @@
                     <section class="panel" style="padding-top: 0;">
                         <div class="card">
                             <div class="card-body">
-                                <br>
-                                <h3 style="text-align: center; font-size: xx-large; font-family: 'Dancing Script', cursive;">
+                                <h3 style="text-align: center; font-size: xx-large; font-family: 'Inria Sans', sans-serif;">
                                     <strong>Resumen del Pedido</strong>
                                 </h3>
                                 <hr>
@@ -210,54 +212,53 @@
                                 </form>
                                 <br>
                                 <hr>
-                                <div class="row" style="background-color: #d3d3d3; padding: 20px;">
+                                <div class="row" >
                                     <div class="col-sm-4 mx-auto" style="display: flex; justify-content: center; align-items: center;">
-                                        <h4 style="font-family: 'Dancing Script', cursive; margin-right: 10px;"><strong>Nombre:</strong></h4>
-                                        <p><?php echo $customer . ' (' . $cel_phone . ') ' ?></p>
+                                        <h4 style="font-family: 'Inria Sans', sans-serif; margin-right: 10px;"><strong>Nombre: </strong><?php echo $customer . ' (' . $cel_phone . ') ' ?></h4>
+                                        
                                     </div>
 
                                     <div class="col-sm-4 mx-auto" style="display: flex; justify-content: center; align-items: center;">
-                                        <h4 style="font-family: 'Dancing Script', cursive; margin-right: 10px;"><strong>Receptor:</strong></h4>
-                                        <p><?php echo $cnee . ' (' . $cnee_cel_phone . ') ' ?></p>
+                                        <h4 style="font-family: 'Inria Sans', sans-serif; margin-right: 10px;"><strong>Receptor: </strong><?php echo $cnee . ' (' . $cnee_cel_phone . ') ' ?></h4>
+                                       
                                     </div>
 
                                     <div class="col-sm-4 mx-auto" style="display: flex; justify-content: center; align-items: center;">
-                                        <h4 style="font-family: 'Dancing Script', cursive; margin-right: 10px;"><strong>Dedicatoria:</strong></h4>
-                                        <p><?php echo $inscription; ?></p>
+                                        <h4 style="font-family: 'Inria Sans', sans-serif; margin-right: 10px;"><strong>Dedicatoria: </strong><?php echo $inscription; ?></h4>
+                                        
                                     </div>
 
                                 </div>
                                 <hr>
-                                <div class="row" style="background-color: #d3d3d3; padding: 20px;">
+                                <div class="row" >
                                     <div class="col-sm-6 mx-auto" style="display: flex; justify-content: center; align-items: center;">
-                                        <h4 style="font-family: 'Dancing Script', cursive; margin-right: 10px;"><strong>Fecha:</strong></h4>
-                                        <p><?php echo $delivery_date; ?> -  <?php echo $schedule_available; ?></p>
+                                        <h4 style="font-family: 'Inria Sans', sans-serif; margin-right: 10px;"><strong>Fecha: </strong><?php echo $delivery_date; ?> -  <?php echo $schedule_available; ?></h4>
+                                        
                                     </div>
 
                                     <div class="col-sm-6 mx-auto" style="display: flex; justify-content: center; align-items: center;">
-                                        <h4 style="font-family: 'Dancing Script', cursive; margin-right: 10px;"><strong>Direccion:</strong></h4>
-                                        <p><?php echo $address . ' ' . $nro . ' ( ' . $referencia . ') - ' . $location; ?></p>
+                                        <h4 style="font-family: 'Inria Sans', sans-serif; margin-right: 10px;"><strong>Direccion: </strong><?php echo $address . ' ' . $nro . ' ( ' . $referencia . ') - ' . $location; ?></h4>
+                                     
                                     </div>
 
                                 </div>
                                 <hr>
-                                <div class="row" style="background-color: #d3d3d3; padding: 20px;">
+                                <div class="row" >
                                     <div class="col-sm-6 mx-auto" style="display: flex; justify-content: center; align-items: center;">
-                                        <h4 style="font-family: 'Dancing Script', cursive; margin-right: 10px;"><strong>Picada:</strong></h4>
-                                        <p><?php echo $tipoPicada . ' - ' . $tipoTabla . ' para ' . $comensales . ' personas'; ?></p>
+                                        <h4 style="font-family: 'Inria Sans', sans-serif; margin-right: 10px;"><strong>Picada: </strong><?php echo $tipoPicada . ' - ' . $tipoTabla . ' para ' . $comensales . ' personas'; ?></h4>
                                     </div>
 
                                     <div class="col-sm-6 mx-auto" style="display: flex; justify-content: center; align-items: center;">
-                                        <h4 style="font-family: 'Dancing Script', cursive; margin-right: 10px;"><strong>Agregados:</strong></h4>
+                                        <h4 style="font-family: 'Inria Sans', sans-serif; margin-right: 10px;"><strong>Agregados:</strong></h4>
                                         <div>
                                             <?php if ($agregado1 !== "Sin Agregado"): ?>
-                                                <p style="margin: 0;">- <?php echo $agregado1; ?></p>
+                                                <h4 style="font-family: 'Inria Sans', sans-serif; margin-right: 10px;">- <?php echo $agregado1; ?></h4>
                                             <?php endif; ?>
                                             <?php if ($agregado2 !== "Sin Agregado"): ?>
-                                                <p style="margin: 0;">- <?php echo $agregado2; ?></p>
+                                                <h4 style="font-family: 'Inria Sans', sans-serif; margin-right: 10px;">- <?php echo $agregado2; ?></h4>
                                             <?php endif; ?>
                                             <?php if ($agregado3 !== "Sin Agregado"): ?>
-                                                <p style="margin: 0;">- <?php echo $agregado3; ?></p>
+                                                <h4 style="font-family: 'Inria Sans', sans-serif; margin-right: 10px;">- <?php echo $agregado3; ?></h4>
                                             <?php endif; ?>
                                         </div>
                                     </div>

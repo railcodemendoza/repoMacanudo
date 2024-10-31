@@ -36,16 +36,14 @@ $hayPicadas = !empty($picadas);
         left: 50%;
         transform: translate(-50%, -50%);
         width: 90%; 
-        max-width: 700px; /* Ajusta según tus necesidades */
-        background-color: rgb(176, 141, 87);
+        max-width: 600px; /* Ajusta según tus necesidades */
         text-align: center;
         color: white;
         padding: 5px;
         box-sizing: border-box;
         overflow-y: auto; /* Añade desplazamiento vertical si el contenido es demasiado largo */
-        border-radius: 15px;
     }
-   
+
     .carousel-item img {
         max-width: 100%;
         height: auto; /* Para mantener la relación de aspecto */
@@ -62,7 +60,9 @@ $hayPicadas = !empty($picadas);
 
     .btn-warning {
         font-size: 30px;
-        background-color: rgb(176, 141, 87);
+        background-color: rgb(236,190,29,1);
+        width: 50%; 
+        font-size: 17px;
     }
 
     @media (max-width: 768px) {
@@ -83,17 +83,20 @@ $hayPicadas = !empty($picadas);
 <div id="popup" class="popup">
     <div class="popup-content">
         <div id="carouselExampleFade" class="carousel slide carousel-fade">
+        
             <div class="carousel-inner">
                 <?php foreach ($picadas as $index => $picada): ?>
                     <div class="carousel-item <?php echo ($index == 0) ? 'active' : ''; ?>">
                         <img src="<?php echo $urlApi;?>/storage/picadas/<?php echo $picada['imagen']; ?>" alt="...">
                         <div class="carousel-caption ">
+                        
+                            
                             <h1><?php echo $picada['title_especial']; ?></h1>
-                            <p><?php echo $picada['comentario_especial']; ?></p>
-                            <a href="control/forms/pedido.php?id_modal=<?php echo $picada['id']; ?>" class="btn btn-warning btn-lg">Realizar Pedido</a>
+                            <p style="font-size: small;"><?php echo $picada['comentario_especial']; ?></p>
+                            <a href="control/forms/pedido.php?id_modal=<?php echo $picada['id']; ?>" class="btn btn-warning btn-lg"><strong>Lo quiero</strong></a>
                             <div >
-                                <button style="margin-top: 10px;" class="btn btn-light btn-sm closePopup">X</button>
-                            </div>
+                                <button style="margin-top: 8px; background-color: rgba(0,0,0,0.0); border:none; text-decoration: underline; color: white;" class="closePopup"><strong>No gracias</strong></button>
+                        </div>
                         </div> 
                     </div>
                 <?php endforeach; ?>
