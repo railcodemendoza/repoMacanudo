@@ -54,7 +54,13 @@
   ======================================================== -->
 </head>
 
-<body style="background: url(../../assets/img/slide/Macanudas-115.jpg);">
+<body style="background: 
+            linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+            url(../../assets/img/picadas/tablafondodatospers5.jpg); 
+                background-size: cover; 
+                background-position: center; 
+                background-repeat: no-repeat; 
+                background-attachment: fixed; ">
     <div class="row">
         <div class="col-sm-4"></div>
         <div class="col-sm-4">
