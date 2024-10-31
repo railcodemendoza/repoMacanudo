@@ -3,9 +3,9 @@
 
 $conn2 = mysqli_connect(
  '193.203.175.53',
- 'u101685278_sanbox_macanud',
+ 'u101685278_api_macanudas', //u101685278_sanbox_macanud
  'Rail2023$',
- 'u101685278_sanbox_macanud'
+ 'u101685278_api_macanudas' //u101685278_sanbox_macanud
 );
 
 if (!$conn2) {
