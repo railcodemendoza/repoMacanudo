@@ -1,5 +1,5 @@
 <?php include('../db.php'); ?>
-<?php include '../../variables.php';?>
+<?php include '../../variables.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,14 +7,14 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-180172331-1"></script>
     <script>
-    window.dataLayer = window.dataLayer || [];
+        window.dataLayer = window.dataLayer || [];
 
-    function gtag() {
-        dataLayer.push(arguments);
-    }
-    gtag('js', new Date());
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
 
-    gtag('config', 'UA-180172331-1');
+        gtag('config', 'UA-180172331-1');
     </script>
 
     <meta charset="utf-8">
@@ -24,6 +24,9 @@
     <meta content="" name="descriptison">
     <meta content="" name="keywords">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Rubik+Wet+Paint&family=Shadows+Into+Light&display=swap" rel="stylesheet">
     <!-- Favicons -->
     <link href="../../assets/mg/favicon.png" rel="icon">
     <link href="../../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
@@ -32,6 +35,7 @@
     <link
         href="https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,600,600i,700,700i|Satisfy|Comic+Neue:300,300i,400,400i,700,700i"
         rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
 
     <!-- Vendor CSS Files -->
     <link href="../assets/mcvendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -90,85 +94,86 @@
     <br>
     <br>
 
-    <?php 
-if  (isset($_POST['testear_pedido'])) { // me traigo la informacion segun ID seleccionada.
+    <?php
+    if (isset($_POST['testear_pedido'])) { // me traigo la informacion segun ID seleccionada.
 
-  foreach ($_POST['payment_mode'] as $payment_mode);
-  foreach ($_POST['schedule_available'] as $schedule_available);
-  $customer = $_POST['customer'];
-  $cel_phone = $_POST['cel_phone'];
-  $cnee = $_POST['cnee'];
-  $cnee_cel_phone = $_POST['cnee_cel_phone'];
-  $inscription = $_POST['inscription'];
-  $delivery_date = $_POST['delivery_date'];
-  $address =  isset($_POST['address']) ? $_POST['address'] : null;
-  $nro =  isset($_POST['nro']) ? $_POST['nro'] : null;
-  $referencia =  isset($_POST['referencia']) ? $_POST['referencia'] : null;
+        foreach ($_POST['payment_mode'] as $payment_mode);
+        foreach ($_POST['schedule_available'] as $schedule_available);
+        $customer = $_POST['customer'];
+        $cel_phone = $_POST['cel_phone'];
+        $cnee = $_POST['cnee'];
+        $cnee_cel_phone = $_POST['cnee_cel_phone'];
+        $inscription = $_POST['inscription'];
+        $delivery_date = $_POST['delivery_date'];
+        $address =  isset($_POST['address']) ? $_POST['address'] : null;
+        $nro =  isset($_POST['nro']) ? $_POST['nro'] : null;
+        $referencia =  isset($_POST['referencia']) ? $_POST['referencia'] : null;
 
-  // Corroboramos que no sea el mismo dia. 
+        // Corroboramos que no sea el mismo dia. 
 
-  $date = date('Y-m-d');
-  $alert_date ='';
+        $date = date('Y-m-d');
+        $alert_date = '';
 
 
-  if($delivery_date == $date){
-    $alert_date = '<p style="text-align:center;">Recordá que hacemos pedidos con 24hs de anticipación.<br>No te preocupes, consultá disponibilidad <a target="_blank" href="https://api.whatsapp.com/send?phone=5492614714206&text=Tendrán%20disponibilidad%20para%20pedir%20una%20'.$product.'%20para%20'.$add1.'%20personas">acá!</a></p>';
-  }  
-  
-  $pedId = $_POST['pedido_id'];
-  $trimmedPedId = trim($pedId);
-  $url = $urlApi.'/api/general/' . $trimmedPedId;
+        if ($delivery_date == $date) {
+            $alert_date = '<p style="text-align:center;">Recordá que hacemos pedidos con 24hs de anticipación.<br>No te preocupes, consultá disponibilidad <a target="_blank" href="https://api.whatsapp.com/send?phone=5492614714206&text=Tendrán%20disponibilidad%20para%20pedir%20una%20' . $product . '%20para%20' . $add1 . '%20personas">acá!</a></p>';
+        }
 
-  $curl = curl_init();
-  curl_setopt_array($curl, array(
-      CURLOPT_URL => $url,
-      CURLOPT_RETURNTRANSFER => true,
-      CURLOPT_ENCODING => '',
-      CURLOPT_MAXREDIRS => 10,
-      CURLOPT_TIMEOUT => 0,
-      CURLOPT_FOLLOWLOCATION => true,
-      CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-      CURLOPT_CUSTOMREQUEST => 'GET',
-  ));
+        $pedId = $_POST['pedido_id'];
+        $trimmedPedId = trim($pedId);
+        $url = $urlApi . '/api/general/' . $trimmedPedId;
 
-  $response = curl_exec($curl);
-  curl_close($curl);
+        $curl = curl_init();
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => $url,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'GET',
+        ));
 
-  $responseArray = json_decode($response, true);
+        $response = curl_exec($curl);
+        curl_close($curl);
 
-  if (is_array($responseArray) && isset($responseArray[0]['product'])) {
-      $pedidoData = $responseArray[0];
-      $tipoPicada = $pedidoData['product'];
-      $tipoTabla = $pedidoData['add3'];
-      $comensales = $pedidoData['add1'];
-      $agregado1 = isset($pedidoData['add2']) ? $pedidoData['add2'] : "Sin Agregado";
-      $agregado2 = isset($pedidoData['add4']) ? $pedidoData['add4'] : "Sin Agregado";
-      $agregado3 = isset($pedidoData['add5']) ? $pedidoData['add5'] : "Sin Agregado";
-      $location = isset($pedidoData['location']) ? $pedidoData['location'] : "Retiro en local";
-      $precioFin = $pedidoData['in_ars'];
-      $modoEnvio = $pedidoData['type'];
-  } else {
-      echo "Error al procesar la respuesta de la APIqweqweqweqw.";
-  }
-}
- ?>
+        $responseArray = json_decode($response, true);
+
+        if (is_array($responseArray) && isset($responseArray[0]['product'])) {
+            $pedidoData = $responseArray[0];
+            $tipoPicada = $pedidoData['product'];
+            $tipoTabla = $pedidoData['add3'];
+            $comensales = $pedidoData['add1'];
+            $agregado1 = isset($pedidoData['add2']) ? $pedidoData['add2'] : "Sin Agregado";
+            $agregado2 = isset($pedidoData['add4']) ? $pedidoData['add4'] : "Sin Agregado";
+            $agregado3 = isset($pedidoData['add5']) ? $pedidoData['add5'] : "Sin Agregado";
+            $location = isset($pedidoData['location']) ? $pedidoData['location'] : "Retiro en local";
+            $precioFin = $pedidoData['in_ars'];
+            $modoEnvio = $pedidoData['type'];
+        } else {
+            echo "Error al procesar la respuesta de la APIqweqweqweqw.";
+        }
+    }
+    ?>
     <div class="row">
         <div class="col-sm-6 mx-auto">
-            <div class="alert alert-danger alert-dismissible col-sm-12 fade show"
-                style="z-index: 1031; margin-top: 35%; position:absolute;" role="alert">
+            <div class="alert alert-warning alert-dismissible col-sm-12 fade show"
+                style="z-index: 1031; margin-top: 12%; position:absolute; width: 92%" role="alert">
                 <p style="text-align:center;">
                     <strong>El pedido aún no está completado.</strong>
                 </p>
                 <p style="text-align:center;">
                     Por favor, revisá los detalles y confirmá para finalizarlo.
                 </p>
-                <?php echo $alert_date;?>
+                <?php echo $alert_date; ?>
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
         </div>
     </div>
+    <br>
     <section class="inner-page">
         <div class="container-fluid pt-5 mt-5">
             <div class="row">
@@ -177,95 +182,92 @@ if  (isset($_POST['testear_pedido'])) { // me traigo la informacion segun ID sel
                     <section class="panel" style="padding-top: 0;">
                         <div class="card">
                             <div class="card-body">
-                                <br>
-                                <h3 style="color:#ffb03b; text-align:center; font-size: xx-large;">Resumen del Pedido
+                                <h3 style="text-align: center; font-size: xx-large; font-family: 'Inria Sans', sans-serif;">
+                                    <strong>Resumen del Pedido</strong>
                                 </h3>
-                                <br>
+                                <hr>
+                                <h3 id="total" style="text-align:center; color:#ffb03b; font-size: 3rem;">
+                                    $ <?php echo $precioFin; ?></h3>
 
+                                <!--Muestra el total y en total con descuento-->
+
+                                <p style="text-align:center;color:gray; font-size:0.7rem;">a pagar por:
+                                    <?php echo $payment_mode; ?></p>
+                                <form action="../forms/pedido_confirmacion.php" method="POST">
+                                    <input type="hidden" name="pedido_id" value="<?php echo $pedId; ?>">
+                                    <input type="hidden" name="customer" value="<?php echo $customer; ?>">
+                                    <input type="hidden" name="cel_phone" value="<?php echo $cel_phone; ?>">
+                                    <input type="hidden" name="cnee" value="<?php echo $cnee; ?>">
+                                    <input type="hidden" name="cnee_cel_phone" value="<?php echo $cnee_cel_phone; ?>">
+                                    <input type="hidden" name="inscription" value="<?php echo $inscription; ?>">
+                                    <input type="hidden" name="delivery_date" value="<?php echo $delivery_date; ?>">
+                                    <input type="hidden" name="address" value="<?php echo $address; ?>">
+                                    <input type="hidden" name="nro" value="<?php echo $nro; ?>">
+                                    <input type="hidden" name="referencia" value="<?php echo $referencia; ?>">
+                                    <input type="hidden" name="schedule_available"
+                                        value="<?php echo $schedule_available; ?>">
+                                    <input type="hidden" name="payment_mode" value="<?php echo $payment_mode; ?>">
+                                    <div class="col-sm-4 mx-auto" style="text-align: center;"><button type="submit"
+                                            name="confirmar" id="confirmar" style="padding-left: 20%;padding-right: 20%;"
+                                            class="btn btn-warning btn-lg">Confirmar</button></div>
+                                </form>
+                                <br>
+                                <hr>
                                 <div class="row">
-                                    <div class="col-sm-5 mx-auto">
-                                        <h4 style="text-align: center;">Nombre:</h4>
-                                        <p style="text-align: center;"><?php echo $customer .' ('.$cel_phone . ') ' ?>
-                                        </p>
-                                    </div>
+                                    <?php if (isset($cnee) && !empty($cnee)): ?>
+                                        <div class="col-sm-4 mx-auto" style="display: flex; justify-content: center; align-items: center;">
+                                            <h4 style="font-family: 'Inria Sans', sans-serif; margin-right: 10px;"><strong>Nombre: </strong><?php echo $customer . ' (' . $cel_phone . ') ' ?></h4>
+                                        </div>
+                                        <div class="col-sm-4 mx-auto" style="display: flex; justify-content: center; align-items: center;">
+                                            <h4 style="font-family: 'Inria Sans', sans-serif; margin-right: 10px;"><strong>Receptor: </strong><?php echo $cnee . ' (' . $cnee_cel_phone . ') ' ?></h4>
+                                        </div>
+                                        <div class="col-sm-4 mx-auto" style="display: flex; justify-content: center; align-items: center;">
+                                            <h4 style="font-family: 'Inria Sans', sans-serif; margin-right: 10px;"><strong>Dedicatoria: </strong><?php echo $inscription; ?></h4>
+                                        </div>
+                                    <?php else : ?>
+                                        <div class="col-sm-6 mx-auto" style="display: flex; justify-content: center; align-items: center;">
+                                            <h4 style="font-family: 'Inria Sans', sans-serif; margin-right: 10px;"><strong>Nombre: </strong><?php echo $customer . ' (' . $cel_phone . ') ' ?></h4>
+                                        </div>
+                                        <div class="col-sm-6 mx-auto" style="display: flex; justify-content: center; align-items: center;">
+                                            <h4 style="font-family: 'Inria Sans', sans-serif; margin-right: 10px;"><strong>Dedicatoria: </strong><?php echo $inscription; ?></h4>
+                                        </div>
+                                    <?php endif; ?>
                                 </div>
-                                <hr style="color: blue; max-width: 50%;">
+                                <hr>
                                 <div class="row">
-                                    <div class="col-sm-5 mx-auto">
-                                        <h4 style="text-align: center;">Receptor:</h4>
-                                        <p style="text-align: center;"><?php echo $cnee .' ('.$cnee_cel_phone . ') ' ?>
-                                        </p>
+                                    <div class="col-sm-6 mx-auto" style="display: flex; justify-content: center; align-items: center;">
+                                        <h4 style="font-family: 'Inria Sans', sans-serif; margin-right: 10px;"><strong>Fecha: </strong><?php echo $delivery_date; ?> - <?php echo $schedule_available; ?></h4>
                                     </div>
-                                </div>
-                                <hr style="color: blue; max-width: 50%;">
-                                <div class="row">
-                                    <div class="col-sm-5 mx-auto">
-                                        <h4 style="text-align: center;">Dedicaria:</h4>
-                                        <p style="text-align: center;"><?php echo $inscription; ?></p>
+                                    <div class="col-sm-6 mx-auto" style="display: flex; justify-content: center; align-items: center;">
+                                        <h4 style="font-family: 'Inria Sans', sans-serif; margin-right: 10px;"><strong>Direccion: </strong><?php echo $address . ' ' . $nro . ' ( ' . $referencia . ') - ' . $location; ?></h4>
                                     </div>
                                 </div>
                                 <hr>
-                                <h3 style="text-align:center;">Datos de entrega:</h3>
-                                <br>
-                                <div class="col-sm-5 mx-auto" style="text-align: center; color:gray;">
-                                    <p> <strong> Fecha:</strong> <?php echo $delivery_date ;?> - <strong>Hora:</strong>
-                                        <?php echo $schedule_available ;?> </p>
-                                </div>
-                                <br>
-                                <div class="col-sm-8 mx-auto" style="text-align: center; color:gray;">
-                                    <p><strong>Direccion:
-                                        </strong><?php echo $address . ' '. $nro. ' ( '. $referencia . ') - '. $location ;?>
-                                    </p>
-                                </div>
-                                <hr>
-                                <h3 style="text-align:center;">Datos del Pedido:</h3>
-                                <br>
-                                <div class="col-sm-5 mx-auto" style="text-align: center;">
-                                    <p><strong>Picada: </strong>
-                                        <?php echo $tipoPicada . ' - '.$tipoTabla .' para '. $comensales . ' personas';?>
-                                    </p>
-                                </div>
-                                <div class="col-sm-8 mx-auto" style="text-align: center;">
-                                    <?php if ($agregado1 !== null): ?>
-                                    <p><strong>Agregado:</strong> <?php echo $agregado1; ?> </p>
-                                    <?php endif; ?>
+                                <div class="row">
+                                    <div class="col-sm-6 mx-auto" style="display: flex; justify-content: center; align-items: center;">
+                                        <h4 style="font-family: 'Inria Sans', sans-serif; margin-right: 10px;"><strong>Picada: </strong><?php echo $tipoPicada . ' - ' . $tipoTabla . ' para ' . $comensales . ' personas'; ?></h4>
+                                    </div>
 
-                                    <?php if ($agregado2 !== null): ?>
-                                    <p><strong>Agregado:</strong> <?php echo $agregado2; ?> </p>
-                                    <?php endif; ?>
-
-                                    <?php if ($agregado3 !== null): ?>
-                                    <p><strong>Agregado:</strong> <?php echo $agregado3; ?> </p>
-                                    <?php endif; ?>
+                                    <div class="col-sm-6 mx-auto" style="display: flex; justify-content: center; align-items: center;">
+                                        <h4 style="font-family: 'Inria Sans', sans-serif; margin-right: 10px;"><strong>Agregados:</strong></h4>
+                                        <div>
+                                            <?php if ($agregado1 !== "Sin Agregado"): ?>
+                                                <h4 style="font-family: 'Inria Sans', sans-serif; margin-right: 10px;">- <?php echo $agregado1; ?></h4>
+                                            <?php endif; ?>
+                                            <?php if ($agregado2 !== "Sin Agregado"): ?>
+                                                <h4 style="font-family: 'Inria Sans', sans-serif; margin-right: 10px;">- <?php echo $agregado2; ?></h4>
+                                            <?php endif; ?>
+                                            <?php if ($agregado3 !== "Sin Agregado"): ?>
+                                                <h4 style="font-family: 'Inria Sans', sans-serif; margin-right: 10px;">- <?php echo $agregado3; ?></h4>
+                                            <?php endif; ?>
+                                            <?php if ( $agregado1 == "Sin Agregado" && $agregado2 == "Sin Agregado" && $agregado3 == "Sin Agregado"  ): ?>
+                                                <h4 style="font-family: 'Inria Sans', sans-serif; margin-right: 10px;">- Sin Agregados</h4>
+                                            <?php endif; ?>
+                                        </div>
+                                    </div>
                                 </div>
+
                             </div>
-
-                            <h3 id="total" style="text-align:center; color:#ffb03b; font-size: 3rem;">
-                                $ <?php echo $precioFin; ?></h3>
-
-                            <!--Muestra el total y en total con descuento-->
-                            
-                            <p style="text-align:center;color:gray; font-size:0.7rem;">a pagar por:
-                                <?php echo $payment_mode; ?></p>
-                            <form action="../forms/pedido_confirmacion.php" method="POST">
-                                <input type="hidden" name="pedido_id" value="<?php echo $pedId;?>">
-                                <input type="hidden" name="customer" value="<?php echo $customer;?>">
-                                <input type="hidden" name="cel_phone" value="<?php echo $cel_phone;?>">
-                                <input type="hidden" name="cnee" value="<?php echo $cnee;?>">
-                                <input type="hidden" name="cnee_cel_phone" value="<?php echo $cnee_cel_phone;?>">
-                                <input type="hidden" name="inscription" value="<?php echo $inscription;?>">
-                                <input type="hidden" name="delivery_date" value="<?php echo $delivery_date;?>">
-                                <input type="hidden" name="address" value="<?php echo $address;?>">
-                                <input type="hidden" name="nro" value="<?php echo $nro;?>">
-                                <input type="hidden" name="referencia" value="<?php echo $referencia;?>">
-                                <input type="hidden" name="schedule_available"
-                                    value="<?php echo $schedule_available;?>">
-                                <input type="hidden" name="payment_mode" value="<?php echo $payment_mode;?>">
-                                <div class="col-sm-4 mx-auto" style="text-align: center;"><button type="submit"
-                                        name="confirmar" id="confirmar" style="padding-left: 20%;padding-right: 20%;"
-                                        class="btn btn-warning">Confirmar</button></div>
-                                <br><br>
-                            </form>
                         </div>
                 </div>
     </section>
