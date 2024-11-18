@@ -235,7 +235,7 @@
                                                                              <?php echo $status; ?></option>
                                                                          <?php
                                                   
-                                                  $mysqli = new mysqli('193.203.175.53', 'u101685278_pachimanok', 'Pachiman9102', 'u101685278_pachimanok'); 
+                                                  $mysqli = new mysqli('193.203.175.171', 'u101685278_pachimanok', 'Pachiman9102', 'u101685278_pachimanok'); 
               
                                                   $query_status = $mysqli -> query ("SELECT * FROM `status_pícadas`");
                                                           while ($status= mysqli_fetch_array($query_status)) {                                           

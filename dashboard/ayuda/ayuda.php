@@ -30,7 +30,7 @@
 
                             $usuario = 'tincho'; 
                             $conn_builit = mysqli_connect(
-                                '193.203.175.53',
+                                '193.203.175.171',
                                 'u101685278_buildit',
                                 'Pachiman2020',
                                 'u101685278_buildit'
