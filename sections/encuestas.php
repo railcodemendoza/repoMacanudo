@@ -8,7 +8,7 @@
                 <div class="owl-carousel events-carousel">
                     <?php
                      $conn2 = mysqli_connect(
-                        '193.203.175.53', //193.203.175.53
+                        '193.203.175.171', //193.203.175.171
                         'u101685278_pachimanok',//     u101685278_labmac
                         'Pachiman9102',//    Rail2021
                         'u101685278_macanudas' //    u101685278_labmac
