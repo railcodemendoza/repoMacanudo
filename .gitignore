@@ -6,7 +6,9 @@ variables.php
 # Node artifact files
 node_modules/
 dist/
-
+ApiMacanudo/
+ApiSandbox/
+FrontSandbox/
 # Compiled Java class files
 *.class
 
